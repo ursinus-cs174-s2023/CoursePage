@@ -1,0 +1,824 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming,Spring 2022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Spring 2022</strong></a>
+								</header>
+<!-- End Header !-->
+
+
+
+                <section>
+                    
+                    <header class="main">
+                        <h1>CS 173/174 Style Guide</h1>
+                    </header>
+                    <p>
+                        As we've discussed an experienced, it's possible to write code that works, but which is completely unreadable and difficult to debug as a result.  Furthermore, we want to get you into the habit of writing good code that is easy for others to read and which is hence <i>easier to maintain</i>.  In practice, if people can't read your code, they'll just do it over from scratch their own way.  It would be a shame for all of your hard work to go to waste!  
+                    <p>
+                        Below are some rules to help keep you on the rails as you design (they have been adapted from <a href = "https://www.ursinus.edu/live/profiles/133-ann-marie-v-schilling">Professor Schilling</a>).  On many assignments, 10% of the grade will depend on adhering to these rules
+                    </p>
+
+                    <h2>All rules:</h2>
+                    <ol>
+                        <li><a href = "#indentation">Indentation/Brackets</a></li>
+                        <li><a href = "#naming">Naming Conventions</a></li>
+
+                        <li><a href = "#documentationoverview">Documentation: Overview</a></li>
+
+                        <li><a href = "#documentationinline">Documentation: Inline Code</a></li>
+
+                        <li><a href = "#documentationmethods">Documentation: Methods</a></li>
+
+                        <li><a href = "#loopchoices">Appropriate Loop Choices</a></li>
+
+                        <li><a href = "#xiting">Exiting Appropriately</a></li>
+                        <li><a href = "#breaking">The Break Command</a></li>
+
+                        <li><a href = "#goto">The GOTO Command</a></li>
+
+                        <li><a href = "#boolean">Positive Boolean Variable Names</a></li>
+
+                        <li><a href = "#booleancompare">Boolean Variable Comparisons</a></li>
+
+                        <li><a href = "#booleanbreakup">Breaking Up Long Boolean Statements</a></li>
+
+                        <li><a href = "#robustness">Robustness</a></li>
+
+                        <li><a href = "#magicnumbers">No Magic Numbers!</a></li>
+
+                        <li><a href = "#finalcaps">Capitalizing Final Variables</a></li>
+
+                        <li><a href = "#methodsreturn">Methods Returning At The End</a></li>
+
+                        <li>
+                            <a href = "#efficient">Efficiently Written Code</a>
+                        </li>
+
+                        <li><a href = "#compoundmethods">Avoid Compound Method Calls</a></li>
+
+                        <li>
+                            <a href = "#textprompts">Text Input Prompts</a>
+                        </li>
+
+                        <li>
+                            <a href ="#variablescoping">Variable Scoping</a>
+                        </li>
+
+                    </ol>
+                
+
+                    <h2><a name = "indentation">1. Indentation / Brackets</a></h2>
+                    <p>
+                        All code must follow proper indentation and bracket conventions.  This includes, but is not limited to, conditionals, loops, and methods.  Brackets should be at the end of each if statement, even if the body contains only one line.  You should get into the habit of setting up your brackets and tabbing when you first complete a method, loop, or conditional statement, but before you type anything in it.  If you go completely off the rails, Netbeans can save you if you click <code>Source->Format</code>
+                    </p>
+
+                    <div id="badcode">
+                        <h3>Problematic Code</h3>
+                    </div>
+                    <p>
+                        First of all, this code is missing brackets around the if statement.  This makes it easy to have a bug if you decide to add the line, because only the first line is considered to be in the body of the if statement.  Second of all, the tabbing is all over the place.  This makes it easy to miss a closing brace somewhere, which can be very difficult to resolve for multiply nested blocks.
+                    </p>
+                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                            for (int i = 0; i < 100; i++) {
+                        if (i%2 == 0 && i%3 == 0)
+                                System.out.println(i + " is divisible by 6");
+            }
+                    ]]></script>  
+
+                    <div id="goodcode">
+                        <h3>Good Code</h3>
+                    </div>
+                    <p>
+                        Here's a better version of the above example, in which brackets are applied and aligned properly
+                    </p>
+                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                    for (int i = 0; i < 100; i++) {
+                        if (i%2 == 0 && i%3 == 0) {
+                            System.out.println(i + " is divisible by 6");
+                        } 
+                    }
+                    ]]></script> 
+
+                <HR><h2><a name = "naming">2. Naming Conventions</a></h2>
+                <p>
+                    <ul>
+                        <li>
+                            Variable and method names should be in <a href = "https://en.wikipedia.org/wiki/Camel_case">camel case</a>; that is, the first letter should be in lower case, and each new word should be capitalized, with no spaces or underscores in between the words.
+                        </li>
+                        <li>
+                            Variables and methods should be descriptive of what the variable holds.
+                        </li>
+                        <li>
+                            For loop counters should be something short such as <code>i</code>, <code>j</code>, or <code>k</code>.  You may also use a descriptive, but still short, name for a for loop counter such as <code>row</code> or <code>col</code></p>
+                        </li>
+                        <li>
+                            Method names should start with a verb (this includes boolean methods that start with the verb "is").
+                        </li>
+                    </ul>
+                      
+
+                <div id="badcode">
+                    <h3>Problematic Code</h3>
+                </div>
+                <p>
+                    The names of the variables are not descriptive, and the method is not written as a verb or in camel case.
+                </p>
+                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                    public static void coolstuff(int x) {
+                        int myvar = x;
+                        do {
+                            System.out.print(myvar + " ");
+                            myvar = (myvar + 7)%12;
+                        }
+                        while(myvar != x);
+                    }
+                ]]></script>  
+
+
+                <div id="goodcode">
+                    <h3>Good Code</h3>
+                </div>
+                <p>
+                    The method is now a verb that describes what it does, and its name and all variables are written in camel case (assuming "halfstep" is one word) and in descriptive language.
+                </p>
+                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                    public static void printCircleOfFifths(int halfstepInit) {
+                        int halfstepCurr = halfstepInit;
+                        do {
+                            System.out.print(halfstepCurr + " ");
+                            halfstepCurr = (halfstepCurr + 7)%12;
+                        }
+                        while(halfstepCurr != halfstepInit);
+                    }
+                ]]></script>
+                
+                <HR><H2><a name = "documentationoverview">3. Documentation: Overview</a></H2>
+                <p>     
+                    All files must have comments near the top of the main program’s file containing the following information:  Author’s name, Assignment name, Date, Class, Short description of the project.  For complete information on writing Java documentation, visit <a href = "www.oracle.com/technetwork/java/javase/tech/index-137868.html">this link</a> or <a href = "http://www.tutorialspoint.com/java/java_documentation.htm">this link</a>.  As an example, here's a comment at the top of a file
+                        
+                        
+                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                        /**
+                        * The Stack class represents a last-in-first-out stack of objects. 
+                        * @author  Chris Tralie CS 173
+                        * @version 0.1, January 2020
+                        * Note that this version is not thread safe.
+                        */ 
+                    ]]></script>
+                </p>
+
+
+                <HR><h2><a name = "documentationinline">4. Documentation: Inline code</a></h2>
+                    <p>
+                        All variables (except for loop counters) must be documented.  Do not state the obvious. This clutters up your code and does not convey any information to the reader.
+                    </p>
+
+                    <div id="badcode">
+                        <h3>Problematic Code</h3>
+                    </div>
+                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                        int numCounter;  	//counts numbers
+                    ]]></script>
+
+                    <div id="goodcode">
+                        <h3>Good Code</h3>
+                    </div>
+                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                        int numCounter; 	// Keeps track of how many 
+                                            // integers the user has entered
+                    ]]></script>
+
+
+                <HR><h2><a name = "documentationmethods">5. Documentation: Methods</a></h2>
+                    <p>
+                        All methods will have documentation including, but not limited to: 
+                        <ol>
+                            <li>Method summary</li>
+                            <li>Parameter descriptions</li>
+                            <li>Return value descriptions</li>
+                        </ol>
+                        These comments should appear above the method name in a particular format, which makes it easy to automatically generate web pages describing the code (for instance, see documentation for the <a href = "https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/StdAudio.html">audio code</a> we've been using, which was generated this way).  In NetBeans, if you type out the definition of the method and then type <code>/**</code> followed by <code>ENTER</code>, it will automatically generate a correctly formatted comment, which you can fill in with details.  Below is an example (courtesy of <a href = "https://www.ursinus.edu/live/profiles/133-ann-marie-v-schilling">Professor Schilling</a>) of what it should look like:
+                    </p>
+
+                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                        /**
+                         * Returns an Image object that can then be painted on the screen. 
+                         * The url argument must specify an absolute {@link URL}. The name
+                         * argument is a specifier that is relative to the url argument. 
+                         * <p>
+                         * This method always returns immediately, whether or not the 
+                         * image exists. When this applet attempts to draw the image on
+                         * the screen, the data will be loaded. The graphics primitives 
+                         * that draw the image will incrementally paint on the screen. 
+                         *
+                         * @param  url  an absolute URL giving the base location of the image
+                         * @param  name the location of the image, relative to the url argument
+                         * @return      the image at the specified URL
+                         * @see         Image
+                         */
+                        public Image getImage(URL url, String name) {
+                            Image image = null;
+                            try {
+                                image = getImage(new URL(url, name));
+                            } catch (MalformedURLException e) {
+                                e.printStackTrace();
+                            }
+                            return image;
+                         }
+                    ]]></script>
+
+                    <HR><H2><a name = "loopchoices">6. Appropriate Loop Choices</a></H2>
+
+                        <p>
+                            Code will be graded on appropriate loop choice.  Using a while where a for loop is more appropriate will result in a deduction.  You should use a do while loop where appropriate.  Breaking out of a loop for any condition aside from the loop control will result in a deduction.
+                        </p>
+
+                        <div id="badcode">
+                            <h3>Problematic Code</h3>
+                        </div>
+                        <p>
+                            Since the loop below starts at 0 and stops at 9, a for loop is much more appropriate.  Furthermore, the code uses a break statement, which can be confusing.
+                        </p>
+                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                            int i = 0;
+                            int sum = 0;
+                            while (true) {
+                                if (i >= 10) {
+                                    break;
+                                }
+                                sum += Math.pow(2, (double)i);
+                                i++;
+                            }
+                        ]]></script>
+
+                        <div id="goodcode">
+                            <h3>Good Code</h3>
+                        </div>
+                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                            int sum = 0;
+                            for (int i = 0; i < 10; i++) {
+                                sum += Math.pow(2, (double)i);
+                            }
+                        ]]></script>
+
+
+
+
+                        <div id="badcode">
+                            <h3>Problematic Code</h3>
+                        </div>
+                        <p>
+                            Since the loop below starts at 0 and stops at 9, a for loop is much more appropriate.  Furthermore, the code uses a break statement, which can be confusing.
+                        </p>
+
+                        <HR>
+                            <p>
+                                As another example, the code below would be better stylistically in a do while loop
+                            </p>
+                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                            int choice = rand.nextInt(4);
+                            while (choice==temp){
+                                choice = rand.nextInt(4);
+                            }
+                        ]]></script>
+
+                        <div id="goodcode">
+                            <h3>Good Code</h3>
+                        </div>
+                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                            int choice = -1;
+                            do {
+                                choice = rand.nextInt(4);
+                            }
+                            while (choice==temp);
+                        ]]></script>
+
+                <HR><h2><a name = "exiting">7. Exiting Appropriately</a></h2>
+                    <p>
+                        Ending the program anywhere except for the last line of the main will result in a deduction.  (In other words, no <code>exit(0)</code> in the middle of your code)
+                    </p>
+
+                <hr><h2><a name = "breaking">8. The Break Command</a></h2>
+                    <p>
+                        The <code>break</code> command should only appear in a <code>switch</code> statement, and not in a loop.
+                    </p>
+
+                <HR><H2><a name = "goto">9. The GOTO Command</a></H2>
+                    <p>
+                        Do not use <code>goto</code> anywhere in your code!  It is an artifact from older programming languages and leads to <a href = "https://en.wikipedia.org/wiki/Spaghetti_code">spaghetti code</a>.
+                    </p>
+
+                <HR><h2><a name = "boolean">10. Positive Boolean Variable Names</a></h2>
+                    <p>
+                        To avoid confusion, boolean variable names should convey the positive case.  In other words <code>isReady</code>, <code>isValid</code>, <code>isProperTime</code> are good Boolean variable names.  Some not so good names are <code>readyCheck</code>, <code>notValid</code>, <code>checkTime</code>.
+                    </p>
+
+                <HR><h2><a name = "booleancompare">11. Boolean Variable Comparisons</a></h2>
+                <p>
+                    Conditional checks must not compare booleans to <code>true</code> or false
+                </p>
+                
+                <p>
+                    <h2>Example 1:</h2>
+
+                    <div id="badcode">
+                        <h3>Problematic Code</h3>
+                    </div>
+                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                        if ((isValid == true) || (isReady == false)) {
+                            ...
+                        }
+                    ]]></script>
+                    
+                    
+                    <div id="goodcode">
+                        <h3>Good Code</h3>
+                    </div>
+                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                        if (isValid || !isReady) {
+                            ...
+                        }
+                    ]]></script>
+                </p>
+
+                <p>
+                    <h2>Example 2:</h2>
+
+                    <div id="badcode">
+                        <h3>Problematic Code</h3>
+                    </div>
+                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                        // This code "toggles" a boolean variable
+                        // back and forth
+                        if (isToggled == true) {
+                            isToggled = false;
+                        }
+                        else if (isToggled == false) {
+                            isToggled = true;
+                        }
+                    ]]></script>
+                    
+                    
+                    <div id="goodcode">
+                        <h3>Good Code</h3>
+                    </div>
+                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                        isToggled = !isToggled;
+                    ]]></script>
+                </p>
+
+
+
+
+
+                <HR><h2><a name = "booleanbreakup">12. Breaking Up Long Boolean Statements</a></h2>
+                    <p>
+                        Long conditionals should not appear as <code>while</code> or <code>if</code> conditions.  Use a <code>boolean</code> variables for readability and self-documentation
+                    </p>
+                    
+                    <p>
+    
+                        <div id="badcode">
+                            <h3>Problematic Code</h3>
+                        </div>
+                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                            if ((value <10) || (value >45)) || (response ==”t”) && ((season ==FALL) || (season==SPRING))){
+                                ...
+                            };
+                        ]]></script>
+                        
+                        
+                        <div id="goodcode">
+                            <h3>Good Code</h3>
+                        </div>
+                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                            //check if price is ok, consumer agrees, and time is right
+                            boolean isReady = 	((value <10) || (value >45)) 
+                                                && (response ==”t”) 
+                                                && ((season ==FALL) 
+                                                || (season==SPRING)));
+                            if (isReady){
+                                //do some stuff
+                            };
+                        ]]></script>
+                    </p>
+
+
+
+
+                    <HR><h2><a name = "robustness">13. Robustness</a></h2>
+                        <p>
+                            All input must be checked.  Bad input must be handled gracefully; code must not crash on any inputs.  Bad input must not be handled silently.  If the user gives bad input, they must be notified and given a choice to re-enter or quit the program.
+                        </p>
+                        
+                        <p>
+        
+                            <div id="badcode">
+                                <h3>Problematic Code</h3>
+                            </div>
+                            <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                // Code to convert a fraction to a decimal
+                                Scanner in = new Scanner(System.in);
+                                System.out.print("Enter numerator: ");
+                                double num = in.nextDouble();
+                                System.out.print("Enter denominator: ");
+                                double denom = in.nextDouble();
+                                System.out.println(num/denom);
+                            ]]></script>
+                            
+                            
+                            <div id="goodcode">
+                                <h3>Good Code</h3>
+                            </div>
+                            <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                // Code to convert a fraction to a decimal
+                                Scanner in = new Scanner(System.in);
+                                double num = 0, denom = 0;
+                                do {
+                                    System.out.print("Enter numerator: ");
+                                    num = in.nextDouble();
+                                    System.out.print("Enter denominator: ");
+                                    denom = in.nextDouble();
+                                    if (denom == 0) {
+                                        System.out.println("Cannot have 0 in denominator!");
+                                    }
+                                }
+                                while (denom == 0);
+                                System.out.println(num/denom);
+                            ]]></script>
+                        </p>
+
+
+
+                        <HR><h2><a name = "magicnumbers">14. No Magic Numbers!</a></h2>
+                            <p>
+                                A "magic number" is a number in the program that should be defined as a final constant, especially if it's used more than once, since the programmer only has to update it in one place to change all instances.
+                            </p>
+                            
+                            <p>
+            
+                                <div id="badcode">
+                                    <h3>Problematic Code</h3>
+                                </div>
+                                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                    double Td = 44100/(440*Math.pow(2, 1/12.0));
+                                    int T = (int)Math.round(Td);
+
+                                    int N = (int)(Math.round(44100*duration));
+                                ]]></script>
+                                
+                                
+                                <div id="goodcode">
+                                    <h3>Good Code</h3>
+                                </div>
+                                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                    // The sample rate
+                                    public static final int FS = 44100;
+
+                                    ...
+                                    
+                                    // Compute the period one halfstep above a 440hz A
+                                    double Td = FS/(440*Math.pow(2, 1/12.0));
+                                    int T = (int)Math.round(Td);
+
+                                    // Compute the number of samples over a particular duration of seconds
+                                    int N = (int)(Math.round(FS*duration));
+                                ]]></script>
+                            </p>
+
+                            <HR><h2><a name = "finalcaps">15. Capitalizing Final Variables</a></h2>
+                                <p>
+                                    All final variables must be in all caps.
+                                </p>
+
+
+                                <p>
+            
+                                    <div id="badcode">
+                                        <h3>Problematic Code</h3>
+                                    </div>
+                                    <code>
+                                        public static final int secondsInDay = 24*3600;
+                                    </code>
+                                    
+                                    <BR><BR>
+                                    <div id="goodcode">
+                                        <h3>Good Code</h3>
+                                    </div>
+                                    <code>
+                                        public static final int SECONDS_IN_DAY = 24*3600;
+                                    </code>
+                                </p>
+
+
+                                <HR><h2><a name = "methodsreturn">16. Methods Returning At The End</a></h2>
+                                    <p>
+                                        Methods may only return at the end of the method, not in the middle
+                                    </p>
+    
+    
+                                    <p>
+                
+                                        <div id="badcode">
+                                            <h3>Problematic Code</h3>
+                                        </div>
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                            public static boolean isEven(int x) {
+                                                if (x % 2 == 0) {
+                                                    return true;
+                                                }
+                                                return false;
+                                            }
+                                        ]]></script>
+                                        
+                                        
+                                        <div id="goodcode">
+                                            <h3>Good Code</h3>
+                                        </div>
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                            public static boolean isEven(int x) {
+                                                boolean result = false;
+                                                if (x % 2 == 0) {
+                                                    result = true;
+                                                }
+                                                return result;
+                                            }
+                                        ]]></script>
+                                    </p>
+
+
+
+                                    <HR><h2><a name = "efficient">17. Efficiently Written Code</a></h2>
+                                        <p>
+                                            Code must be efficient as possible without sacrificing readability.  This includes, but is not limited to chaining your if statements, using the least amount of variable declarations as possible, and using the smallest data type necessary.  For instance, if the user is to answer 1,2,3,4 as a response, use an int, not a double.
+                                        </p>
+        
+
+
+                                        <HR><h2><a name = "compoundmethods">18. Avoid Compound Method calls</a></h2>
+                                            <p>
+                                                Compounding methods and parameters makes your code difficult to read and debug, so split up method calls using variables when appropriate.
+                                            </p>
+            
+            
+                                            <p>
+                        
+                                                <div id="badcode">
+                                                    <h3>Problematic Code</h3>
+                                                </div>
+                                                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                    int myInt = Integer.parseInt(in.getLine().charAt(2));
+                                                ]]></script>
+                                                
+                                                
+                                                <div id="goodcode">
+                                                    <h3>Good Code</h3>
+                                                </div>
+                                                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                    String inputLine = in.getLine();
+                                                    char id = inputLine.charAt(2);
+                                                    int myInt = Integer.parseInt(id);
+                                                ]]></script>
+                                            </p>
+
+
+
+                                            <HR><h2><a name = "textprompts">19. Text Input Prompts</a></h2>
+                                                <p>
+                                                    Prompts must be meaningful and input must appear on the same line as the prompt.  There must be a space between the prompt and the input the user gives.
+                                                </p>
+                
+                
+                                                <p>
+                            
+                                                    <div id="badcode">
+                                                        <h3>Problematic Code</h3>
+                                                    </div>
+                                                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                        System.out.println("Enter something");
+                                                        int x = in.nextInt();
+                                                    ]]></script>
+                                                    
+                                                    
+                                                    <div id="goodcode">
+                                                        <h3>Good Code</h3>
+                                                    </div>
+                                                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                        System.out.print("Please enter a prime number: ");
+                                                        int x = int.nextInt();
+                                                    ]]></script>
+                                                </p>
+
+
+                                            <HR><h2><a name = "variablescoping">20. Variable Scoping</a></h2>
+
+                                            <p>
+                                                All variable declarations must be within the scope of a method unless the professor gives permission to put a variable within the class  scope.
+                                            </p>
+
+
+                
+                                            <p>
+                            
+                                                <div id="badcode">
+                                                    <h3>Problematic Code</h3>
+                                                </div>
+                                                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                    int[] refs = {3,28,7,4,9,6,11,8,5,10,7,12};
+
+                                                    public static int getWeekday(int year, int month, int day) {
+                                                        int weekday = 0;
+                                                        int ydoomsday=getDoomsdayYear(year);
+                                                        int reference = 0;
+
+                                                        if(isALeapYear(year)){
+                                                            refs[0]=4;
+                                                            refs[1]=29;
+                                                        }
+                                                        reference = refs[month-1];
+
+                                                        ...
+                                                    }
+                                                ]]></script>
+                                                
+                                                
+                                                <div id="goodcode">
+                                                    <h3>Good Code</h3>
+                                                </div>
+                                                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                    public static int getWeekday(int year, int month, int day) {
+                                                        int[] refs = {3,28,7,4,9,6,11,8,5,10,7,12};
+
+                                                        int weekday = 0;
+                                                        int ydoomsday=getDoomsdayYear(year);
+                                                        int reference = 0;
+
+                                                        if(isALeapYear(year)){
+                                                            refs[0]=4;
+                                                            refs[1]=29;
+                                                        }
+                                                        reference = refs[month-1];
+
+                                                        ...
+                                                    }
+                                                ]]></script>
+                                            </p>
+
+
+                </section>
+								
+
+
+						</div>
+					</div>
+
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+					<script type="text/javascript" src="../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "index.html#overview">Overview</a></li>
+												<li><a href = "index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "index.html#grading">Grading</a></li>
+												<li><a href = "index.html#environment">Classroom Environment</a></li>
+												<li><a href = "index.html#participation">Participation</a></li>
+												<li><a href = "index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li><a href = "Software/index.html">Software</a></li>
+										<li><a href = "index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises</span>
+											<ul>
+												
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Final Assessment</span>
+											<ul>
+												<li><a href = "final.html#codinginterview">Mock Coding Interview</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+										Announcements							
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>

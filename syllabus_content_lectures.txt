@@ -1,0 +1,281 @@
+SECTION
+Week 1
+
+
+LECTURE
+Course Sneak Preview / Meet & Mingle
+
+
+LECTURE
+Lab 1: Making Holiday Web Page
+
+
+LECTURE
+Methods/2D Arrays Practice: <a href = "../ClassExercises/Week1_2048">Making 2048 Together</a>
+
+Horstmann Ch. 5, 6
+LECTURE
+Methods/2D Arrays Practice: <a href = "../ClassExercises/Week1_2048">Making 2048 Together</a>
+
+Horstmann Ch. 5, 6
+SECTION
+Week 2
+
+
+LECTURE
+Assignment 1 / Lab 1 Working Session
+
+
+LECTURE
+Classes Review: Constructors, Instance Variables / Methods, Static Variables
+
+Horstmann Ch. 8
+LECTURE
+Lab 2: Hash Maps / Make Your Own Adventure
+
+
+LECTURE
+Markov Chains / Assignment 2 Work
+
+
+SECTION
+Week 3
+
+
+LECTURE
+Basic Inheritance
+
+Horstmann 9.1 - 9.3
+LECTURE
+Random and HashMap Practice
+
+
+LECTURE
+Lab 3: Inheritance / Shape Drawing
+
+
+LECTURE
+Assignment 2 / Lab 3 Work Session
+
+
+SECTION
+Week 4
+
+
+LECTURE
+Work Session
+
+
+LECTURE
+Work Session
+
+
+LECTURE
+Discovering Polymorphism
+
+Horstmann 9.4
+LECTURE
+Lab 4: COVID Simulation
+
+
+SECTION
+Week 5
+
+
+LECTURE
+Multiple Inheritance / Interfaces
+
+<ul><li>Reading: Horstmann 9.6</li><li><a href = "https://www.tutorialspoint.com/java/java_interfaces.htm">TutorialsPoint interfaces summary</a></li></ul>
+LECTURE
+Interfaces practice
+
+<ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Lab4_COVIDPolymorphism/commit/1f70223697850b99f09fd2ebbe7bb7c4564f7d2b">Code from today</a></li></ul>
+LECTURE
+The <code>Comparable</code> Interface
+
+<ul><li><a href = "https://www.codejava.net/java-core/collections/sorting-arrays-examples-with-comparable-and-comparator">codejava.net article on Comparator</a></li><li>Class Exercise: <a href = "../ClassExercises/Week5_SortingTweets">Sorting Spongebob Tweets</a></li></ul>
+LECTURE
+Work session
+
+
+SECTION
+Week 6
+
+
+LECTURE
+Tie breaking in Comparators, Object References, the Cloneable Interface
+
+<ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week5_SortingTweets/commit/c648de6ffc6a091a8619fec5da89a1674d6eea87">Code from today</a></li><li><a href = "https://docs.oracle.com/javase/7/docs/api/java/lang/Cloneable.html">Oracle documentation on <code>Cloneable</code></a></li></ul>
+LECTURE
+Collections: Linked Lists
+
+<ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week6_MyCollections/commit/7f2c94b536cf90300f1414c27facb3cbed7f4882">Object references practice code</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week6_MyCollections/commit/4c28f34ae16d9363bf2a47813a86d040884c5888">Linked list code from today</a></li><li><a href = "../Lectures/Week6_Collections/LinkedLists.png">Linked List Variations Chart</a></li></ul>
+LECTURE
+Lab 5: Make Your Own ArrayList
+
+
+LECTURE
+The <code>Iterable</code> interface
+
+<ul><li><a href = "https://www.geeksforgeeks.org/iterators-in-java/">GeeksForGeeks: Implementing Iterators in Java</a></li><li><a href = "https://www.geeksforgeeks.org/java-implementing-iterator-and-iterable-interface/">GeeksForGeeks: Creating Your Own Iterator in Java</a></li></ul>
+SECTION
+Week 7
+
+
+LECTURE
+Lab 5 / Assignment 3 Workshopping
+
+
+LECTURE
+Metaprogramming / the console
+
+
+LECTURE
+Threads / The <code>Runnable</code> interface
+
+<ul><li><a href = "https://docs.oracle.com/javase/tutorial/essential/concurrency/procthread.html">Oracle tutorial on threads</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week7_Threads/">Code we wrote</a></li></ul>
+LECTURE
+Lab 6: Road Detection with Threads
+
+
+SECTION
+Week 8
+
+
+LECTURE
+Markov Code Roundup
+
+
+LECTURE
+Introduction To C++: Primitive Types, Loops, Conditionals, Arrays
+
+<ul><li><a href = "http://www.cplusplus.com/reference/cstdio/printf/">printf reference</a></li></ul>
+LECTURE
+Begin C++ Audio I/O
+
+<ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week8_AudioCpp/archive/main.zip">Audio starter code</a></li></ul>
+LECTURE
+C++ Pointers / More C++ Audio
+
+<ul><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li></ul>
+SECTION
+Week 9
+
+
+LECTURE
+C++ Pointers Continued, Character Arrays, 2D Arrays
+
+
+LECTURE
+Audio Homework Work Session: Audio Echoes
+
+<ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week8_AudioCpp/blob/main/echo.cpp">Code from today</a></li></ul>
+LECTURE
+C++ Classes: Static And Dynamic
+
+<ul><li>Stack Class exercise</li></ul>
+LECTURE
+Work Session / Q&A
+
+
+SECTION
+Week 10
+
+
+LECTURE
+C++ Linked Lists
+
+
+LECTURE
+C++ Templates
+
+<ul><li><a href = "https://www.cplusplus.com/doc/oldtutorial/templates/">CPlusPlus.com Templates Reference</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week10_Code/commit/6700d4644594e119bf2ed94caa26a8a8ee28302c">Template edits to LinkedList code from class</a></li></ul>
+LECTURE
+Hash Tables Concept
+
+<ul><li><a href = "../ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
+LECTURE
+Bug Hunt
+
+
+SECTION
+Week 11
+
+
+LECTURE
+Header files / linking / makefiles
+
+<ul><li><a href = "https://www.learncpp.com/cpp-tutorial/89-class-code-and-header-files/">Class code and header files (learncpp.com)</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week11_Code">Code from this week</a></li></ul>
+LECTURE
+Header Guards, C++ File I/O
+
+<ul><li><a href = "http://faculty.cs.niu.edu/~mcmahon/CS241/c241man/node90.html">Header guards</a></li></ul>
+LECTURE
+C++ Inheritance
+
+
+LECTURE
+C++ Function Pointers, C++ STL Vectors/Maps
+
+<ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
+SECTION
+Week 12
+
+
+LECTURE
+The Shazam Concept
+
+
+SECTION
+Week 13
+
+
+LECTURE
+Code Roundup
+
+
+LECTURE
+Recursion: Factorial, Fibonacci, Ackermann
+
+<ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week13_Recursion1">Code from class</a></li></ul>
+LECTURE
+Recursive Drawing / Fractals
+
+<ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week13_RecursiveDrawing/archive/main.zip">Recursive drawing starter code</a></li></ul>
+LECTURE
+Towers of Hanoi / Binary Search
+
+
+SECTION
+Week 14
+
+
+LECTURE
+Merge Sort
+
+
+LECTURE
+Binary Trees: Preorder, Inorder, Postorder / Drawing Binary Trees
+
+
+LECTURE
+Binary Search Trees
+
+
+LECTURE
+<a href = "https://www.linkedin.com/in/johnngo1">John Ngo</a> Guest Speaker / Q&A
+
+
+SECTION
+Week 15
+
+
+LECTURE
+Huffman Coding
+
+
+LECTURE
+Balanced Binary Trees / Tree Rotations
+
+
+
