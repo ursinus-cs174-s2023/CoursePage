@@ -42,7 +42,7 @@
 							<section id="banner">
 								<div class="content">
 									<header>
-										<h2>CS 174: Object Oriented Programming</h2>
+										<h2>CS 174: Introduction To Object Oriented And Systems Programming</h2>
 										<h3><a href = "http://www.ursinus.edu">Ursinus College</a>, Spring 2022</h3>
 										<h3>Instructor: <a href = "http://www.ctralie.com">Christopher J. Tralie</a></h3>
 									</header>
@@ -50,18 +50,27 @@
 									<div class = "row">
 										<div class="4u 12u">
 											<center>
-											<img src = "OverviewPictures/C7.gif" width = 300 height = 270>
+											<img src = "OverviewPictures/shazam.png" width = 300 height = 270>
 											</center>
+											<p>
+												A conceptual drawing of the <a href = "https://www.ee.columbia.edu/~dpwe/papers/Wang03-shazam.pdf">Shazam algorithm</a>, which is used to identify music from small clips of digital audio.  Students will use object oriented concepts to implement this as their final project in the class.
+											</p>
 										</div>
 										<div class="4u 12u">
 											<center>
-											<img src = "OverviewPictures/Epidemic.gif" width = 300 height = 300>
+											<img src = "OverviewPictures/alpacastego.png" width = 300 height = 300>
 											</center>
+											<p>
+												3 short low quality digital music clips are hidden in this image (original photo taken by my cousin <a href = "https://www.allieemphotography.com/">Allie Mellen</a>).  Students will learn how to extract data like this from images.
+											</p>
 										</div>
 										<div class="4u 12u$">
 											<center>
-											<img src = "OverviewPictures/Spectrogram.png" width = 300 height = 300>
+											<img src = "https://ursinus-cs174-f2020.github.io/CoursePage/Assignments/HW1_VirtualCities/ArtContest/tralieworld.gif" width = 300 height = 300>
 											</center>
+											<p>
+												<a href = "https://ursinus-cs174-f2020.github.io/CoursePage/Assignments/HW1_VirtualCities/ArtContest/ViewIt.html?sceneLoc=tralieworld.json">Tralie World</a>, by Michael Kates, CS 174 Fall 2020
+											</p>
 										</div>
 									</div>
 
@@ -136,18 +145,36 @@
 									</p>
 
 									<p>
-										Now that students are familiar with the fundamentals of programming, such as variable types, conditional statements, loops, and methods, the class will focus more on the <i>design</i> of programs.  The goal is to make programs that are easy to read and maintain by others.  Less skeleton code will be provided overall, and it will often be up to the student to choose how to structure their code.  
-										
+										Now that students are familiar with the fundamentals of programming, such as variable types, conditional statements, loops, and methods, the class will branch out into two more sophisticated directions: <b>systems programming</b> and <b>object oriented programming</b>.  This class will prepare students for more advanced work in computer architecture and data structures, respectively.
+									</p>
+
 									<p>
-										A key paradigm that we will explore in this course is <b>object-oriented programming</b> (hence, the title of the course).  While we always have primitive variable types, such as <code>int</code>, <code>double</code>, and <code>char</code> at our disposal, a <i>class</i> can be though of as a "designer variable type."  For example, we can make a "Person" class that stores the name, age, and height of a person.  This might look something like this:
+										In systems programming, we look "under the hood" at how programs are really run on the computer, digging into things such as <b>memory (de)allocation</b>, or where variables actually get stored, and <b>metaprogramming</b>, or the process of automating and running code from the command line.  For this reason, our language of choice in this class will be C++, which has syntax very similar to Java, but which requires a lot more care managing memory and program compilation.  Towards the end of the course, we will strip back the language slightly to a subset known as C, will begin to examine "assembly language," or the machine code that C compiles into before it's executed on your computer's processor.  Time permitting, we will examine a common vulnerability in programs known as a <a href = "https://en.wikipedia.org/wiki/Buffer_overflow">buffer overrun attack</a>.
+									</p>
+										
+									<p>	
+										In object oriented programming, on the other hand, we zoom out focus more on the <i>design</i> of programs at a high level.  The goal is to make programs that are easy to read and maintain by others.  At the core of object oriented programming are <b>classes</b>, or their instances: <b>objects</b> (hence, the name).  While we always have primitive variable types, such as <code>int</code>, <code>double</code>, and <code>char</code> at our disposal, a class can be though of as a "designer variable type."  For example, we can make a "Person" class that stores the name, age, and height of a person.  This might look something like this:
 
 										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											public class Person {
-												private String name;
-												private int age;
-												private double height;
+											class Person {
+												private:
+													char* name;
+													int age;
+													double height;
+												public:
+													Person(char* name, int age, double height) {
+														this->name = name;
+														this->age = age;
+														this->height = height;
+													}
+											};
+											
+											int main() {
+												Person chris((char*)"Chris", 32, 6.08);
 
-												...
+												// ...do more stuff, etc, etc...
+
+												return 0;
 											}
 										]]></script>  
 
@@ -159,27 +186,21 @@
 									</p>
 									
 									<p>
-										As was emphasized in <a href = "http://www.billmongan.com/Ursinus-CS173/">CS 173</a>, Java and objects give us a good, organized way to talk to computers, but computer science is automation and computing in general, not tied to a specific language.  In this course, we will be exploring C++.  But the focus is on object-oriented programming in general in the service of a broad, interdisciplinary array of applications, including but not limited to
+										As was emphasized in CS 173, a high level programming language like C++ gives us an intuitive, organized way to talk to computers, but computer science is automation and computing in general, not tied to a specific language.  In this course, we will be exploring C++, but the focus is on programming in general in the service of a broad, interdisciplinary array of applications.  A few examples of programs students will be working on include
 										<ul>
 											<li>
-												Implementing an algorithm to synthesize novel text passages in a particular style by mashing up training passages.
+												Creating virtual models of 3D cities.
 											</li>
-
+											<li>
+												Steganography, or the process of hiding data in one format in plain sight in another format.
+											</li>
 											<li>
 												Creating a COVID-19 simulation which includes quarantined areas and medics.
 											</li>
-
 											<li>
-												Simulating a supermarket and figuring out how many checkout lines are needed to avoid congestion.
-											</li>
-											<li>
-												Implementing parts of the <a href = "https://en.wikipedia.org/wiki/Acoustic_fingerprint">"Shazam algorithm"</a> to automatically determine what song someone is listening to based on a small clip of audio.
+												Implementing parts of the <a href = "https://www.ee.columbia.edu/~dpwe/papers/Wang03-shazam.pdf">"Shazam algorithm"</a> to automatically determine what song someone is listening to based on a small clip of audio.
 											</li>
 										</ul>
-									</p>
-
-									<p>
-										We will start off using Java in the first half of the course, and then will transition to using C++.  Along the way, we will learn <i>metaprogramming</i>, or the use of a text-based interface to the computer known as "the terminal" to setup our programs to run.
 									</p>
 
 
@@ -206,8 +227,9 @@
 									<h3><a name = "objectives">Learning Objectives</a></h3>
 									<p>
 									<ol>
-
-										<!--<li>Articulate the difference between computer programming and computer science, and explain the role of programming in computer science.</li>!-->
+										<li>
+											Learn the basics of "metaprogramming," or writing scripts to compile code, in the <i>command line</i>.
+										</li>
 
 										<li>
 											Practice patient problem solving by developing comfort with the edit -> compile -> run loop, along with intermediate debugging skills.</li>
@@ -217,19 +239,12 @@
 										</li>
 
 										<li>
-											Learn the basics of "metaprogramming," or writing scripts to compile code, in the <i>command line</i>.
-										</li>
-
-										<li>
 											Allocate and clean up dynamic memory, avoiding memory leaks.
 										</li>
 
 										<li>
-											Implement data structures, such as queues, linked lists, and trees, using object-oriented paradigms.
+											Implement data structures, such as queues, linked lists, trees, and hash tables, using object-oriented paradigms.
 										</li>
-
-										<!-- <li>Identify the appropriate control structures (if statements, switch statements, loop types) to use to solve different problems, and learn to choose efficient solutions over brute force solutions.  
-										</li> !-->
 		
 									</ol>
 									</p>
@@ -352,9 +367,7 @@
 
 											<hr>
 											<h2><a name = "readings">Readings</a></h2>
-											<p>
-												The official textbook for this course is <a href = "https://donsheehy.github.io/datastructures/fullbook.pdf">A First Course on Data Structures in Python</a> by <a href = "http://donsheehy.net/">Don Sheehy</a>, which is freely available online at  <a href = "https://donsheehy.github.io/datastructures/fullbook.pdf">this link</a>.  The author of the book has a very similar background to me (Princeton CS undergraduate, researcher in computational geometry and topology), so we have a similar set of topics we'd like to emphasize.  Still, since we have covered some of the content in CS 174, we will go slightly beyond the book.
-											</p>
+											
 
 
 											<hr>
@@ -425,81 +438,70 @@
 		
 
 <!-- Begin Schedule -->
-<tr><td colspan = "5"><h2><b>Week 1</b></h2><p></p></td></tr>
-<tr><td>1</td><td>Wed 1/19/2022</td><td>Course Sneak Preview / Meet & Mingle</td><td></td><td></td></tr>
-<tr><td>2</td><td>Fri 1/21/2022</td><td>Lab 1: Making Holiday Web Page</td><td></td><td></td></tr>
-<tr><td>3</td><td>Mon 1/24/2022</td><td>Methods/2D Arrays Practice: <a href = "../ClassExercises/Week1_2048">Making 2048 Together</a></td><td>Horstmann Ch. 5, 6</td><td></td></tr>
-<tr><td>4</td><td>Wed 1/26/2022</td><td>Methods/2D Arrays Practice: <a href = "../ClassExercises/Week1_2048">Making 2048 Together</a></td><td>Horstmann Ch. 5, 6</td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 2</b></h2><p></p></td></tr>
-<tr><td>5</td><td>Fri 1/28/2022</td><td>Assignment 1 / Lab 1 Working Session</td><td></td><td></td></tr>
-<tr><td>6</td><td>Mon 1/31/2022</td><td>Classes Review: Constructors, Instance Variables / Methods, Static Variables</td><td>Horstmann Ch. 8</td><td></td></tr>
-<tr><td>7</td><td>Wed 2/2/2022</td><td>Lab 2: Hash Maps / Make Your Own Adventure</td><td></td><td></td></tr>
-<tr><td>8</td><td>Fri 2/4/2022</td><td>Markov Chains / Assignment 2 Work</td><td></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 3</b></h2><p></p></td></tr>
-<tr><td>9</td><td>Mon 2/7/2022</td><td>Basic Inheritance</td><td>Horstmann 9.1 - 9.3</td><td></td></tr>
-<tr><td>10</td><td>Wed 2/9/2022</td><td>Random and HashMap Practice</td><td></td><td></td></tr>
-<tr><td>11</td><td>Fri 2/11/2022</td><td>Lab 3: Inheritance / Shape Drawing</td><td></td><td></td></tr>
-<tr><td>12</td><td>Mon 2/14/2022</td><td>Assignment 2 / Lab 3 Work Session</td><td></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 4</b></h2><p></p></td></tr>
-<tr><td>13</td><td>Wed 2/16/2022</td><td>Work Session</td><td></td><td></td></tr>
-<tr><td>14</td><td>Fri 2/18/2022</td><td>Work Session</td><td></td><td></td></tr>
-<tr><td>15</td><td>Mon 2/21/2022</td><td>Discovering Polymorphism</td><td>Horstmann 9.4</td><td></td></tr>
-<tr><td>16</td><td>Wed 2/23/2022</td><td>Lab 4: COVID Simulation</td><td></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 5</b></h2><p></p></td></tr>
-<tr><td>17</td><td>Fri 2/25/2022</td><td>Multiple Inheritance / Interfaces</td><td><ul><li>Reading: Horstmann 9.6</li><li><a href = "https://www.tutorialspoint.com/java/java_interfaces.htm">TutorialsPoint interfaces summary</a></li></ul></td><td></td></tr>
-<tr><td>18</td><td>Mon 2/28/2022</td><td>Interfaces practice</td><td><ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Lab4_COVIDPolymorphism/commit/1f70223697850b99f09fd2ebbe7bb7c4564f7d2b">Code from today</a></li></ul></td><td></td></tr>
-<tr><td>19</td><td>Wed 3/2/2022</td><td>The <code>Comparable</code> Interface</td><td><ul><li><a href = "https://www.codejava.net/java-core/collections/sorting-arrays-examples-with-comparable-and-comparator">codejava.net article on Comparator</a></li><li>Class Exercise: <a href = "../ClassExercises/Week5_SortingTweets">Sorting Spongebob Tweets</a></li></ul></td><td></td></tr>
-<tr><td>20</td><td>Fri 3/4/2022</td><td>Work session</td><td></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 6</b></h2><p></p></td></tr>
-<tr><td>--</td><td>Mon 3/7/2022</td><td>Spring Break</td><td></td><td>No CS 174 Class.  Enjoy the break!</td></tr>
-<tr><td>--</td><td>Wed 3/9/2022</td><td>Spring Break</td><td></td><td>No CS 174 Class.  Enjoy the break!</td></tr>
-<tr><td>--</td><td>Fri 3/11/2022</td><td>Spring Break</td><td></td><td>No CS 174 Class.  Enjoy the break!</td></tr>
-<tr><td>21</td><td>Mon 3/14/2022</td><td>Tie breaking in Comparators, Object References, the Cloneable Interface</td><td><ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week5_SortingTweets/commit/c648de6ffc6a091a8619fec5da89a1674d6eea87">Code from today</a></li><li><a href = "https://docs.oracle.com/javase/7/docs/api/java/lang/Cloneable.html">Oracle documentation on <code>Cloneable</code></a></li></ul></td><td></td></tr>
-<tr><td>22</td><td>Wed 3/16/2022</td><td>Collections: Linked Lists</td><td><ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week6_MyCollections/commit/7f2c94b536cf90300f1414c27facb3cbed7f4882">Object references practice code</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week6_MyCollections/commit/4c28f34ae16d9363bf2a47813a86d040884c5888">Linked list code from today</a></li><li><a href = "../Lectures/Week6_Collections/LinkedLists.png">Linked List Variations Chart</a></li></ul></td><td></td></tr>
-<tr><td>23</td><td>Fri 3/18/2022</td><td>Lab 5: Make Your Own ArrayList</td><td></td><td></td></tr>
-<tr><td>24</td><td>Mon 3/21/2022</td><td>The <code>Iterable</code> interface</td><td><ul><li><a href = "https://www.geeksforgeeks.org/iterators-in-java/">GeeksForGeeks: Implementing Iterators in Java</a></li><li><a href = "https://www.geeksforgeeks.org/java-implementing-iterator-and-iterable-interface/">GeeksForGeeks: Creating Your Own Iterator in Java</a></li></ul></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 7</b></h2><p></p></td></tr>
-<tr><td>25</td><td>Wed 3/23/2022</td><td>Lab 5 / Assignment 3 Workshopping</td><td></td><td></td></tr>
-<tr><td>26</td><td>Fri 3/25/2022</td><td>Metaprogramming / the console</td><td></td><td></td></tr>
-<tr><td>27</td><td>Mon 3/28/2022</td><td>Threads / The <code>Runnable</code> interface</td><td><ul><li><a href = "https://docs.oracle.com/javase/tutorial/essential/concurrency/procthread.html">Oracle tutorial on threads</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week7_Threads/">Code we wrote</a></li></ul></td><td></td></tr>
-<tr><td>28</td><td>Wed 3/30/2022</td><td>Lab 6: Road Detection with Threads</td><td></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 8</b></h2><p></p></td></tr>
-<tr><td>29</td><td>Fri 4/1/2022</td><td>Markov Code Roundup</td><td></td><td></td></tr>
-<tr><td>30</td><td>Mon 4/4/2022</td><td>Introduction To C++: Primitive Types, Loops, Conditionals, Arrays</td><td><ul><li><a href = "http://www.cplusplus.com/reference/cstdio/printf/">printf reference</a></li></ul></td><td></td></tr>
-<tr><td>31</td><td>Wed 4/6/2022</td><td>Begin C++ Audio I/O</td><td><ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week8_AudioCpp/archive/main.zip">Audio starter code</a></li></ul></td><td></td></tr>
-<tr><td>32</td><td>Fri 4/8/2022</td><td>C++ Pointers / More C++ Audio</td><td><ul><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li></ul></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 9</b></h2><p></p></td></tr>
-<tr><td>33</td><td>Mon 4/11/2022</td><td>C++ Pointers Continued, Character Arrays, 2D Arrays</td><td></td><td></td></tr>
-<tr><td>34</td><td>Wed 4/13/2022</td><td>Audio Homework Work Session: Audio Echoes</td><td><ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week8_AudioCpp/blob/main/echo.cpp">Code from today</a></li></ul></td><td></td></tr>
-<tr><td>35</td><td>Fri 4/15/2022</td><td>C++ Classes: Static And Dynamic</td><td><ul><li>Stack Class exercise</li></ul></td><td></td></tr>
-<tr><td>36</td><td>Mon 4/18/2022</td><td>Work Session / Q&A</td><td></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 10</b></h2><p></p></td></tr>
-<tr><td>37</td><td>Wed 4/20/2022</td><td>C++ Linked Lists</td><td></td><td></td></tr>
-<tr><td>38</td><td>Fri 4/22/2022</td><td>C++ Templates</td><td><ul><li><a href = "https://www.cplusplus.com/doc/oldtutorial/templates/">CPlusPlus.com Templates Reference</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week10_Code/commit/6700d4644594e119bf2ed94caa26a8a8ee28302c">Template edits to LinkedList code from class</a></li></ul></td><td></td></tr>
-<tr><td>39</td><td>Mon 4/25/2022</td><td>Hash Tables Concept</td><td><ul><li><a href = "../ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul></td><td></td></tr>
-<tr><td>40</td><td>Wed 4/27/2022</td><td>Bug Hunt</td><td></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 11</b></h2><p></p></td></tr>
-<tr><td>41</td><td>Fri 4/29/2022</td><td>Header files / linking / makefiles</td><td><ul><li><a href = "https://www.learncpp.com/cpp-tutorial/89-class-code-and-header-files/">Class code and header files (learncpp.com)</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week11_Code">Code from this week</a></li></ul></td><td></td></tr>
-<tr><td>42</td><td>Mon 5/2/2022</td><td>Header Guards, C++ File I/O</td><td><ul><li><a href = "http://faculty.cs.niu.edu/~mcmahon/CS241/c241man/node90.html">Header guards</a></li></ul></td><td></td></tr>
-<tr><td>43</td><td>Wed 5/4/2022</td><td>C++ Inheritance</td><td></td><td></td></tr>
-<tr><td>44</td><td>Fri 5/6/2022</td><td>C++ Function Pointers, C++ STL Vectors/Maps</td><td><ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 12</b></h2><p></p></td></tr>
-<tr><td>45</td><td>Mon 5/9/2022</td><td>The Shazam Concept</td><td></td><td></td></tr>
-<tr><td>46</td><td>Wed 5/11/2022</td><td>Computer Ethics Discussion</td><td></td><td></td></tr>
-<tr><td>47</td><td>Fri 5/13/2022</td><td>Thanksgiving</td><td></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 13</b></h2><p></p></td></tr>
-<tr><td>48</td><td>Mon 5/16/2022</td><td>Code Roundup</td><td></td><td></td></tr>
-<tr><td>49</td><td>Wed 5/18/2022</td><td>Recursion: Factorial, Fibonacci, Ackermann</td><td><ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week13_Recursion1">Code from class</a></li></ul></td><td></td></tr>
-<tr><td>50</td><td>Fri 5/20/2022</td><td>Recursive Drawing / Fractals</td><td><ul><li><a href = "https://github.com/Ursinus-CS174-F2020/Week13_RecursiveDrawing/archive/main.zip">Recursive drawing starter code</a></li></ul></td><td></td></tr>
-<tr><td>51</td><td>Mon 5/23/2022</td><td>Towers of Hanoi / Binary Search</td><td></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 14</b></h2><p></p></td></tr>
-<tr><td>52</td><td>Wed 5/25/2022</td><td>Merge Sort</td><td></td><td></td></tr>
-<tr><td>53</td><td>Fri 5/27/2022</td><td>Binary Trees: Preorder, Inorder, Postorder / Drawing Binary Trees</td><td></td><td></td></tr>
-<tr><td>54</td><td>Mon 5/30/2022</td><td>Binary Search Trees</td><td></td><td></td></tr>
-<tr><td>55</td><td>Wed 6/1/2022</td><td><a href = "https://www.linkedin.com/in/johnngo1">John Ngo</a> Guest Speaker / Q&A</td><td></td><td></td></tr>
-<tr><td colspan = "5"><h2><b>Week 15</b></h2><p></p></td></tr>
-<tr><td>56</td><td>Fri 6/3/2022</td><td>Huffman Coding</td><td></td><td></td></tr>
-<tr><td>57</td><td>Mon 6/6/2022</td><td>Balanced Binary Trees / Tree Rotations</td><td></td><td></td></tr>
+<tr><td colspan = "5"><h2><b>Unit 1: Introduction To C++ And Systems Programming</b></h2><p></p></td></tr>
+<tr><td>1</td><td>Wed (50 mins) 1/19/2022</td><td>The Terminal</td><td></td><td></td></tr>
+<tr><td>2</td><td>Fri (75 mins) 1/21/2022</td><td>Introduction To C++: Primitive Types, Loops, Conditionals, Arrays</td><td><ul><li><a href = "http://www.cplusplus.com/reference/cstdio/printf/">printf reference</a></li></ul></td><td bgcolor=#f4e6e7>CS 174 Warm-Up Due
+<HR>C++ Fundamentals Module Due before Class
+</td></tr>
+<tr><td>3</td><td>Mon (75 mins) 1/24/2022</td><td>Header files, Linking, Makefiles, C++ File I/O</td><td><ul><li><a href = "http://faculty.cs.niu.edu/~mcmahon/CS241/c241man/node90.html">Notes on header guards</a></li></ul></td><td bgcolor=#f4e6e7>Assignment 1: Design Your Own City Out
+</td></tr>
+<tr><td>4</td><td>Wed (50 mins) 1/26/2022</td><td>Lab 1: HTML Holidays</td><td></td><td></td></tr>
+<tr><td>5</td><td>Fri (75 mins) 1/28/2022</td><td>Virtual Memory And C++ Pointers</td><td><ul><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li></ul></td><td bgcolor=#f4e6e7>C++ Pointers Module Due Before Class
+</td></tr>
+<tr><td>6</td><td>Mon (75 mins) 1/31/2022</td><td>C++ Pointers And Arrays, LLDB/Valgrind</td><td></td><td bgcolor=#f4e6e7>Lab 1 Due
+</td></tr>
+<tr><td>7</td><td>Wed (50 mins) 2/2/2022</td><td>Lab 2: C++ Bug Hunt</td><td></td><td></td></tr>
+<tr><td>8</td><td>Fri (75 mins) 2/4/2022</td><td>2D Arrays, RGB Images</td><td></td><td bgcolor=#f4e6e7>Assignment 1 Due
+<HR>Assignment 2: Image Processing And Steganography Out
+</td></tr>
+<tr><td>9</td><td>Mon (75 mins) 2/7/2022</td><td>Code Roundup, Binary, Hex, Bitwise Operators</td><td><ul><li>Class Exercise: Linear Feedback Shift Registers</li></ul></td><td bgcolor=#f4e6e7>Binary And Hex Module Due Before Class
+<HR>Lab 2 Due
+</td></tr>
+<tr><td colspan = "5"><h2><b>Unit 2: Fundamentals of Object Oriented Programming</b></h2><p></p></td></tr>
+<tr><td>10</td><td>Wed (50 mins) 2/9/2022</td><td>Introduction To Classes: Constructors, Instance Variables / Methods</td><td><ul><li><a href = "https://www.learncpp.com/cpp-tutorial/89-class-code-and-header-files/">Class code and header files (learncpp.com)</a></li></ul></td><td bgcolor=#f4e6e7>Intro To C++ Classes Module Due Before Class
+</td></tr>
+<tr><td>11</td><td>Fri (75 mins) 2/11/2022</td><td>C++ Classes Continued, Static Variables, Information Hiding/Encapsulation (public and private)</td><td><ul><li>Stack Class exercise</li></ul></td><td></td></tr>
+<tr><td>12</td><td>Mon (75 mins) 2/14/2022</td><td>Arrays of Objects, Introdution To Inheritance</td><td></td><td></td></tr>
+<tr><td>13</td><td>Wed (50 mins) 2/16/2022</td><td>Lab 3: Inheritance / Shape Drawing</td><td></td><td></td></tr>
+<tr><td>14</td><td>Fri (75 mins) 2/18/2022</td><td>Discovering Polymorphism</td><td></td><td bgcolor=#f4e6e7>Assignment 2 Due
+<HR>Assignment 3: COVID Polymorphism Out
+</td></tr>
+<tr><td>15</td><td>Mon (75 mins) 2/21/2022</td><td>Code Roundup, Abstract Classes</td><td></td><td bgcolor=#f4e6e7>Lab 3 Due
+</td></tr>
+<tr><td>16</td><td>Wed (50 mins) 2/23/2022</td><td>Lab 4: Comparators And Insertion Sort</td><td></td><td></td></tr>
+<tr><td>17</td><td>Fri (75 mins) 2/25/2022</td><td>Multiple Inheritance, The Diamond Problem</td><td></td><td></td></tr>
+<tr><td colspan = "5"><h2><b>Unit 3: Object-Oriented Data Structures</b></h2><p></p></td></tr>
+<tr><td>18</td><td>Mon (75 mins) 2/28/2022</td><td>Stacks And Queues</td><td></td><td bgcolor=#f4e6e7>Lab 4 Due
+</td></tr>
+<tr><td>19</td><td>Wed (50 mins) 3/2/2022</td><td>Lab 5: Dynamic Array ADT</td><td></td><td></td></tr>
+<tr><td>20</td><td>Fri (75 mins) 3/4/2022</td><td>Linked Lists</td><td></td><td bgcolor=#f4e6e7>Assignment 3 Due
+<HR>Assignment 4: Doubly Linked Lists / Breadth-First Search Out
+</td></tr>
+<tr><td>--</td><td>Mon (75 mins) 3/7/2022</td><td>Spring Break</td><td></td><td>No CS 174 Class.  Enjoy the break!</td></tr>
+<tr><td>--</td><td>Wed (50 mins) 3/9/2022</td><td>Spring Break</td><td></td><td>No CS 174 Class.  Enjoy the break!</td></tr>
+<tr><td>--</td><td>Fri (75 mins) 3/11/2022</td><td>Spring Break</td><td></td><td>No CS 174 Class.  Enjoy the break!</td></tr>
+<tr><td>21</td><td>Mon (75 mins) 3/14/2022</td><td>Code Roundup, Recursion: Factorial, Fibonacci, Ackermann</td><td></td><td></td></tr>
+<tr><td>22</td><td>Wed (50 mins) 3/16/2022</td><td>Lab 6: Recursive Drawing / Fractals</td><td></td><td></td></tr>
+<tr><td>23</td><td>Fri (75 mins) 3/18/2022</td><td>Towers of Hanoi / Binary Search</td><td></td><td></td></tr>
+<tr><td>24</td><td>Mon (75 mins) 3/21/2022</td><td>Binary Trees: Preorder, Inorder, Postorder / Drawing Binary Trees</td><td></td><td bgcolor=#f4e6e7>Lab 6 Due
+</td></tr>
+<tr><td>25</td><td>Wed (50 mins) 3/23/2022</td><td>Binary Search Trees</td><td></td><td bgcolor=#f4e6e7>Last Day To Drop with A "W"
+<HR>Assignment 4 Due
+</td></tr>
+<tr><td>26</td><td>Fri (75 mins) 3/25/2022</td><td>C++ Templates, Huffman Trees Concept</td><td><ul><li><a href = "https://www.cplusplus.com/doc/oldtutorial/templates/">CPlusPlus.com Templates Reference</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week10_Code/commit/6700d4644594e119bf2ed94caa26a8a8ee28302c">Template edits to LinkedList code from class</a></li></ul></td><td bgcolor=#f4e6e7>Assignment 5: Huffman Coding Out
+</td></tr>
+<tr><td>27</td><td>Mon (75 mins) 3/28/2022</td><td>Introduction to C++ STL: Vector, Priority Queue</td><td><ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul></td><td></td></tr>
+<tr><td>28</td><td>Wed (50 mins) 3/30/2022</td><td>Lab 7: Prim's Algorithm</td><td></td><td></td></tr>
+<tr><td>29</td><td>Fri (75 mins) 4/1/2022</td><td>STL Set, STL Map, LinkedMap Implementation</td><td><ul><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li><li><a href = "../ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul></td><td></td></tr>
+<tr><td>30</td><td>Mon (75 mins) 4/4/2022</td><td>Finish LinkedMap Implementation, Introduce Hash Tables Concept</td><td></td><td bgcolor=#f4e6e7>Lab 7 Due
+<HR>HW6a: Basketball Hashing OUt
+</td></tr>
+<tr><td></td><td>Tue 4/5/2022</td><td></td><td></td><td bgcolor=#f4e6e7>HW5 Due
+</td></tr><tr><td colspan = "5"><h2><b>Unit 4: Advanced Topics in Systems Programming</b></h2><p></p></td></tr>
+<tr><td>31</td><td>Wed (50 mins) 4/6/2022</td><td>Virtual Memory Revisited: The Stack</td><td></td><td></td></tr>
+<tr><td>32</td><td>Fri (75 mins) 4/8/2022</td><td>Fundamentals of Assembly Language</td><td></td><td></td></tr>
+<tr><td>33</td><td>Mon (75 mins) 4/11/2022</td><td>Function Calls in Assembly Language</td><td><ul><li><a href = "https://docs.oracle.com/javase/tutorial/essential/concurrency/procthread.html">Oracle tutorial on threads</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week7_Threads/">Code we wrote</a></li></ul></td><td></td></tr>
+<tr><td>34</td><td>Wed (50 mins) 4/13/2022</td><td>Lab 6: Road Detection with Threads</td><td></td><td></td></tr>
 <!-- End Schedule -->
 
 				</table>
@@ -517,9 +519,8 @@
 											
 											<table>
 											<tr><td>Class Engagement / Pre-Class Work</td><td>15%</td></tr>
-											<tr><td>Programming Assignments</td><td>50%</td></tr>
-											<tr><td>Labs</td><td>20%</td></tr>
-											<tr><td>Final Project / Mock Coding Interview</td><td>15%</td></tr>
+											<tr><td>Labs</td><td>25%</td></tr>
+											<tr><td>Programming Assignments</td><td>60%</td></tr>
 											</table>					
 											
 											<h3><a name = "flexiblesubmission">Flexible Submission Policy</a></h3>

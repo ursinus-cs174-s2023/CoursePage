@@ -1,6 +1,6 @@
 import datetime
 
-daysstr = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+daysstr = ['Mon (75 mins)', 'Tue', 'Wed (50 mins)', 'Thu', 'Fri (75 mins)', 'Sat', 'Sun']
 #Last day of class 12/4
 #Final Examples 12/9-14
 FIRSTDAY = datetime.date(2022, 1, 19)
