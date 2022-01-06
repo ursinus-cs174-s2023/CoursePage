@@ -61,7 +61,7 @@
 											<img src = "OverviewPictures/alpacastego.png" width = 300 height = 300>
 											</center>
 											<p>
-												3 short low quality digital music clips are hidden in this image (original photo taken by my cousin <a href = "https://www.allieemphotography.com/">Allie Mellen</a>).  Students will learn how to extract data like this from images.
+												3 short low quality digital music clips are hidden in this image (original photo taken by my cousin <a href = "https://www.allieemphotography.com/">Allie Mellen</a>).  Students will learn how to extract this kind of hidden data using concepts from systems programming.
 											</p>
 										</div>
 										<div class="4u 12u$">
@@ -74,6 +74,28 @@
 										</div>
 									</div>
 
+									<div class = "row">
+										<div class="4u 12u">
+											<center>
+											<img src = "https://ursinus-cs174-f2020.github.io/CoursePage/Labs/Lab4_COVIDPolymorphism/Essential.gif
+											" width = 300 height = 270>
+											</center>
+											<p>
+												A simple Monte Carlo simulation of the spread of a pandemic throughout a population, which students will implement in this course.
+											</p>
+										</div>
+										<div class="8u 12u">
+											<center>
+											<img src = "OverviewPictures/RoadDetection.gif" width = 600 height = 300>
+											</center>
+											<p>
+												An algorithm that performs <a href = "https://scikit-image.org/docs/dev/auto_examples/edges/plot_canny.html">Canny edge detection</a> and the <a href = "https://scikit-image.org/docs/dev/auto_examples/edges/plot_line_hough_transform.html">Hough transform</a> to detect where the road and the horizon likely are in an image (this could be used, for instance, in autonomous driving).  These are examples of <a href = "https://en.wikipedia.org/wiki/Embarrassingly_parallel">embarrassingly parallelizable algorithms</a>, which students will learn to accelerate using threads in C++.
+											</p>
+										</div>
+										
+									</div>
+
+									
 									<h2>Table Of Contents</h2>
 									<h3>
 										<table>
@@ -178,7 +200,7 @@
 											}
 										]]></script>  
 
-										An instance of a class is known as an <i>object</i>.  Just like <code>10</code> is an example of an <code>int</code>, <code>chris</code> is an example of a person, whose name is "Chris", whose age is 31, and whose height is 6.08 feet.  In this way, we have <i>encapsulated</i> (i.e. "placed in a capsule") what it means to be a person all in once place.  This makes it way easier to define multiple people, as we don't have to define separate variables for their name, age, and height each time.  Moreover, we can start to create <i>instance methods</i> in a class that can be used to change the state of a particular object.  For instance, a method <code>void doBirthday()</code> could increment the age of a person by 1 (e.g. <code>chris.doBirthday()</code> would change the age of the <code>chris</code> object to 32).
+										An instance of a class is known as an <i>object</i>.  Just like <code>10</code> is an example of an <code>int</code>, <code>chris</code> is an example of a person, whose name is "Chris", whose age is 31, and whose height is 6.08 feet.  In this way, we have <i>encapsulated</i> (i.e. "placed in a capsule") what it means to be a person all in once place.  This makes it way easier to define multiple people, as we don't have to define separate variables for their name, age, and height each time.  Moreover, we can start to create <i>instance methods</i> in a class that can be used to change the state of a particular object.  For instance, a method <code>void doBirthday()</code> could increment the age of a person by 1 (e.g. <code>chris.doBirthday()</code> would change the age of the <code>chris</code> object to 33).
 									</p>
 									
 									<p>
@@ -220,7 +242,9 @@
 										<li>
 											Begin to develop a sense for algorithm efficiency and the synergy between algorithms and data structures.
 										</li>
-		
+										<li>
+											Demistify what's going on "under the hood" when code runs on your computer.
+										</li>
 									</ol>
 									</p>
 
@@ -368,20 +392,25 @@
 											<hr>
 											<h2><a name = "readings">Readings</a></h2>
 											
+											<p>
+												There is no official textbook for this course.  Instead, I will sometimes link to online resources on the <a href = "#schedule">schedule</a>, or I will have you read something or watch a video and complete exercises <a href = "#preclass">before class</a> for initial exposure to some topics.  I will also write and share notes on the schedule to summarize things that we did in class, as needed.
+											</p>
 
 
 											<hr>
 											<h2><a name = "deliverables">Deliverables</a></h2>
 
-											<h3><a name = "labs">Labs</a></h3>
-											<p>
-												We will have labs implementing fundamental data structures from scratch
-											</p>
+											
 
 											<h3><a name = "programming">Programming Assignments</a></h3>
                                             
                                             <p>
-                                                The bulk of the grade in the course will be earned by completing 6 medium scale programming assignments, one for each unit, which will build on the data structures you create in the labs.  Be sure to start them early, since debug time can often be unpredictable!  Refer to the <a href = "#collaboration">collaboration and sharing rules</a> for these assignments.
+                                                The bulk of the grade in the course will be earned by completing 5 medium scale programming assignments and one large scale one (the "Shazam algorithm" at the end).  Be sure to start them early, since debug time can often be unpredictable!  Refer to the <a href = "#collaboration">collaboration and sharing rules</a> for these assignments.
+											</p>
+
+											<h3><a name = "labs">Labs</a></h3>
+											<p>
+												As in CS 173, we will have a number of labs throughout the course.  Generally, our 30 minute Wednesday blocks will be devoted to these, and final submissions will be due the following Monday.  Collaboration is more open here, and I will generally provide more starter code relative to the programming assignments, since the idea is for students to get some initial exposure and to practice ideas before moving onto more complicated things.
 											</p>
 
 											<h3><a name = "debugging">Debugging Principles</a></h3>
@@ -446,7 +475,7 @@
 <tr><td>3</td><td>Mon (75 mins) 1/24/2022</td><td>Header files, Linking, Makefiles, C++ File I/O</td><td><ul><li><a href = "http://faculty.cs.niu.edu/~mcmahon/CS241/c241man/node90.html">Notes on header guards</a></li></ul></td><td bgcolor=#f4e6e7>Assignment 1: Design Your Own City Out
 </td></tr>
 <tr><td>4</td><td>Wed (50 mins) 1/26/2022</td><td>Lab 1: HTML Holidays</td><td></td><td></td></tr>
-<tr><td>5</td><td>Fri (75 mins) 1/28/2022</td><td>Virtual Memory And C++ Pointers</td><td><ul><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li></ul></td><td bgcolor=#f4e6e7>C++ Pointers Module Due Before Class
+<tr><td>5</td><td>Fri (75 mins) 1/28/2022</td><td>Dynamic Memory, C++ Pointers</td><td><ul><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li></ul></td><td bgcolor=#f4e6e7>C++ Pointers Module Due Before Class
 </td></tr>
 <tr><td>6</td><td>Mon (75 mins) 1/31/2022</td><td>C++ Pointers And Arrays, LLDB/Valgrind</td><td></td><td bgcolor=#f4e6e7>Lab 1 Due
 </td></tr>
@@ -488,22 +517,39 @@
 <tr><td>25</td><td>Wed (50 mins) 3/23/2022</td><td>Binary Search Trees</td><td></td><td bgcolor=#f4e6e7>Last Day To Drop with A "W"
 <HR>Assignment 4 Due
 </td></tr>
-<tr><td>26</td><td>Fri (75 mins) 3/25/2022</td><td>C++ Templates, Huffman Trees Concept</td><td><ul><li><a href = "https://www.cplusplus.com/doc/oldtutorial/templates/">CPlusPlus.com Templates Reference</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week10_Code/commit/6700d4644594e119bf2ed94caa26a8a8ee28302c">Template edits to LinkedList code from class</a></li></ul></td><td bgcolor=#f4e6e7>Assignment 5: Huffman Coding Out
+<tr><td>26</td><td>Fri (75 mins) 3/25/2022</td><td>Huffman Trees Concept, C++ Templates</td><td><ul><li><a href = "https://www.cplusplus.com/doc/oldtutorial/templates/">CPlusPlus.com Templates Reference</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week10_Code/commit/6700d4644594e119bf2ed94caa26a8a8ee28302c">Template edits to LinkedList code from class</a></li></ul></td><td bgcolor=#f4e6e7>Assignment 5: Huffman Coding Out
 </td></tr>
 <tr><td>27</td><td>Mon (75 mins) 3/28/2022</td><td>Introduction to C++ STL: Vector, Priority Queue</td><td><ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul></td><td></td></tr>
-<tr><td>28</td><td>Wed (50 mins) 3/30/2022</td><td>Lab 7: Prim's Algorithm</td><td></td><td></td></tr>
+<tr><td>28</td><td>Wed (50 mins) 3/30/2022</td><td>Lab 7: Prim's Algorithm And Mazes</td><td></td><td></td></tr>
 <tr><td>29</td><td>Fri (75 mins) 4/1/2022</td><td>STL Set, STL Map, LinkedMap Implementation</td><td><ul><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li><li><a href = "../ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul></td><td></td></tr>
 <tr><td>30</td><td>Mon (75 mins) 4/4/2022</td><td>Finish LinkedMap Implementation, Introduce Hash Tables Concept</td><td></td><td bgcolor=#f4e6e7>Lab 7 Due
-<HR>HW6a: Basketball Hashing OUt
+<HR>HW6a: Basketball Hashing Out
 </td></tr>
 <tr><td></td><td>Tue 4/5/2022</td><td></td><td></td><td bgcolor=#f4e6e7>HW5 Due
 </td></tr><tr><td colspan = "5"><h2><b>Unit 4: Advanced Topics in Systems Programming</b></h2><p></p></td></tr>
-<tr><td>31</td><td>Wed (50 mins) 4/6/2022</td><td>Virtual Memory Revisited: The Stack</td><td></td><td></td></tr>
-<tr><td>32</td><td>Fri (75 mins) 4/8/2022</td><td>Fundamentals of Assembly Language</td><td></td><td></td></tr>
-<tr><td>33</td><td>Mon (75 mins) 4/11/2022</td><td>Function Calls in Assembly Language</td><td><ul><li><a href = "https://docs.oracle.com/javase/tutorial/essential/concurrency/procthread.html">Oracle tutorial on threads</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week7_Threads/">Code we wrote</a></li></ul></td><td></td></tr>
-<tr><td>34</td><td>Wed (50 mins) 4/13/2022</td><td>Lab 6: Road Detection with Threads</td><td></td><td></td></tr>
+<tr><td>31</td><td>Wed (50 mins) 4/6/2022</td><td>C++ Function Pointers</td><td></td><td></td></tr>
+<tr><td>32</td><td>Fri (75 mins) 4/8/2022</td><td>Parallel Programming And Threads</td><td><ul><li><a href = "https://www.classes.cs.uchicago.edu/archive/2014/spring/12300-1/labs/lab4/">UChicago Notes on <code>pthread</code></a></li></ul></td><td></td></tr>
+<tr><td>33</td><td>Mon (75 mins) 4/11/2022</td><td>Lab 8: Road Detection with Threads</td><td></td><td></td></tr>
+<tr><td>34</td><td>Wed (50 mins) 4/13/2022</td><td>Intermezzo: Digital Audio And Shazam</td><td></td><td></td></tr>
+<tr><td>35</td><td>Fri (75 mins) 4/15/2022</td><td>Virtual Memory</td><td></td><td bgcolor=#f4e6e7>HW 6a Due
+<HR>HW 6b: The Shazam Algorithm (Final Project) Out
+</td></tr>
+<tr><td>36</td><td>Mon (75 mins) 4/18/2022</td><td>Fundamentals of Assembly Language</td><td><ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-2-computer-architecture.html">Chapter 2</a> and <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-3-your-first-programs.html">Chapter 3</a></td><td bgcolor=#f4e6e7>Lab 8 Due
+</td></tr>
+<tr><td>37</td><td>Wed (50 mins) 4/20/2022</td><td>Lab 9: Loops in Assembly Language</td><td></td><td></td></tr>
+<tr><td>38</td><td>Fri (75 mins) 4/22/2022</td><td>Function Calls in Assembly Language</td><td><ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-4-all-about-functions.html">Chapter 4</a></li></ul></td><td></td></tr>
+<tr><td>39</td><td>Mon (75 mins) 4/25/2022</td><td>Assembly Language Practice / Debugging</td><td></td><td bgcolor=#f4e6e7>Lab 9 Due
+</td></tr>
+<tr><td>40</td><td>Wed (50 mins) 4/27/2022</td><td>Lab 10: Buffer Overrun Attack</td><td></td><td></td></tr>
+<tr><td>41</td><td>Fri (75 mins) 4/29/2022</td><td>Program Optimization</td><td><ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-12-optimization.html">Chapter 12</a></li></ul></td><td></td></tr>
+<tr><td>42</td><td>Mon (75 mins) 5/2/2022</td><td>Shazam Check-In</td><td></td><td bgcolor=#f4e6e7>Shazam Design Plan Due
+</td></tr>
+<tr><td>43</td><td>Wed (50 mins) 5/4/2022</td><td>Lab 10 Work Session</td><td></td><td></td></tr>
 <!-- End Schedule -->
-
+<tr><td></td><td>Fri 5/6/2022</td><td></td><td></td><td bgcolor=#f4e6e7>Lab 10 Due
+</td></tr>
+<tr><td></td><td>Fri 5/13/2022</td><td></td><td></td><td bgcolor=#f4e6e7>HW 6b Due
+</td></tr>
 				</table>
 
 											
@@ -603,19 +649,14 @@
 
 
 											
-											<h3>Overall Participation Score / Classroom Etiquette</h3>
-											<p>
-												Students are expected to attend class either in person or via the Zoom sessions during class time with their camera on, and they will be graded for attendance.
-											</p>
-											
-											<ul>
-												<li>Points will be evenly divided among all classes.</li>
-												<li>Students with an unexcused absence from a class will lose all points for that class.</li>
-												<li>It is imperative that students show up on time, because important announcements may happen at the beginning of every class.</li>
-											</ul>
+											<h3>Classroom Attendance And Etiquette</h3>
 
 											<p>
-												Furthermore, we're shooting for <b>engagement</b> over mere attendance; students are expected to be active in class exercises and to be fully invested in the class (i.e. no internet browsing).  This is especially important during the pandemic.  Students who are not engaged risk losing points from participation on that particular day.
+												Students are expected to attend class in person.  We're shooting for <b>engagement</b> over mere attendance; students are expected to be active in class exercises and to be fully invested in the class (i.e. no internet browsing).  Students who are unable to attend class for significant reasons (whether isolation or quarantine for students who have received a positive test, those experiencing Covid-related symptoms while awaiting test results, or other issues that make it difficult to attend class) should work pro-actively to make up any <a href = "#preclass">class exercises</a> that they missed.  To help with this, I will do my best to put up Youtube videos from myself and other instructors, as well as class notes, on topics that we cover.
+											</p>
+
+											<p>
+												Finally, students are expected to follow any college policy requiring mask wearing on campus, in addition to following any guidance faculty provide for their individual classes. Masks should be available in every academic building, if needed.
 											</p>
 
 

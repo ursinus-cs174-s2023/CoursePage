@@ -19,7 +19,7 @@ Lab 1: HTML Holidays
 
 
 LECTURE
-Virtual Memory And C++ Pointers
+Dynamic Memory, C++ Pointers
 
 <ul><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li></ul>
 LECTURE
@@ -111,7 +111,7 @@ Binary Search Trees
 
 
 LECTURE
-C++ Templates, Huffman Trees Concept
+Huffman Trees Concept, C++ Templates
 
 <ul><li><a href = "https://www.cplusplus.com/doc/oldtutorial/templates/">CPlusPlus.com Templates Reference</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week10_Code/commit/6700d4644594e119bf2ed94caa26a8a8ee28302c">Template edits to LinkedList code from class</a></li></ul>
 LECTURE
@@ -119,7 +119,7 @@ Introduction to C++ STL: Vector, Priority Queue
 
 <ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
 LECTURE
-Lab 7: Prim's Algorithm
+Lab 7: Prim's Algorithm And Mazes
 
 
 LECTURE
@@ -135,19 +135,55 @@ Unit 4: Advanced Topics in Systems Programming
 
 
 LECTURE
-Virtual Memory Revisited: The Stack
+C++ Function Pointers
+
+
+LECTURE
+Parallel Programming And Threads
+
+<ul><li><a href = "https://www.classes.cs.uchicago.edu/archive/2014/spring/12300-1/labs/lab4/">UChicago Notes on <code>pthread</code></a></li></ul>
+LECTURE
+Lab 8: Road Detection with Threads
+
+
+LECTURE
+Intermezzo: Digital Audio And Shazam
+
+
+LECTURE
+Virtual Memory
 
 
 LECTURE
 Fundamentals of Assembly Language
 
+<ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-2-computer-architecture.html">Chapter 2</a> and <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-3-your-first-programs.html">Chapter 3</a>
+LECTURE
+Lab 9: Loops in Assembly Language
+
 
 LECTURE
 Function Calls in Assembly Language
 
-<ul><li><a href = "https://docs.oracle.com/javase/tutorial/essential/concurrency/procthread.html">Oracle tutorial on threads</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week7_Threads/">Code we wrote</a></li></ul>
+<ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-4-all-about-functions.html">Chapter 4</a></li></ul>
+LECTURE 
+Assembly Language Practice / Debugging
+
+
 LECTURE
-Lab 6: Road Detection with Threads
+Lab 10: Buffer Overrun Attack
+
+
+LECTURE
+Program Optimization
+
+<ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-12-optimization.html">Chapter 12</a></li></ul>
+LECTURE
+Shazam Check-In
+
+
+LECTURE
+Lab 10 Work Session
 
 
 
