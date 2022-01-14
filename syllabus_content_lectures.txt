@@ -5,7 +5,7 @@ Unit 1: Introduction To C++ And Systems Programming
 LECTURE
 The Terminal
 
-
+<ul><li><a href = "https://www.cs.princeton.edu/courses/archive/spr18/cos217/precepts/17linux2/">Bob Dondero's Linux Cheatsheets</a></li></ul>
 LECTURE
 Introduction To C++: Primitive Types, Loops, Conditionals, Arrays
 
@@ -25,7 +25,7 @@ Dynamic Memory, C++ Pointers
 LECTURE
 C++ Pointers And Arrays, LLDB/Valgrind
 
-
+<ul><li><a href = "https://lldb.llvm.org/use/tutorial.html">Extended lldb tutorial</a></li><li><a href = "https://www.youtube.com/watch?v=3BkEOvI36Ds">Quick and Dirty LLDB Tutorial (5 Minutes)</a></li><li><a href = "https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf">LLDB Cheat Sheet</a> (You will return to this often)</li></ul>
 LECTURE
 Lab 2: C++ Bug Hunt
 
@@ -151,13 +151,13 @@ Intermezzo: Digital Audio And Shazam
 
 
 LECTURE
-Virtual Memory
+Computer Architecture Basics, Virtual Memory
 
 
 LECTURE
 Fundamentals of Assembly Language
 
-<ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-2-computer-architecture.html">Chapter 2</a> and <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-3-your-first-programs.html">Chapter 3</a>
+<ul><li><a href = "https://web.stanford.edu/class/archive/cs/cs107/cs107.1166/guide_x86-64.html">Stanford Notes on x64 Assembly</a></li><li><a href = "http://www.idryman.org/blog/2014/12/02/writing-64-bit-assembly-on-mac-os-x/">Mac</a> <a href = "https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/MakingCode64-BitClean/MakingCode64-BitClean.html">resources</a> on x64 assembly</li><li><a href = "https://rderik.com/blog/using-lldb-for-reverse-engineering/">RDerik: Using lldb for reverse engineering</a></li></ul>
 LECTURE
 Lab 9: Loops in Assembly Language
 
