@@ -1,13 +1,16 @@
 Last Day To Drop with A "W"
 
 2022-03-23
-CS 174 Warm-Up Due
+Survey/Syllabus Quiz Due
 
-2022-01-21
+2022-01-20
 <HR>C++ Fundamentals Module Due before Class
 
 2022-01-21
-Assignment 1: Design Your Own City Out
+Assignment 0: Programming Environment Due
+
+2022-01-24
+<HR>Assignment 1 (Individual): Design Your Own City Out
 
 2022-01-24
 C++ Pointers Module Due Before Class
@@ -19,7 +22,7 @@ Lab 1 Due
 Assignment 1 Due
 
 2022-02-04
-<HR>Assignment 2: Image Processing And Steganography Out
+<HR>Assignment 2 (Buddy): Image Processing And Steganography Out
 
 2022-02-04
 Binary And Hex Module Due Before Class
@@ -34,7 +37,7 @@ Intro To C++ Classes Module Due Before Class
 Assignment 2 Due
 
 2022-02-18
-<HR>Assignment 3: COVID Polymorphism Out
+<HR>Assignment 3 (Buddy): COVID Polymorphism Out
 
 2022-02-18
 Lab 3 Due
@@ -46,7 +49,7 @@ Lab 4 Due
 Assignment 3 Due
 
 2022-03-04
-<HR>Assignment 4: Doubly Linked Lists / Breadth-First Search Out
+<HR>Assignment 4 (Buddy): Doubly Linked Lists / Breadth-First Search Out
 
 2022-03-04
 Lab 6 Due
@@ -55,13 +58,13 @@ Lab 6 Due
 <HR>Assignment 4 Due
 
 2022-03-23
-Assignment 5: Huffman Coding Out
+Assignment 5 (Buddy): Huffman Coding Out
 
 2022-03-25
 Lab 7 Due
 
 2022-04-04
-<HR>Assignment 6a: Basketball Hashing Out
+<HR>Assignment 6a (Buddy): Basketball Hashing Out
 
 2022-04-04
 Assignment 5 Due
@@ -70,7 +73,7 @@ Assignment 5 Due
 Assignment 6a Due
 
 2022-04-15
-<HR>Assignment 6b: The Shazam Algorithm (Final Project) Out
+<HR>Assignment 6b (Individual): The Shazam Algorithm (Final Project) Out
 
 2022-04-15
 Lab 8 Due
