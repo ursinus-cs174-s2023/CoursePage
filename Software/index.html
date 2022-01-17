@@ -44,11 +44,291 @@
 										<h1>Software Environment</h1>
 									</header>
 									
-                                    
+
+									<h2><a name = "vscode">Visual Studio Code</a></h2>
+									<p>
+										The recommended code editor for this class is <b>Microsoft Visual Studio Code</b> (VSCode).  It has nice plugins for syntax highlighting, code completion, and built in documentation for C, C++, and x64 assembly.  Visit <a href = "https://code.visualstudio.com/Download">this link</a> to download VSCode for your appropriate operating system.  Most Windows and Linux users will want the <b>64-bit</b> download.  Please post on Discord if you are having any issues installing VSCode.
+									</p>
+
+									<p>
+										You may use another IDE if you would like, such as <a href = "https://atom.io/">Atom</a> or even <a href = "https://www.gnu.org/software/emacs/">emacs</a>, but I will be assuming you're using VSCode in this class.
+									</p>
+
+									<h3><a name = "vsplugins">Recommended Plugins</a></h3>
+									<p>
+										You can search for plugins/extensions for VSCode by clicking on the following icon on the left of the VSCode Screen:
+									</p>
+									<img src = "pluginsIcon.png">
+									<p>
+										Below is a list of recommended plugins for this class that you should install
+									</p>
+									<ul>
+										<li>ms-vscode.cpptools</li>
+										<li>ms-vscode.cpptools-extension-pack</li>
+										<li>ms-vscode.cpptools-themes</li>
+										<li>twxs.cmake</li>
+										<li>streetsidesoftware.code-spell-checker</li>
+										<li>ehlkr.x86-64-assembly-pro</li>
+									</ul>
+
+
+									<h3><a name = "vscodefeatures">Quick Features Overview</a></h3>
+
+									<p>
+										Below are a few features I want to highlight that will come in handy as your working.
+									</p>
+
+									<h4>Unused variable highlighting</h4>
+									<p>
+										If you don't use a variable, it will show up in darker text.  This is very useful when debugging.  It means that either you didn't actually need the variable, you forgot to use it (hence you didn't complete your code), or you spelled it wrong somewhere.  This saved many a student last year! (NOTE: The examples below are in Javascript, but the same applies to C/C++/assembly)
+									</p>
+
+									<img src = "HighlightingUnused.gif" width=800>
+
+									<h4>Replace within Selection</h4>
+									<p>
+										If you want to change the name of a variable in one section of your code, you can do a <code>CTRL+F</code>, which will bring up the find/replace menu, then follow these steps:
+									</p>
+									<img src = "ReplaceSelection.gif" width=800>
+
+									<HR>
+										<h2><a name = "windows">Windows Software Environment Instructions</a></h2>
+
+										<p>
+											Below are instructions to setup a linux-like development environment on Windows
+										</p>
+
+										<h3><a name = "wslinstall"></a>Step 1: Install The <a href = "https://docs.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux</a></h3>
+
+										<ol>
+											<li>
+												<p>
+												Open PowerShell as Administrator (Start menu > PowerShell > right-click > Run as Administrator)
+												</p>
+												
+												<img src = "powershell.png">
+												
+												<p>
+													and enter this command:
+												</p>
+												<p>
+
+													<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+														dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart]]></script>  
+												</p>
+												<p>
+													Then press <code>ENTER</code>
+												</p>
+											</li>
+											<li>
+												Once the above has finished, restart your machine
+											</li>
+											<li>
+												<p>
+													Open the Microsoft Store and select Ubuntu 20.04 LTS
+												</p>
+												<img src = "MicrosoftStore.png">
+												<p>
+													then select <code>Get</code>
+												</p>
+												<img src = "MicrosoftStoreGet.png">
+											</li>
+											<li>
+												<p>
+													Wait for the installation to complete...
+												</p>
+												<img src = "WSLWait.png">
+											</li>
+										</ol>
+										
+										<h3><a name = "windowsdev">Step 2: Configure Your Development Environment</a></h3>
+										<p>
+											Now that the Windows Subsystem for Linux (WSL) has finished installing, we'll test it out and setup the software needed for this class
+										</p>
+										<ol>
+											<li>
+												<p>
+													Launch WSL from the start menu
+												</p>
+												<img src = "WSLUbuntuRun.png">
+											</li>
+											<li>
+												Set your username and password
+											</li>
+											<li>
+												<p>
+													Before you go too much further, you may want to enable copying and pasting from the clipboard in WSL.  Since <code>CTRL+C</code> means something special (kill a running process), copy actually happens with <code>CTRL+SHIFT+C</code>.  Likewise, paste happens with <code>CTRL+SHIFT+V</code>.  To enable these, right click on the top of the window and select 
+												<p>
+													<code>Use Ctrl+Shift+C/V as Copy/Paste</code>
+												</p>
+												<p>
+													under Options->Edit Options.
+												</p>
+												
+
+												<img src = "WindowsCopyPaste.png">
+											</li>
+											<li>
+												Back in the terminal, type
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													sudo apt-get update && sudo apt-get upgrade]]></script>  
+												and hit <code>ENTER</code>
+											</li>
+											<li>
+												Next type
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													sudo apt install build-essential g++ cmake ffmpeg valgrind lldb  git libboost-all-dev libglew-dev mesa-utils libglfw3-dev openssh-server]]></script>  
+												and hit <code>ENTER</code>.  This may take a moment
+											</li>
+										</ol>
+										<p>
+											Now you should have everything you need to compile C/C++/assembly programs on your computer!  There's just one more step needed to get graphical applications to work, which we will need for our pandemic simulation assignment
+										</p>
+
+										<h3><a name = "windowsgraphical">Step 3: Configure Graphical Applications</a></h3>
+										<p>
+											Here's how you can get graphical applications setup to run
+										</p>
+										<ol>
+											<li>In the terminal, type 
+
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													echo "export DISPLAY=:0" >> ~/.bashrc]]></script> 
+												<p>
+													Then type 
+												</p>
+
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													source ~/.bashrc]]></script> 
+											</li>
+											<li>
+												Download and install <b>vcXsrv</b> at <a href = "https://sourceforge.net/projects/vcxsrv/files/latest/download">this link</a>.  This is a server for the <a href = "https://en.wikipedia.org/wiki/X_Window_System">X Window System</a> that Linux uses.
+											</li>
+											<li>
+												<p>
+													Once you have installed vcXsrv, launch the program <code>XLaunch</code> from the start menu.  Select Multiple windows and click <code>Next &gt;</code>
+												</p>
+												<img src = "vcxsrv1.png">
+											</li>
+											<li>
+												<p>
+													Select "Start no client" and click <code>Next &gt;</code>
+												</p>
+												<img src = "vcxsrv2.png">
+											</li>
+											<li>
+												<p>
+													Disable Native opengl, and disable access control, then click <code>Next &gt;</code>
+												</p>
+												<img src = "vcxsrv3.png">
+											</li>
+											<li>
+												Click <code>Finish</code>, and the server will be running in the background
+											</li>
+										</ol>
+
+										<p>
+											Congratulations, you are now finished!  You may proceed to <a href = "../Assignments/HW0_Warmup/">homework 0</a> to test everything out.
+										</p>
+										<p>
+											<b>NOTE: </b> You will have to quickly repeat steps 3-6 every time you restart your computer, unless you save your configuration and add vcXsrv to your startup programs.
+										</p>
+
+										<HR>
+										<h2><a name = "macos">Mac OS Software Environment Instructions</a></h2>
+
+										<p>
+											Mac OS comes with considerably more support by default for Linux-like apps than Windows does, but there's still some work we'll have to do to get it ready for this class.  Below are the steps:
+										</p>
+										<ol>
+											<li>Open up the terminal, and type 
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													g++]]></script> 
+												<p>
+													and hit <code>ENTER</code>.  If you get something about an "inactive developer path," then follow <a href = "https://flaviocopes.com/fix-xcrun-error-invalid-active-developer-path/">these directions</a> before proceeding.  Be patient...they may take a moment.  You should see something like this happening
+												</p>
+
+
+												<img src = "xcode.png">
+											</li>
+											<li>
+												<p>
+													If you do not already have brew, follow the directions to install it at <a href = "https://brew.sh">https://brew.sh</a>.  You should see something like this during the process:
+												</p>
+
+												<img src = "brew.png">
+											</li>
+											<li>
+												<p>
+													Execute the following command in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													sudo chown -R $(whoami) /usr/local/lib/pkgconfig]]></script> 
+											</li>
+											<li>
+												<p>
+													Execute the following command in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install nasm]]></script> 
+											</li>
+											<li>
+												<p>
+													Execute the following command in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install ffmpeg]]></script> 
+												(this one may take a while)
+											</li>
+											<li>
+												<p>
+													Execute the following command in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install cmake]]></script> 
+											</li>
+											<li>
+												<p>
+													Execute the following command in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install glew]]></script> 
+											</li>
+											<li>
+												<p>
+													Execute the following command in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install glfw]]></script> 
+											</li>
+											<li>
+												<p>
+													Execute the following two commands in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew tap LouisBrunner/valgrind
+													brew install --HEAD LouisBrunner/valgrind/valgrind]]></script> 
+											</li>
+										</ol>
+
+										<p>
+											Congratulations, you are now finished!  You may proceed to <a href = "../Assignments/HW0_Warmup/">homework 0</a> to test everything out.
+										</p>
+
+
+
 
 
 						</div>
 					</div>
+				<!--Syntax highlighting in Javascript!-->
+				<script type="text/javascript" src="../../../../../syntaxhighlighter/scripts/shCore.js"></script>
+				<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+				<script type="text/javascript" src="../../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+				<script type="text/javascript" src="../../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+				<script type="text/javascript" src="../../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+				<link type="text/css" rel="stylesheet" href="../../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+				<script type="text/javascript">SyntaxHighlighter.all();</script>
 
 <!-- Sidebar -->
 					<div id="sidebar">
@@ -77,7 +357,14 @@
 												<li><a href = "../index.html#other">Other Resources / Policies</a></li>
 											</ul>
 										</li>
-										<li><a href = "../Software/index.html">Software</a></li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "../Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "../Software/index.html#macos">Mac OS Setup Instructions</a></li>
+											</ul>
+										</li>
 										<li><a href = "../index.html#schedule">Schedule</a></li>
                                         <li>
 											<span class="opener">Assignments</span>

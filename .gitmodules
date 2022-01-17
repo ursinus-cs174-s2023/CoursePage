@@ -10,3 +10,6 @@
 [submodule "Assignments/HW0_Warmup/HW0_Warmup"]
 	path = Assignments/HW0_Warmup/HW0_Warmup
 	url = https://github.com/ursinus-cs174-s2022/HW0_Warmup.git
+[submodule "ClassExercises/BinaryDrills"]
+	path = ClassExercises/BinaryDrills
+	url = https://github.com/ursinus-cs174-s2022/BinaryDrills.git
