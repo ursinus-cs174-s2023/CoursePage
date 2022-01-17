@@ -3,7 +3,7 @@ Unit 1: Introduction To C++ And Systems Programming
 
 
 LECTURE
-The Terminal
+The Terminal, Filesystem Navigation
 
 <ul><li><a href = "https://www.cs.princeton.edu/courses/archive/spr18/cos217/precepts/17linux2/">Bob Dondero's Linux Cheatsheets</a></li></ul>
 LECTURE
