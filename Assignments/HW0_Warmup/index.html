@@ -179,26 +179,57 @@
 										<HR>
 											<h3><a name = "valgrind">Valgrind Test (3 Points)</a></h3>
 										<p>
-											One last test to go!  We're going to test something called a <b>memory leak</b>, which is when we don't take care to cleanup dynamic memory that we request during the run of our program.  This takes place automatically in Java using something called a <a href = "https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html">garbage collector</a>, but we have to handle it manually in C and C++.  It's very common to forget to clean things up, but this can cause us to run out of memory, as well as other strange errors.  Thankfully, there are tools to check for memory leaks, and we'll be using one such powerful tool called <a href = "https://diveintosystems.org/book/C3-C_debug/valgrind.html">valgrind</a> in this course. 
+											One last test to go!  We're going to test something called a <b>memory leak</b>, which is when we don't take care to cleanup dynamic memory that we request during the run of our program.  This takes place automatically in Java using something called a <a href = "https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html">garbage collector</a>, but we have to handle it manually in C and C++.  It's very common to forget to clean things up, but this can cause us to run out of memory, as well as other strange errors.  Thankfully, there are tools to check for memory leaks, and we'll be using one such powerful tool called <a href = "https://diveintosystems.org/book/C3-C_debug/valgrind.html">valgrind</a> in this course (or, <a href = "../../Software/index.html#macmemoryalt">alternatively</a>, clang's <a href = "https://stackoverflow.com/questions/65931093/valgrind-and-macos-big-sur/69610645#69610645">memory leak sanitizer</a>). 
 										</p>
 
 										<p>
-											Change back to the root of <code>HW0_Warmup</code> and type
-										</p>
-										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											g++ -g -o leak leak.cpp</script> 
-										<p>
-											Observant readers will notice that we're using the <code>-g</code> flag for the first time in this command.  This causes the compiler to include something called a <b>symbol table</b> in the executable file, which will help us to understand where we are in the original code when we debug.  We will also use this flag with the <b>lldb</b> debugger program, as well as with valgrind.
+											Change back to the root of <code>HW0_Warmup</code>.  Then, if valgrind installed properly for you (which it should have on Windows or Mac OS Catalina), do the following:
 										</p>
 
+										<div style="background-color: blanchedalmond; padding:10px;">
+											<h4>Valgrind Directions</h4>
+
+
+											<script type="syntaxhighlighter" class="brush: python"><![CDATA[
+												g++ -o leak leak.cpp</script> 
+											<!--<p>
+												Observant readers will notice that we're using the <code>-g</code> flag for the first time in this command.  This causes the compiler to include something called a <b>symbol table</b> in the executable file, which will help us to understand where we are in the original code when we debug.  We will also use this flag with the <b>lldb</b> debugger program, as well as with valgrind.
+											</p>!-->
+	
+											<p>
+												Now type
+											</p>
+											<script type="syntaxhighlighter" class="brush: python"><![CDATA[
+												valgrind ./leak</script> 
+											
+										</div>
+
 										<p>
-											Now type
+											If you had to do the <a href = "../../Software/index.html#macmemoryalt">alternative installation</a>, then use the following directions
 										</p>
-										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											valgrind ./leak</script> 
+
+										<div style="background-color: blanchedalmond; padding:10px;">
+											<h4>Clang++ Memory Sanitizer</h4>
+
+
+											<script type="syntaxhighlighter" class="brush: python"><![CDATA[
+												/usr/local/opt/llvm/bin/clang++ -fsanitize=leak -o leak</script> 
+											<!--<p>
+												Observant readers will notice that we're using the <code>-g</code> flag for the first time in this command.  This causes the compiler to include something called a <b>symbol table</b> in the executable file, which will help us to understand where we are in the original code when we debug.  We will also use this flag with the <b>lldb</b> debugger program, as well as with valgrind.
+											</p>!-->
+	
+											<p>
+												Now type
+											</p>
+											<script type="syntaxhighlighter" class="brush: python"><![CDATA[
+												./leak</script> 
+											
+										</div>
+
 										<p>
-											Take note of how many bytes of memory were "lost" (i.e. "leaked"), and indicate this number on canvas.
+											In both cases, take note of how many bytes of memory were "lost" or "leaked," and indicate this number on canvas.  Also, indicate which one you used.
 										</p>
+										
 										
                                     
                                 </div>
