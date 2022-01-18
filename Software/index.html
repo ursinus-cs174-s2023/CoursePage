@@ -252,7 +252,7 @@
 												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 													g++]]></script> 
 												<p>
-													and hit <code>ENTER</code>.  If you get something about an "inactive developer path," then follow <a href = "https://flaviocopes.com/fix-xcrun-error-invalid-active-developer-path/">these directions</a> before proceeding.  Be patient...they may take a moment.  You should see something like this happening
+													and hit <code>ENTER</code>.  If it says <code>no input files found</code>, then that atually means g++ is working!  g++ is  a program that compiles c++ files, so it needs a file as input.  The fact that it tells you that means that it's running properly.  If, on the other hand, you get <code>Command 'g++' not found</code> or you get something about an "inactive developer path," then follow <a href = "https://flaviocopes.com/fix-xcrun-error-invalid-active-developer-path/">these directions</a> before proceeding.  Be patient...they may take a moment.  You should see something like this happening
 												</p>
 
 
@@ -270,21 +270,26 @@
 													Execute the following command in the terminal
 												</p>
 												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-													sudo chown -R $(whoami) /usr/local/lib/pkgconfig]]></script> 
+													sudo chown -R $(whoami) /usr/local/lib/pkgconfig]]></script>
+												<p>
+													This will make sure you have the permissions for brew to update package information
+												</p>
 											</li>
 											<li>
 												<p>
-													Execute the following command in the terminal
+													git is a "version control system" we will use to manage code in the class.  Try typing the following command in the terminal to see if you have git already
 												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													git]]></script> 
+												<p>
+													If this command is not found, then install git with brew:
+												</p>
+
 												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 													brew install git]]></script> 
-											</li>
-											<li>
 												<p>
-													Execute the following command in the terminal
+													and try again
 												</p>
-												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-													brew install nasm]]></script> 
 											</li>
 											<li>
 												<p>
@@ -300,6 +305,9 @@
 												</p>
 												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 													brew install cmake]]></script> 
+												<p>
+													This is a special script that will help us compile complicated projects across different operating systems.
+												</p>
 											</li>
 											<li>
 												<p>
@@ -307,6 +315,9 @@
 												</p>
 												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 													brew install glew]]></script> 
+												<p>
+													This is a graphics library that will help us with real time animations
+												</p>
 											</li>
 											<li>
 												<p>
@@ -314,6 +325,9 @@
 												</p>
 												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 													brew install glfw]]></script> 
+												<p>
+													This is another graphics library that will help us with real time animations
+												</p>
 											</li>
 											<li>
 												After all this, we also have to update our C++ compiler framework to be more recent.  Type
@@ -334,7 +348,7 @@
 													echo "alias gcc='/usr/local/opt/llvm/bin/clang'" >> ~/.bash_profile
 													]]></script> 
 												<p>
-													Then, close and restart your terminal, and type 
+													Then, <b>close and restart</b> your terminal, and type 
 												</p>
 												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 													gcc --version
