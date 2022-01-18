@@ -316,6 +316,33 @@
 													brew install glfw]]></script> 
 											</li>
 											<li>
+												After all this, we also have to update our C++ compiler framework to be more recent.  Type
+												
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install llvm]]></script> 
+												<p>
+													After that's finished, note the type of terminal you're running.  If you're running zsh, then type 
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													echo "alias g++='/usr/local/opt/llvm/bin/clang++'" >> ~/.zshrc
+													echo "alias gcc='/usr/local/opt/llvm/bin/clang'" >> ~/.zshrc]]></script> 
+												<p>
+													Otherwise, if you're using bash, type 
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													echo "alias g++='/usr/local/opt/llvm/bin/clang++'" >> ~/.bash_profile
+													echo "alias gcc='/usr/local/opt/llvm/bin/clang'" >> ~/.bash_profile
+													]]></script> 
+												<p>
+													Then, close and restart your terminal, and type 
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													gcc --version
+													g++ --version]]></script> 
+												
+												If you see <code>Homebrew clang version [...]</code>, then you're good to go.  If you still see <code>Apple clang version</code> or something similar, then the above steps failed, and you should message me or post on Discord.
+											</li>
+											<li>
 												<p>
 													Finally, we'll install a memory leak detector.  Execute the following two commands in the terminal
 												</p>
@@ -324,10 +351,10 @@
 													brew install --HEAD LouisBrunner/valgrind/valgrind]]></script> 
 
 												<p>
-													<a name = "macmemoryalt">Alternative memory leak option</a>: If this doesn't work (likely on Big Sur), then execute this instead
+													<a name = "macmemoryalt">Alternative memory leak option</a>: If this doesn't work (likely on Big Sur), then don't worry...there are alternatives, as long as the last step worked.
 												</p>
-												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-													brew install]]></script> 
+												
+
 											</li>
 										</ol>
 

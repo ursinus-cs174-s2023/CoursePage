@@ -213,11 +213,7 @@
 
 
 											<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-												/usr/local/opt/llvm/bin/clang++ -fsanitize=leak -o leak</script> 
-											<!--<p>
-												Observant readers will notice that we're using the <code>-g</code> flag for the first time in this command.  This causes the compiler to include something called a <b>symbol table</b> in the executable file, which will help us to understand where we are in the original code when we debug.  We will also use this flag with the <b>lldb</b> debugger program, as well as with valgrind.
-											</p>!-->
-	
+												g++ -fsanitize=leak -o leak</script> 
 											<p>
 												Now type
 											</p>
