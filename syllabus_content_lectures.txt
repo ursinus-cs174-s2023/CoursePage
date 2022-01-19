@@ -1,17 +1,17 @@
 SECTION
-Unit 1: Introduction To C++ And Systems Programming
+Unit 1: Introduction To C/C++ And Systems Programming
 
 
 LECTURE
-The Terminal, Filesystem Navigation
+C Primitives and printf, The Terminal, Filesystem Navigation
 
 <ul><li><a href = "https://www.cs.princeton.edu/courses/archive/spr18/cos217/precepts/17linux2/">Bob Dondero's Linux Cheatsheets</a></li></ul>
 LECTURE
-Introduction To C++: Primitive Types, Loops, Conditionals, Arrays
+More C Practice: Loops, Conditionals, Arrays
 
 <ul><li><a href = "http://www.cplusplus.com/reference/cstdio/printf/">printf reference</a></li></ul>
 LECTURE
-Header files, Linking, Makefiles, C++ File I/O
+Header files, Linking, Makefiles, C File I/O
 
 <ul><li><a href = "http://faculty.cs.niu.edu/~mcmahon/CS241/c241man/node90.html">Notes on header guards</a></li></ul>
 LECTURE
@@ -19,15 +19,15 @@ Lab 1: HTML Holidays
 
 
 LECTURE
-Dynamic Memory, C++ Pointers
+C/C++ Dynamic Memory, C Pointers
 
 <ul><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li></ul>
 LECTURE
-C++ Pointers And Arrays, LLDB/Valgrind
+C Pointers And Arrays, LLDB/Valgrind
 
 <ul><li><a href = "https://lldb.llvm.org/use/tutorial.html">Extended lldb tutorial</a></li><li><a href = "https://www.youtube.com/watch?v=3BkEOvI36Ds">Quick and Dirty LLDB Tutorial (5 Minutes)</a></li><li><a href = "https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf">LLDB Cheat Sheet</a> (You will return to this often)</li></ul>
 LECTURE
-Lab 2: C++ Bug Hunt
+Lab 2: C Bug Hunt
 
 
 LECTURE
