@@ -3,13 +3,13 @@ Unit 1: Introduction To C/C++ And Systems Programming
 
 
 LECTURE
-C Primitives and printf, The Terminal, Filesystem Navigation
-
-<ul><li><a href = "https://www.cs.princeton.edu/courses/archive/spr18/cos217/precepts/17linux2/">Bob Dondero's Linux Cheatsheets</a></li></ul>
-LECTURE
-More C Practice: Loops, Conditionals, Arrays
+C Primitives and printf, Loops, Conditionals, Arrays
 
 <ul><li><a href = "http://www.cplusplus.com/reference/cstdio/printf/">printf reference</a></li></ul>
+LECTURE
+The Terminal, Filesystem Navigation
+
+<ul><li><a href = "https://www.cs.princeton.edu/courses/archive/spr18/cos217/precepts/17linux2/">Bob Dondero's Linux Cheatsheets</a></li></ul>
 LECTURE
 Header files, Linking, Makefiles, C File I/O
 
