@@ -176,6 +176,18 @@
 											Take note of the number that is output to the console, and indicate it on canvas
 										</p>
 
+										<p>
+											<b>NOTE: If you get an error <code>Symbol `printf' causes overflow in R_X86_64_PC32 relocation</code></b>, then compile by typing
+										</p>
+										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
+											gcc -no-pie -o mysterynumber mysterynumber.s</script> 
+
+										<p>
+											as per this <a href = "https://stackoverflow.com/questions/48071280/nasm-symbol-printf-causes-overflow-in-r-x86-64-pc32-relocation">StackOverflow post</a>
+										</p>
+
+										
+
 										<HR>
 											<h3><a name = "valgrind">Valgrind Test (3 Points)</a></h3>
 										<p>
