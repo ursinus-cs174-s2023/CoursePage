@@ -368,6 +368,10 @@
 									]]></script>
 
 									<img src = "Signs.png">
+									<p>
+										<b>NOTE:</b> The syntax <code>void drawSign(Scene3D& scene ...)</code> may seem a bit strange at this point in the course.  We will talk about this more later, but <code>scene</code> is an object of type <code>Scene3D</code>, and the <code>Scene3D&</code> prefix is indicating that we want to pass <code>scene</code> <b>by reference</b>.  This means that we're not creating a copy of the scene when we call the method, but we're actually referring to the same scene across methods.  Then, we can call a method within the object with <code>scene.method()</code>.  Don't worry if this doesn't totally make sense yet...just follow <code>drawSign</code> as an example when you're doing other methods, and you'll be fine.
+									</p>
+									
 									<p></p>
 									
 
