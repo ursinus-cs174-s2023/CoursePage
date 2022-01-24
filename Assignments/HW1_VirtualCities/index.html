@@ -43,7 +43,7 @@
 									<header class="main">
                                         <h2>Assignment 1: Build Your Virtual City (30 Pts)</h2>
                                         <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
-										<h3>Due Friday 9/18/2020</h3>
+										<h3>Due Friday 2/4/2022</h3>
 										<h3><b><a href = "ArtContest">Click here</a> to see the art contest results!</b></h3>
 										
 										<ul>
@@ -85,7 +85,7 @@
 
                                         <h2><a name = "overview">Overview / Logistics</a></h2>
 										<p>
-                                            The purpose of this <a href = "../../index.html#collaboration">individual assignment</a> is to enable you to brush up on your knowledge of methods and how they fit together.  It is also an opportunity to practice reading documentation for existing methods to learn how to use them.  It will also get you to practice the edit -> run -> edit loop, since you will have to tweak your shapes many times to get a good result.
+                                            The purpose of this <a href = "../../index.html#collaboration">individual assignment</a> is to enable you to brush up on your knowledge of methods and how they fit together, and to practice them in a new language: C++.  It is also an opportunity to practice reading documentation for existing methods to learn how to use them.  It will also get you to practice the edit -> compile -> run -> edit loop, since you will have to tweak your shapes many times to get a good result.
 										</p>
 										
 										<p>
@@ -115,6 +115,9 @@
                                                 <li>Use methods together in concert to accomplish a task</li>
                                                 <li>Write a complete program with very little code in the <code>main</code> function</li>
                                                 <li>Work with 3D coordinates programmatically </li>
+												<li>
+													Use C++ makefiles
+												</li>
                                             </ul>
                                         </p>
 
@@ -159,13 +162,13 @@
 									<h3><a href = "ggslac/viewers/SceneViewer.html">Click here</a> to launch the scene viewer in your browser</h3>
 
 									<p>
-										In this assignment, you will be creating 3D worlds, also known as "scenes," that can be loaded into an engine I made for my <a href = "../../../CS476_F2020">computer graphics class</a> known as <a href = "https://github.com/ctralie/ggslac">ggslac</a>.  As in the <a href = "../../Labs/Lab1_Holidays/">HTML holidays</a> lab, your Java program will write code that this engine can interpret (though it is <a href = "https://en.wikipedia.org/wiki/JSON">JSON</a> code instead of HTML).  You don't have to worry writing code strings yourself this time, though.  Instead, I have provided a series of high level functions that you can use to draw shapes, and which will automatically convert to code on the backend that you can open in <a href = "ggslac/viewers/SceneViewer.html">the engine</a>, as shown below.
+										In this assignment, you will be creating 3D worlds, also known as "scenes," that can be loaded into an engine I made for my <a href = "https://ursinus-cs477-f2021.github.io/CoursePage/">computer graphics class</a> known as <a href = "https://github.com/ctralie/ggslac">ggslac</a>.  As in the <a href = "../../Labs/Lab1_Holidays/">HTML holidays</a> lab, your C++ program will write code that this engine can interpret (though it is <a href = "https://en.wikipedia.org/wiki/JSON">JSON</a> code instead of HTML).  You don't have to worry writing code strings yourself this time, though.  Instead, I have provided a series of high level functions that you can use to draw shapes, and which will automatically convert to code on the backend that you can open in <a href = "ggslac/viewers/SceneViewer.html">the engine</a>, as shown below.
 									</p>
 
 									<img src = "OpenScene.gif">
 
 									<p>
-										The full documentation for drawing shapes can be found <a href = "HW1_VirtualCities/src/Scene3D.html">at this link</a>. Below are a few examples with links to the respective documentation.  There are two versions of most methods: one for drawing an "axis-aligned" shape, and one for drawing a rotated version.  You'll mostly be using the axis-aligned versions in the tasks.
+										The full documentation for drawing shapes can be found <a href = "docs/classScene3D.html">at this link</a>. Below are a few examples with links to the respective documentation.  There are two versions of most methods: one for drawing an "axis-aligned" shape, and one for drawing a rotated version.  You'll mostly be using the axis-aligned versions in the tasks.
 									</p>
 									<!--For the regular assignment, you won't have to worry about using any of the rotated versions of shapes, but you may want to play around with them and use them for the <a href = "#artcontest">art contest</a>-->
 
@@ -173,10 +176,10 @@
 
 									<ul>
 										<li>
-											<a href = "HW1_VirtualCities/src/Scene3D.html#addBox(double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing an axis-aligned box.
+											<a href = "docs/classScene3D.html#a82e78e2b34caf0d083eb553f7c9819da">Click here</a> to view the documentation for drawing an axis-aligned box.
 										</li>
 										<li>
-											<a href = "HW1_VirtualCities/src/Scene3D.html#addBox(double,double,double,double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing a rotated box.
+											<a href = "docs/classScene3D.html#a13cafea4fd891d188e2ce651acefe228">Click here</a> to view the documentation for drawing a rotated box.
 										</li>
 									</ul>
 
@@ -195,10 +198,10 @@
 
 									<ul>
 										<li>
-											<a href = "HW1_VirtualCities/src/Scene3D.html#addCylinder(double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing an axis-aligned cylinder.
+											<a href = "docs/classScene3D.html#a5f5601d2c2e67e7d176c45e04d6b4182">Click here</a> to view the documentation for drawing an axis-aligned cylinder.
 										</li>
 										<li>
-											<a href = "HW1_VirtualCities/src/Scene3D.html#addCylinder(double,double,double,double,double,double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing a rotated cylinder.
+											<a href = docs/classScene3D.html#afe9d8a0c28c3d70ec76134f76fa4e6a2">Click here</a> to view the documentation for drawing a rotated cylinder.
 										</li>
 									</ul>
 
@@ -218,10 +221,10 @@
 
 									<ul>
 										<li>
-											<a href = "HW1_VirtualCities/src/Scene3D.html#addCone(double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing an axis-aligned cone.
+											<a href = "docs/classScene3D.html#ac11fbdbe8ad20d08c51a375efc5dd320">Click here</a> to view the documentation for drawing an axis-aligned cone.
 										</li>
 										<li>
-											<a href = "HW1_VirtualCities/src/Scene3D.html#addCone(double,double,double,double,double,double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing a rotated cone.
+											<a href = "docs/classScene3D.html#a0387927f8ff6eee6bea2f454d6555f90">Click here</a> to view the documentation for drawing a rotated cone.
 										</li>
 									</ul>
 
@@ -241,7 +244,7 @@
 
 									<ul>
 										<li>
-											<a href = "HW1_VirtualCities/src/Scene3D.html#addSphere(double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing a sphere.
+											<a href = "docs/classScene3D.html#a5373bd592fb401a9ec0f320991cfd8a9">Click here</a> to view the documentation for drawing a sphere.
 										</li>
 									</ul>
 
@@ -264,10 +267,10 @@
 
 									<ul>
 										<li>
-											<a href = "HW1_VirtualCities/src/Scene3D.html#addEllipsoid(double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing an axis-aligned ellipsoid.
+											<a href = "docs/classScene3D.html#a2a581b701b8287dcf25d991cc6ca4cf6">Click here</a> to view the documentation for drawing an axis-aligned ellipsoid.
 										</li>
 										<li>
-											<a href = "HW1_VirtualCities/src/Scene3D.html#addEllipsoid(double,double,double,double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing a rotated ellipsoid.
+											<a href = "docs/classScene3D.html#adcb525401f94c5c1b24298cc0f4a17de">Click here</a> to view the documentation for drawing a rotated ellipsoid.
 										</li>
 									</ul>
 
@@ -282,7 +285,7 @@
 
 									<h3><a name = "special">Special Mesh</a></h3>
 									<p>
-										For the <a href = "#artcontest">art contest</a>, you have a variety of <a href = "https://en.wikipedia.org/wiki/Triangle_mesh">triangle meshes</a> available, including my head ("proftralie") and 400 shapes from the <a href = "https://shape.cs.princeton.edu/benchmark/">Princeton shape benchmark</a>.  <a href = "HW1_VirtualCities/src/Scene3D.html#addSpecialMesh(java.lang.String,double,double,double,double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for the <code>addSpecialMesh</code> method.  The available shapes are listed below (they are case sensitive and will not show up if you don't get them exactly right, so be careful with spelling!)
+										For the <a href = "#artcontest">art contest</a>, you have a variety of <a href = "https://en.wikipedia.org/wiki/Triangle_mesh">triangle meshes</a> available, including my head ("proftralie") and 400 shapes from the <a href = "https://shape.cs.princeton.edu/benchmark/">Princeton shape benchmark</a>.  <a href = "docs/classScene3D.html#a06e3fe22b83b127be213621500bb2a62">Click here</a> to view the documentation for the <code>addSpecialMesh</code> method.  The available shapes are listed below (they are case sensitive and will not show up if you don't get them exactly right, so be careful with spelling!)
 									</p>
 
 									<p>
@@ -313,7 +316,7 @@
 
 									<h3><a name = "sign">Example: Sign</a></h3>
 									<p>
-										We can draw a simple sign with a thin cylinder for its poll and a thin box for the sign itself.  Below is an example of how one might accomplish this with a method (this method is provided in the starter code)
+										We can draw a simple sign with a thin cylinder for its poll and a thin box for the sign itself.  Below is an example of how one might accomplish this with a method (this method exists in the sample file <a href = "HW1_VirtualCities/simplescene.cpp">simplescene.cpp</a>)
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
@@ -321,7 +324,7 @@
 										* Draw a simple sign that consists of a 2 meter tall cylinder for the
 										* poll and a 0.5x0.5x0.02 meter box for the sign itself
 										* 
-										* @param scene The scene to which to add the sign
+										* @param scene The scene to which to add the sign (passed by reference)
 										* @param cx Center of the sign in x
 										* @param cz Center of the sign in z
 										* @param isEastWest If true, the sign is oriented from east to west.  Otherwise,
@@ -330,19 +333,19 @@
 										* @param g Green component of the sign
 										* @param b Blue component of the sign
 										*/
-									   public static void drawSign(Scene3D scene, double cx, double cz, 
-																   boolean isEastWest, double r, double g, double b) {
-										   // Draw the main pole
-										   scene.addCylinder(cx, 1, cz, 0.05, 2, 127, 127, 127); 
-										   if (isEastWest) {
-											   // Draw a 0.5 x 0.5 box in the X/Y plane, with a thin dimension in Z
-											   scene.addBox(cx, 2, cz, 0.5, 0.5, 0.1, r, g, b);
-										   }
-										   else {
-											   // Draw a 0.5 x 0.5 box in the Y/Z plane, with a thin dimension in X
-											   scene.addBox(cx, 2, cz, 0.1, 0.5, 0.5, r, g, b);
-										   }
-									   }
+										void drawSign(Scene3D& scene, double cx, double cz, 
+																	bool isEastWest, double r, double g, double b) {
+											// Draw the main pole
+											scene.addCylinder(cx, 1, cz, 0.05, 2, 127, 127, 127); 
+											if (isEastWest) {
+												// Draw a 0.5 x 0.5 box in the X/Y plane, with a thin dimension in Z
+												scene.addBox(cx, 2, cz, 0.5, 0.5, 0.1, r, g, b);
+											}
+											else {
+												// Draw a 0.5 x 0.5 box in the Y/Z plane, with a thin dimension in X
+												scene.addBox(cx, 2, cz, 0.1, 0.5, 0.5, r, g, b);
+											}
+										}    
 									   ]]></script>
 
 									<p>
@@ -350,12 +353,12 @@
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										// Draw a red sign 5 units in front in z that's oriented 
-										// from east to west
-										drawSign(scene, 0, -5, true, 255, 0, 0);
-										// Draw a magenta sign 5 units in front of z and 5 units
-										// to the left in x that's oriented from north to south
-										drawSign(scene, -5, -5, false, 255, 0, 255);
+										// Draw a red sign 5 units in front in z and two units to 
+										// the left in x that's oriented from east to west
+										drawSign(scene, -2, -5, true, 255, 0, 0); // Red (255, 0, 0)
+										// Draw a green sign 10 units in front of z that's 
+										// oriented from north to south
+										drawSign(scene, 0, -10, false, 0, 255, 0); // Green (0, 255, 0)
 									]]></script>
 
 									<img src = "Signs.png">
@@ -415,7 +418,7 @@
 									</p>
 									<img src = "CityBlock.png">
 									<p>
-										Finally, setup the method so that it takes an offset, and use it to draw at least two copies of this city block to create an entire city.  This is what your <code>drawScene()</code> method should contain when you submit your <code>MyScene.java</code> file to canvas.
+										Finally, setup the method so that it takes an offset, and use it to draw at least two copies of this city block to create an entire city.
 									</p>
 									<img src = "CityBlockRepeated.png">
 
