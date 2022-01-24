@@ -10,7 +10,7 @@ Survey/Syllabus Quiz Due
 <a href = "Assignments/HW0_Warmup">Assignment 0: Software Test</a> Due
 
 2022-01-24
-<HR>Assignment 1 (Individual): Design Your Own City Out
+<HR><a href = "Assignments/HW1_VirtualCities">Assignment 1 (Individual): Design Your Own City</a> Out
 
 2022-01-24
 C++ Pointers Module Due Before Class
