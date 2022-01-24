@@ -1,0 +1,570 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming,Spring 2022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Spring 2022</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Assignment 1: Build Your Virtual City (30 Pts)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+										<h3>Due Friday 9/18/2020</h3>
+										<h3><b><a href = "ArtContest">Click here</a> to see the art contest results!</b></h3>
+										
+										<ul>
+											<li><a href = "#overview">Overview/Logistics</a>
+												<ul>
+													<li><a href = "#objectives">Learning Objectives</a></li>
+													<li><a href = "#readme">What To Submit</a></li>
+												</ul>
+											</li>
+											<li><a href = "#coordinates">Background: 3D Coordinate Systems</a></li>
+											<li><a href = "#colors">Background: RGB Colors</a></li>
+											<li><a href = "#shapes3d">Background: 3D Scenes And Shapes</a>
+												<ul>
+													<li><a href = "#box">3D Box</a></li>
+													<li><a href = "#cylinder">Cylinder</a></li>
+													<li><a href = "#cone">Cone</a></li>
+													<li><a href = "#sphere">Sphere</a></li>
+													<li><a href = "#ellipsoid">Ellipsoid</a></li>
+													<li><a href = "#special">Special Mesh</a></li>
+												</ul>
+											</li>
+											<li><a href = "#programing">Programming Tasks</a>
+												<ul>
+													<li><a href = "#sign">Example: Sign</a></li>
+													<li><a href = "#tree">Tree (5 Pts)</a></li>
+													<li><a href = "#firehydrant">Fire Hydrant (5 pts)</a></li>
+													<li><a href = "#stoplight">Stop Light (5 pts)</a></li>
+													<li><a href = "#sedan">Sedan (5 pts)</a></li>
+													<li><a href = "#block">City Block (5 pts)</a></li>
+													<li><a href = "#style">Style (3 pts)</a></li>
+													<li><a href = "#artcontest">Art Contest (2 pts)</a></li>
+												</ul>
+											</li>
+										</ul>
+
+									</header>
+
+									<div id="page-content">
+
+                                        <h2><a name = "overview">Overview / Logistics</a></h2>
+										<p>
+                                            The purpose of this <a href = "../../index.html#collaboration">individual assignment</a> is to enable you to brush up on your knowledge of methods and how they fit together.  It is also an opportunity to practice reading documentation for existing methods to learn how to use them.  It will also get you to practice the edit -> run -> edit loop, since you will have to tweak your shapes many times to get a good result.
+										</p>
+										
+										<p>
+											The specific task in this assignment is to write code to generate 3D worlds.  It's much easier if you write methods whose sole job is to draw a particular city object, like a fire hydrant or stop light. Then, you can replicate these objects many times by calling the methods over and over again to create complicated parts of the your world (like city blocks).
+										</p>
+
+                                        <p>
+                                            You can download the code for this assignment with 
+										</p>
+										
+										<p>
+											<code>
+												git clone https://github.com/ursinus-cs174-s2022/HW1_VirtualCities.git
+											</code>
+										</p>
+										
+
+										<p>
+											You will be writing code that writes json files with information about 3D scenes, which you can open in <a href = "ggslac/viewers/SceneViewer.html">this 3D engine</a> that I created for the web browser.
+                                        </p>
+
+                                        <p>
+                                            <h3><a name = "objectives">Learning Objectives</a></h3>
+                                            <ul>
+                                                <li>Write methods to fit a specification</li>
+                                                <li>Follow documentation to use pre-defined methods</li>
+                                                <li>Use methods together in concert to accomplish a task</li>
+                                                <li>Write a complete program with very little code in the <code>main</code> function</li>
+                                                <li>Work with 3D coordinates programmatically </li>
+                                            </ul>
+                                        </p>
+
+                                        <h3><a name = "readme">What to submit</a></h3>
+										<p>When you are finished, you should submit zip file of your <code>HW1_VirtualCities</code> directory to canvas.  This should contain <code>.json</code> scene files for both the city scene and your <a href = "#artcontest">art contest</a> and any animated GIFs you made for your art contest.  <b>Also submit a comment on canvas with answers to the following questions</b>
+										
+										<ol>
+											<li>
+												What title would you like to use for your art contest submissions, and what name/pseudonym you would like to use? (results will be displayed on the class web site).
+											</li>
+											<li>
+												Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
+											</li>
+										</ol>
+
+
+
+									<h2><a name = "coordinates">Background: 3D Coordinate Systems</a></h2>
+									
+									<p>
+										A point in 3D space is represented with 3 coordinates: one in the x-axis, one in the y-axis, and one in the z-axis.  There are a few different ways to define such a coordinate system, but we will stick to the <a href = "https://en.wikipedia.org/wiki/OpenGL">OpenGL</a> convention in this class.  Below is a sketch of the positive coordinate axes for x, y, and z.  A point (a, b, c) can be obtained by creating a rectangular prism with side length a along the x-axis, b along the y-axis, and c along the z-axis.  The point then resides on the vertex of the cube furthest from the origin where the three axes meet (the red point).
+									</p>
+
+
+									<img src = "Coords3D.svg">
+
+									<h2><a name = "colors">Background: RGB Colors</a></h2>
+
+									<p>
+										In addition to perceiving space in 3 dimensions, humans interestingly also perceive color in 3 dimensions.  One basis for color representation is the "RGB" or "Red, Green, Blue" axes.  Each axis is represented with 8 bits, so possible values are from 0 (no color) to 255 (full saturation of that color).  For instance, <font color = "red">rgb(255, 0, 0)</font> is red, and <font color="blue">rgb(0, 0, 255)</font> is blue.
+									</p>
+
+
+									<p>
+										The widget below allows you to play around with colors, which you may want to do for the <a href = "#artcontest">art contest</a>.
+									</p>
+
+									<iframe src = "color.html" width="200" height="200"></iframe>
+										
+									<h2><a name = "shapes3d">Background: 3D Scenes And Shapes</a></h2>
+
+									<h3><a href = "ggslac/viewers/SceneViewer.html">Click here</a> to launch the scene viewer in your browser</h3>
+
+									<p>
+										In this assignment, you will be creating 3D worlds, also known as "scenes," that can be loaded into an engine I made for my <a href = "../../../CS476_F2020">computer graphics class</a> known as <a href = "https://github.com/ctralie/ggslac">ggslac</a>.  As in the <a href = "../../Labs/Lab1_Holidays/">HTML holidays</a> lab, your Java program will write code that this engine can interpret (though it is <a href = "https://en.wikipedia.org/wiki/JSON">JSON</a> code instead of HTML).  You don't have to worry writing code strings yourself this time, though.  Instead, I have provided a series of high level functions that you can use to draw shapes, and which will automatically convert to code on the backend that you can open in <a href = "ggslac/viewers/SceneViewer.html">the engine</a>, as shown below.
+									</p>
+
+									<img src = "OpenScene.gif">
+
+									<p>
+										The full documentation for drawing shapes can be found <a href = "HW1_VirtualCities/src/Scene3D.html">at this link</a>. Below are a few examples with links to the respective documentation.  There are two versions of most methods: one for drawing an "axis-aligned" shape, and one for drawing a rotated version.  You'll mostly be using the axis-aligned versions in the tasks.
+									</p>
+									<!--For the regular assignment, you won't have to worry about using any of the rotated versions of shapes, but you may want to play around with them and use them for the <a href = "#artcontest">art contest</a>-->
+
+									<h3><a name = "box">3D Box</a></h3>
+
+									<ul>
+										<li>
+											<a href = "HW1_VirtualCities/src/Scene3D.html#addBox(double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing an axis-aligned box.
+										</li>
+										<li>
+											<a href = "HW1_VirtualCities/src/Scene3D.html#addBox(double,double,double,double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing a rotated box.
+										</li>
+									</ul>
+
+									Example
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										// Draw a green box centered at (0, 2, -6) that is 1 x 4 x 1
+										scene.addBox(0, 2, -6, 1, 4, 1, 0, 255, 0);
+									]]></script>
+
+									<img src = "Box.png">
+
+
+
+									<h3><a name = "cylinder">Cylinder</a></h3>
+
+									<ul>
+										<li>
+											<a href = "HW1_VirtualCities/src/Scene3D.html#addCylinder(double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing an axis-aligned cylinder.
+										</li>
+										<li>
+											<a href = "HW1_VirtualCities/src/Scene3D.html#addCylinder(double,double,double,double,double,double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing a rotated cylinder.
+										</li>
+									</ul>
+
+									Example
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										// Draw a yellow cylinder centered at (0, 1, -2) that has a 
+										// height of 2 and a radius of 0.5
+										scene.addCylinder(0, 1, -2, 0.5, 2, 255, 255, 0);
+									]]></script>
+
+									<img src = "Cylinder.png">
+
+
+
+									<h3><a name = "cone">Cone</a></h3>
+
+									<ul>
+										<li>
+											<a href = "HW1_VirtualCities/src/Scene3D.html#addCone(double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing an axis-aligned cone.
+										</li>
+										<li>
+											<a href = "HW1_VirtualCities/src/Scene3D.html#addCone(double,double,double,double,double,double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing a rotated cone.
+										</li>
+									</ul>
+
+									Example
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										// Draw a blue cone centered at (4, 0, 0) with radius 0.5 and height 6
+										scene.addCone(4, 0, 0, 0.5, 6, 0, 0, 255);
+									]]></script> 
+
+									<img src = "Cone.png">
+
+
+
+
+									<h3><a name = "sphere">Sphere</a></h3>
+
+									<ul>
+										<li>
+											<a href = "HW1_VirtualCities/src/Scene3D.html#addSphere(double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing a sphere.
+										</li>
+									</ul>
+
+									Example
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										// Draw a cyan sphere with radius 1 centered at (-4, 4, 0)
+										scene.addSphere(-4, 4, 0, 1, 0, 255, 255);
+									]]></script>
+
+									<img src = "Sphere.png">
+
+
+
+									<h3><a name = "ellipsoid">Ellipsoid</a></h3>
+
+									<p>
+										An ellipsoid can be viewed as a stretched out version of a sphere or a 3D generalization of an ellipse.
+									</p>
+
+									<ul>
+										<li>
+											<a href = "HW1_VirtualCities/src/Scene3D.html#addEllipsoid(double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing an axis-aligned ellipsoid.
+										</li>
+										<li>
+											<a href = "HW1_VirtualCities/src/Scene3D.html#addEllipsoid(double,double,double,double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for drawing a rotated ellipsoid.
+										</li>
+									</ul>
+
+									Example
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										// Draw a red ellipsoid with axes 1/2/1 centered at (0, 0, -10)
+										scene.addEllipsoid(0, 5, -10, 1, 2, 1, 255, 0, 0);
+									]]></script>
+
+									<img src = "Ellipsoid.png">
+
+									<h3><a name = "special">Special Mesh</a></h3>
+									<p>
+										For the <a href = "#artcontest">art contest</a>, you have a variety of <a href = "https://en.wikipedia.org/wiki/Triangle_mesh">triangle meshes</a> available, including my head ("proftralie") and 400 shapes from the <a href = "https://shape.cs.princeton.edu/benchmark/">Princeton shape benchmark</a>.  <a href = "HW1_VirtualCities/src/Scene3D.html#addSpecialMesh(java.lang.String,double,double,double,double,double,double,double,double,double,double,double,double)">Click here</a> to view the documentation for the <code>addSpecialMesh</code> method.  The available shapes are listed below (they are case sensitive and will not show up if you don't get them exactly right, so be careful with spelling!)
+									</p>
+
+									<p>
+										Airplane1-Airplane20, Ant1-Ant20, Armadillo1-Armadillo20, Bearing1-Bearing20, Bird1 - Bird20, Bust1-Bust20, Chair1-Chari20, cow, Cup1-Cup20, dinopet, Fish1-Fish20, Fourleg1-Fourleg20, genusthree, genustwo, Glasses1-Glasses20, Hand1-Hand20, hand-simple, homer, Human1-Human20, icosahedron, Mech1-Mech20, Octopus1-Octopus20, Plier1-Plier20, proftralie, StyrofoamHead, Table1-Table20, teapot, Teddy1-Teddy20, triangularPrism, Vase1-Vase20
+									</p>
+
+									Here's an example with three of the special meshes.  You may need to scale them to get them to the size you want, since they have all been "normalized" to the same scale.
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										// Add prof tralie centered at (0, 2, -5) with (0, 0, 0) rotation, scale 2x2x2, and 
+										// color (100, 100, 100)
+										scene.addSpecialMesh("proftralie", 0, 2, -5, 0, 0, 0, 2, 2, 2, 100, 100, 100);
+										// Add a cyan cow at location (0, 1, 5)
+										scene.addSpecialMesh("cow", 0, 1, 5, 0, 0, 0, 1, 1, 1, 0, 255, 255);
+										// Add a green octopus at location (5, 0, -5)
+										scene.addSpecialMesh("Octopus9", 5, 1, -5, 0, 0, 0, 1, 1, 1, 0, 255, 00);
+									]]></script>
+
+									<img src = "SpecialMeshes.png">
+
+
+
+									<h2><a name = "programming">Programming Tasks</a></h2>
+
+									<p>
+										You will start by making a series of methods that draw specific city objects.  Since you'll want to draw many copies of these in different places, <b>you must specify parameters to move the shapes around</b>.  For example, if I have a box that's normally centered at (1, 2, 5), I should be able to specify a difference of <code>cx</code> and <code>cz</code> to shift it in the X and Z directions, so that the new box would be centered at (1+cx, 2, 5+cz)  <i>You don't have to get the exact shapes that are shown in the pictures</i>, but you should get reasonably close.  I'll start by giving you a simple example below that draws a street sign.
+									</p>
+
+									<h3><a name = "sign">Example: Sign</a></h3>
+									<p>
+										We can draw a simple sign with a thin cylinder for its poll and a thin box for the sign itself.  Below is an example of how one might accomplish this with a method (this method is provided in the starter code)
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										/**
+										* Draw a simple sign that consists of a 2 meter tall cylinder for the
+										* poll and a 0.5x0.5x0.02 meter box for the sign itself
+										* 
+										* @param scene The scene to which to add the sign
+										* @param cx Center of the sign in x
+										* @param cz Center of the sign in z
+										* @param isEastWest If true, the sign is oriented from east to west.  Otherwise,
+										*                   the sign is oriented from north to south
+										* @param r Red component of the sign
+										* @param g Green component of the sign
+										* @param b Blue component of the sign
+										*/
+									   public static void drawSign(Scene3D scene, double cx, double cz, 
+																   boolean isEastWest, double r, double g, double b) {
+										   // Draw the main pole
+										   scene.addCylinder(cx, 1, cz, 0.05, 2, 127, 127, 127); 
+										   if (isEastWest) {
+											   // Draw a 0.5 x 0.5 box in the X/Y plane, with a thin dimension in Z
+											   scene.addBox(cx, 2, cz, 0.5, 0.5, 0.1, r, g, b);
+										   }
+										   else {
+											   // Draw a 0.5 x 0.5 box in the Y/Z plane, with a thin dimension in X
+											   scene.addBox(cx, 2, cz, 0.1, 0.5, 0.5, r, g, b);
+										   }
+									   }
+									   ]]></script>
+
+									<p>
+										Here's an example code snippet that calls this method to create two signs
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										// Draw a red sign 5 units in front in z that's oriented 
+										// from east to west
+										drawSign(scene, 0, -5, true, 255, 0, 0);
+										// Draw a magenta sign 5 units in front of z and 5 units
+										// to the left in x that's oriented from north to south
+										drawSign(scene, -5, -5, false, 255, 0, 255);
+									]]></script>
+
+									<img src = "Signs.png">
+									
+									<h3><a name = "tree">Tree (5 pts)</a></h3>
+									<p>
+										Create a method that draws a simple "lollipop" tree, which consists of a brown (<font color="brown">rgb 102, 51, 0</font>) trunk of a specified height, and a green (<font color = "green">rgb 0, 255, 0</font>) ellipsoid for the "leaves."  The height should be a parameter to the method so you can draw trees of varying heights.
+									</p>
+
+									<p>
+										Below is an example of an 8 meter tall tree next to a 6 meter tall tree (so calling the method twice).
+									</p>
+
+									<img src = "Tree.png">
+
+									<h3><a name = "firehydrant">Fire hydrant (5 pts)</a></h3>
+
+									<p>
+										Create a method that draws a red <font color = "red">(rgb 255, 0, 0)</font> fire hydrant that is roughly 1 meter tall.  The fire hydrant should consist of a small cylinder at its base with a larger, thinner cylinder on top.  It should also consist of a sphere on the top of the taller cylinder, and two boxes coming out right below the sphere.
+									</p>
+									<img src = "FireHydrant.png">
+
+
+									<h3><a name = "stoplight">Stop light (5 pts)</a></h3>
+
+									<p>
+										Create a method that draws a stop light.  The main pole on the left should be 8 meters tall, and the horizontal pole at the top should be 8 meters wide.  Attach a box to the horizontal poll that will hold the lights.  The top light should be a red (<font color = "red">rgb 255, 0, 0)</font> sphere, the middle light should be a yellow (<font color = "#cccccc00">rgb 255, 255, 0</font>) sphere, and the bottom one should be a green (<font color = "green">rgb 255, 255, 0</font>) sphere.
+									</p>
+									<p>
+										Below is an example stoplight with a fire hydrant next to it for scale.
+									</p>
+
+									<img src = "StopLight.png">
+
+									<h3><a name = "sedan">Sedan (5 pts)</a></h3>
+
+									<p>
+										Create a method that draws a (very boxy) car, either facing east/west or north/south, with a particular color.  It should have one box of that color that is 4.5 meters long, 1.7 meters wide, and 0.7 meters tall.  On top of that, it should have a slightly offset box that is 3.5 meters long, 1.4 meters wide, and 0.8 meters tall.  On the bottom box, there should be two grey cylinders of radius 0.5 and height 2 to represent the wheels.  For the east/west car, you will have to rotate the cylinder around the x-axis by 90 degrees, and for the north/south car, you will have to rotate the cylinder around both the x-axis and the y-axis by 90 degrees.
+									</p>
+
+									<p>
+										Below is an example of a red east/west car and a yellow north/south car, with a fire hydrant and stop light for scale (that red car should probably get out of the way...)
+									</p>
+
+									<img src = "Sedan.png">
+
+									<h3><a name = "block">City Block (5 Pts)</a></h3>
+									<p>
+										Create a method that creates a city block by calling the other methods.  It should have the following:
+										<ul>
+											<li>At least two cars</li>
+											<li>At least two trees of different heights</li>
+											<li>At least one fire hydrant, stop light, and sign</li>
+											<li>At least one building (which can simply be a large box)</li>
+										</ul>
+										Here's an example
+									</p>
+									<img src = "CityBlock.png">
+									<p>
+										Finally, setup the method so that it takes an offset, and use it to draw at least two copies of this city block to create an entire city.  This is what your <code>drawScene()</code> method should contain when you submit your <code>MyScene.java</code> file to canvas.
+									</p>
+									<img src = "CityBlockRepeated.png">
+
+									<h3><a name = "style">Style (3 Pts)</a></h3>
+
+									<p>
+										You will be graded on adherence to the <a href = "../../style.html">style guide</a>.  Pay particular attention to your <a href = "../../style.html#documentationmethods">method documentation</a>.
+									</p>
+
+									<h3><a name = "artcontest">Art Contest (2 Pts)</a></h3>
+									<p>
+										Create a c++ file and a corresponding makefile to create an executable called <code>artcontest</code> which outputs a file <code>artcontest.json</code> with any virtual world you want.  Unleash your creativity!  Your scene does not have to be a city.  Indicate in your submission a title for your scene and what name or pseudonym you would like to use for the contest.  <i>The winner will receive 5 points of extra credit.</i>
+									</p>
+
+									<p>
+										In addition to the scene, you may also want to submit a movie of it.  The GIF below shows how to select two different cameras and automatically fly between them
+									</p>
+
+									<img src = "SelectingCameras.gif">
+
+									<p>
+										The result is as follows
+									</p>
+
+									<img src = "AnimationResult.gif">
+									
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
+												<li><a href = "../../Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "../../Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#macos">Mac OS Setup Instructions</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises / Pre-Class Work</span>
+											<ul>
+												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Final Assessment</span>
+											<ul>
+												<li><a href = "../../final.html#codinginterview">Mock Coding Interview</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
