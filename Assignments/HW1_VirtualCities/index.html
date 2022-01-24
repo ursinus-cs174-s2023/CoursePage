@@ -41,7 +41,7 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Assignment 1: Build Your Virtual City (30 Pts)</h2>
+                                        <h2>Assignment 1: Build Your Virtual City (34 Points)</h2>
                                         <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
 										<h3>Due Friday 2/4/2022</h3>
 										
@@ -67,13 +67,14 @@
 											<li><a href = "#programing">Programming Tasks</a>
 												<ul>
 													<li><a href = "#sign">Example: Sign</a></li>
-													<li><a href = "#tree">Tree (5 Pts)</a></li>
-													<li><a href = "#firehydrant">Fire Hydrant (5 pts)</a></li>
-													<li><a href = "#stoplight">Stop Light (5 pts)</a></li>
-													<li><a href = "#sedan">Sedan (5 pts)</a></li>
-													<li><a href = "#block">City Block (5 pts)</a></li>
-													<li><a href = "#style">Style (3 pts)</a></li>
-													<li><a href = "#artcontest">Art Contest (2 pts)</a></li>
+													<li><a href = "#makefile">Makefile (3 Points)</a></li>
+													<li><a href = "#tree">Tree (5 Points)</a></li>
+													<li><a href = "#firehydrant">Fire Hydrant (5 Points)</a></li>
+													<li><a href = "#stoplight">Stop Light (5 Points)</a></li>
+													<li><a href = "#sedan">Sedan (5 Points)</a></li>
+													<li><a href = "#block">City Block (5 Points)</a></li>
+													<li><a href = "#style">Style (3 Points)</a></li>
+													<li><a href = "#artcontest">Art Contest (3 Points)</a></li>
 												</ul>
 											</li>
 										</ul>
@@ -92,7 +93,7 @@
 										</p>
 										
 										<p>
-											The specific task in this assignment is to write code to generate 3D worlds.  It's much easier if you write methods whose sole job is to draw a particular city object, like a fire hydrant or stop light. Then, you can replicate these objects many times by calling the methods over and over again to create complicated parts of the your world (like city blocks).
+											The specific task in this assignment is to write code to generate 3D worlds.  It's much easier if you write methods whose sole job is to draw a particular city object, like a fire hydrant or stop light. Then, you can replicate these objects many times by calling the methods over and over again to create complicated parts of the your world (like city blocks).  Putting complicated things completely in one chunk of code to be reused many times with minor variations is an example of <b>encapsulation</b>, which is a major theme of this class.
 										</p>
 
                                         <p>
@@ -119,7 +120,7 @@
                                                 <li>Write a complete program with very little code in the <code>main</code> function</li>
                                                 <li>Work with 3D coordinates programmatically </li>
 												<li>
-													Use C++ makefiles
+													Use C++ makefiles and the terminal to build and run programs
 												</li>
                                             </ul>
                                         </p>
@@ -319,7 +320,7 @@
 
 									<h3><a name = "sign">Example: Sign</a></h3>
 									<p>
-										We can draw a simple sign with a thin cylinder for its poll and a thin box for the sign itself.  Below is an example of how one might accomplish this with a method (this method exists in the sample file <a href = "HW1_VirtualCities/simplescene.cpp">simplescene.cpp</a>)
+										We can draw a simple sign with a thin cylinder for its poll and a thin box for the sign itself.  Below is an example of how one might accomplish this with a method
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
@@ -352,7 +353,7 @@
 									   ]]></script>
 
 									<p>
-										Here's an example code snippet that calls this method to create two signs
+										Here's an example code snippet that calls this method to create two signs.  For kicks, I also threw in Homer Simpson
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
@@ -362,11 +363,20 @@
 										// Draw a green sign 10 units in front of z that's 
 										// oriented from north to south
 										drawSign(scene, 0, -10, false, 0, 255, 0); // Green (0, 255, 0)
+										// Draw a yellow Homer Simpson
+										scene.addSpecialMesh("homer", 0, 1, -7, 0, 1, 0, 1, 1, 1, 255, 255, 0); 
 									]]></script>
 
 									<img src = "Signs.png">
+									<p></p>
 									
-									<h3><a name = "tree">Tree (5 pts)</a></h3>
+
+									<h3><a name = "makefile">Makefile (3 Points)</a></h3>
+									<p>
+										First, to get started, you should setup a file called <code>myscene.cpp</code> that you will use to generate your scene.  <b>You should keep the main file very small</b>
+									</p>
+
+									<h3><a name = "tree">Tree (5 Points)</a></h3>
 									<p>
 										Create a method that draws a simple "lollipop" tree, which consists of a brown (<font color="brown">rgb 102, 51, 0</font>) trunk of a specified height, and a green (<font color = "green">rgb 0, 255, 0</font>) ellipsoid for the "leaves."  The height should be a parameter to the method so you can draw trees of varying heights.
 									</p>
@@ -377,7 +387,7 @@
 
 									<img src = "Tree.png">
 
-									<h3><a name = "firehydrant">Fire hydrant (5 pts)</a></h3>
+									<h3><a name = "firehydrant">Fire hydrant (5 Points)</a></h3>
 
 									<p>
 										Create a method that draws a red <font color = "red">(rgb 255, 0, 0)</font> fire hydrant that is roughly 1 meter tall.  The fire hydrant should consist of a small cylinder at its base with a larger, thinner cylinder on top.  It should also consist of a sphere on the top of the taller cylinder, and two boxes coming out right below the sphere.
@@ -385,7 +395,7 @@
 									<img src = "FireHydrant.png">
 
 
-									<h3><a name = "stoplight">Stop light (5 pts)</a></h3>
+									<h3><a name = "stoplight">Stop light (5 Points)</a></h3>
 
 									<p>
 										Create a method that draws a stop light.  The main pole on the left should be 8 meters tall, and the horizontal pole at the top should be 8 meters wide.  Attach a box to the horizontal poll that will hold the lights.  The top light should be a red (<font color = "red">rgb 255, 0, 0</font>) sphere, the middle light should be a yellow (<font color = "#cccccc00">rgb 255, 255, 0</font>) sphere, and the bottom one should be a green (<font color = "green">rgb 255, 255, 0</font>) sphere.
@@ -396,7 +406,7 @@
 
 									<img src = "StopLight.png">
 
-									<h3><a name = "sedan">Sedan (5 pts)</a></h3>
+									<h3><a name = "sedan">Sedan (5 Points)</a></h3>
 
 									<p>
 										Create a method that draws a (very boxy) car, either facing east/west or north/south, with a particular color.  It should have one box of that color that is 4.5 meters long, 1.7 meters wide, and 0.7 meters tall.  On top of that, it should have a slightly offset box that is 3.5 meters long, 1.4 meters wide, and 0.8 meters tall.  On the bottom box, there should be two grey cylinders of radius 0.5 and height 2 to represent the wheels.  For the east/west car, you will have to rotate the cylinder around the x-axis by 90 degrees, and for the north/south car, you will have to rotate the cylinder around both the x-axis and the y-axis by 90 degrees.
@@ -408,7 +418,7 @@
 
 									<img src = "Sedan.png">
 
-									<h3><a name = "block">City Block (5 Pts)</a></h3>
+									<h3><a name = "block">City Block (5 Points)</a></h3>
 									<p>
 										Create a method that creates a city block by calling the other methods.  It should have the following:
 										<ul>
@@ -425,13 +435,13 @@
 									</p>
 									<img src = "CityBlockRepeated.png">
 
-									<h3><a name = "style">Style (3 Pts)</a></h3>
+									<h3><a name = "style">Style (3 Points)</a></h3>
 
 									<p>
 										You will be graded on adherence to the <a href = "../../style.html">style guide</a>.  Pay particular attention to your <a href = "../../style.html#documentationmethods">method documentation</a>.
 									</p>
 
-									<h3><a name = "artcontest">Art Contest (2 Pts)</a></h3>
+									<h3><a name = "artcontest">Art Contest (3 Points)</a></h3>
 									<p>
 										Create a c++ file and a corresponding makefile to create an executable called <code>artcontest</code> which outputs a file <code>artcontest.json</code> with any virtual world you want.  Unleash your creativity!  Your scene does not have to be a city.  Indicate in your submission a title for your scene and what name or pseudonym you would like to use for the contest.  <i>The winner will receive 5 points of extra credit.</i>
 									</p>
@@ -545,10 +555,7 @@
 											</ul>
 										</li>
 										<li>
-											<span class="opener">Final Assessment</span>
-											<ul>
-												<li><a href = "../../final.html#codinginterview">Mock Coding Interview</a></li>
-											</ul>
+											<a href = "../../style.html">Style Guide</a></li>
 										</li>
 									</ul>
 								</nav>
