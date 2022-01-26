@@ -1,0 +1,522 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming,Spring 2022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Spring 2022</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Lab 1: HTML Holidays (4 Points)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h3>Due Monday 1/31/2022</h3>
+									</header>
+
+									<div id="page-content">
+
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this lab is for you to brush up on your knowledge of methods and how they fit together while you also get some experience with C++ and makefiles.  You will be converting data from one format (parallel arrays) to another format (HTML).  Though it is often tedious, automating such data conversions is a common task in software engineering, so this is a valuable skill.
+                                        </p>
+
+                                        <p>
+                                            Furthermore, you will get experience making <b>code that writes code!</b>.  This is also a common task, as we might have a higher level language with more context (like C++ in our example) that writes tons of code in a simpler language (assembly language) that would be very tedious to write out by hand.
+                                        </p>
+
+                                        <p>
+                                            Compared to 173, you will notice that the design of your methods is left a little bit more up to you.  This is intentional.  Students are moving more towards autonomy in their design in this course, so you should spend a little bit more time up front sketching out a plan on a piece of paper before you start coding.  Of course, I am also happy to discuss your ideas!  But just be sure to think before you code.
+                                        </p>
+
+                                        <p>
+                                            <a href = "https://github.com/ursinus-cs174-s2022/Lab1_Holidays/archive/refs/heads/main.zip">Click here</a> to download the skeleton code for this assignment, which you can open and edit with <a href = "../../Software/index.html#vscode">Visual Studio Code</a>.  You will be editing <code>holidays.cpp</code>, <code>dateutils.h</code>, and <code>dateutils.cpp</code>.
+                                        </p>
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+                                                <li>Access elements in parallel arrays using loops</li>
+                                                <li>Use existing methods with provided documentation</li>
+                                                <li>Write methods that work together in concert to accomplish a task</li>
+                                                <li>Write a complete program with very little code in the <code>main</code> function</li>
+                                                <li>Programmatically convert data from one format to another</li>
+                                            </ul>
+                                        </p>
+
+                                        <h3><a name = "readme">What to submit</a></h3>
+                                        <p>When you are finished, you submit a .zip file with all of your code to canvas.  Also, answer the two discussion questions below.  We will return to these in the next unit
+                                            <ol>
+                                                <li>
+                                                    What do you feel is advantageous about storing data in parallel arrays?
+                                                </li>
+                                                <li>
+                                                    What feels clunky about storing this kind of data in parallel arrays? (For instance, what is the process you would have to go through if you wanted to add a holiday?)
+                                                </li>
+                                            </ol>
+
+                                        </p>
+
+                                    <h2><a name = "background">Background: HTML Tables</a></h2>
+                                    <p>
+                                        Modern web pages are formatted in a scripting language known as <a href = "https://simple.wikipedia.org/wiki/HTML">Hypertext Markup Language</a>, or HTML for short.  This code can be written up front and fixed for static web pages (like the one you're looking at now), but we very often want to generate it programmatically so we don't have to write it from scratch every time a small amount of data changes.  This is the basis of server-side web languages such as <a href = "https://en.wikipedia.org/wiki/PHP">PHP</a>.
+                                    </p>
+
+                                    <p>
+                                        Every type of formatting occurs in what's known as a "tag."  The web site w3schools.com has some <a href = "https://www.w3schools.com/html/default.asp">nice tutorials on different HTML tags</a>, but we will be just focusing on one set of tags today for <a href = "https://www.w3schools.com/html/html_tables.asp">HTML tables</a>.  <b>You do not need any prior HTML language to do this lab</b>.  Just follow the rules I'm giving you here.  You can read more about them at <a href = "https://www.w3schools.com/html/html_tables.asp">this link</a>, but the example covers everything you need to know for this lab.  In particular,
+                                        <ul>
+                                            <li>
+                                                Every table tag begins with <code>&lttable&gt</code> and ends with <code>&lt/table&gt</code>
+                                            </li>
+                                            <li>
+                                                Within the table, every row tag begins with <code>&lttr&gt</code> and ends with <code>&lt/tr&gt</code>
+                                            </li>
+                                            <li>
+                                                Within each row, every column tag begins with <code>&lttd&gt</code> and ends with <code>&lt/td&gt</code>
+                                            </li>
+                                            <li>
+                                                The data for the table goes within the <code>&lttd&gt ... &lt/td&gt</code> tags.
+                                            </li>
+                                        </ul> 
+                                    </p>
+
+                                    <p>
+                                        For example, the code below
+
+                                        <script type="syntaxhighlighter" class="brush: html"><![CDATA[
+                                            <table>
+                                                <tr>
+                                                    <td>Course Title</td>
+                                                    <td>Course Name</td>
+                                                    <td>Prerequisites</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CS 173</td>
+                                                    <td>Intro To Computer Science</td>
+                                                    <td>None</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CS 174</td>
+                                                    <td>Object Oriented Programming</td>
+                                                    <td>CS 173</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CS 476</td>
+                                                    <td>Computer Graphics</td>
+                                                    <td>CS 174, Math 111</td>
+                                                </tr>
+                                            </table>
+                                        ]]></script>  
+
+                                        generates a table that looks like this
+                                        <table>
+                                            <tr>
+                                                <td>Course Title</td>
+                                                <td>Course Name</td>
+                                                <td>Prerequisites</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CS 173</td>
+                                                <td>Intro To Computer Science</td>
+                                                <td>None</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CS 174</td>
+                                                <td>Object Oriented Programming</td>
+                                                <td>CS 173</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CS 476</td>
+                                                <td>Computer Graphics</td>
+                                                <td>CS 174, Math 111</td>
+                                            </tr>
+                                        </table>
+                                    </p>
+
+
+
+                                    <h2>Lab 1 Task</h2>
+
+                                    <p>
+                                        In this lab, you will programmatically print out text containing all of code for a small HTML web page with a table of some major holidays in 2021/2022 (obtained from <a href = "https://councilofpresidents.org/2021-2022-holiday-observance-calendar/">this link</a>), and then you will pipe this output string to an HTML file in the command line, which you can open with a browser.  <b>You will not be writing any HTML code directly!</b>  Rather, you will be automatically creating HTML code using C++.
+                                    
+                                    <h3><a name = "format">Data Format</a></h3>
+                                    <p>
+                                        The information about the holidays is provided in four pieces in the <code>holidays.cpp</code> file.  The first is constant array of <code>string</code> values with the name of the holidays, as shown below:
+                                    </p>
+
+                                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                        const string HOLIDAY_NAMES[NUM_HOLIDAYS] = {
+                                            "Labor Day",
+                                            "Rosh Hashanah (New Year)",
+                                            "Yom Kippur (Day of Atonement)",
+                                            "Sukkot (Feast of Tabernacles)",
+                                            "Shemini Atzeret",
+                                            "Simchat Torah",
+                                            "Navratri/Dussehra",
+                                            "Indigenous Peoples Day",
+                                            "Mawlid al-Nabi (birthday of Mohammad)",
+                                            "Diwali",
+                                            "Veterans Day",
+                                            "Thanksgiving Day",
+                                            "Native American Heritage Day",
+                                            "Hanukkah (Chanukah)",
+                                            "Christmas Day",
+                                            "New Years Day",
+                                            "Orthodox Christmas",
+                                            "Martin Luther King Day",
+                                            "Lunar New Year",
+                                            "Presidents' Day",
+                                            "Maha Shivaratri",
+                                            "Beginning of Lent",
+                                            "Ash Wednesday",
+                                            "Purim",
+                                            "Holi",
+                                            "April Fool's",
+                                            "Beginning of Ramadan",
+                                            "Ramanavami",
+                                            "Good Friday",
+                                            "Passover (Pesach)",
+                                            "Easter",
+                                            "Orthodox Good Friday",
+                                            "Orthodox Easter",
+                                            "Lailat al-Qadr",
+                                            "Eid al-Fitr (End of Ramadan)",
+                                            "Memorial Day",
+                                            "Shavuot",
+                                            "Juneteenth",
+                                            "Independence Day",
+                                            "Eid al-Adha",
+                                            "Muharram (Al Hijrah New Year)",
+                                            "Janmashtami"
+                                        }                                  
+                                    ]]></script>  
+
+                                    <p>
+                                        Then, the months of each holiday are provided in an array of ints
+                                    </p>
+                                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                        const int HOLIDAY_MONTHS[NUM_HOLIDAYS] = {
+                                            9,9,9,9,9,9,10,10,10,11,11,11,11,11,12,1,1,1,
+                                            2,2,3,3,3,3,3,4,4,4,4,4,4,4,4,4,5,5,6,6,7,7,7,8
+                                        };
+
+                                    ]]></script>  
+
+                                    <p>
+                                        and there are similar arrays <code>HOLIDAY_DAYS</code> and <code>HOLIDAY_YEARS</code> for days and years, respectively.  These arrays are <b>parallel</b>, which means that corresponding indices refer to the same item.  For instance
+                                    </p>
+                                    <p>
+                                        <code>HOLIDAY_NAMES[1]</code> is the string "Rosh Hashanah (New Year)"
+                                    </p>
+                                    <p>
+                                        <code>HOLIDAY_DATES[1]</code> is the number <code>9</code>
+                                    </p>
+                                    <p>
+                                        So, the complete information for entry <code>1</code> is the name <code>HOLIDAY_NAMES[1]</code>, the month <code>HOLIDAY_NAMES[1]</code>, the day <code>HOLIDAY_DAYS[1]</code>, and the year <code>HOLIDAY_YEARS[1]</code>.
+                                    </p>
+
+                                    <h3><a name = "formatspec">Formatting Specification</a></h3>
+
+                                    <p>
+                                        To generate the complete HTML web page, you will need to
+                                        <ol>
+                                            <li>Print a string with the <a href = "#htmlstart">HTML header</a> and the start table tag</li>
+                                            <li>Loop through all of the elements in these arrays to print each row of the HTML table</li>
+                                            <li>Print the end table tag and the <a href = "#htmlend">code to end the HTML document</a></li>
+                                        </ol>
+                                    </p>  
+
+                                    <p>
+                                        FOr each row, you should print out HTML code that creates 3 columns
+                                        <ol>
+                                            <li>The name of the holiday</li>
+                                            <li>The weekday of the holiday</li>
+                                            <li>The full date of the holiday, in the format Month Day, Year</li>
+                                        </ol>
+                                        Here's an example of what the first row should look like
+                                    </p>
+
+                                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                        <tr><tr><td>Labor Day</td><td>Monday</td> September 6, 2021</td></tr>
+                                        ]]></script>  
+                                    
+                                    <p>
+                                        If all goes well, when you put all of the rows together and write them out to <code>holidays.html</code>, you should see a table with the following information:
+                                    </p>
+                                    <table style="width:600px;"><tr><td>Holiday</td><td>Weekday</td><td>Date</td></tr>
+                                        <tr><tr><td>Labor Day</td><td>Monday</td><td>September 6, 2021</td></tr>
+                                        <tr><tr><td>Rosh Hashanah (New Year)</td><td>Tuesday</td><td>September 7, 2021</td></tr>
+                                        <tr><tr><td>Yom Kippur (Day of Atonement)</td><td>Thursday</td><td>September 16, 2021</td></tr>
+                                        <tr><tr><td>Sukkot (Feast of Tabernacles)</td><td>Tuesday</td><td>September 21, 2021</td></tr>
+                                        <tr><tr><td>Shemini Atzeret</td><td>Tuesday</td><td>September 28, 2021</td></tr>
+                                        <tr><tr><td>Simchat Torah</td><td>Wednesday</td><td>September 29, 2021</td></tr>
+                                        <tr><tr><td>Navratri/Dussehra</td><td>Thursday</td><td>October 7, 2021</td></tr>
+                                        <tr><tr><td>Indigenous Peoples Day</td><td>Monday</td><td>October 11, 2021</td></tr>
+                                        <tr><tr><td>Mawlid al-Nabi (birthday of Mohammad)</td><td>Monday</td><td>October 18, 2021</td></tr>
+                                        <tr><tr><td>Diwali</td><td>Thursday</td><td>November 4, 2021</td></tr>
+                                        <tr><tr><td>Veterans Day</td><td>Thursday</td><td>November 11, 2021</td></tr>
+                                        <tr><tr><td>Thanksgiving Day</td><td>Thursday</td><td>November 25, 2021</td></tr>
+                                        <tr><tr><td>Native American Heritage Day</td><td>Friday</td><td>November 26, 2021</td></tr>
+                                        <tr><tr><td>Hanukkah (Chanukah)</td><td>Sunday</td><td>November 28, 2021</td></tr>
+                                        <tr><tr><td>Christmas Day</td><td>Saturday</td><td>December 25, 2021</td></tr>
+                                        <tr><tr><td>New Years Day</td><td>Saturday</td><td>January 1, 2022</td></tr>
+                                        <tr><tr><td>Orthodox Christmas</td><td>Friday</td><td>January 7, 2022</td></tr>
+                                        <tr><tr><td>Martin Luther King Day</td><td>Monday</td><td>January 17, 2022</td></tr>
+                                        <tr><tr><td>Lunar New Year</td><td>Tuesday</td><td>February 1, 2022</td></tr>
+                                        <tr><tr><td>Presidents' Day</td><td>Monday</td><td>February 21, 2022</td></tr>
+                                        <tr><tr><td>Maha Shivaratri</td><td>Tuesday</td><td>March 1, 2022</td></tr>
+                                        <tr><tr><td>Beginning of Lent</td><td>Wednesday</td><td>March 2, 2022</td></tr>
+                                        <tr><tr><td>Ash Wednesday</td><td>Wednesday</td><td>March 2, 2022</td></tr>
+                                        <tr><tr><td>Purim</td><td>Thursday</td><td>March 17, 2022</td></tr>
+                                        <tr><tr><td>Holi</td><td>Friday</td><td>March 18, 2022</td></tr>
+                                        <tr><tr><td>April Fool's</td><td>Friday</td><td>April 1, 2022</td></tr>
+                                        <tr><tr><td>Beginning of Ramadan</td><td>Saturday</td><td>April 2, 2022</td></tr>
+                                        <tr><tr><td>Ramanavami</td><td>Sunday</td><td>April 10, 2022</td></tr>
+                                        <tr><tr><td>Good Friday</td><td>Friday</td><td>April 15, 2022</td></tr>
+                                        <tr><tr><td>Passover (Pesach)</td><td>Saturday</td><td>April 16, 2022</td></tr>
+                                        <tr><tr><td>Easter</td><td>Sunday</td><td>April 17, 2022</td></tr>
+                                        <tr><tr><td>Orthodox Good Friday</td><td>Friday</td><td>April 22, 2022</td></tr>
+                                        <tr><tr><td>Orthodox Easter</td><td>Sunday</td><td>April 24, 2022</td></tr>
+                                        <tr><tr><td>Lailat al-Qadr</td><td>Thursday</td><td>April 28, 2022</td></tr>
+                                        <tr><tr><td>Eid al-Fitr (End of Ramadan)</td><td>Tuesday</td><td>May 3, 2022</td></tr>
+                                        <tr><tr><td>Memorial Day</td><td>Monday</td><td>May 30, 2022</td></tr>
+                                        <tr><tr><td>Shavuot</td><td>Sunday</td><td>June 5, 2022</td></tr>
+                                        <tr><tr><td>Juneteenth</td><td>Sunday</td><td>June 19, 2022</td></tr>
+                                        <tr><tr><td>Independence Day</td><td>Monday</td><td>July 4, 2022</td></tr>
+                                        <tr><tr><td>Eid al-Adha</td><td>Sunday</td><td>July 10, 2022</td></tr>
+                                        <tr><tr><td>Muharram (Al Hijrah New Year)</td><td>Saturday</td><td>July 30, 2022</td></tr>
+                                        <tr><tr><td>Janmashtami</td><td>Thursday</td><td>August 18, 2022</td></tr>
+                                        </table>
+
+
+                                    <h3>Provided Helper Methods</h3>
+                                    <p>
+                                    The following methods are provided in <code>holidays.cpp</code> to help you out.  You should look at the <a href = "../../style.html#documentationmethods">documentation</a> in comments above each method
+                                    </p>
+
+                                    <ul>
+                                        <li><code><a name = "htmlstart">getHTMLStart()</a></code>: This method prints out a string that should go at the beginning of your HTML file</li>
+                                        <li><code><a name = "htmlend">getHTMLEnd()</a></code>: This method prints out a string that should go at the end of your HTML file</li>
+                                    </ul>
+
+                                    <p>
+                                        The following method is provided in <code>dateutils.h</code> (and implemented in <code>dateutils.cpp</code>)
+                                    </p>
+                                    <ul>
+                                        <code>string getWeekday(int year, int month, int day)</code>: Use this method to return the weekday as a string 
+                                    </ul>
+
+                                    <h3>C++ code you need to write</h3>
+                                    <p>
+                                        You should write two methods in <code>holidays.cpp</code> that work together to accomplish the task
+                                        <ol>
+                                            <li>
+                                                A method that outputs a string corresponding to a particular row of the table.
+                                            </li>
+                                            <li>
+                                                A method that pieces the full HTML string together and then writes all of the HTML code to a file
+                                            </li>
+                                        </ol>
+                                    </p>
+
+                                    <p>
+                                        You should also create a helper method in <code>dateutils.cpp</code> and <code>dateutils.h</code> that converts a month number into a string representing that month.  <b>HINT:</b> Your code will be much shorter if you use an array to store and reference the month names instead of having a bunch of if statements or a switch statement.
+                                    </p>
+
+
+                                    <h3>Running the code</h3>
+                                    <p>
+                                        A makefile has been provided to automatically compile everything.  To build the project, type <code>make</code> in your terminal in the project directory.  To run the program and pipe the output text to an HTML file, type 
+                                    </p>
+
+                                    <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                       ./holidays > holidays.html
+                                        ]]></script>  
+                                        
+                                    <p>
+                                        Then, you should be able to open the file <code>holidays.html</code> in your browser.
+                                    </p>
+
+                                    <h3>
+                                        Extra Credit (Up To +1)
+                                    </h3>
+                                    Here are a few things you can do that are above and beyond
+                                    <ul>
+                                        <li>
+                                            If all of the tags are there, the HTML will work properly, even if there is no whitespace in between the tags.  But the code will be a big mess.  Format the HTML code nicely with line breaks and tabs where appropriate
+                                        </li>
+                                        <li>
+                                            Stylize your table using <a href = "https://www.w3schools.com/css/css_table.asp">CSS</a>
+                                        </li>
+                                    </ul>
+
+
+
+
+                                    <h3><a name = "gettingstarted">Don't know where to start?</a></h3>
+                                    <p>
+                                        The easiest place to start would be to define the first method that takes in a number for the month and prints a string corresponding to that month.
+                                    </p>
+
+                                    <p>
+                                        <b>Note also:</b> To get your program to do anything, you'll have to have statements in the main.  By themselves, the functions may work perfectly, but if you don't have code that runs in the main that eventually calls them, nothing will happen when you run your code.
+                                    </p>
+
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
+												<li><a href = "../../Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "../../Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#macos">Mac OS Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#virtualbox">VirtualBox</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays">Lab 1: HTML Holidays</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises / Pre-Class Work</span>
+											<ul>
+												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href = "../../style.html">Style Guide</a></li>
+										</li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>

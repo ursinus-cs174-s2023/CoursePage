@@ -13,3 +13,6 @@
 [submodule "ClassExercises/BinaryDrills"]
 	path = ClassExercises/BinaryDrills
 	url = https://github.com/ursinus-cs174-s2022/BinaryDrills.git
+[submodule "Labs/Lab1_Holidays/Lab1_Holidays"]
+	path = Labs/Lab1_Holidays/Lab1_Holidays
+	url = https://github.com/ursinus-cs174-s2022/Lab1_Holidays.git

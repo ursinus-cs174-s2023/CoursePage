@@ -11,11 +11,11 @@ The Terminal, Filesystem Navigation
 
 <ul><li><a href = "https://www.learnenough.com/command-line-tutorial/">Learn Enough of The Command Line To Be Dangerous</a><li><a href = "https://www.cs.princeton.edu/courses/archive/spr18/cos217/precepts/17linux2/">Bob Dondero's Linux Cheatsheets</a></li></ul>
 LECTURE
-C++ Practice (10 Heads in A Row), Header files, Makefiles
+C++ Practice (10 Heads in A Row), Header files
 
 <ul><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown: 10 Heads in A Row</a></li><li><a href = "https://math.temple.edu/~paulos/oldsite/scam.html">Stock market scan</a></li><li><a href = "http://faculty.cs.niu.edu/~mcmahon/CS241/c241man/node90.html">Notes on header guards</a></li></ul>
 LECTURE
-Lab 1: C++ File I/O, HTML Holidays
+Makefiles, <a href = "Labs/Lab1_Holidays">Lab 1: HTML Holidays</a>
 
 
 LECTURE
