@@ -9,7 +9,7 @@ Course Overview, C Primitives and printf, Loops, Conditionals, Arrays
 LECTURE
 The Terminal, Filesystem Navigation
 
-<ul><li><a href = "https://www.learnenough.com/command-line-tutorial/">Learn Enough of The Command Line To Be Dangerous</a><li><a href = "https://www.cs.princeton.edu/courses/archive/spr18/cos217/precepts/17linux2/">Bob Dondero's Linux Cheatsheets</a></li></ul>
+<ul><li><a href = "ClassExercises/Week1_CMD">Class notes on the terminal</a></li><li><a href = "https://www.learnenough.com/command-line-tutorial/">Learn Enough of The Command Line To Be Dangerous</a><li><a href = "https://www.cs.princeton.edu/courses/archive/spr18/cos217/precepts/17linux2/">Bob Dondero's Linux Cheatsheets</a></li></ul>
 LECTURE
 C++ Practice (10 Heads in A Row), Header files
 

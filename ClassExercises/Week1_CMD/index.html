@@ -56,6 +56,9 @@
 														<li><a href = "#absrel">Absolute vs Relative Paths</a></li>
 													</ul>
 												</li>
+												<li>
+													<a href = "#wsl1">Paths in WSL1 on Windows</a>
+												</li>
 											</ul>
 										</h3>
 
@@ -230,7 +233,39 @@
 											<h3><a name = "wsl1">Paths in WSL1 on Windows</a></h3>
 
 											<p>
-												If you're on windows under <a href = "../../Software/index.html#windows">WSL</a>, you should be aware of how to access files in your regular windows filesystem so that you can also open the files/folders you're manipulating in Windows explorer.
+												If you're on windows under <a href = "../../Software/index.html#windows">WSL</a>, you should be aware of how to access files in your regular windows filesystem so that you can also open the files/folders you're manipulating in Windows explorer.  The <code>C:</code> drive is actually mounted under the directory <code>/mnt/c</code>.  Then, based on your username, you can go further deeper into <code>Users/username</code>.  So, for example, let's suppose I had a folder called <code>CS174</code> on my desktop.  Then the absolute path to this folder would be  
+											</p>
+
+											<p>
+												<code>/mnt/c/Users/ctralie/Desktop/CS174</code>
+											</p>
+
+											<p>
+												It might be a bit tedious to keep typing this every time you open your terminal, so you can remember this in a terminal variable called <code>CS174</code> by typing 
+											</p>
+
+											<p>
+												<code>echo "export CS174=/mnt/c/Users/ctralie/Desktop/CS174" >> ~/.bashrc</code>
+											</p>
+											<p>
+												<code>source ~/.bashrc</code>
+											</p>
+
+											<p>
+												Now if you type 
+											</p>
+
+											<p>
+												<code>cd $CS174</code>
+											</p>
+
+											<p>
+												it will take you right there.  Below is proof that this worked for me.  Of course, you should replace this path with wherever you've chosen to store your 174 files
+											</p>
+
+
+											<p>
+												<img src = "wsl.png">
 											</p>
 
 
@@ -311,6 +346,7 @@
 											<span class="opener">Class Exercises / Pre-Class Work</span>
 											<ul>
 												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
+												<li><a href = "../../ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
 											</ul>
 										</li>
 										<li>
@@ -360,4 +396,7 @@
 			<script src="../../assets/js/skel.min.js"></script>
 			<script src="../../assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="../../assets/js/main
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
