@@ -13,7 +13,7 @@ Survey/Syllabus Quiz Due
 <HR><a href = "Assignments/HW1_VirtualCities">Assignment 1 (Individual): Design Your Own City</a> Out
 
 2022-01-24
-C++ Pointers Module Due Before Class
+<a href = "https://ursinus-cs174-s2022.github.io/Modules/PointerFundamentals/Exercise1">Pointers Fundamentals Exercises</a> Due Before Class
 
 2022-01-28
 Lab 1 Due
