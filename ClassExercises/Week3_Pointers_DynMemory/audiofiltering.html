@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming,Spring 2022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Spring 2022</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<p>
+									<header class="main">
+                                        <h2>Audio Filtering Array Exercise</h2>
+                                        <h3>Chris Tralie</h3>
+									</header>
+
+									<div id="page-content">
+									    
+
+                                    <h2>Overview</h2>
+                                    <p>
+                                        The purpose of this exercise to give students practice with dynamic arrays, loops, and methods in C++ Java by implementing a "filtering" method, in which parts of an audio clip are removed based on different criteria.
+                                    </p>
+
+                                    <h2>Code</h2>
+                                    <p>
+                                        You can obtain the code/audio for this exercise by typing 
+                                    </p>
+
+                                    <p>
+                                        <code>git clone https://github.com/ursinus-cs174-s2022/Week3_AudioFiltering.git</code>
+                                    </p>
+
+                                    
+
+
+                                    <h2>Overview</h2>
+                                    <p>
+                                        Digital audio can be represented as an array of doubles between -1 and 1, which we refer to as <i>samples</i>.  In this exercise, you will fill in a method <code>filter</code> that takes in a sequence of audio samples <code>x</code> and creates a new array of audio samples <code>y</code> which is a subset of <code>x</code>.  There are three options, and you should implement at least one.  Each option consists of the following steps:
+                                        <ol>
+                                            <li>Count the number of samples in <code>x</code> that are above or below a certain threshold ("energy" for loudness filtering or "zero crossings" for vowel/consonant filtering).  This will be the length of the new array you make</li>
+                                            <li>
+                                                Dynamically create array <code>y</code> of the appropriate size.
+                                            </li>
+                                            <li>
+                                                Copy over the values from <code>x</code> to <code>y</code> that exceed a threshold.
+                                            </li>
+                                        </ol>
+                                        Don't forget to free your array memory when you're done with it!
+                                        
+                                    </p>
+                                    <P>
+                                        Below is more information about what the thresholds are for the three different options:
+                                    </P>
+
+                                    <h2>Option 1: Loudness Filtering</h2>
+                                    <p>
+                                    The method <code>getEnergy</code> returns an array parallel to the array of audio samples that contains the "energy" of the audio in a small window around each sample.  In particular, <code>energy[i]</code> holds a number between 0 and 1 which is the mean of the square of the audio samples in <code>x</code> between indices <code>i-win</code> and <code>i+win</code>.  <code>energy[i]</code> is higher if the audio samples in <code>x</code> around index <code>i</code> are louder, and lower otherwise.  Let's say, for example, that we have the following audio:
+                                    </p>
+                                    <audio controls>
+                                        <source src="femalecountdown.mp3" type="audio/mpeg">
+                                      Your browser does not support the audio element.
+                                      </audio> 
+                                    <p>
+                                        Below is a plot that shows the original samples of <code>x</code> (top plot), followed by the energy array (middle plot).  The regions in which the person is speaking have higher energy, and the regions between speech has lower energy.  If we choose a cutoff of 0.005 in energy (shown as the dotted line), and we only fill in samples in y that are above this cutoff, then we get the following audio (which is also shown as the bottom plot)
+                                    </p>
+                                    <p>
+                                        <audio controls>
+                                            <source src="loudness.mp3" type="audio/mpeg">
+                                          Your browser does not support the audio element.
+                                          </audio> 
+                                    </p>
+
+                                    <img src = "Loudness.png">
+
+
+
+
+
+
+                                    <h2>Option 2: Consonant Filtering</h2>
+                                    <p>
+                                        There's also a method called <code>getCrossings</code> which fills in a proxy for consonant/vowel detection.  In particular, <code>crossings[i]</code> holds the number of <i>zero crossings</i> in <code>x</code> between indices <code>i-win</code> and <code>i+win</code>.  Generally, <code>crossings[i]</code> is higher if <code>x[i]</code> is in the middle of a consonant, and it is lower otherwise.  This is because consonants are <i>higher frequency</i> than vowels, which means they have a smaller period (i.e. they go through more cycles in the same amount of time, which means they cross the x axis more).  Let's say, for example, that we have the same audio clip:
+                                    </p>
+                                    <audio controls>
+                                        <source src="femalecountdown.mp3" type="audio/mpeg">
+                                      Your browser does not support the audio element.
+                                      </audio> 
+                                    <p>
+                                        If we create a new array <code>y</code> in which the zero crossings in a window of size 4001 around <code>x</code> must be at least 150, we get the following audio
+                                    </p>
+                                    <p>
+                                        <audio controls>
+                                            <source src="consonants.mp3" type="audio/mpeg">
+                                          Your browser does not support the audio element.
+                                          </audio> 
+                                    </p>
+                                    <p>
+                                        Below is a plot that shows how this happens.  As before, the original audio is up top, and the filtered audio is at the bottom.  The middle plot shows the zero crossings counted in windows of size 4001 around each sample, and a threshold of 150 is drawn as a dotted line.  As an example, consider the circled region around the letter "six."  The zero crossings peak around <b>s</b> and <b>x</b>, but they dip around <b>i</b>.
+                                    </p>
+                                    <p>
+                                        <img src = "Consonants.png">
+                                    </p>
+
+
+                                <h2>Option 3: Vowel Filtering</h2>
+                                <p>
+                                    You can also choose to create a method which is almost identical to the consonant filtering method, but where you only keep samples if the zero crossings are <b>below</b> a certain amount.  Instead of keeping the consonants, this will keep the vowels.  For example, if we create a new array <code>y</code> in which the zero crossings in a window of size 4001 around <code>x</code> must be <i>at most</i> 150, we get the following audio
+                                </p>
+                                <p>
+                                    <audio controls>
+                                        <source src="vowels.mp3" type="audio/mpeg">
+                                      Your browser does not support the audio element.
+                                      </audio> 
+                                </p>
+                                    
+                                    </div>
+                            </div>
+						</div>
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
+												<li><a href = "../../Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "../../Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#macos">Mac OS Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#virtualbox">VirtualBox</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays">Lab 1: HTML Holidays</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises / Pre-Class Work</span>
+											<ul>
+												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
+												<li><a href = "../../ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
+												<li><a href = "../../../Modules/PointerFundamentals/Exercise1">Pointer Fundamentals Module</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href = "../../style.html">Style Guide</a></li>
+										</li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
+
