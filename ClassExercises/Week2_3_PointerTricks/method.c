@@ -1,9 +1,12 @@
 #include <stdio.h>
 
+void foo(int param) {
+    param = 274;
+}
 
 int main() {
-    int arr[4] = {100, 200, 500, 1000};
-    int x = *(arr+2);
+    int x = 174;
+    foo(x);
     printf("%i\n", x);
     return 0;
 }

@@ -41,171 +41,246 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>C++ Pointers And Pitfalls</h2>
+                                        <h2>C++ Pointers And Arrays</h2>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
 
 										<p>
-											I'm going to summarize below some of the tricky examples we saw in class on pointers.  For more fundamental ideas on pointers and dynamic memory, be sure to look at <a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive Into Systems Ch.2</a> or watch my <a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">videos from last year</a> on this topic.
+											As a continuation of our <a href = "../Week2_3_PointerTricks/">tricky examples on pointers</a>, I'm going to show some examples below on pointers and arrays.  I'll also briefly show some info on dynamic memory.
 										</p>
 										
-									<h3>Pointer Bug Example 1</h3>
+									<h3>Array Example 1</h3>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 										#include <stdio.h>
 										int main() {
-											int x = 1;
-											int y = 2;
-											int *p1 = NULL;
-											int *p2 = NULL;
-											p1 = &x;
-											p2 = &y;
-											p1 = 170; // Mistake!
-											p2 = 4;  // Mistake!
-											printf("%i\n", x+y);
+											int arr[4] = {100, 200, 500, 1000};
+											int* ptr = arr;
+											printf("%i\n", *ptr);
+											return 0;
+										}
+											
+									]]></script>
+
+									<p>
+										As we saw in class, this code will print out <b>100</b>.  This is because in C++, <b>arrays are actually pointers!</b> (by contrast, in Java, arrays are objects).  In particular, an array points to the first address of a chunk of memory with all of the elements in the array
+									</p>
+
+									<img src = "ArrayMem.svg" width=250>
+
+									<p>
+										<i>This explains why we don't ever know the length of the array unless we store it separately.</i>
+									</p>
+
+										
+										
+										
+									<h3><a name = "arr2">Array Example 2</a></h3>
+
+									<p>
+										Below is another example
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										#include <stdio.h>
+										int main() {
+											int arr[5] = {100, 200, 500, 1000, 2000};
+											int x = *(arr+4);
+											printf("%i\n", x);
+											return 0;
+										}
+											
+											
+									]]></script>
+
+									<p>
+										Since an <code>int</code> type is 4 bytes, and since pointers address memory at the byte level, we might be tempted to say that <code>arr+4</code> will jump to the very next element and that <code>x</code> will be 200.  However, <i>pointer arithmetic</i> in C/C++ takes into account the size of the type it's pointing to.  So when we say arr+4, this is actually jumping by 4 integer places in memory, so by a total of <b>4x4 = 16</b> bytes.  This means that we can actually translate array syntax in C/C++ to pointer arithmetic:
+									</p>
+
+									<table style="width:400px;">
+										<tr>
+											<td>Array Syntax</td><td>Pointer Syntax</td>
+										</tr>
+										<tr>
+											<td><code>arr[i]</code></td><td><code>*(arr+i)</code></td>
+										</tr>
+									</table>
+
+									<p>
+										Although we rarely do this in practice.
+									</p>
+
+									<h3>Array Example 2 Continued</h3>
+
+									<p>
+										Let's actually examine the addresses of different elements in the array so you can see I'm not lying about ints taking up 4 bytes:
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										#include <stdio.h>
+										int main() {
+											int arr[5] = {100, 200, 500, 1000, 2000};
+											printf("%u\n", arr);
+											printf("%u\n", &arr[4]);
 											return 0;
 										}
 									]]></script>
 
 									<p>
-										Let's suppose our intention with the above code was change x to 174 and y to 4 and then to print their sum.  We'll do it a roundabout way by setting up pointers to point to the addresses of x and y and then using these pointers.  The problem with the above code is that we don't <b>dereference</b> the pointers to get to the variables they actually point to; we simply change <code>p1</code> and <code>p2</code> to the addresses 170 and 4.  But these addresses probably don't point to anything that we can use in our code, and we never use them anyway.
-									</p>
-									<p>
-										Correct code would actually say 
+										On my machine, this prints out 
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										*p1 = 170;
-										*p2 = 4;
-									]]></script>
+										3796683952
+										3796683968]]></script>
 
 									<p>
-										Remember, the code <code>*ptr</code> in english says "go to the variable that the arrow <code>ptr</code> points to, and <b>substitute it into the expression</b>."  So in this case, the program ends up substituting <code>x</code> in for <code>*p1</code> and <code>y</code> in for <code>*p2</code>
+										Though this may vary on your computer since the stack moves around for security reasons.  But note how 68-52 = 16, so we see that the element at index 4 is indeed 16 bytes ahead of the element at index 0;
 									</p>
 
-									<h3>Pointer Bug Example 2</h3>
+
+									<h3>Array Bug 1</h3>
+
+									<p>
+										Below is a slight tweak on the example we just did
+									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 										#include <stdio.h>
 										int main() {
-											int x = 1;
-											int y = 2;
-											int *p1 = NULL;
-											printf("%u\n", p1);
-											int *p2 = NULL;
-											p2 = &y;
-											*p1 = 170; // Mistake! Dangerous!
-											*p2 = 4;
-											printf("%i\n", x+y);
+											int arr[4] = {100, 200, 500, 1000, 2000};
+											int x = *(arr+4);
+											printf("%i\n", x);
+											return 0;
+										}
+											
+											
+									]]></script>
+
+									<p>
+										The issue here is that an array with 4 elements isn't big enough to hold the 5 elements we're trying to assign to it!  So our code will actually just print something random that happens to be left in memory directly after our array.
+									</p>
+
+
+									<h3>Character Arrays Example 1</h3>
+									<p>
+										Below is an example of an array of <code>char</code> variables, which forms a string
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										#include <stdio.h>
+										int main() {
+											char x[12] = {'H', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd', '\0'};
+											printf("%s\n", x);
+											printf("  x    = %u\n", x);
+											printf(" x+11  = %u\n", x+11);
+											printf("&x[11] = %u\n", &x[11]);
 											return 0;
 										}
 									]]></script>
 
 									<p>
-										The issue here is that <code>p1</code> has been initialized to <code>NULL</code> but never updated, so it doesn't point anywhere (actually, as we discussed in class, it points to location 0, which is likely within the operating system of memory that we're never allowed to touch).  Dereferencing a null pointer will always cause a <code>segmentation fault</code>
+										The output of this is
 									</p>
 
-									<h3>Pointer Bug Example 3</h3>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										Hello world
+										  x    = 297878060
+										 x+11  = 297878071
+										&x[11] = 297878071]]></script>
 
-										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											#include <stdio.h>
-											int main() {
-												int x = 1;
-												int y = 2;
-												int *p1 = NULL;
-												int *p2 = NULL;
-												p1 = &y;
-												p2 = &y;
-												*p1 = 167;
-												*p2 = 7;
-												printf("%i\n", x+y);
-												return 0;
-											}
+									<p>
+										A few things to point out 
+										<ul>
+											<li>
+												This prints out "Hello world", as expected, but notice how we have an extra character <code>\0</code> at the end.  This is the so-called <b>null terminator</b> that's used to indicate that we've reached the end of a string.  Since C/C++ arrays don't have a length stored with them, we need something like this to tell us when to stop.
+											</li>
+											<li>
+												When we look at the addresses of <code>x</code> and <code>x+11</code>, we see that the last element of the array is 11 bytes ahead of the first element.  This makes sense, because a <code>char</code> is a single byte in size.
+											</li>
+											<li>
+												As a sanity check, <code>x+11</code> and <code>&x[11]</code> are the same address.  This should make sense to you given what you now know about <a href = "#arr2">the relationship between array syntax and pointer arithmetic in C/C++</a>.
+											</li>
+										</ul>
+									</p>
+
+									<h3>Character Arrays Example 2</h3>
+									<p>
+										The above example is kind of an insane and cumbersome way to initialize a character array.  We can initialize it instead with a "string literal"
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										#include <stdio.h>
+										int main() {
+											char* x = "Hello World";
+											printf("%s\n", x);
+											return 0;
+										}
+									]]></script>
+
+									<p>
+										Rather than being stored on the stack, this string literal is actually stored in the "data" region further up in memory, and we just set <code>x</code> to point to the beginning of it.
+									</p>
+
+									<h3>Character Arrays Example 3</h3>
+									<p>
+										Below is a slightly bizarre example of a character array.  Actually, I start off declaring an array of 3 integers (12 bytes long), and then I create another pointer to the beginning of this array, but cast it as the <code>char*</code> type.  I then fill in the characters <code>'h'</code> and <code>'i'</code> in the first two bytes of this chunk of memory
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										#include <stdio.h>
+										int main() {
+											int x[3];
+											x[0] = 2100000007;
+											x[1] = 1740000174;
+											x[2] = 4200042;
+											char* str = (char*)x;
+											str[0] = 'h';
+											str[1] = 'i';
+											printf("%s\n", str);
+											printf("x[0] = %i\n", x[0]);
+											printf("x[1] = %i\n", x[1]);
+											printf("x[2] = %i\n", x[2]);
+											return 0;
+										}
+									]]></script>
+
+									<p>
+										If you run this, you will get the following output:
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										hi+}�K�gj@
+										x[0] = 2099997032
+										x[1] = 1740000174
+										x[2] = 4200042
 										]]></script>
 
-										<p>
-											This code will actually print 8 instead of 174.  The reason is that <code>p1</code> and <code>p2</code> both point to the same thing: the address of <code>y</code>!  Below is the picture that you want to have in your mind:
-										</p>
+									<p>
+										The first two characters look right, but I never put in a null terminator, so it keeps going through the bytes taken up by the ints I declared in the array between lines 4 and 6 until it encounters as <code>0</code> (which is the null terminator).  It ends up printing some weird characters in between corresponding to the encoding of the ints I made.  Furthermore, since I used the same address as the int array to store my string, I corrupted the first <code>int</code> in the array when I wrote "hi" there, so the number is slightly off.
+									</p>
 
-										<img src = "SameAddr.svg" width=300>
+									
+									
 
-										<p>
-											The result in the above code is that <code>y</code> is first changed to 167, then immediately overwritten with <code>7</code>, but <code>x</code> remains unchanged after its initialization to 1.
-										</p>
 
-									<h3>Passing By Reference / Stack Memory Addresses</h3>
+									<h3>Dynamic Memory Example</h3>
+									<p>
+										Below is a simple example showing how to allocate and de-allocate dynamic memory into an array at runtime.  This is very useful if we don't know how large of an array we will need until runtime.  We can't take this memory from the stack because C++ needs to know at compile time how big the stack frames are for each method, so the program instead takes it from a region known as the <b>heap</b>.
+									</p>
 
-										<p>
-											One of the important use cases of pointers is to pass and modify variables <b>by reference</b>, which allows us to share variables between methods and to, in effect, return multiple things (surmounting our ordinary limitation of being able to only return a single thing from each method).  Let's suppose we wrote a simple method to compute the min and max of two numbers and to store them by reference.
-										</p>
-
-										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											#include <stdio.h>
-											void minMax(int x, int y, int* min, int* max) {
-												printf("Min max address of &x = %p\n", &x);
-												if (x < y) {
-													*min = x;
-													*max = y;
-												}
-												else {
-													*min = y;
-													*max = x;
-												}
-											}
-											
-											int main() {
-												int min, max;
-												int y = 20, x = 174;
-												printf("   main address of &x = %p\n", &x);
-												minMax(x, y, &min, &max);
-												printf("min = %i, max=%i\n", min, max);
-												return 0;
-											}
-										]]></script>
-
-										<p>
-											The <code>minMax</code> method is actually able to change the values of the variables <code>min</code> and <code>max</code> in <code>main</code> since we passed the addresses of these variables.  So even though it's a void method, it changes two things that persist in <code>main</code>. 
-										</p>
-
-										<p>
-											Furthermore, we notice something interesting when we print the address of the variable <code>x</code> in <code>main</code> and its parameter copy in <code>minMax</code>; namely that the address in <code>main</code> is larger (note that the addresses are in hexadecimal number system rather than base 10 at the moment, and we will talk about this shortly).  That's because <code>minMax</code> is called from within <code>main</code>, so it gets "pushed" on top of the stack in memory.  But the stack actually starts at the highest address, so this means things on the top of the stack have lower addresses! (This always confused me as a student).  The picture below shows this:
-										</p>
-
-										<img src = "stackpush.svg">
-
-										<p>
-											This also reminds us that variables get <b>copied</b> when we pass them along as parameters.  So if we were to change the variable <code>x</code> in <code>minMax</code>, this would have no effect on the variable <code>x</code> in main
-										</p>
-
-									<h3>Pointer Bug Example 4</h3>
-										<p>
-											Let's consider the code below:
-										</p>
-
-										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											#include <stdio.h>
-											int* specialNumber() {
-												int x = 174;
-												return &x;
-											}
-											
-											int main() {
-												int* xref = specialNumber();
-												printf("My special number is %u", *xref);
-												return 0;
-											}
-										]]></script>
-
-										<p>
-											This will return a <code>segmentation fault</code>, because <code>specialNumber</code>'s stack frame will be <b>popped off of the stack</b> (i.e. removed) before its address is printed in main.  So we're returning the address of something that's gone by the time we try to go get it, which is much like a <a href = "https://www.coindesk.com/markets/2021/12/17/defi-rug-pull-scams-pulled-in-28b-this-year-chainalysis/">rug pull</a> in <a href = "https://www.youtube.com/watch?v=w_dbFNWD910">NFTs</a>.
-										</p>
-										
-										
-										
-										
-
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										#include <stdio.h>
+										int main() {
+											int N = 10;
+											int* arr = new int[N]; // Take some memory out of the heap 
+											// Do some stuff with arr
+											delete[] arr; // Don't forget to clean up memory
+											return 0;
+										}
+									]]></script>
                                     
                                 </div>
 						</div>
