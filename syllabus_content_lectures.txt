@@ -21,11 +21,11 @@ Makefiles, <a href = "Labs/Lab1_Holidays">Lab 1: HTML Holidays</a>
 LECTURE
 Pointers
 
-<ul><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.1 - 2.3</li></ul>
+<ul><li><a href = "ClassExercises/Week2_3_PointerTricks">Class notes on pointers and pitfalls</a></li><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.1 - 2.3</li></ul>
 LECTURE
 C Pointers And Arrays, Dynamic Memory
 
-<ul><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.4, 2.5</li></ul>
+<ul><li><a href = "ClassExercises/Week3_Pointers_Arrays">Class notes on pointers and arrays</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.4, 2.5</li></ul>
 LECTURE
 <a href = "Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a>, LLDB/Valgrind
 
