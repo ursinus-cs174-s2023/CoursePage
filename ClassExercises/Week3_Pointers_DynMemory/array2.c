@@ -2,8 +2,9 @@
 
 
 int main() {
-    int arr[4] = {100, 200, 500, 1000};
-    int* ptr = arr + 4;
-    printf("%i\n", *ptr);
+    int N = 10;
+    int* arr = new int[N];
+    
+    delete[] arr;
     return 0;
 }

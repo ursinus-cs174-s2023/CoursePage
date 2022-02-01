@@ -19,3 +19,6 @@
 [submodule "ClassExercises/Week3_Pointers_DynMemory/Week3_AudioFiltering"]
 	path = ClassExercises/Week3_Pointers_DynMemory/Week3_AudioFiltering
 	url = https://github.com/ursinus-cs174-s2022/Week3_AudioFiltering.git
+[submodule "Labs/Lab2_BugHunt/Lab2_BugHunt"]
+	path = Labs/Lab2_BugHunt/Lab2_BugHunt
+	url = https://github.com/ursinus-cs174-s2022/Lab2_BugHunt.git
