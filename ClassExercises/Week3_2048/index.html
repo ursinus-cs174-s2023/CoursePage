@@ -1,0 +1,460 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming,Spring 2022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Spring 2022</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Week 3 Class Exercise: Building The 2048 Game Together</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+									</header>
+
+									<div id="page-content">
+
+                                        <h2>Overview / Logistics</h2>
+										<p>
+											The purpose of this class exercise is to teach you how to write and test methods that do very specific tasks, and then to see how they all fit together to accomplish a complex task.  This should nail home that point that you should always split complex programs up into simpler, small tasks and test them each rigorously before combining them into a whole, and also that it's possible to create specifications for code that are precise enough that different people can work on different parts of the same program.  As a bonus, you will get some great practice with 2D arrays, which will help you on the next assignment 
+										<p>	
+											Students will split up into groups to specialize on one small piece of the logic for the game <a href = "https://en.wikipedia.org/wiki/2048_(video_game)">2048</a>, and we will then put them all together to make a complete game that we play as a class
+                                        </p>
+
+                                        <p>
+											You can obtain the code from github with the command 
+										</p>
+
+										<p>
+											<code>git clone https://github.com/ursinus-cs174-s2022/Week3_2048.git</code>
+										</p>
+
+										<p>
+											You'l be editing the code in <code>game.cpp</code>.  Some groups may use the function <code>rand()</code>, which I implemented in <code>randutils.cpp</code> to return a random number between 0 and 1.
+										</p>
+
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+                                                <li>Write methods to fit a specification</li>
+                                                <li>Access and modify elements in 2D array</li>
+												<li>Write loops that work in concert with 2D arrays</li>
+                                            </ul>
+                                        </p>
+
+
+
+                                    <h2><a name = "background">Background: 2048</a></h2>
+										<p>
+											2048 is a simple but surprisingly addictive game that was all the rage about eight years ago.  It also happens to be at the right level of complexity for where we are now with our coding skills.  <a href = "https://en.wikipedia.org/wiki/2048_(video_game)#Gameplay">Click here</a> to read the rules for the game, and please play the game yourself below with the 4 arrow keys to familiarize yourself with the rules (Javascript implementation courtesy of <a href = "https://github.com/kunal-mohta/frontend-101">Kunal Mohta</a>)
+										</p>
+
+										<iframe src = "frontend-101/B/2048.html" width=400 height=600></iframe>
+
+
+
+									<h2>Programming Tasks</h2>
+									
+									<p>
+										There are many ways to implement the logic in this game, but we will be breaking it down into a set of very specific tasks that each group will work on.  Here are the different tasks that each group will implement.  Each group should have a <b>designated coder</b> who shares their screen, a <b>note-taker</b> who keeps track of the approaches that were tried and the difficulties that the group ran into.
+									<h3>
+									<ol>
+										<li>Group 1: <a href = "#random"><code>addRandom()</code> and <code>makeRandomGrid()</code></a></li>
+										<li>
+											Group 2: <a href = "#moveRight"><code>moveRight()</code></a>
+										</li>
+										<li>
+											Group 3: <a href = "#moveDown"><code>moveDown()</code></a>
+										</li>
+										<li>
+											Group 4: <a href = "#combineRight"><code>combineRight()</code></a>
+										</li>
+										<li>
+											Group 5: <a href = "#combineDown"><code>combineDown()</code></a>
+										</li>
+										<li>
+											Group 6: <a href = "#flip"><code>flipHorizontally()</code> and <code>flipVertically()</code></a>
+										</li>
+										<li>
+											Group 7: <a href = "#isOver"><code>isFull()</code> and <code>isOver()</code></a>
+										</li>
+									</ol>
+								</h3>
+									
+									
+									Students should test their methods rigorously before declaring victory.  You may want to fill in the method <code>makeMyOwnGrid()</code> to fill in specific example to test your code on to make sure it handles all cases.  I've given some examples below in the different task sections that you should verify give the right outputs.  As an example of how you might setup a grid, the following code
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										void makeMyOwnGrid() {
+											clearBoard();
+											board[0][0] = 2;
+											board[1][0] = 2;
+											board[2][0] = 2;
+											board[0][1] = 4;
+											board[1][1] = 4;
+											board[2][1] = 4;
+											board[3][1] = 4;
+											board[0][2] = 32;
+											board[1][2] = 32;
+											board[2][2] = 64;
+											board[3][2] = 64;
+											board[1][3] = 8;
+											board[2][3] = 8;
+										}
+										
+										int main() {
+											// TODO: Debugging/test code here
+											makeMyOwnGrid();
+											printBoard();
+										
+											return 0;
+										}
+									]]></script> 
+
+									</p>
+
+									<p>
+										Prints out a grid that looks like this
+									</p>
+
+									<img src = "CombineDownBefore.png">
+
+									<HR>
+									<h2>Group 1: <a name = "random"><code>addRandom()</code> and <code>makeRandomGrid()</code></a></h2>
+									<p>
+										The <code>addRandom()</code> method should turn exactly one <u>empty cell</u> anywhere on the board at random into either a 2 or a 4.  The method <b>should not</b> overwrite a cell that is already occupied.  Below is an example of two calls of <code>addRandom()</code> in a row.  The first one adds a 4 in the upper right, and the second one adds a 2 on the left of the second row.
+									</p>
+
+									<table>
+										<tr><td></td><td><code>printBoard()</code></td><td><code>printBoard()</code></td></tr>
+										<tr><td><img src = "Random1.png"></td><td><img src = "Random2.png"></td><td><img src = "Random3.png"></td></tr>
+									</table>
+
+									<p>
+										Once you are finished this method, you should create another method <code>makeRandomGrid(int numInitial)</code> that takes one integer, which is the number of random 2s or 4s to put down on the grid in random positions.  This should be as simple as calling your <code>makeRandomGrid()</code> function <code>numInitial</code> times in a row.
+									</p>
+
+									<p>
+										To aid you, recall that the <code>java.util.Random</code> class can be used as follows:
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										Random rand = new Random();
+										rand.nextInt(N); // Returns a random integer between 0 and N-1, inclusive
+									]]></script>  
+
+									<HR>
+									<h2>Group 2: <a name = "moveRight"><code>moveRight()</code></a></h2>
+
+									<p>
+										Fill in the method <code>moveRight()</code> to take the nonzero elements in the current board and move them all to the right so that there are no gaps and everything is touching the right of the board.  Don't worry about combining adjacent elements that are the same; that will be the job of <a href = "#combineRight">another group</a>.
+									</p>
+									<p>
+										As an example, consider a call of <code>moveRight()</code> on the board below
+									</p>
+
+									<table>
+										<tr>
+											<td></td>
+											<td><code>moveRight()</code></td>
+										</tr>
+										<tr>
+											<td><img src = "InitialBoard.png"></td>
+											<td><img src = "moveRight.png"></td>
+										</tr>
+									</table>
+
+
+									<HR>
+									<h2>Group 3: <a name = "moveDown"><code>moveDown()</code></a></h2>
+
+									<p>
+										Fill in the method <code>moveDown()</code> to take the nonzero elements in the current board and move them all down so there
+										are no gaps and everything is touching the bottom.  Don't worry about combining adjacent elements that are the same; that will be the job of <a href = "#combineDown">another group</a>.
+									</p>
+									<p>
+										As an example, consider a call of <code>moveDown()</code> on the board below
+									</p>
+
+									<table>
+										<tr>
+											<td></td>
+											<td><code>moveDown()</code></td>
+										</tr>
+										<tr>
+											<td><img src = "InitialBoard.png"></td>
+											<td><img src = "moveDown.png"></td>
+										</tr>
+									</table>
+
+									<HR>
+									<h2>Group 4: <a name = "combineRight"><code>combineRight()</code></a></h2>
+									
+									<p>
+										Fill in the method <code>combineRight()</code> to  combine all adjacent numbers that are the same in a particular row.  There are three cases to consider
+										<ol>
+											<li>
+												There are two adjacent elements that are the same.  In this case, put a zero in the place of the first one, and replace the second one with twice its value
+											</li>
+											<li>
+												There are three in a row.  In this case, put a zero in the first place to make it empty, keep the original value in the second place, and put twice the original value in the third place.
+											</li>
+											<li>
+												There are 4 in a row.  Put zeros in the first two, and put twice the value in the second two.
+											</li>
+										</ol>
+									</p>
+
+									<p>
+										Below is an example of the effect this would have on a particular board
+									</p>
+
+									<table>
+										<tr><td></td><td>board.combineRight()</td></tr>
+										<tr>
+											<td><img src = "CombineRightBefore.png"></td>
+											<td><img src = "CombineRightAfter.png"></td>
+										</tr>
+									</table>
+
+									<HR>
+										<h2>Group 5: <a name = "combineDown"><code>combineDown()</code></a></h2>
+
+										<p>
+											Fill in the method <code>combineDown()</code> to combine all adjacent numbers that are the same in a particular column.  There are three cases to consider
+											<ol>
+												<li>
+													There are two adjacent elements that are the same.  In this case, put a zero in the place of the first one, and replace the second one with twice its value
+												</li>
+												<li>
+													There are three in a row.  In this case, put a zero in the first place to make it empty, keep the original value in the second place, and put twice the original value in the third place.
+												</li>
+												<li>
+													There are 4 in a row.  Put zeros in the first two, and put twice the value in the second two.
+												</li>
+											</ol>
+										</p>
+	
+										<p>
+											Below is an example of the effect this would have on a particular board
+										</p>
+	
+										<table>
+											<tr><td></td><td>board.combineDown()</td></tr>
+											<tr>
+												<td><img src = "CombineDownBefore.png"></td>
+												<td><img src = "CombineDownAfter.png"></td>
+											</tr>
+										</table>
+
+									<HR>
+										<h2>Group 6: <a name = "flip"><code>flipHorizontally()</code> and <code>flipVertically()</code></a></h2>
+
+										<p>
+											Fill in the method <code>flipHorizontally()</code> to flip all of the elements in the board to the from left/right, right/left in a mirror reflection.  Here's an example of the effect of this on a particular board
+										</p>
+
+										<table>
+											<tr><td></td><td><code>board.flipHorizontally()</code></td></tr>
+											<tr>
+												<td><img src = "InitialBoard.png"></td>
+												<td><img src = "FlippedHorizontal.png"></td>
+											</tr>
+										</table>
+
+										<p>
+											Then fill in the method <code>flipVertically()</code> to flip all of the elements in the board from up/down, down/up in a mirror reflection.Here's an example of the effect of this on a particular board
+										</p>
+
+										<table>
+											<tr><td></td><td><code>board.flipVertically()</code></td></tr>
+											<tr>
+												<td><img src = "InitialBoard.png"></td>
+												<td><img src = "FlipVertical.png"></td>
+											</tr>
+										</table>
+
+									<HR>
+										<h2>Group 7: <a name = "isOver"><code>isFull()</code> and <code>isOver()</code></a></h2>
+
+										<p>
+											Fill in the method <code>isFull()</code>, which returns <code>true</code> if the board is full, or <code>false</code> otherwise.  Then, if time permits, implement the method <code>isOver()</code> that returns <code>true</code> if the the board is full <b>and</b> it is not possible to make any moves. or <code>false</code> otherwise.  
+										</p>
+
+										<p>
+											For example, here is a board that is full but in which it is still possible to make a move (<code>isFull()</code> is <code>true</code> but <code>isOver()</code> is <code>false</code>)
+										</p>
+
+										<img src = "FullNotOver.png">
+
+										<p>
+											And here is a board that is full and where no more moves are possible, so the game should be over (<code>isFull()</code> is <code>true</code> <b>and</b> <code>isOver()</code> is <code>true</code>)
+										</p>
+
+										<img src = "GameOver.png">
+	
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
+												<li><a href = "../../Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "../../Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#macos">Mac OS Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#virtualbox">VirtualBox</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays">Lab 1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises / Pre-Class Work</span>
+											<ul>
+												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
+												<li><a href = "../../ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
+												<li><a href = "../../../Modules/PointerFundamentals/Exercise1">Pointer Fundamentals Module</a></li>
+												<li><a href = "../../ClassExercises/Week2_3_PointerTricks">Week 2/3: C++ Pointers And Pitfalls</a></li>
+												<li><a href = "../../ClassExercises/Week3_Pointers_Arrays">Week 3: C++ Pointers And Arrays</a></li>
+												<li><a href = "../../ClassExercises/Week3_AudioFiltering">Week 3: Audio Filtering</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href = "../../style.html">Style Guide</a></li>
+										</li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>

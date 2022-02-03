@@ -22,3 +22,9 @@
 [submodule "ClassExercises/Week3_AudioFiltering/Week3_AudioFiltering"]
 	path = ClassExercises/Week3_AudioFiltering/Week3_AudioFiltering
 	url = https://github.com/ursinus-cs174-s2022/Week3_AudioFiltering.git
+[submodule "ClassExercises/Week3_2048/frontend-101"]
+	path = ClassExercises/Week3_2048/frontend-101
+	url = https://github.com/ursinus-cs174-s2022/frontend-101.git
+[submodule "ClassExercises/Week3_2048/Week3_2048"]
+	path = ClassExercises/Week3_2048/Week3_2048
+	url = https://github.com/ursinus-cs174-s2022/Week3_2048.git
