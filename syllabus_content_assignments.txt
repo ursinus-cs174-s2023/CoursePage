@@ -25,9 +25,9 @@ Assignment 1 Due
 Binary And Hex Module Due Before Class
 
 2022-02-07
-<HR>Lab 2 Due
+Lab 2 Due
 
-2022-02-07
+2022-02-08
 <HR>Assignment 2 (Buddy): Image Processing And Steganography Out
 
 2022-02-07
