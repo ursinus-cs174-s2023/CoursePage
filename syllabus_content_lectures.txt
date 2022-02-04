@@ -35,9 +35,9 @@ LECTURE
 
 <ul><li><a href = "ClassExercises/Week3_2048">Class Exercise: Making The 2048 Game Together</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/arrays.html">Dive Into Systems Ch. 2.5.2</li></ul>
 LECTURE
-Code Roundup, Binary, Hex, Bitwise Operators
+Binary, Hex, Bitwise Operators
 
-<ul><li>Class Exercise: Linear Feedback Shift Registers</li></ul>
+<ul><li><a href = "https://diveintosystems.org/book/C4-Binary/bases.html">Dive Into Systems</a> Ch. 4.1, 4.2, 4.6<li><a href = "https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/number-systems-introduction">Khan Academy Videos</a> (Watch first 5)</li></ul>
 SECTION
 Unit 2: Fundamentals of Object Oriented Programming
 

@@ -22,13 +22,13 @@ Lab 1 Due
 Assignment 1 Due
 
 2022-02-04
-<HR>Assignment 2 (Buddy): Image Processing And Steganography Out
-
-2022-02-04
 Binary And Hex Module Due Before Class
 
 2022-02-07
 <HR>Lab 2 Due
+
+2022-02-07
+<HR>Assignment 2 (Buddy): Image Processing And Steganography Out
 
 2022-02-07
 Intro To C++ Classes Module Due Before Class
