@@ -1,0 +1,78 @@
+<html>
+<head>
+
+<meta http-equiv="refresh" content="0;URL='../../Assignments/HW6_PseudoRandomCrypto/index.html#bglfsr'" />    
+</head>
+<body>
+
+<h1>LFSR Simulator</h1>
+<h2><a href = "Http://www.ctralie.com">Chris Tralie</a>, <a href = "../../">Ursinus CS 173</a></h2>
+
+<table cellpadding = 5>
+    <tr>
+        <td>
+            <h3>Register: 0x<input type="text" id = "lfsrReg" size="16"></h3>
+        </td>
+        <td>
+            <h3>Taps: <input type="text" id = "lfsrTaps" size="16"></h3>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3>Bit Length: <input type="text" id = "lfsrBits" size="4"></h3>
+        </td>
+        <td>
+            <button type = "button" onclick = "resetLFSR()">Reset</button>
+            <button type = "button" onclick = "doStep()">Step</button>
+            <button type = "button" onclick = "doTurboStep()">Turbo</button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=2>
+            <div id = "lfsrTable"></div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=2>
+            <div id = "lfsrHeadsTails"></div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=2>
+            <div id = "lfsrStep"></div>
+        </td>
+    </tr>
+</table>
+
+
+<script>
+    let START = "FACE";
+    let lfsrReg = document.getElementById("lfsrReg");
+    let lfsrTaps = document.getElementById("lfsrTaps");
+    let lfsrBits = document.getElementById("lfsrBits");
+    let lfsrTable = document.getElementById("lfsrTable");
+    let lfsrStep = document.getElementById("lfsrStep");
+    let lfsrHeadsTails = document.getElementById("lfsrHeadsTails");
+    lfsrReg.value = START;
+    lfsrTaps.value = "16, 15, 13, 4";
+    lfsrBits.value = "16";
+    let lfsr = new LSFR(lfsrTable, lfsrStep, lfsrReg, lfsrHeadsTails);
+
+    function resetLFSR() {
+        lfsr.reset(lfsrReg, lfsrTaps, lfsrBits);
+    }
+
+    function doStep() {
+        lfsr.doStep();
+    }
+
+    function doTurboStep() {
+        lfsr.doTurboStep();
+    }
+
+    resetLFSR();
+</script>
+
+
+</body>
+</html>

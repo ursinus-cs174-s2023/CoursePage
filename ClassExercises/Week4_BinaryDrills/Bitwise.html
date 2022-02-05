@@ -1,0 +1,97 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="BinaryUtils.js"></script>
+</head>
+<body>
+
+<h1>Bitwise Operations</h1>
+
+<table cellpadding = 20 border=1>
+    <tr>
+        <td>
+            <h2>First Number (In Hex)</h2>
+            0x<input type="text" id = "input1" size="32">
+        </td>
+        <td>
+            <h2>Second Number (In Hex)</h2>
+            0x<input type="text" id = "input2" size="32">
+        </td>
+    </tr>
+    <tr>
+        <td colspan=2>
+            <button type = "button" onclick = "updateNumbers()">Update</button></td>
+        </td>
+    </tr>
+    <tr>
+        <td colspan=2>
+            <div id="bitsTable"></div>
+        </td>
+    </tr>
+</table>
+
+
+<script>
+    let input1 = document.getElementById("input1");
+    let input2 = document.getElementById("input2");
+    let bitsTable = document.getElementById("bitsTable");
+    // Binary strings for both numbers
+    let x = "";
+    let y = "";
+    let ans = "";
+    let tableStr = "";
+    
+    function getButtonsOpStr() {
+        let s = "<button type = \"button\" onclick = \"doAND()\">&</button>";
+        s += "<button type = \"button\" onclick = \"doOR()\">|</button>";
+        s += "<button type = \"button\" onclick = \"doXOR()\">^</button>";
+        return s;
+    }
+
+    function makeBinaryStringTable() {
+        let s = "<table>";
+        s += makeBinaryTableRowStr(x);
+        s += makeBinaryTableRowStr(y, getButtonsOpStr());
+        s += "<tr><td colspan="+(x.length+1)+"><hr></td></tr>";
+        tableStr = s;
+        bitsTable.innerHTML = tableStr + "</table>";
+    }
+
+    function doAND() {
+        let result = doBinaryAND(x, y);
+        let s = tableStr;
+        s += makeBinaryTableRowStr(result, "<h2>0x"+binaryToHex(result)+"</h2>");
+        bitsTable.innerHTML = s + "</table>";
+    }
+
+    function doOR() {
+        let result = doBinaryOR(x, y);
+        let s = tableStr;
+        s += makeBinaryTableRowStr(result, "<h2>0x"+binaryToHex(result)+"</h2>");
+        bitsTable.innerHTML = s + "</table>";
+    }
+
+    function doXOR() {
+        let result = doBinaryXOR(x, y);
+        let s = tableStr;
+        s += makeBinaryTableRowStr(result, "<h2>0x"+binaryToHex(result)+"</h2>");
+        bitsTable.innerHTML = s + "</table>";
+    }
+    
+    function updateNumbers() {
+        x = hexToBinary(input1.value);
+        y = hexToBinary(input2.value);
+        let N = Math.max(x.length, y.length);
+        while (x.length < N) {
+            x = "0" + x;
+        }
+        while (y.length < N) {
+            y = "0" + y;
+        }
+        makeBinaryStringTable();
+    }
+</script>
+
+
+</body>
+</html>

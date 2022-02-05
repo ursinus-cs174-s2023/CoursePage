@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="BinaryUtils.js"></script>
+</head>
+<body>
+
+    <h1>Binary Card Game</h1>
+    <div id = "rules"></div>
+
+    <div id = "buttonArea">
+        <button type = "button" onclick = "newGame()" id="newGame">New Game</button>
+    </div>
+    
+    <div id = "cardArea">
+
+    </div>
+
+<script>
+    let buttonArea = document.getElementById("buttonArea");
+    let cardArea = document.getElementById("cardArea");
+    let x = 0;
+    let place = 0;
+    MAX_PLACE = 6;
+
+    let rules = document.getElementById("rules");
+    rules.innerHTML = "<p>Pick a number between 0 and " + (Math.pow(2, MAX_PLACE+1)-1) + ".  You will be shown " + (MAX_PLACE+1) + " cards.  On each card, you have to say whether it contains your number or not.  By the end, the program will know your number.</p>";
+
+    function getNewGameButton() {
+        return "<button type = \"button\" onclick = \"newGame()\" id=\"newGame\">New Game</button>";
+    }
+
+    function getYesNoButtons() {
+        let s = "<h3>Is it on the card below?</h3><table><tr>";
+        s += "<td><button type = \"button\" onclick = \"doYes()\" id=\"newGame\">Yes</button></td>";
+        s += "<td><button type = \"button\" onclick = \"doNo()\" id=\"newGame\">No</button></td>";
+        s += "</tr></table>";
+        return s;
+    }
+
+    function newGame() {
+        buttonArea.innerHTML = getYesNoButtons();
+        x = 0;
+        place = 0;
+        makeCard();
+    }
+
+    /**
+    * Make a card with the current place
+    */
+    function makeCard() {
+        let nums = [];
+        console.log("place = " + place);
+        for (let i = 0; i < Math.pow(2, MAX_PLACE+1); i++) {
+            let b = base10ToBinary(i);
+            b = b.split("").reverse().join("");
+            if (place < b.length) {
+                if (b[place] == "1") {
+                    nums.push(i);
+                }
+            }
+        }
+        let dim = Math.ceil(Math.sqrt(nums.length));
+        let s = "<table border = 1 cellpadding = 2>";
+        for (let i = 0; i < dim; i++) {
+            s += "<tr>";
+            for (let j = 0; j < dim; j++) {
+                let k = i*dim + j;
+                if (k < nums.length) {
+                    s += "<td><h3>" + nums[k] + "</h3></td>";
+                }
+            }
+            s += "</tr>";
+        }
+        s += "</table>";
+        cardArea.innerHTML = s;
+    }
+
+    function doYes() {
+        x += Math.pow(2, place);
+        place++;
+        if (place > MAX_PLACE) {
+            alert("Your number is " + x);
+            buttonArea.innerHTML = getNewGameButton();
+            cardArea.innerHTML = "";
+        }
+        else {
+            makeCard();
+        }
+    }
+
+    function doNo() {
+        place++;
+        if (place > MAX_PLACE) {
+            alert("Your number is " + x);
+            buttonArea.innerHTML = getNewGameButton();
+            cardArea.innerHTML = "";
+        }
+        else {
+            makeCard();
+        }
+    }
+
+</script>
+
+
+</body>
+</html>

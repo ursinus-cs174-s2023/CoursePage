@@ -1,0 +1,130 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="BinaryUtils.js"></script>
+</head>
+<body>
+
+    <h1>Converting Base 10 To Binary</h1>
+        <button type = "button" onclick = "new_base10Binary()" id="new_base10Binary">New Example</button>
+
+        <table cellpadding = 10 border = "1">
+            <tr>
+                <td><h2>Base 10</h2></td>
+                <td><div id = "query_base10Binary"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Binary</h2>
+                    <button type = "button" onclick = "checkBase10Binary()">Check</button></td>
+                </td>
+                <td><input type="text" id = "check_base10Binary" size="24"></input></td>
+            </tr>
+            <tr>
+                <td><h2>Answer</h2></td>
+                <td><div id="answer_base10Binary"></div></td>
+            </tr>
+        </table>
+
+
+        <BR><BR><BR><HR>
+        <h1>Converting Binary To Base 10</h1>
+        <button type = "button" onclick = "new_binaryBase10()" id="new_binaryBase10">New Example</button></td></tr>
+
+        <table cellpadding = 10 border = "1">
+            <tr>
+                <td><h2>Binary</h2></td>
+                <td><div id = "query_binaryBase10"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Base 10</h2>
+                    <button type = "button" onclick = "checkBinaryBase10()">Check</button></td>
+                </td>
+                <td><input type="text" id = "check_binaryBase10" size="24"></input></td>
+            </tr>
+            <tr>
+                <td><h2>Answer</h2></td>
+                <td><div id="answer_binaryBase10"></div></td>
+            </tr>
+        </table>
+
+
+
+
+<script>
+    let base10 = -1;
+    let binary = "0";
+    let query_base10Binary = document.getElementById("query_base10Binary");
+    let check_base10Binary = document.getElementById("check_base10Binary");
+    let answer_base10Binary = document.getElementById("answer_base10Binary");
+
+    let query_binaryBase10 = document.getElementById("query_binaryBase10");
+    let check_binaryBase10 = document.getElementById("check_binaryBase10");
+    let answer_binaryBase10 = document.getElementById("answer_binaryBase10");
+
+
+    function new_base10Binary() {
+        base10 = Math.round(Math.random()*64);
+        query_base10Binary.innerHTML = "<h2>" + base10 + "</h2>";
+        answer_base10Binary.innerHTML = "";
+        check_base10Binary.value = "";
+    }
+
+    function new_binaryBase10() {
+        binary = base10ToBinary(Math.round(Math.random()*64));
+        query_binaryBase10.innerHTML = "<h2>" + binary + "</h2>";
+        answer_binaryBase10.innerHTML = "";
+        check_binaryBase10.value = "";
+    }
+
+    function checkBase10Binary() {
+        if (base10 >= 0) {
+            let b = check_base10Binary.value;
+            let myans = binaryToBase10(b);
+            if (myans == base10) {
+                let s = "<h2><font color=green>Correct!</font></h2>";
+                s += "<button type = \"button\" onclick = \"new_base10Binary()\">Try another example</button>";
+                answer_base10Binary.innerHTML = s;
+            }
+            else {
+                b = base10ToBinary(base10);
+                let s = "<h2><font color=red>Whoops!</font></h2>";
+                s += base10 + " in binary is <BR><code><h3>";
+                s += makeBinaryTableStr(b) + makeShowBinarySumStr(b);
+                s += "<button type = \"button\" onclick = \"new_base10Binary()\">Try another example</button>";
+                answer_base10Binary.innerHTML = s;
+            }
+        }
+        else {
+            alert("Generate an example first!");
+        }
+    }
+
+    function checkBinaryBase10() {
+        if (binary.length > 0) {
+            let x = parseInt(check_binaryBase10.value);
+            let myans = base10ToBinary(x);
+            if (myans == binary) {
+                let s = "<h2><font color=green>Correct!</font></h2>";
+                s += "<button type = \"button\" onclick = \"new_binaryBase10()\">Try another example</button>";
+                answer_binaryBase10.innerHTML = s;
+            }
+            else {
+                x = binaryToBase10(binary);
+                let s = "<h2><font color=red>Whoops!</font></h2>";
+                s += makeBinaryTableStr(binary) + makeShowBinarySumStr(binary);
+                s += "<button type = \"button\" onclick = \"new_binaryBase10()\">Try another example</button>";
+                answer_binaryBase10.innerHTML = s;
+            }
+        }
+        else {
+            alert("Generate an example first!");
+        }
+    }
+
+</script>
+
+
+</body>
+</html>

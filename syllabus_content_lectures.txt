@@ -37,7 +37,7 @@ LECTURE
 LECTURE
 Code Roundup, Binary, Hex, Bitwise Operators
 
-<ul><li><a href = "https://diveintosystems.org/book/C4-Binary/bases.html">Dive Into Systems</a> Ch. 4.1, 4.2, 4.6<li><a href = "https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/number-systems-introduction">Khan Academy Videos</a> (Watch first 5)</li><li><a href = "ClassExercises/BinaryDrills">Interactive Binary Drills</a></li></ul>
+<ul><li><a href = "https://diveintosystems.org/book/C4-Binary/bases.html">Dive Into Systems</a> Ch. 4.1, 4.2, 4.6<li><a href = "https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/number-systems-introduction">Khan Academy Videos</a> (Watch first 5)</li><li><a href = "ClassExercises/Week4_BinaryDrills">Interactive Binary Drills</a></li></ul>
 SECTION
 Unit 2: Fundamentals of Object Oriented Programming
 

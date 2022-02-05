@@ -1,0 +1,131 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="BinaryUtils.js"></script>
+</head>
+<body>
+
+    <h1>Converting Binary To Hex</h1>
+        <button type = "button" onclick = "new_binaryHex()" id="new_binaryHex">New Example</button>
+
+        <table cellpadding = 10 border = "1">
+            <tr>
+                <td><h2>Binary</h2></td>
+                <td><div id = "query_binaryHex"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Hex (0x)</h2>
+                    <button type = "button" onclick = "checkBinaryHex()">Check</button></td>
+                </td>
+                <td><input type="text" id = "check_binaryHex" size="24"></input></td>
+            </tr>
+            <tr>
+                <td><h2>Answer</h2></td>
+                <td><div id="answer_binaryHex"></div></td>
+            </tr>
+        </table>
+
+
+        <BR><BR><BR><HR>
+        <h1>Converting Hex To Binary</h1>
+        <button type = "button" onclick = "new_hexBinary()" id="new_hexBinary">New Example</button></td></tr>
+
+        <table cellpadding = 10 border = "1">
+            <tr>
+                <td><h2>Hex (0x)</h2></td>
+                <td><div id = "query_hexBinary"></div></td>
+            </tr>
+            <tr>
+                <td>
+                    <h2>Binary</h2>
+                    <button type = "button" onclick = "checkHexBinary()">Check</button></td>
+                </td>
+                <td><input type="text" id = "check_hexBinary" size="24"></input></td>
+            </tr>
+            <tr>
+                <td><h2>Answer</h2></td>
+                <td><div id="answer_hexBinary"></div></td>
+            </tr>
+        </table>
+
+
+
+
+<script>
+    let binary = "";
+    let hex = "";
+    console.log(binary.length);
+    let query_binaryHex = document.getElementById("query_binaryHex");
+    let check_binaryHex = document.getElementById("check_binaryHex");
+    let answer_binaryHex = document.getElementById("answer_binaryHex");
+
+    let query_hexBinary = document.getElementById("query_hexBinary");
+    let check_hexBinary = document.getElementById("check_hexBinary");
+    let answer_hexBinary = document.getElementById("answer_hexBinary");
+
+
+    function new_binaryHex() {
+        binary = base10ToBinary(Math.round(Math.random()*256*256));
+        query_binaryHex.innerHTML = "<h2>" + binary + "</h2>";
+        answer_binaryHex.innerHTML = "";
+        check_binaryHex.value = "";
+    }
+
+    function new_hexBinary() {
+        hex = base10ToHex(Math.round(Math.random()*256*256));
+        query_hexBinary.innerHTML = "<h2>" + hex + "</h2>";
+        answer_hexBinary.innerHTML = "";
+        check_hexBinary.value = "";
+    }
+
+    function checkBinaryHex() {
+        if (binary >= 0) {
+            let b = check_binaryHex.value;
+            let myans = hexToBinary(b);
+            if (myans == binary) {
+                let s = "<h2><font color=green>Correct!</font></h2>";
+                s += "<button type = \"button\" onclick = \"new_binaryHex()\">Try another example</button>";
+                answer_binaryHex.innerHTML = s;
+            }
+            else {
+                b = binaryToHex(binary);
+                let s = "<h2><font color=red>Whoops!</font></h2>";
+                s += binary + " in hex is <BR><code><h3>";
+                s += makeHexBinaryTableStr(b);
+                s += "<button type = \"button\" onclick = \"new_binaryHex()\">Try another example</button>";
+                answer_binaryHex.innerHTML = s;
+            }
+        }
+        else {
+            alert("Generate an example first!");
+        }
+    }
+
+    function checkHexBinary() {
+        if (hex.length > 0) {
+            let x = check_hexBinary.value;
+            let myans = binaryToHex(x);
+            if (myans == hex) {
+                let s = "<h2><font color=green>Correct!</font></h2>";
+                s += "<button type = \"button\" onclick = \"new_hexBinary()\">Try another example</button>";
+                answer_hexBinary.innerHTML = s;
+            }
+            else {
+                x = hexToBinary(hex);
+                let s = "<h2><font color=red>Whoops!</font></h2>";
+                s += makeHexBinaryTableStr(hex);
+                s += "<button type = \"button\" onclick = \"new_hexBinary()\">Try another example</button>";
+                answer_hexBinary.innerHTML = s;
+            }
+        }
+        else {
+            alert("Generate an example first!");
+        }
+    }
+
+</script>
+
+
+</body>
+</html>

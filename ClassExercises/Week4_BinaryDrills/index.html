@@ -41,168 +41,39 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>C++ Pointers And Pitfalls</h2>
+                                        <h1>Binary Drills</h1>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
+										
 
+										
 										<p>
-											I'm going to summarize below some of the tricky examples we saw in class on pointers.  For more fundamental ideas on pointers and dynamic memory, be sure to look at <a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive Into Systems Ch.2</a> or watch my <a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">videos from last year</a> on this topic.
+											As you recall, instead of 10 digits in each place and powers of 10 in each place, binary numbers have only 0s and 1s as digits and powers of 2.  In particular, we have the 1s place, the 2s place, the 4s place, the 8s place, the 16s place, etc.  
+										</p>
+										<p>
+											I've coded up a few applets below so you can practice representing binary numbers.  The first two are drills on converting back and forth between binary and base 10, and the last one shows binary addition step by step.  Do these until you feel comfortable.  If you are <b>totally new</b> to Binary, read <a href = "https://diveintosystems.org/book/C4-Binary/bases.html">4.1 and 4.2 of Dive Into Systems</a>, and, if you'd like watch the first five Khan Academy Videos at <a href = "https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/number-systems-introduction">this link</a> (up to and including converting from decimal to hexadecimal), which go through the same content but in a more visual way.
+										</p>
+										<p>
+											Regardless, you should do these drills until you feel comfortable
 										</p>
 										
-									<h3>Pointer Bug Example 1</h3>
+										<iframe src = "BinaryBase10.html" width=100% height=1200></iframe>
+										<HR>
+										<iframe src = "BinaryHex.html" width=100% height=1200></iframe>
+										<HR>
+										<iframe src = "BinaryBase10.html" width=100% height=1200></iframe>
 
-									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										#include <stdio.h>
-										int main() {
-											int x = 1;
-											int y = 2;
-											int *p1 = NULL;
-											int *p2 = NULL;
-											p1 = &x;
-											p2 = &y;
-											p1 = 170; // Mistake!
-											p2 = 4;  // Mistake!
-											printf("%i\n", x+y);
-											return 0;
-										}
-									]]></script>
-
-									<p>
-										Let's suppose our intention with the above code was change x to 174 and y to 4 and then to print their sum.  We'll do it a roundabout way by setting up pointers to point to the addresses of x and y and then using these pointers.  The problem with the above code is that we don't <b>dereference</b> the pointers to get to the variables they actually point to; we simply change <code>p1</code> and <code>p2</code> to the addresses 170 and 4.  But these addresses probably don't point to anything that we can use in our code, and we never use them anyway.
-									</p>
-									<p>
-										Correct code would actually say 
-									</p>
-
-									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										*p1 = 170;
-										*p2 = 4;
-									]]></script>
-
-									<p>
-										Remember, the code <code>*ptr</code> in english says "go to the variable that the arrow <code>ptr</code> points to, and <b>substitute it into the expression</b>."  So in this case, the program ends up substituting <code>x</code> in for <code>*p1</code> and <code>y</code> in for <code>*p2</code>
-									</p>
-
-									<h3>Pointer Bug Example 2</h3>
-
-									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										#include <stdio.h>
-										int main() {
-											int x = 1;
-											int y = 2;
-											int *p1 = NULL;
-											printf("%u\n", p1);
-											int *p2 = NULL;
-											p2 = &y;
-											*p1 = 170; // Mistake! Dangerous!
-											*p2 = 4;
-											printf("%i\n", x+y);
-											return 0;
-										}
-									]]></script>
-
-									<p>
-										The issue here is that <code>p1</code> has been initialized to <code>NULL</code> but never updated, so it doesn't point anywhere (actually, as we discussed in class, it points to location 0, which is likely within the operating system of memory that we're never allowed to touch).  Dereferencing a null pointer will always cause a <code>segmentation fault</code>
-									</p>
-
-									<h3>Pointer Bug Example 3</h3>
-
-										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											#include <stdio.h>
-											int main() {
-												int x = 1;
-												int y = 2;
-												int *p1 = NULL;
-												int *p2 = NULL;
-												p1 = &y;
-												p2 = &y;
-												*p1 = 167;
-												*p2 = 7;
-												printf("%i\n", x+y);
-												return 0;
-											}
-										]]></script>
+										<iframe src = "CardGame.html" width=100% height=800></iframe>
 
 										<p>
-											This code will actually print 8 instead of 174.  The reason is that <code>p1</code> and <code>p2</code> both point to the same thing: the address of <code>y</code>!  Below is the picture that you want to have in your mind:
+											Below is a binary clock.  Professor Schilling and I both have them in our offices, although hers is blue and mine is red
 										</p>
-
-										<img src = "SameAddr.svg" width=300>
-
-										<p>
-											The result in the above code is that <code>y</code> is first changed to 167, then immediately overwritten with <code>7</code>, but <code>x</code> remains unchanged after its initialization to 1.
-										</p>
-
-									<h3>Passing By Reference / Stack Memory Addresses</h3>
-
-										<p>
-											One of the important use cases of pointers is to pass and modify variables <b>by reference</b>, which allows us to share variables between methods and to, in effect, return multiple things (surmounting our ordinary limitation of being able to only return a single thing from each method).  Let's suppose we wrote a simple method to compute the min and max of two numbers and to store them by reference.
-										</p>
-
-										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											#include <stdio.h>
-											void minMax(int x, int y, int* min, int* max) {
-												printf("Min max address of &x = %p\n", &x);
-												if (x < y) {
-													*min = x;
-													*max = y;
-												}
-												else {
-													*min = y;
-													*max = x;
-												}
-											}
-											
-											int main() {
-												int min, max;
-												int y = 20, x = 174;
-												printf("   main address of &x = %p\n", &x);
-												minMax(x, y, &min, &max);
-												printf("min = %i, max=%i\n", min, max);
-												return 0;
-											}
-										]]></script>
-
-										<p>
-											The <code>minMax</code> method is actually able to change the values of the variables <code>min</code> and <code>max</code> in <code>main</code> since we passed the addresses of these variables.  So even though it's a void method, it changes two things that persist in <code>main</code>. 
-										</p>
-
-										<p>
-											Furthermore, we notice something interesting when we print the address of the variable <code>x</code> in <code>main</code> and its parameter copy in <code>minMax</code>; namely that the address in <code>main</code> is larger (note that the addresses are in hexadecimal number system rather than base 10 at the moment, and we will talk about this shortly).  That's because <code>minMax</code> is called from within <code>main</code>, so it gets "pushed" on top of the stack in memory.  But the stack actually starts at the highest address, so this means things on the top of the stack have lower addresses! (This always confused me as a student).  The picture below shows this:
-										</p>
-
-										<img src = "stackpush.svg">
-
-										<p>
-											This also reminds us that variables get <b>copied</b> when we pass them along as parameters.  So if we were to change the variable <code>x</code> in <code>minMax</code>, this would have no effect on the variable <code>x</code> in main
-										</p>
-
-									<h3>Pointer Bug Example 4</h3>
-										<p>
-											Let's consider the code below:
-										</p>
-
-										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											#include <stdio.h>
-											int* specialNumber() {
-												int x = 174;
-												return &x;
-											}
-											
-											int main() {
-												int* xref = specialNumber();
-												printf("My special number is %u", *xref);
-												return 0;
-											}
-										]]></script>
-
-										<p>
-											This will return a <code>segmentation fault</code>, because <code>specialNumber</code>'s stack frame will be <b>popped off of the stack</b> (i.e. removed) before its address is printed in main.  So we're returning the address of something that's gone by the time we try to go get it, which is much like a <a href = "https://www.coindesk.com/markets/2021/12/17/defi-rug-pull-scams-pulled-in-28b-this-year-chainalysis/">rug pull</a> in <a href = "https://www.youtube.com/watch?v=w_dbFNWD910">NFTs</a>.
-										</p>
-										
-										
+										<iframe src = "Clock.html" width=100% height=800></iframe>
+									
+									
+												
 										
 										
 
