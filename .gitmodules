@@ -28,9 +28,6 @@
 [submodule "ClassExercises/Week3_2048/Week3_2048"]
 	path = ClassExercises/Week3_2048/Week3_2048
 	url = https://github.com/ursinus-cs174-s2022/Week3_2048.git
-[submodule "Assignments/HW2_Steganography/HW2_Steganography"]
-	path = Assignments/HW2_Steganography/HW2_Steganography
-	url = https://github.com/ursinus-cs174-s2022/HW2_Steganography.git
 [submodule "ClassExercises/Week4_Binary_LFSR/BinaryDrills"]
 	path = ClassExercises/Week4_Binary_LFSR/BinaryDrills
 	url = https://github.com/ursinus-cs174-s2022/BinaryDrills.git
