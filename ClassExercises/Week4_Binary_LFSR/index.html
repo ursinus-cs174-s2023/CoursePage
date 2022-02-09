@@ -43,21 +43,143 @@
                                 <script src="BinaryDrills/LFSR.js"></script>
                                 <section>
 									<header class="main">
-                                        <h2>Notes on Shifting, ASCII, and Linear Feedback Shift Registers (LFSRs)</h2>
+                                        <h2>Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</h2>
                                         <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
+										<h3>Table of Contents</h3>
+										<ul>
+											<li><a href = "#bitwise">Bitwise Operators</a></li>
+											<li><a href = "#binarybitwise">Binary Bitwise Operators Practice</a></li>
+											<li><a href = "#xorencryption">XOR Encryption</a></li>
+											<li><a href = "#bglfsr">Linear Feedback Shift Registers</a></li>
+											<li><a href = "#bgunicode">Unicode/ASCII Binary Encoding for Text</a></li>
+										</ul>
+										<h2><a name = "bitwise">Bitwise Operators</a></h2>
+										<p>
+											In addition to understanding how to <a href = "../Week4_BinaryDrills">represent numbers in binary and hex</a>, we also need to learn two types of <b>binary operators</b>:
+											<ul>
+												<li>
+													<b>Unary bitwise operators:</b> These are functions that take in a binary number and return another one
+												</li>
+												<li>
+													<b>Binary bitwise operators:</b> These are functions that take in a pair of binary numbers and return another one
+												</li>
+											</ul>
+											
+											We're used to operators in ordinary arithmetic.  For example, a unitary operator is the <b>-</b> sign (e.g. -5 is "negative 5"), and a binary operator is addition (e.g. 100 + 74 = 174).  But we're going to define some operators now that are unique to binary bit strings.
+										</p>
+
+										<h3>Unary Shift Operators</h3>
+										<p>
+											Let's start with the unary operators on binary strings.  The ones we'll mainly use in the course are the <b>shift operators</b>.
+										</p>
+
+										<h4>Left Shift</h4>
+										<p>
+											The left shift, denoted by <b>&lt;&lt;</b> in C++ adds a 0 to the end of a binary string on the right.  Below is an example of repeatedly applying the left shift operator to the number <code>174</code> in C++
+										</p>
+
+										<table style="width:40%;">
+											<tr><td>Number of applications of <code>num = num << 1;</code></td><td>Binary Number</td><td>Decimal Number</td></tr>
+											<tr><td>0</td><td>0000000010101110</td><td>174</td></tr>
+											<tr><td>1</td><td>0000000101011100</td><td>348</td></tr>
+											<tr><td>2</td><td>0000001010111000</td><td>696</td></tr>
+											<tr><td>3</td><td>0000010101110000</td><td>1392</td></tr>
+											<tr><td>4</td><td>0000101011100000</td><td>2784</td></tr>
+										</table>
+
+										<p>
+											As you can see, shifting left is like multiplying by 2, and in fact, this is the fastest way to multiply by 2 on your computer.
+										</p>
+
+										<h4>Right Shift</h4>
+
+										<p>
+											The right shift, denoted by <b>&gt;&gt;</b> in C++ deletes the rightmost bit and shifts every other bit over to the right.  Below is an example of repeatedly applying the right shift operator to the number <code>174</code> in C++
+										</p>
+
+										<table style="width:40%;">
+											<tr><td>Number of applications of <code>num = num >> 1;</code></td><td>Binary Number</td><td>Decimal Number</td></tr>
+											<tr><td>0</td><td>0000000010101110</td><td>174</td></tr>
+											<tr><td>1</td><td>0000000001010111</td><td>87</td></tr>
+											<tr><td>2</td><td>0000000000101011</td><td>43</td></tr>
+											<tr><td>3</td><td>0000000000010101</td><td>21</td></tr>
+											<tr><td>4</td><td>0000000000001010</td><td>10</td></tr>
+										</table>
+
+										<p>
+											As you can see, the right shift is equivalent to <b>dividing by 2</b> and discarding the remainder (or, equivalently, integer dividing by 2).  In fact, this is the fastest possible way to do this on your computer.
+										</p>
+
+										<h4>Binary Not</h4>
+										<p>
+											The binary not operator, denoted by <code>~</code> in C++, changes all of the 1's to 0's and all of the 0's to 1s
+										</p>
+
+										<table style="width:40%;">
+											<tr><td></td><td>Binary Number</td><td>Decimal Number</td></tr>
+											<tr><td><code>x</code></td><td>0000000010101110</td><td>174</td></tr>
+											<tr><td><code>~x</code></td><td>1111111101010001</td><td>65361</td></tr>
+										</table>
 
 
-                                        <h2><a name = "bgxor">XOR Encryption</a></h2>
+										<h3>Binary Operators</h3>
+
+										<p>
+											There are also three binary bitwise operators we'll need to worry about in this class.  They are 
+											<ul>
+												<li><b>AND</b> <code>&</code></li>
+												<li><b>OR</b> <code>|</code></li>
+												<li><b>XOR</b> <code>^</code></li>
+											</ul>
+											They apply on corresponding bits on binary strings as follows:
+										</p>
+
+										<table style="width:300px;">
+											<tr>
+												<td>x</td><td>y</td><td><code>&</code></td><td><code>|</code></td><td><code>^</code></td>
+											</tr>
+											<tr>
+												<td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+											</tr>
+											<tr>
+												<td>0</td><td>1</td><td>0</td><td>1</td><td>1</td>
+											</tr>
+											<tr>
+												<td>1</td><td>0</td><td>0</td><td>1</td><td>1</td>
+											</tr>
+											<tr>
+												<td>1</td><td>1</td><td>1</td><td>1</td><td>0</td>
+											</tr>
+										</table>
+
+										<p>
+											In plain English, here's what this is saying:
+										</p>
+										<ul>
+											<li>AND: Only return a 1 if both input bits are 1</li>
+											<li>OR: Return a 1 if <b>at least one</b> input bit is a 1</li>
+											<li>XOR: Return a 1 if <b>exactly one</b> input bit is a 1.  Or, in other words, <i>return the sum of the two bits mod 2</i></li>
+										</ul>
+
+										<h2><a name = "binarybitwise">Binary Bitwise Operators Practice</a></h2>
+										<p>
+											Below is a little applet where you can interactively examine what the binary bitwise operators yield for different inputs
+										</p>
+
+										<iframe src="../Week4_BinaryDrills/Bitwise.html" width="100%" height=700></iframe>
+
+
+                                        <h2><a name = "xorencryption">XOR Encryption</a></h2>
 
                                         <p>
                                             Notice that if you XOR a bit string with the same bit string twice, you get back to where you started.  For example
                                         </p>
                                         
                                         <p>
-                                            <code>0x1234 ^ 0xFACE = 0xE8FA</code>
+                                            <b>Encrypt:</b> <code>0x1234 ^ 0xFACE = 0xE8FA</code>
                                         </p>
     
                                         <p>
@@ -65,8 +187,16 @@
                                         </p>
     
                                         <p>
-                                            <code>0xE8FA ^ 0xFACE = 0x1234</code>
+                                            <b>Decrypt:</b> <code>0xE8FA ^ 0xFACE = 0x1234</code>
                                         </p>
+
+										<p>
+											Try it yourself in the app above!  We will use this fact in <a href = "../../Assignments/HW2_Steganography/">assignment 2</a> to encrypt data.
+										</p>
+
+										<p>
+											If we go back to the fact that the XOR operation is like adding bits mod 2, then the above magic trick becomes very clear.  When we encrypt, we add one copy of some bit string to our input.  Then, we add another copy to the result.  Adding two copies of 0 does nothing.  Adding two copies of 1 is also 0 mod 2.  So we get back to where we started after doing this twice.
+										</p>
 
 
                                     <h2><a name = "bglfsr">Linear Feedback Shift Registers</a></h2>
@@ -76,7 +206,7 @@
                                     </p>
 
                                     <p>
-                                        A <b>linear feedback shift register (LFSR)</b> is a data structure for generating pseudorandom binary bits.  One can think of it as a scheme for generating coin flips which look totally random, but which are perfectly repeatable given an initial state and a set of "taps."  Together, these bits of information can be thought of as the <i>password</i> that we use to hide data.  In particular, we will use the sequence of pseudorandom bits generated by this password to hide a message.
+                                        A <b>linear feedback shift register (LFSR)</b> is a data structure for generating pseudorandom binary bits.  One can think of it as a scheme for generating coin flips which look totally random, but which are perfectly repeatable given an initial state and a set of "taps."  Together, these bits of information can be thought of as the <i>password</i> that we use to hide data.  In particular, we will use the sequence of pseudorandom bits generated by this password to hide a message using <a href = "#xorencryption">XOR encryption</a> in <a href = "../../Assignments/HW2_Steganography/">assignment 2</a>.
                                     </p>
 
                                     <p>
@@ -158,32 +288,29 @@
                                     <h2><a name = "bgunicode">Unicode/ASCII Binary Encoding for Text</a></h2>
 
                                     <p>
-                                        Once you have implemented the LFSR, you can use it to encrypt data.  All data in a computer is represented in binary, but we will focus on text data in this assignment since it is easy to output.  We will use a binary representation of text called <a href = "https://en.wikipedia.org/wiki/UTF-8">UTF-8</a>, which is the most encoding for text on the world wide web.  In UTF-8, each character can be from 1 to 4 bytes long.  To keep things simple, though, we will assume that text uses an "<a href = "https://www.rapidtables.com/code/text/ascii-table.html">ASCII</a> subset" of UTF-8, in which each character is only 7 bits packed into a single byte.  For example, the capital letter <b>A</b> is <code>0x41</code>.  This way, we will ensure that each character is a single byte.
+                                        All data in a computer is represented in binary, including text.  Most text is represented with a format called <a href = "https://en.wikipedia.org/wiki/UTF-8">UTF-8</a>, which is the most encoding for text on the world wide web.  In UTF-8, each character can be from 1 to 4 bytes long.  To keep things simple, though, we will focus on an "<a href = "https://www.rapidtables.com/code/text/ascii-table.html">ASCII</a> subset" of UTF-8, in which each character is only 7 bits packed into a single byte.  For example, the capital letter <b>A</b> is <code>0x41</code>. 
                                     </p>
 
                                     <p>
-                                        By default, bitwise operators in Java are performed on the 32-bit <code>int</code> type, so code has been provided to convert an array of bytes corresponding to an ASCII Unicode string into an array of ints in "<a href = "https://en.wikipedia.org/wiki/Endianness">little endian order</a>"; that is, each group of contiguous 4 character bytes is packed into a single int, with the first byte on the right and the last byte on the left.  Below you can see illustrations of a few examples of the conversion, which is done for you.  For those interested, you can refer to the ASCII table <a href = "https://www.rapidtables.com/code/text/ascii-table.html">here</a> to see the hex codes for all ASCII characters.  You will see, among other things, that numbers come before uppercase letters, which come before lowercase letters.
+                                        Below you can see illustrations of a few examples of the conversion, which is done for you.  For those interested, you can refer to the ASCII table <a href = "https://www.rapidtables.com/code/text/ascii-table.html">here</a> to see the hex codes for all ASCII characters (you can also type <code>man ascii</code> in the terminal).  You will see, among other things, that numbers come before uppercase letters, which come before lowercase letters.
                                     </p>
 
+									<h4>Example 1</h4>
                                     <div id="unicodetable">
                                     <table>
                                         <tr><td><h3>String</h3></td>
                                         <td><h4><center>I</center></h4></td><td><h4><center> </center></h4></td><td><h4><center>l</center></h4></td><td><h4><center>o</center></h4></td><td><h4><center>v</center></h4></td><td><h4><center>e</center></h4></td><td><h4><center> </center></h4></td><td><h4><center>C</center></h4></td><td><h4><center>S</center></h4></td><td><h4><center> </center></h4></td><td><h4><center>1</center></h4></td><td><h4><center>7</center></h4></td><td><h4><center>3</center></h4></td><td><h4><center>!</center></h4></td></tr>
-                                        <tr><td><h3>Unicode</h3></td>
-                                        <td><h4>0x49</h4></td><td><h4>0x20</h4></td><td><h4>0x6c</h4></td><td><h4>0x6f</h4></td><td><h4>0x76</h4></td><td><h4>0x65</h4></td><td><h4>0x20</h4></td><td><h4>0x43</h4></td><td><h4>0x53</h4></td><td><h4>0x20</h4></td><td><h4>0x31</h4></td><td><h4>0x37</h4></td><td><h4>0x33</h4></td><td><h4>0x21</h4></td></tr>
-                                        <tr><td><h3>Little Endian ints</h3></td>
-                                        <td colspan=4><center><h4>0x6f6c2049</h4></center></td><td colspan=4><center><h4>0x43206576</h4></center></td><td colspan=4><center><h4>0x37312053</h4></center></td><td colspan=4><center><h4>0x2133</h4></center></td></tr>
+                                        <tr><td><h3>ASCII</h3></td>
+                                        <td><h4>0x49</h4></td><td><h4>0x20</h4></td><td><h4>0x6c</h4></td><td><h4>0x6f</h4></td><td><h4>0x76</h4></td><td><h4>0x65</h4></td><td><h4>0x20</h4></td><td><h4>0x43</h4></td><td><h4>0x53</h4></td><td><h4>0x20</h4></td><td><h4>0x31</h4></td><td><h4>0x37</h4></td><td><h4>0x33</h4></td><td><h4>0x22</h4></td></tr>
                                         </table>
                                     </div>
 
-
+									<h4>Example 2</h4>
                                     <table border=1 cellpadding=5>
                                         <tr><td><h3>String</h3></td>
                                         <td><h4><center>L</center></h4></td><td><h4><center>e</center></h4></td><td><h4><center>t</center></h4></td><td><h4><center>'</center></h4></td><td><h4><center>s</center></h4></td><td><h4><center> </center></h4></td><td><h4><center>s</center></h4></td><td><h4><center>e</center></h4></td><td><h4><center>n</center></h4></td><td><h4><center>d</center></h4></td><td><h4><center> </center></h4></td><td><h4><center>s</center></h4></td><td><h4><center>e</center></h4></td><td><h4><center>c</center></h4></td><td><h4><center>r</center></h4></td><td><h4><center>e</center></h4></td><td><h4><center>t</center></h4></td><td><h4><center>s</center></h4></td></tr>
-                                        <tr><td><h3>Unicode</h3></td>
+                                        <tr><td><h3>ASCII</h3></td>
                                         <td><h4>0x4c</h4></td><td><h4>0x65</h4></td><td><h4>0x74</h4></td><td><h4>0x27</h4></td><td><h4>0x73</h4></td><td><h4>0x20</h4></td><td><h4>0x73</h4></td><td><h4>0x65</h4></td><td><h4>0x6e</h4></td><td><h4>0x64</h4></td><td><h4>0x20</h4></td><td><h4>0x73</h4></td><td><h4>0x65</h4></td><td><h4>0x63</h4></td><td><h4>0x72</h4></td><td><h4>0x65</h4></td><td><h4>0x74</h4></td><td><h4>0x73</h4></td></tr>
-                                        <tr><td><h3>Little Endian ints</h3></td>
-                                        <td colspan=4><center><h4>0x2774654c</h4></center></td><td colspan=4><center><h4>0x65732073</h4></center></td><td colspan=4><center><h4>0x7320646e</h4></center></td><td colspan=4><center><h4>0x65726365</h4></center></td><td colspan=4><center><h4>0x7374</h4></center></td></tr>
                                         </table>
                                         
 
@@ -271,6 +398,7 @@
 												<li><a href = "../../ClassExercises/Week3_2048">Week 3: Building The 2048 Game Together</a></li>
 												<li><a href = "../../ClassExercises/Week4_BinaryDrills">Week 4: Binary Drills</a></li>
 												<li><a href = "https://ursinus.instructure.com/courses/13764/quizzes/18074">Week 4: Binary/Hex Module</a></li>
+												<li><a href = "../../ClassExercises/Week4_Binary_LFSR">Week 4: Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</a></li>
 											</ul>
 										</li>
 										<li>
