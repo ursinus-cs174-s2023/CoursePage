@@ -67,6 +67,7 @@
 											<li><a href = "#encode">Part 2: Encode Text (15 Points)</a></li>
 									<li><a href = "#lfsr">Part 3: Linear Feedback Shift Register (15 Points)</a></li>
 											<li><a href = "#encrypt">Part 4: Encoding/Decoding Encrypted Text (15 Points)</a></li>
+											<li><a href = "#bored">Other Ideas for The Bored</a></li>
 
 										</ul>
 
@@ -561,6 +562,25 @@
 									<p>
 										You should get a string with some top secret information about Chewbacca.
 									</p>
+
+									<h2><a name = "bored">Other Ideas for The Bored</a></h2>
+									<p>
+										Here are some other things you can try if these ideas really excite you and you finish early.  If you seriously pursue one of these, I may give you some extra credit
+									</p>
+									<ul>
+										<li>
+											One thing that makes this a little bit easier to detect programmatically (and hence less "secure" for embedding messages) is the fact that we take bits in "scanline order" from left to right, top down.  You could add some randomness here by using the LFSR to choose the row and column of the next bit to use, in addition to using it to encrypt the bits themselves.
+										</li>
+										<li>
+											Embedding the data as we have does have a statistically significant effect on the histogram of the RGB values.  See if you might make subtle changes to the pixels that don't hide data to preserve the histogram of the original image as well as possible.
+										</li>
+										<li>
+											We don't visually notice the difference by changing the least significant bit, but we probably also won't notice the difference of changing the least two significant bits (both the 1's place and the 2's place).  This will double the information capacity of the image.  What is the limit of this?  Is 3 bits still invisible?  4 bits?  Explore this.
+										</li>
+										<li>
+											We were hiding ASCII text in this example, but you can hide any sequence of bits this way.  Modify the program so that it encrypts any other file you specify in binary, and see if you can hide a small mp3 audio clip in your image, especially if you are able to increase the information capacity as suggested in the above point.
+										</li>
+									</ul>
 
                                 </div>
 						</div>
