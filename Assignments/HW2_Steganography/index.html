@@ -41,18 +41,39 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Assignment 2: Image Processing And Steganography</h2>
+                                        <h2>Assignment 2: Image Processing And Steganography (60 Points)</h2>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
 
+										<h4>Table of Contents</h4>
+										<ul>
+											<li>
+												<a href = "#overview">Overview / Logistics</a>
+												<ul>
+													<li><a href = "#objectives">Learning Objectives</a></li>
+													<li><a href = "#timeline">Timeline</a></li>
+													<li><a href = "#readme">What to submit</a></li>
+												</ul>
+											</li>
+											<li>
+												<a href = "#rgb">Background: RGB Images And Steganography</a>
+												<ul>
+													<li><a href = "#lsb">Least Significant Bit Information Hiding</a></li>
+												</ul>
+											</li>
+											<li><a href = "#decode">Part 1: Decode Text (15 Points)</a></li>
+											<li><a href = "#encode">Part 2: Encode Text (15 Points)</a></li>
+									<li><a href = "#lfsr">Part 3: Linear Feedback Shift Register (15 Points)</a></li>
+											<li><a href = "#encrypt">Part 4: Encoding/Decoding Encrypted Text (15 Points)</a></li>
+
+										</ul>
 
                                         <h2><a name = "overview">Overview / Logistics</a></h2>
 										<p>
                                             The purpose of this <a href = "../../index.html#buddy">buddy assignment</a> is to put your knowledge of <a href = "../../ClassExercises/Week4_BinaryDrills/">binary</a>, <a href = "../../ClassExercises/Week4_Binary_LFSR/">bitwise operators</a>, and 2D arrays together into a fun application where you will hide secret text messages "in plain sight" by changing the colors of pixels in an image ever so slightly to store a binary encoding of text.  More specifically, you will be encoding the binary ASCII representation of a character string using the least significant bit of pixels in an RGB image.  This is a specific instance of <a href = "https://en.wikipedia.org/wiki/Steganography">steganography</a>, or hiding one type of data in another data stream.
 										</p>
-
 
                                         <p>
                                             You can download the code for this assignment by using git in the terminal
@@ -69,34 +90,41 @@
 											You will be writing a number of different C++ programs in this assignment, so I'd recommend that you update your makefile as you go to make it easier to manage
                                         </p>
 
+										<p>
+											<b>Fun fact: </b> I proposed to <a href = "https://www.celialitovsky.com/">my partner</a> using a similar concept, and it worked 😻.  Maybe you can use a similar concept to propose to your significant other, or at least to send a top secret message to your friends.
+										</p>
+
                                         <p>
                                             <h3><a name = "objectives">Learning Objectives</a></h3>
                                             <ul>
                                                 <li>Manage 2D arrays with loops</li>
-												<li>Apply bitwise operators to read and write bits from character strings</li>
+												<li>Apply bitwise operators to read and write bits in character strings</li>
+												<li>Use command line arguments</li>
+												<li>Create a class with a constructor, an instance method, and member variables that's exposed via a header file</li>
+												<li>Sharpen debugging skills</li>
                                             </ul>
                                         </p>
 
-										<h3><a name = "timeline">Suggested Timeline</a></h3>
+										<h3><a name = "timeline">Timeline</a></h3>
 										<p>
-											...
+											<ul>
+												<li>
+													By Tuesday 2/15 you should have <a href = "#decode">part 1</a> and <a href = "#encode">part 2</a> done.  I will have you submit these on canvas to show your progress
+												</li>
+												<li>
+													By Friday 2/18, you should have <a href = "#part3">part 3</a> done.
+												</li>
+												<li>
+													The final product will be due on Monday 2/21
+												</li>
+											</ul>
 										</p>
 
                                         <h3><a name = "readme">What to submit</a></h3>
 										
 										<p>
-											When you are finished, submit a zip file of all of your code and your makefile.  This should include <code>blur.cpp</code>, <code>decode.cpp</code>, <code>encode.cpp</code>, <code>randutils.h</code>, <code>randutils.cpp</code>, and <code>lfsr.cpp</code>.
+											When you are finished, submit a zip file of all of your code and your makefile.  This should include the new files <code>decode.cpp</code>, <code>encode.cpp</code>, and <code>lfsr.cpp</code>, as well as modified versions of <code>randutils.h</code> and <code>randutils.cpp</code>.
 										</p>
-
-										<p>
-											Also, answer the questions below as a comment on canvas:
-										</p>
-										
-										<ol>
-											<li>
-												Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
-											</li>
-										</ol>
 
 									<h2><a name = "rgb">Background: RGB Images And Steganography</a></h2>
 									<p>
@@ -162,25 +190,266 @@
 									<img src = "chewbaccanoise.png" width=250>
 
 									<p>
-										You should study these examples to the extent that you understand how they're loading images, changing them, and then writing them to a folder.
+										You should study these examples to the extent that you understand how they're loading images, changing them, and then writing them to a folder, as specified by command line arguments.
 									</p>
 
 									<h3><a name = "lsb">Least Significant Bit Information Hiding</a></h3>
 									<p>
+										The main idea behind the program will be making can be illustrated by the following example.  Look at the two pictures below.  
+									</p>
 
+									<table style="width:650px;">
+										<tr>
+											<td><h4>Ordinary image</h4></td>
+											<td><h4>Hidden message</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<img src = "HW2_Steganography/images/birthday.png" width=300>
+											</td>
+											<td>
+												<img src = "HW2_Steganography/images/birthday_encoded.png" width=300>
+											</td>
+										</tr>
+									</table>
+
+									<p>
+										The picture on the right contains 12 paragraphs of text on the Ursinus 150 strategic plan.  Can you see the difference?  No?  Well great, that's the point!  
+									</p>
+									<p>
+										So how do we do this?  The idea is beautifully simple, and is best understood with an example.  Consider the following 3-pixel image
+									</p>
+
+									<table style="width:250px;">
+										<tr>
+											<td style="background-color: #fe7732; width:50px; height:50px;"><span style="color:white">[254, 119, 50]</span></td>
+											<td style="background-color: #028dfe; width:50px; height:50px;"><span style="color:white">[2, 141, 254]</span></td>
+											<td style="background-color: #5b9f40; width:50px; height:50px;"><span style="color:white">[91, 159, 64]</span></td>
+										</tr>
+									</table>
+
+									<p>
+										We're going to extract a binary signal by looking at the <b>least significant bit</b> (the 1's place in binary) of each color channel in each pixel from left to right from red, to green, to blue, and put them together into one binary string.  In other words, for a particular pixel and a particular color channel, we'll extract a 0 if it's an even number and a 1 if it's an odd number.  Let's look at the first 8 bits in the above image.  We have 
+									</p>
+									<table style="width:50px;">
+										<tr>
+											<td>254</td><td>0</td>
+										</tr>
+										<tr>
+											<td>119</td><td>1</td>
+										</tr>
+										<tr>
+											<td>50</td><td>0</td>
+										</tr>
+										<tr>
+											<td>2</td><td>0</td>
+										</tr>
+										<tr>
+											<td>141</td><td>1</td>
+										</tr>
+										<tr>
+											<td>254</td><td>0</td>
+										</tr>
+										<tr>
+											<td>91</td><td>1</td>
+										</tr>
+										<tr>
+											<td>159</td><td>1</td>
+										</tr>
+									</table>
+
+									<p>
+										All together, this is the binary string <b>01001011</b>, which is the character <b>'K'</b> in <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#bgunicode">ASCII</a>.  What if we wanted to change it to some other character though?  Perhaps the character <b>'z'</b>, which is <b>0x7A</b> hex, or <b>01111010</b> in binary.  Then we can just tweak the 1's place of the pixel values as follows, where I've bolded the ones that have changed:
+									</p>
+
+									<table style="width:50px;">
+										<tr>
+											<td>254</td><td>0</td>
+										</tr>
+										<tr>
+											<td>119</td><td>1</td>
+										</tr>
+										<tr>
+											<td><b>51</b></td><td><b>1</b></td>
+										</tr>
+										<tr>
+											<td><b>3</b></td><td><b>1</b></td>
+										</tr>
+										<tr>
+											<td>141</td><td>1</td>
+										</tr>
+										<tr>
+											<td>254</td><td>0</td>
+										</tr>
+										<tr>
+											<td>91</td><td>1</td>
+										</tr>
+										<tr>
+											<td><b>158</b></td><td><b>0</b></td>
+										</tr>
+									</table>
+
+									<p>
+										Here's what these updated values look like 
+									</p>
+
+									<table style="width:250px;">
+										<tr>
+											<td style="background-color: #fe7733; width:50px; height:50px;"><span style="color:white">[254, 119, 51]</span></td>
+											<td style="background-color: #038dfe; width:50px; height:50px;"><span style="color:white">[3, 141, 254]</span></td>
+											<td style="background-color: #5b9e40; width:50px; height:50px;"><span style="color:white">[91, 158, 64]</span></td>
+										</tr>
+									</table>
+
+									<p>
+										If you were just looking at it and comparing it to what we started with, you would never notice the difference!  So we have freedom to tweak the least significant bit of every color channel of every pixel at will to encode text, and this is exactly what you will be doing in this assignment!.  In a 500x500 image, for example, this means we can store 250,000 bits.  Since each ASCII character is 8 bits, this is 31,250 characters total, or roughly about 6000 words (so you can put all of your <a href = "https://ursinus-cie200i-s2022.github.io/CoursePage/Papers/Paper1/">CIE essays</a> into a single image!)  
 									</p>
 
 
 
 									<h2><a name = "decode">Part 1: Decode Text (15 Points)</a></h2>
 
-									<h2><a name = "decode">Part 2: Encode Text (15 Points)</a></h2>
+									<p>
+										As your first task, create a file <code>decode.cpp</code> which decodes the text hidden in an image.  Your program should take one command line argument, which is a path to the image you want to decode.  You should read the least significant bits of the image from red, green, blue channel row by row from top to bottom, and then assemble them into characters which you print out (every 8 bits you should print a character).  Continue until you encounter the null terminator <code>\0</code>.  Below are a few examples:
+									</p>
+
+									<h4>Example 1: tiny_encoded.png</h4>
+
+									<p>
+										Here's a good example of a very small 4x4 image that you can test as you're getting started. If you run the following
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./decode images/tiny_encoded.png
+										]]></script>
+									
+									<p>
+										you should get the bits <code>001100010011011100110100001000010000101000000000</code>.  If we group them up into ASCII <code>char</code> variables, we see this is the character string <code>"174!\n"</code> 
+									</p>
+
+									<table style="width:100px;">
+										<tr>
+											<td>00110001</td><td><code>'1'</code></td>
+										</tr>
+										<tr>
+											<td>00110111</td><td><code>'7'</code></td>
+										</tr>
+										<tr>
+											<td>00110100</td><td><code>'4'</code></td>
+										</tr>
+										<tr>
+											<td>00100001</td><td><code>'!'</code></td>
+										</tr>
+										<tr>
+											<td>00001010</td><td><code>'\n'</code></td>
+										</tr>
+										<tr>
+											<td>00000000</td><td><code>'\0'</code></td>
+										</tr>
+									</table>
+
+									<h4>Example 2: Mona Lisa</h4>
+									<p>
+										If you run 
+									</p>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./decode images/monalisa_encoded.png
+										]]></script>
+									
+									<p>
+										you'll get some "fun facts" about people trying to destroy the Mona Lisa
+									</p>
+
+									<h4>Example 3: Ursinus Birthday</h4>
+									<p>
+										If you run 
+									</p>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./decode images/birthday_encoded.png
+										]]>
+									</script>
+									
+									<p>
+										you'll get some information on the Ursinus 150 strategic plan
+									</p>
+
+									<h4>Example 4: Penguin</h4>
+									<p>
+										If you run 
+									</p>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./decode images/penguin_encoded.png
+										]]></script>
+									
+									<p>
+										you'll get a Robert Frost Poem
+									</p>
+
+									<h2><a name = "encode">Part 2: Encode Text (15 Points)</a></h2>
+
+									<p>
+										In the next part, you should create a program to hide your own text in images of your choice.  Create a program <code>encode.cpp</code> which takes in 3 command line arguments:
+										<ol>
+											<li>
+												A path to the image inside of which to hide the text
+											</li>
+											<li>
+												A path to a text file containing the text you want to hide
+											</li>
+											<li>
+												A path to the output image that will store the hidden text
+											</li>
+										</ol>
+									</p>
+
+									<p>
+										For example, running the following to 
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										echo "Hello world" > hello.txt
+										./encode images/monalisa.png hello.txt hidden.png
+										./decode hidden.png]]></script>
+									
+									<p>
+										should create a text file with the contents <code>"Hello world"</code>, which is then hidden in the image <code>hidden.png</code>, which is then decoded.  So you should see <code>"Hello world"</code> in your console when these are finished.  
+									</p>
+
+									<p>
+										Of course, you should also test this on more examples of your own and visually ensure that the images with hidden text are indistinguishable from the originals.
+									</p>
+
+									<h4>Hint on loading text</h4>
+
+									<p>
+										We haven't had much time to talk about file I/O in the class yet, so you can use the code snippet below to load a character string from a text file:
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											#include <string>
+											#include <fstream>
+											
+											using namespace std;
+											
+											/**
+											 * @brief Load in a character string from a text file
+											 * 
+											 * @param filename Path to filename you want to load
+											 * @return char* Character string read from the file
+											 */
+											char* loadFile(char* filename) {
+												ifstream t(filename);
+												stringstream buffer;
+												buffer << t.rdbuf();
+												return (char*)buffer.str().c_str();
+											}
+											]]></script>
 
 
 									<h2><a name = "lfsr">Part 3: Linear Feedback Shift Register (15 Points)</a></h2>
 
 									<p>
-										Review the background on linear feedback shift registers at <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#bglfsr">this link</a>.  Then, extend <code>randutils.h</code> and <code>randutils.cpp</code> to have a class called <code>LFSR</code>, which implements a 32-bit LFSR. The constructor should take two parameters, which you should then store as member variables in the object for future use:
+										Review the background on linear feedback shift registers at <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#bglfsr">this link</a>.  Then, extend <code>randutils.h</code> and <code>randutils.cpp</code> to have a <b>class</b> called <code>LFSR</code>, which implements a 32-bit LFSR. The constructor should take two parameters, which you should then store as member variables in the object for future use:
 										
 										<ol>
 											<li>
@@ -237,22 +506,60 @@
 									
 									<h4>Hint</h4>
 									<p>
-										To convert a C-string <code>str</code> from hex to decimal, use 
+										To convert a C-string <code>str</code> from hex to an unsigned 32-bit int, use 
 									</p>
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										strtol(str, NULL, 16);]]></script>
+										(unsigned int)strtol(str, NULL, 16);]]></script>
 
 									
 
-									<h4>For Fun</h4>
+									<h4>Fun Fact</h4>
 									<p>
 										<a href = "https://users.ece.cmu.edu/~koopman/">Phil Koopman</a> has a list of good tap choices at <a href = "https://users.ece.cmu.edu/~koopman/lfsr/32.txt">this link</a>.  Using these taps will avoid cycles in the LFSR, as explained <a href = "https://users.ece.cmu.edu/~koopman/lfsr">here</a>, which makes them more statistically random and hence better suited for encryption.
 									</p>
 
-									<h2><a name = "decode">Part 4: Encoding/Decoding Encrypted Text (15 Points)</a></h2>
+									<h2><a name = "encrypt">Part 4: Encoding/Decoding Encrypted Text (15 Points)</a></h2>
 
 									<p>
-										Add two extra command line arguments 
+										You will now combine everything you've done in parts 1, 2 and 3 to actually <b>encrypt</b> the text data before it's hidden into the image, so that it basically just looks like noise even if someone knows to look for it.  To do this, add two extra command line arguments to both <code>encrypt.cpp</code> and <code>decode.cpp</code>: one for the taps in hex and one for the initial LFSR state in hex.  In the encoder, you should XOR each bit of the string that you want to hide with the <code>nextBit()</code> of the LFSR before hiding it in the least significant bit.  In the decoder, you should XOR the bit you extract with the <code>nextBit()</code> of the LFSR before you pack it into the <code>char</code> you're assembling.  This will work because of <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#xorencryption">the principles of XOR encryption</a>.
+									</p>
+
+									<p>
+										If the user does not specify the last two parameters, your program should work as normal without encryption.
+									</p>
+
+									<h4>Example 1: Tiny Encrypted String</h4>
+									<p>
+										Suppose you tried to run the following
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./decode images/tiny_encrypted.png
+									]]></script>
+									<p>
+										You would get the garbage string <code>r�m)N</code>.  That's because the hidden string is encrypted.  
+									</p>
+
+									<p>If instead you run </p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./decode images/tiny_encrypted.png D008 FACE
+									]]></script>
+
+									<p>
+										You should get the string <code>HIDE</code>
+									</p>
+
+									<h4>Example 2: Top Secret Chewbacca</h4>
+
+									<p>If instead run </p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./decode images/chewbacca_encrypted.png 800005EC BACCA
+									]]></script>
+
+									<p>
+										You should get a string with some top secret information about Chewbacca.
 									</p>
 
                                 </div>
@@ -314,6 +621,7 @@
 											<ul>
 												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
 												<li><a href = "../../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a></li>
+												<li><a href = "../../Assignments/HW2_Steganography">Homework 2: Image Processing And Steganography</a></li>
 											</ul>
 										</li>
 										<li>
@@ -335,6 +643,7 @@
 												<li><a href = "../../ClassExercises/Week3_2048">Week 3: Building The 2048 Game Together</a></li>
 												<li><a href = "../../ClassExercises/Week4_BinaryDrills">Week 4: Binary Drills</a></li>
 												<li><a href = "https://ursinus.instructure.com/courses/13764/quizzes/18074">Week 4: Binary/Hex Module</a></li>
+												<li><a href = "../../ClassExercises/Week4_Binary_LFSR">Week 4: Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</a></li>
 											</ul>
 										</li>
 										<li>
