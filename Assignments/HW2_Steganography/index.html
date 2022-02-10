@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming,Spring 2022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Spring 2022</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Assignment 2: Image Processing And Steganography</h2>
+										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
+									</header>
+
+									<div id="page-content">
+
+
+                                        <h2><a name = "overview">Overview / Logistics</a></h2>
+										<p>
+                                            The purpose of this <a href = "../../index.html#buddy">buddy assignment</a> is to put your knowledge of <a href = "../../ClassExercises/Week4_BinaryDrills/">binary</a>, <a href = "../../ClassExercises/Week4_Binary_LFSR/">bitwise operators</a>, and 2D arrays together into a fun application where you will hide secret text messages "in plain sight" by changing the colors of pixels in an image ever so slightly to store a binary encoding of text.  More specifically, you will be encoding the binary ASCII representation of a character string using the least significant bit of pixels in an RGB image.  This is a specific instance of <a href = "https://en.wikipedia.org/wiki/Steganography">steganography</a>, or hiding one type of data in another data stream.
+										</p>
+
+
+                                        <p>
+                                            You can download the code for this assignment by using git in the terminal
+										</p>
+										
+										<p>
+											<code>
+												git clone --recursive https://github.com/ursinus-cs174-s2022/HW2_Steganography.git
+											</code>
+										</p>
+										
+
+										<p>
+											You will be writing a number of different C++ programs in this assignment, so I'd recommend that you update your makefile as you go to make it easier to manage
+                                        </p>
+
+                                        <p>
+                                            <h3><a name = "objectives">Learning Objectives</a></h3>
+                                            <ul>
+                                                <li>Manage 2D arrays with loops</li>
+												<li>Apply bitwise operators to read and write bits from character strings</li>
+                                            </ul>
+                                        </p>
+
+										<h3><a name = "timeline">Suggested Timeline</a></h3>
+										<p>
+											...
+										</p>
+
+                                        <h3><a name = "readme">What to submit</a></h3>
+										
+										<p>
+											When you are finished, submit a zip file of all of your code and your makefile.  This should include <code>blur.cpp</code>, <code>decode.cpp</code>, <code>encode.cpp</code>, <code>randutils.h</code>, <code>randutils.cpp</code>, and <code>lfsr.cpp</code>.
+										</p>
+
+										<p>
+											Also, answer the questions below as a comment on canvas:
+										</p>
+										
+										<ol>
+											<li>
+												Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
+											</li>
+										</ol>
+
+									<h2><a name = "rgb">Background: RGB Images And Steganography</a></h2>
+									<p>
+										A color image is actually an array of pixels <b>with 3 dimensions</b>: a row, a column, and a "color channel"; that is, each color pixel has 3 numbers associated to it: red, green, and blue (as explained in the <a href = "../HW1_VirtualCities/index.html#colors">last assignment</a>).  Each red/green/blue channel is 8-bits and ranges from 0 to 255.
+									</p>
+
+									<p>
+										I've created a wrapper around the <a href = "https://github.com/nothings/stb/">stb image library</a> which exposes the pixels as a 3D array.  You can access this by using the <code>SimpleCanvas</code> class that I created.  For example, below is a code snippet that loads in the image of the penguin provided with your code, puts a 100x100 square at the center of the image, and writes a new version of it to the file <code>penguinredsquare.png</code>:
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										#include "simplecanvas/SimpleCanvas.h"
+
+										int main() {
+											// Create an empty image with 400x400 pixels
+											SimpleCanvas image("images/penguin.png");
+											// Loop through the pixels in a 100x100 box around the center
+											// of the image
+											for (int i = image.height/2-50; i < image.height/2+50; i++) {
+												for (int j = image.width/2-50; j < image.width/2+50; j++) {
+													// Make the red channel [0] of the pixel
+													// at row i, column j 255, and the other
+													// channels 0
+													image.data[i][j][0] = 255; 
+													image.data[i][j][1] = 0;
+													image.data[i][j][2] = 0;
+												}
+											}
+											image.write("penguinredsquare.png");
+											return 0;
+										}]]></script>
+
+									<p>
+										If you run this code, it will create the following image <code>penguinredsquare.png</code>
+									</p>
+
+									<img src = "penguinredsquare.png" width=300>
+
+									<p>
+										This example has pretty much everything you need for this assignment, but I've also provided the programs <code>grayscale.cpp</code> and <code>noise.cpp</code>, which show how to convert an image to grayscale an add noise to it, respectively.  For example, making the project and running 
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./grayscale images/birthday.png birthdaygray.png]]></script>
+									
+									<p>
+										creates this image
+									</p>
+
+									<img src = "birthdaygray.png" width=300>
+
+									<p>
+										and 
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./noise images/chewbacca.png 0.5 chewbaccanoise.png]]></script>
+									
+									<p>
+										creates the following image (for those interested, 0.5 is the <a href = "https://en.wikipedia.org/wiki/Signal-to-noise_ratio">signal to noise ratio</a>)
+									</p>
+
+									<img src = "chewbaccanoise.png" width=250>
+
+									<p>
+										You should study these examples to the extent that you understand how they're loading images, changing them, and then writing them to a folder.
+									</p>
+
+									<h3><a name = "lsb">Least Significant Bit Information Hiding</a></h3>
+									<p>
+
+									</p>
+
+
+
+									<h2><a name = "decode">Part 1: Decode Text (15 Points)</a></h2>
+
+									<h2><a name = "decode">Part 2: Encode Text (15 Points)</a></h2>
+
+
+									<h2><a name = "lfsr">Part 3: Linear Feedback Shift Register (15 Points)</a></h2>
+
+									<p>
+										Review the background on linear feedback shift registers at <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#bglfsr">this link</a>.  Then, extend <code>randutils.h</code> and <code>randutils.cpp</code> to have a class called <code>LFSR</code>, which implements a 32-bit LFSR. The constructor should take two parameters, which you should then store as member variables in the object for future use:
+										
+										<ol>
+											<li>
+												<code>unsigned int taps</code>: This is the location of the taps, expressed compactly in a single 32-bit unsigned int.  If a particular bit is 1, it means that the corresponding binary location is used as a tap.  For example, the hex string <b>D008</b> describes the LFSR with taps at locations 16, 15, 13, and 4, as shown below:
+												</p>
+			
+												<table style="width:70%;"><tr><td><h4>Hex Digits</h4></td><td colspan=4><center><h4>D</h4></center></td><td colspan=4><center><h4>0</h4></center></td><td colspan=4><center><h4>0</h4></center></td><td colspan=4><center><h4>8</h4></center></td></tr><tr><td><h4>Binary Digits</h4></td><td><b>1</b></td><td><b>1</b></td><td>0</td><td><b>1</b></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><b>1</b></td><td>0</td><td>0</td><td>0</td></tr><tr><td><h4>Tap Location</h4></td><td><b>16</b></td><td><b>15</b></td><td>14</td><td><b>13</b></td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td><b>4</b></td><td>3</td><td>2</td><td>1</td></tr></table>
+			
+												<p>
+													This is exactly the taps given in <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#bglfsr">the starting example</a>
+												</p>
+
+											</li>
+											<li>
+												<code>unsigned int initial</code> The initial state of the LFSR
+											</li>
+										</ol>
+									</p>
+
+									<p>
+										You should also create a method <code>nextBit()</code> in the LFSR class, which returns the next bit in the linear feedback shift register.
+									</p>
+
+									<p>
+										Finally, create a file <code>lfsr.cpp</code> which takes 3 command line arguments:
+										<ol>
+											<li>The taps in hex</li>
+											<li>The initial state in hex</li>
+											<li>The number of bits to output from the LFSR</li>
+										</ol>
+									</p>
+
+									<p>
+										and which outputs the bit string you'd get from calling <code>nextBit()</code> repeatedly on an LFSR starting with that initial state using those taps.  For instance, running 
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./lfsr D008 FACE 40]]></script>
+
+									<p>
+										Will output <code>0011101010001011001010010101000100100011</code>.  This is exactly what you get by starting with the taps 16, 15, 13, and 4 and the initial state 0xFACE in <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#bglfsr">the starting example</a>
+									</p>
+
+									<p>
+										For a different example which uses all 32 bits in the LFSR with the initial string, if you do 
+									</p>
+									
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./lfsr 80000465 ABACADAB 20]]></script>
+									
+									<p>
+										You should get <code>00000111110001111101</code>
+									</p>
+									
+									<h4>Hint</h4>
+									<p>
+										To convert a C-string <code>str</code> from hex to decimal, use 
+									</p>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										strtol(str, NULL, 16);]]></script>
+
+									
+
+									<h4>For Fun</h4>
+									<p>
+										<a href = "https://users.ece.cmu.edu/~koopman/">Phil Koopman</a> has a list of good tap choices at <a href = "https://users.ece.cmu.edu/~koopman/lfsr/32.txt">this link</a>.  Using these taps will avoid cycles in the LFSR, as explained <a href = "https://users.ece.cmu.edu/~koopman/lfsr">here</a>, which makes them more statistically random and hence better suited for encryption.
+									</p>
+
+									<h2><a name = "decode">Part 4: Encoding/Decoding Encrypted Text (15 Points)</a></h2>
+
+									<p>
+										Add two extra command line arguments 
+									</p>
+
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
+												<li><a href = "../../Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "../../Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#macos">Mac OS Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#virtualbox">VirtualBox</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays">Lab 1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises / Pre-Class Work</span>
+											<ul>
+												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
+												<li><a href = "../../ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
+												<li><a href = "../../../Modules/PointerFundamentals/Exercise1">Pointer Fundamentals Module</a></li>
+												<li><a href = "../../ClassExercises/Week2_3_PointerTricks">Week 2/3: C++ Pointers And Pitfalls</a></li>
+												<li><a href = "../../ClassExercises/Week3_Pointers_Arrays">Week 3: C++ Pointers And Arrays</a></li>
+												<li><a href = "../../ClassExercises/Week3_AudioFiltering">Week 3: Audio Filtering</a></li>
+												<li><a href = "../../ClassExercises/Week3_2048">Week 3: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week4_BinaryDrills">Week 4: Binary Drills</a></li>
+												<li><a href = "https://ursinus.instructure.com/courses/13764/quizzes/18074">Week 4: Binary/Hex Module</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href = "../../style.html">Style Guide</a></li>
+										</li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
