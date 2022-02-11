@@ -99,8 +99,8 @@
                                             <h3><a name = "objectives">Learning Objectives</a></h3>
                                             <ul>
                                                 <li>Manage 2D arrays with loops</li>
-												<li>Apply bitwise operators to read and write bits in character strings</li>
-												<li>Use command line arguments</li>
+												<li>Apply <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#bitwise">bitwise operators</a> to read and write bits in character strings</li>
+												<li>Use <a href = "../../ClassExercises/Week4_DynMem/index.html#cmdargs">command line arguments</a></li>
 												<li>Create a class with a constructor, an instance method, and member variables that's exposed via a header file</li>
 												<li>Sharpen debugging skills</li>
                                             </ul>
@@ -443,6 +443,7 @@
 												ifstream t(filename);
 												stringstream buffer;
 												buffer << t.rdbuf();
+												t.close();
 												return (char*)buffer.str().c_str();
 											}
 											]]></script>
