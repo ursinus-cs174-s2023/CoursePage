@@ -34,9 +34,6 @@
 [submodule "Assignments/HW2_Steganography/HW2_Steganography"]
 	path = Assignments/HW2_Steganography/HW2_Steganography
 	url = https://github.com/ursinus-cs174-s2022/HW2_Steganography.git
-[submodule "ClassExercises/Week4_Bits/Week4_Bits"]
-	path = ClassExercises/Week4_Bits/Week4_Bits
-	url = https://github.com/ctralie/Week4_Bits.git
 [submodule "ClassExercises/Week4_DynMem/Week4_DynMem"]
 	path = ClassExercises/Week4_DynMem/Week4_DynMem
 	url = https://github.com/ursinus-cs174-s2022/Week4_DynMem.git
