@@ -45,7 +45,7 @@ Command Line Arguments, 2D Array Allocation/Cleanup
 LECTURE
 Binary, Hex, Bitwise Operators
 
-<ul><li><a href = "https://diveintosystems.org/book/C4-Binary/bases.html">Dive Into Systems</a> Ch. 4.1, 4.2, 4.6<li><a href = "https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/number-systems-introduction">Khan Academy Videos</a> (Watch first 5)</li><li><a href = "ClassExercises/Week4_BinaryDrills">Interactive Binary Drills</a></li><li><a href = "ClassExercises/Week4_Binary_LFSR">Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</a></li></ul>
+<ul><li><a href = "https://diveintosystems.org/book/C4-Binary/bases.html">Dive Into Systems</a> Ch. 4.1, 4.2, 4.6<li><a href = "https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/number-systems-introduction">Khan Academy Videos</a> (Watch first 5)</li><li><a href = "ClassExercises/Week4_BinaryDrills">Interactive Binary Drills</a></li><li><a href = "ClassExercises/Week4_Binary_LFSR">Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</a></li><li><a href = "ClassExercises/Week4_Bits">Class Exercise: Bits And XOR Encryption</a></li></ul>
 SECTION
 Unit 2: Fundamentals of Object Oriented Programming
 

@@ -41,43 +41,105 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h1>Binary Drills</h1>
+                                        <h2>Week 4 Exercise: Bits And XOR Encryption</h2>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
-										
-
-										
-										<p>
-											As you recall, instead of 10 digits in each place and powers of 10 in each place, binary numbers have only 0s and 1s as digits and powers of 2.  In particular, we have the 1s place, the 2s place, the 4s place, the 8s place, the 16s place, etc.  
-										</p>
-										<p>
-											I've coded up a few applets below so you can practice representing binary numbers.  The first two are drills on converting back and forth between binary and base 10, and the last one shows binary addition step by step.  Do these until you feel comfortable.  If you are <b>totally new</b> to Binary, read <a href = "https://diveintosystems.org/book/C4-Binary/bases.html">4.1 and 4.2 of Dive Into Systems</a>, and, if you'd like watch the first five Khan Academy Videos at <a href = "https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/number-systems-introduction">this link</a> (up to and including converting from decimal to hexadecimal), which go through the same content but in a more visual way.
-										</p>
-										<p>
-											Regardless, you should do these drills until you feel comfortable
-										</p>
-										
-										<iframe src = "BinaryBase10.html" width=100% height=1200></iframe>
-										<HR>
-										<iframe src = "BinaryHex.html" width=100% height=1200></iframe>
-										<HR>
-										<iframe src = "HexBase10.html" width=100% height=1200></iframe>
-
-										<iframe src = "CardGame.html" width=100% height=800></iframe>
 
 										<p>
-											Below is a binary clock.  Professor Schilling and I both have them in our offices, although hers is blue and mine is red
+											You can obtain the code for today's exercise here:
 										</p>
-										<iframe src = "Clock.html" width=100% height=800></iframe>
-									
-									
-												
-										
-										
 
-                                    
+										<p>
+											<code>git clone https://github.com/ursinus-cs174-s2022/Week4_Bits.git</code>
+										</p>
+										
+										<h2>Exercise 1: Printing numbers in binary</h2>
+										<p>
+											I've provided a file <code>num2binary.cpp</code> which takes in an <code>int</code> as a command line argument and prints out a corresponding 32-bit unsigned binary string using the "textbook algorithm" for doing this.  For example, 
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./num2binary 2000000000
+										]]></script>
+
+										<p>
+											will print out <code>01110111001101011001010000000000</code>
+										</p>
+
+										<p>
+											Your job will be to fill out a file <code>mynum2binary.cpp</code> that accomplishes the same thing, but <b>only using bitwise operators</b>:
+										</p>
+
+										<ul>
+                                            <li><b>Allowed: </b> Binary AND (<b>&</b>), Binary OR (<b>|</b>), Binary XOR (<b>^</b>), Left Binary Shift (<b>&lt &lt</b>), and Unsigned Right Binary Shift (<b>&gt &gt &gt</b>)</li>
+                                            <li>
+                                                <b>NOT Allowed: +, -, /, *, %</b>
+                                            </li>
+                                        </ul>
+
+
+										<h2>Exercise 2: Converting a binary string to a number</h2>
+
+										<p>
+											I've provided a file <code>binary2num.cpp</code> which takes a binary string as a command line argument and which prints out the number corresponding to it.  For example
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./binary2num 11011
+										]]></script>
+
+										<p>
+											will print out <code>27</code>
+										</p>
+
+										<p>
+											Your job will be to fill out a file <code>mybinary2num.cpp</code> that accomplishes the same thing, but <b>only using bitwise operators</b>
+										</p>
+
+										<h2>Exercise 3: XOR Encryption</h2>
+										<p>
+											Fill in the file <code>encrypt.cpp</code> to implement XOR encryption/decryption.  The command line arguments refer to three files:
+											<ol>
+												<li>
+													The first file is thought of either as the "plain text" (original message) or the "cipher text" (encrypted message)
+												</li>
+												<li>
+													The second file is the "cipher," or what we use to encrypt information
+												</li>
+												<li>
+													The third file is the output file which stores the cipher text or the decrypted text
+												</li>
+											</ol>
+										</p>
+
+										<p>
+											For example, if you run 
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./encrypt hidden password.txt decrypted.txt
+										]]></script>
+
+										<p>
+											It will decrypt the bytes in <code>hidden</code> by XORing with the bytes in <code>password.txt</code> and save the result to <code>decrypted.txt</code>.  If this works, you should be able to read the text in <code>decrypted.txt</code>
+										</p>
+
+										<p>
+											The steps to accomplish this are as follows:
+										</p>
+
+										<ol>
+											<li>Load in file1</li>
+											<li>Load file2</li>
+											<li>Loop through and replace each byte in file1 with the XOR of the corresponding byte in file2.  If file2 reaches the end, loop back to the beginning</li>
+											<li>Write out the resulting XORED file</li>
+										</ol>
+
+
+
+
                                 </div>
 						</div>
 					</div>
