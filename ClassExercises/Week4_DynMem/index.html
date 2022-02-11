@@ -1,0 +1,557 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming,Spring 2022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Spring 2022</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Command Line Arguments and Dynamic 2D Arrays</h2>
+										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
+									</header>
+
+									<div id="page-content">
+
+										<h3>Table of Contents</h3>
+										<Ul>
+											<li>
+												<a href = "#cmdargs">Command Line Arguments</a>
+											</li>
+											<li>
+												<a href = "#dynarray2d">Dynamic 2D Arrays</a>
+											</li>
+											<li>
+												<a href = "#array3d">On Your Own: 3D Dynamic Arrays</a>
+											</li>
+										</Ul>
+										
+										
+									<h2><a name = "cmdargs">Command Line Arguments</a></h2>
+
+									<p>
+										Let's consider the following code, which will finally help to demystify a strange definition of <code>main</code> with the two parameters <code>argc</code> and <code>argv</code>
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										#include <stdio.h>
+										#include <stdlib.h>
+
+										int main(int argc, char** argv) {
+											printf("argc = %i\n", argc);
+											for (int i = 0; i < argc; i++) {
+												printf("argv[%i] = %s\n", i, argv[i]);
+											}
+											return 0;
+										}
+									]]></script>
+
+									<p>
+										If we compile this program and run it as follows
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./cmdargs hello we are in cs 174]]></script>
+
+									<p>
+										will output the following
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										argc = 7
+										argv[0] = ./cmdargs
+										argv[1] = hello
+										argv[2] = we
+										argv[3] = are
+										argv[4] = in
+										argv[5] = cs
+										argv[6] = 174
+									]]></script>
+
+									<p>
+										From this we see that <code>argv</code> is actually a 2D array starting with the name of how the program is actually invoked, and followed by each parameter separated by a space.  This is very useful, because now we can run the same program with different inputs from the user via the command line, and we don't need to recompile it every time!
+									</p>
+
+									<p>
+										As another example, when we call it as follows (assuming it's in a folder called <code>Week4_DynMemory</code>):
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										../Week4_DynMem/cmdargs "hello world" "we are in cs 174"]]></script>
+										
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										argc = 3
+										argv[0] = ../Week4_DynMem/cmdargs
+										argv[1] = hello world
+										argv[2] = we are in cs 174
+									]]></script>
+
+									<p>
+										Two things to notice here:
+										<ol>
+											<li>We invoked this program with a different command (by going up one directory and then back in), so this shows how the first parameter can vary even if the program is exactly the same</li>
+											<li>
+												If we want to include specific arguments that have spaces in them, we need to put them in quotes
+											</li>
+										</ol>
+									</p>
+
+									<p>
+										One more thing to be mindful of if you use the arguments is that they are all character arrays, which means you will have to do a conversion if you want to treat any of the arguments as numerical values.  There are various functions to do this.  Below is an example of using the <a href = "https://www.cplusplus.com/reference/cstdlib/atoi/">atoi</a> function to convert a character array to an int, which is part of the <code>&lt;stdlib&gt;</code> library
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										int main(int argc, char** argv) {
+											if (argc < 3) {
+												printf("Need to input two numbers!\n");
+												return 1;
+											}
+											int x = atoi(argv[1]);
+											int y = atoi(argv[2]);
+											printf("%i + %i = %i\n", x, y, x+y);
+											return 0;
+										}
+									]]></script>
+
+									<p>
+										Now we have a super exciting program that can add for us! If we compile it to a program called <code>adder</code> and call it with 
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./adder 1 2]]></script>
+
+									<p>
+										It will output
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										1 + 2 = 3]]></script>
+										
+									<HR>
+									<h2><a name = "dynarray2d">Dynamic 2D Arrays</a></h2>
+										<p>
+											This is a C++ version of <a href = "https://diveintosystems.org/book/C2-C_depth/arrays.html">Chapter 2.5 <i>Dive Into Systems</i></a>.  The two are very similar, except we can use the <code>new</code> and <code>free</code> keywords in C++ to grab memory off the heap, whereas C uses the <a href = "https://www.cplusplus.com/reference/cstdlib/malloc/">malloc</a> and <a href = "https://www.cplusplus.com/reference/cstdlib/free/">free</a> methods, respectively
+										</p>
+
+									<p>
+										We've talked about how we can declare 2D array "statically" (with a fixed size at compile time) with syntax like the following 10 x 20 array of ints:
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										int x[10][20];]]></script>
+									
+									<p>
+										Often, though, we won't know how big an array should be until runtime.  In this case, we need to dynamically grab memory from the heap to use.  To understand how to do this, we need to understand pointers even more deeply than we already do, but in the process, we will explain how the <b>double pointer</b> <code>type**</code> actually refers to a 2D array (like <code>argv</code> for main)
+									</p>
+									
+									<p>
+										It's easiest to start with a picture of how another option to store a 2D array is as a pointer to pointers
+									</p>
+
+									<img src = "2DArray.svg" width="40%">
+
+									<p>
+										Said differently, the outer array is an array of pointers, so each <code>arr[i]</code> is of type <code>int*</code> in this example.  Each such element points to the beginning of a different block of memory, which is the inner array stored at this index.
+									</p>
+
+									<p>
+										As a little puzzle to help us check our understanding, we can consider how we might use only address addition and pointers dereferencing to access particular elements in an array.  As you'll recall, we can describe array access by dereferencing an offset from a pointer
+									</p>
+									
+									<table style="width:400px;">
+										<tr>
+											<td>Array Notation</td>
+											<td>Pointer Notation</td>
+										</tr>
+										<tr>
+											<td><code>arr[i]</code></td>
+											<td><code>*(arr + i)</code></td>
+										</tr>
+									</table>
+
+									<p>
+										If we want to do this with a 2D array, we actually have to chase two pointers.  First, we need to find the pointer to the beginning of the inner array we want to reach.  Then, we move through an offset of that array and finish up the final dereference.  It looks like this in the end
+									</p>
+
+									<table style="width:400px;">
+										<tr>
+											<td>Array Notation</td>
+											<td>Pointer Notation</td>
+										</tr>
+										<tr>
+											<td><code>arr[i][j]</code></td>
+											<td><code>*(*(arr + i)+j)</code></td>
+										</tr>
+									</table>
+
+									<p>
+										The <code>*(arr + i)</code> grabs the correct pointer to the inner array, and then we move to an offset of <code>j</code> in that inner array to access the element we want.
+									</p>
+
+									<p>
+										Mindful of all of this, we can write code to allocate a <b>M x N</b> dynamic array with the following steps:
+									</p>
+									<ol>
+										<li>Allocate a new array of <b>M</b> pointers</li>
+										<li>
+											For each of the <b>M</b> pointers, allocate a new array array of <b>N</b> values, and make <code>arr[i]</code> point to the beginning of this array
+										</li>
+									</ol>
+
+									<p>
+										Code to do this would look as follows:
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										// Step 1: Allocate outer array of pointers
+										int** arr = new int*[M];
+										// Allocate each inner array and assign pointers
+										// in the outer array 
+										for (int i = 0; i < M; i++) {
+											arr[i] = new int[N];
+										}
+									</script>
+
+									<p>
+										This is visually depicted in the following pictures of memory (you should always draw these sorts of pictures if you're confused)
+									</p>
+
+									<table>
+										<tr>
+											<td><h4>Step 1</h4></td>
+											<td><h4>Step 2</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<img src = "2DArrayCode1.svg" style="width:80%;">
+											</td>
+											<td>
+												<img src = "2DArrayCode2.svg" style="width:80%;">
+											</td>
+										</tr>
+										<tr>
+											<td>
+												After the first step, we have a bunch of "dangling pointers" that aren't pointing to anything meaningful (in fact, they are pointing to random locations)
+											</td>
+											<td>
+												On the second step, we allocate the inner arrays that the outer pointers point to
+											</td>
+										</tr>
+									</table>
+
+									<p>
+										Let's suppose we run the following program to dynamically allocate a 2D array of a specified size 
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										int main(int argc, char** argv) {
+											if (argc < 3) {
+												printf("Need to input two numbers!\n");
+												return 1;
+											}
+											int M = atoi(argv[1]);
+											int N = atoi(argv[2]);
+											// Step 1: Allocate outer array of pointers
+											int** arr = new int*[M];
+											// Allocate each inner array and assign pointers
+											// in the outer array 
+											for (int i = 0; i < M; i++) {
+												arr[i] = new int[N];
+											}
+											return 0;
+										}
+									]]></script>
+
+									<p>
+										Now let's use valgrind to check to see if we have any memory leaks (dynamic memory we failed to free) when we ask it to allocate a 10x10 array
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										valgrind ./array2d 10 10]]></script>
+									
+									<p>
+										This will output the following 
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										==92192== HEAP SUMMARY:
+										==92192==     in use at exit: 480 bytes in 11 blocks
+										==92192==   total heap usage: 12 allocs, 1 frees, 73,184 bytes allocated
+										==92192== 
+										==92192== LEAK SUMMARY:
+										==92192==    definitely lost: 80 bytes in 1 blocks
+										==92192==    indirectly lost: 400 bytes in 10 blocks
+										==92192==      possibly lost: 0 bytes in 0 blocks
+										==92192==    still reachable: 0 bytes in 0 blocks
+										==92192==         suppressed: 0 bytes in 0 blocks
+										]]></script>
+										
+										<p>
+											Oops!  We forgot to free our memory!  Let's try to add the following line before we return:
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											delete[] arr;]]></script>
+
+										<p>
+											Now we get this 
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											==92746== HEAP SUMMARY:
+											==92746==     in use at exit: 400 bytes in 10 blocks
+											==92746==   total heap usage: 12 allocs, 2 frees, 73,184 bytes allocated
+											==92746== 
+											==92746== LEAK SUMMARY:
+											==92746==    definitely lost: 400 bytes in 10 blocks
+											]]></script>
+										
+										<p>
+											Darn!  We're still missing some frees on dynamic memory.  This is because while we deleted the dynamically allocated pointers on the outside, we never deleted the inner arrays.  And actually, once we delete the outer pointers, we have no way to find the inner arrays anymore!  So we have to free the inner arrays first.
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											for (int i = 0; i < M; i++) {
+												delete[] arr[i];
+											}
+											delete[] arr;]]></script>
+
+										<p>
+											This also explains why we had lost 480 bytes originally for a 10x10 matrix:
+											<ul>
+												<li>
+													We had 80 bytes for the outer pointers because each pointer on a 64-bit machine takes up 8 bytes to store an address, and we had 10 of them
+												</li>
+												<li>
+													We had 100 total ints in the 10 inner arrays each of 10 elements.  Each int is 4 bytes, so this is a total of 400 bytes
+												</li>
+											</ul>
+										</p>
+
+										<p>
+											In sum, a template for leak free dynamic array allocation and cleanup in C++ is below:
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											int main(int argc, char** argv) {
+												if (argc < 3) {
+													printf("Need to input two numbers!\n");
+													return 1;
+												}
+												int M = atoi(argv[1]);
+												int N = atoi(argv[2]);
+												// Step 1: Allocate outer array of pointers
+												int** arr = new int*[M];
+												// Allocate each inner array and assign pointers
+												// in the outer array 
+												for (int i = 0; i < M; i++) {
+													arr[i] = new int[N];
+												}
+											
+												// Do some stuff...
+											
+												// Delete the inner arrays
+												for (int i = 0; i < M; i++) {
+													delete[] arr[i];
+												}
+												// Delete the outer array
+												delete[] arr;
+												return 0;
+											}]]></script>
+
+										<p>
+											Notice how the inner arrays were the last to be allocated, but they are the first to be deallocated.  It is good practice to deallocate things in reverse order to avoid this.
+										</p>
+                                    
+										<HR>
+											<h2><a name = "array3d">On Your Own: 3D Dynamic Arrays</a></h2>
+											<p>
+												If you really want to check your pointer understanding, convince yourself that the pointer notation for a 3D dynamic array would be as follows:
+											</p>
+
+											<table style="width:400px;">
+												<tr>
+													<td>Array Notation</td>
+													<td>Pointer Notation</td>
+												</tr>
+												<tr>
+													<td><code>arr[i][j][k]</code></td>
+													<td><code>*(*(*(arr + i)+j)+k)</code></td>
+												</tr>
+											</table>
+
+											<p>
+												And think of how you might dynamically allocate and deallocate an MxNxK array.
+											</p>
+
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
+												<li><a href = "../../Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "../../Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#macos">Mac OS Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#virtualbox">VirtualBox</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a></li>
+												<li><a href = "../../Assignments/HW2_Steganography">Homework 2: Image Processing And Steganography</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays">Lab 1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises / Pre-Class Work</span>
+											<ul>
+												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
+												<li><a href = "../../ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
+												<li><a href = "../../../Modules/PointerFundamentals/Exercise1">Pointer Fundamentals Module</a></li>
+												<li><a href = "../../ClassExercises/Week2_3_PointerTricks">Week 2/3: C++ Pointers And Pitfalls</a></li>
+												<li><a href = "../../ClassExercises/Week3_Pointers_Arrays">Week 3: C++ Pointers And Arrays</a></li>
+												<li><a href = "../../ClassExercises/Week3_AudioFiltering">Week 3: Audio Filtering</a></li>
+												<li><a href = "../../ClassExercises/Week3_2048">Week 3: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week4_DynMem">Week 4: Command Line Arguments and Dynamic 2D Arrays</a></li>
+												<li><a href = "../../ClassExercises/Week4_BinaryDrills">Week 4: Binary Drills</a></li>
+												<li><a href = "https://ursinus.instructure.com/courses/13764/quizzes/18074">Week 4: Binary/Hex Module</a></li>
+												<li><a href = "../../ClassExercises/Week4_Binary_LFSR">Week 4: Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href = "../../style.html">Style Guide</a></li>
+										</li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>

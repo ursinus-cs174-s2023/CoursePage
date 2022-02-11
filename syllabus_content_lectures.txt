@@ -41,7 +41,7 @@ Code Roundup, Dynamic Memory, Valgrind
 LECTURE
 Command Line Arguments, 2D Array Allocation/Cleanup
 
-<ul><li><a href = "https://diveintosystems.org/book/C2-C_depth/arrays.html">Dive Into Systems Ch. 2.5.2</li></ul>
+<ul><li><a href = "ClassExercises/Week4_DynMem">Class notes on command line arguments and 2D array allocation/deallocation</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/arrays.html">Dive Into Systems Ch. 2.5.2</li></ul>
 LECTURE
 Binary, Hex, Bitwise Operators
 
