@@ -420,6 +420,13 @@
 										Of course, you should also test this on more examples of your own and visually ensure that the images with hidden text are indistinguishable from the originals.
 									</p>
 
+									<p>
+										<b>NOTE: </b> It is very important that you use a <a href = "https://en.wikipedia.org/wiki/Lossless_compression">lossless</a> image codec like <code>.png</code> to save your images.  If you use something lossly like jpeg, for example, it will destroy the information that you're putting in your image.  
+									</p>
+									<p>
+										As a related note, you will notice that the file sizes of your files containing the hidden text are larger than the originals.  This is because they are now storing information, and it makes it theoretically impossible to compress them more.
+									</p>
+
 									<h4>Hint on loading text</h4>
 
 									<p>
@@ -462,7 +469,7 @@
 												<table style="width:70%;"><tr><td><h4>Hex Digits</h4></td><td colspan=4><center><h4>D</h4></center></td><td colspan=4><center><h4>0</h4></center></td><td colspan=4><center><h4>0</h4></center></td><td colspan=4><center><h4>8</h4></center></td></tr><tr><td><h4>Binary Digits</h4></td><td><b>1</b></td><td><b>1</b></td><td>0</td><td><b>1</b></td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><b>1</b></td><td>0</td><td>0</td><td>0</td></tr><tr><td><h4>Tap Location</h4></td><td><b>16</b></td><td><b>15</b></td><td>14</td><td><b>13</b></td><td>12</td><td>11</td><td>10</td><td>9</td><td>8</td><td>7</td><td>6</td><td>5</td><td><b>4</b></td><td>3</td><td>2</td><td>1</td></tr></table>
 			
 												<p>
-													This is exactly the taps given in <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#bglfsr">the starting example</a>
+													These happen to be the taps given in <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#bglfsr">the starting example</a>
 												</p>
 
 											</li>
