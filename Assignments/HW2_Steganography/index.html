@@ -444,14 +444,14 @@
 											 * @brief Load in a character string from a text file
 											 * 
 											 * @param filename Path to filename you want to load
-											 * @return char* Character string read from the file
+											 * @return string Character string read from the file
 											 */
-											char* loadFile(char* filename) {
+											string loadFile(char* filename) {
 												ifstream t(filename);
 												stringstream buffer;
 												buffer << t.rdbuf();
 												t.close();
-												return (char*)buffer.str().c_str();
+												return buffer.str();
 											}
 											]]></script>
 
