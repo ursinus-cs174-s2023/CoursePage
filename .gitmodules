@@ -40,3 +40,6 @@
 [submodule "ClassExercises/Week4_Bits/Week4_Bits"]
 	path = ClassExercises/Week4_Bits/Week4_Bits
 	url = https://github.com/ursinus-cs174-s2022/Week4_Bits.git
+[submodule "ClassExercises/Week5_Classes/Week5_ObjectBasics"]
+	path = ClassExercises/Week5_Classes/Week5_ObjectBasics
+	url = https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics.git
