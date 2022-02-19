@@ -53,17 +53,17 @@ Unit 2: Fundamentals of Object Oriented Programming
 LECTURE
 Introduction To Classes: Constructors, Instance Variables / Methods
 
-<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics/blob/main/BasicExamples/Person.cpp">Code from class</a></li><li><a href = "https://www.learncpp.com/cpp-tutorial/89-class-code-and-header-files/">Class code and header files (learncpp.com)</a></li></ul>
+<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics/blob/main/BasicExamples/Person.cpp">Code from class</a></li></ul>
 LECTURE
-C++ Classes Continued, Static Variables, Information Hiding/Encapsulation (public and private)
+C++ Classes practice and header files
 
-<ul><li>Stack Class exercise</li></ul>
+<ul><li><a href = "https://www.learncpp.com/cpp-tutorial/89-class-code-and-header-files/">Class code and header files (learncpp.com)</a></li><li><a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics/tree/main/HTMLHolidays">HTML Holidays Revamped</a></li></ul>
+LECTURE
+C++ Classes: Static Variables, Information Hiding/Encapsulation (public and private)
+
+<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics">Completed code from class</a></li><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm">TutorialsPoint: Notes on C++ Static Variables/Methods in Classes</a></li></ul>
 LECTURE
 Lab 3: Inheritance / Shape Drawing
-
-
-LECTURE
-More Inheritance, Arrays of Objects
 
 
 LECTURE
@@ -91,11 +91,11 @@ Lab 4: Dynamic Array ADT
 
 
 LECTURE
-Stacks And Queues
+Linked Lists
 
 
 LECTURE
-Linked Lists
+Stacks And Queues
 
 
 LECTURE
@@ -186,8 +186,3 @@ LECTURE
 Program Optimization
 
 <ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-12-optimization.html">Chapter 12</a></li></ul>
-LECTURE
-Shazam Check-In
-
-
-
