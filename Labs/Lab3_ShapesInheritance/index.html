@@ -1,0 +1,441 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming,Spring 2022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Spring 2022</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Lab 3: Drawing Shapes with Aggregation And Inheritance (6 Points)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+									</header>
+
+									<div id="page-content">
+
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this lab is to give you practice with the class declarations, aggregation, and inheritance with a visual application of drawing different types of shapes.
+                                        </p>
+
+										<p>
+											<b>Inheritance</b> will come into play when you create new shapes, as every shape will inherit from the provided <code>Shape</code> class so that they have common, linked methods.
+										</p>
+
+										<p>
+											<b>Aggregation</b> will come into play, because the new shape classes you're making will contain <code>LineSegment</code> objects.
+										</p>
+
+										
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+                                                <li>Manipulate <code>public</code>, <code>private</code>, and <code>protected</code> variables/methods in classes</li>
+												<li>Separate out class specification from implementation between header files and cpp files, respectively</li>
+                                                <li>Leverage code sharing between parent classes and child classes</li>
+                                                <li>Use multiple classes together in concert to accomplish a task, including aggregation</li>
+                                            </ul>
+                                        </p>
+
+                                            
+
+                                        <h2>Programming Task</h2>
+
+										<p>
+											You can obtain the starter code by typing
+										</p>
+
+										<p>
+											<code>git clone --recursive https://github.com/ursinus-cs174-s2022/Lab3_ShapesInheritance.git</code>
+										</p>
+
+                                        <p>
+                                            In this lab, you will be designing classes to draw different 2D shapes on an image.  There is a superclass called <code>Shape</code> which stores the thickness with which to draw the shape and the color to use when drawing the shape, as well as setter methods for these two variables.  You should create a child class of this class for each new shape that you draw.  Every shape you draw should be made up of a series of <a href = "#linesegment">line segments</a>.  
+                                        <p>
+                                            There are three shell methods provided in the <code>Shape</code> class which you should override in all of your shapes
+											<ul>
+												<li>
+													<code>void draw(SimpleCanvas* canvas)</code>: A method that draws the shape to a particular canvas
+												</li>
+												<li>
+													<code>float getArea()</code>: A method to return the area of this shape
+												</li>
+												<li>
+													<code>string toString()</code>: A method that returns a string with information about this shape
+												</li>
+											</ul>
+                                        </p>
+
+                                        <p>
+                                            You should also implement setter methods to update all of the parameters of your shape.  For example, you should be able to update the center and side length of a <a href = "#square">square</a> object.
+                                        </p>
+
+										<p>
+											You can test your code by putting things in <code>driver.cpp</code>, which contains a <code>main</code> method that you can run.  You can see the results by opening the image that's saved when running your code.
+										</p>
+
+
+                                        <p>
+                                            Finally, be mindful of <a href = "../../style.html">style</a> as you are coding this!
+                                        </p>
+
+                                        <h3><a name = "point">Point (Given Example)</a></h3>
+                                        <p>
+                                            The simplest thing we can draw is a point.  Have a look at the provided <code>Point</code> class in <code>Point.cpp</code> and <code>Point.h</code>.  Objects of this type will be used in the <code>LineSegment</code> class, and you may also want to use them in your classes.
+                                        </p>
+
+                                        <h3><a name = "linesegment">Line Segment (Given Example)</a></h3>
+                                        <p>
+                                            Study the <code>LineSegment</code> class that was provided with the code <code>LineSegment.h</code> and <code>LineSegment.cpp</code>, and notice how it extends from the <code>Shape</code> class and aggregates the <code>Point</code> class.  You will be doing similar things in the shapes below.  You should also use objects of the <code>LineSegment</code> class in the draw methods for your shapes.  For instance, a triangle can be drawn with three line segments.  
+                                        </p>
+
+                                        <p>
+                                            As an example of how to use this class, consider the code below, which is currently in the main of <code>driver.cpp</code>
+                                        </p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											SimpleCanvas canvas(500, 500);
+											canvas.clearRect(255, 255, 255);
+											int color[3] = {255, 0, 0};
+											float thickness = 4;
+											Point p1(thickness, color, 100, 100);
+											Point p2(thickness, color, 400, 400);
+											LineSegment line(thickness, color, p1, p2);
+											line.draw(&canvas);
+											cout << line.toString() << "\n";
+											cout << "Length = " << line.getLength() << "\n";
+											canvas.write("out.png");
+                                        ]]></script>
+
+                                        <p>
+                                            This will print out the following
+                                        </p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											Line Segment from Point(100, 100) to Point(400, 400)
+											Length = 424.264
+                                        ]]></script>
+
+                                        <p>
+                                            And it will draw a picture that looks like this.
+                                        </p>
+
+                                        <img src = "LineSegment.png" style="border: 5px solid #555;">
+
+										<p>
+
+										</p>
+										<HR>
+
+                                        <h3><a name = "triangle">Task 1: Triangle (1.5 Points)</a></h3>
+                                        <p>
+                                            Create a class called <code>Triangle</code> which takes in 3 points in the constructor, and which then stores three line segments as private variables (aggregation).  Use the methods of the line segments when computing the area of the triangle and when drawing it.  <i>Be sure to update your makefile so you can build things more easily, and be sure to pass along the correct color and thickness when drawing the line segments</i>
+                                        </p>
+
+                                        <p>
+                                            To compute the area of a triangle, you can use Heron's formula.  If <b>a</b>, <b>b</b>, and <b>c</b> are the three lengths of the triangle, then define the semi-perimeter as
+                                        </p>
+
+                                        \[ s = \frac{a+b+c}{2} \]
+
+                                        Then, the area of the triangle can be computed as
+
+                                        \[ A = \sqrt{ s(s-a)(s-b)(s-c) } \]
+
+                                        <p>
+                                            As an example, below is a picture of a triangle with points <code>(100, 400), (400, 400), (250, 100)</code>. It should have an area of 45000, and the string it returns should be 
+                                        </p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											Triangle between Point(100, 400), Point(400, 400), and Point(250, 100)
+                                        ]]></script>
+
+										<p></p>
+
+										
+
+
+                                        <img src = "Triangle.png" style="border: 5px solid #555;">
+
+										<p>
+											Below is a snippet that initialized this in the driver
+										</p>
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											int cyan[3] = {0, 255, 255};
+											float thickness = 4;
+											Point a(thickness, cyan, 100, 400);
+											Point b(thickness, cyan, 400, 400);
+											Point c(thickness, cyan, 250, 100);
+											Triangle tri(thickness, cyan, a, b, c);
+                                        ]]></script>
+
+										
+										<p></p>
+										<HR>
+
+                                        <h3><a name = "square">Task 2: Square (1.5 Points)</a></h3>
+                                        <p>
+                                            Create a class called <code>Square</code> which stores the center of the square and the length of its sides.  Recall that the area of a square is its side length squared (hence the name "square").  As with the triangle, you should store private variables for <code>LineSegment</code> objects for each side.
+                                        </p>
+
+										<p>
+											Below is an example of a blue square of thickness 4 centered at (150, 150) with a side length of 200 and a green square of thickness 1 centered at (250, 250) with a side length of 0.3.
+										</p>
+										
+
+                                        <img src = "Squares.png" style="border: 5px solid #555;">
+
+										<p>
+											Below is a snippet that initialized this in the driver
+										</p>
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											float thickness = 4;
+											float len = 200;
+											Point center(thickness, blue, 150, 150);
+											Square square(thickness, blue, center, len);
+											square.draw(&canvas);
+											float thickness2 = 1;
+											Point center2(thickness2, green, 250, 250);
+											float len2 = 100;
+											Square square2(thickness2, green, center2, len2);
+											square2.draw(&canvas);
+                                        ]]></script>
+
+
+										<p></p>
+										<HR>
+
+										<h3><a name = "circle">Task 3: Circle (1.5 Points)</a></h3>
+                                        <p>
+                                            Create a class called <code>Circle</code> which stores the center of a circle and its radius.  Recall that the area of a circle of radius <code>r</code> is
+                                        </p>
+
+                                        <h3>
+                                        \[ \pi r^2 \]
+                                        </h3>
+
+                                        <p>
+                                            A circle would require an infinite amount of line segments to draw properly, but you can draw an approximate circle as a regular polygon with many sides.  You can specify the number of sides to draw as a parameter to the constructor.  If you have <code>N</code> sides for a circle of radius <code>r</code> centered at <code>(cx, cy)</code>, then you can generate the coordinates of the <code>i<SUP>th</SUP></code> point as
+                                        </p>
+
+                                        <h3>
+                                        \[ x = cx + r* \cos \left( \frac{2 \pi i}{N} \right) \]
+                                        </h3>
+                                        <h3>
+                                        \[ y = cy + r* \sin \left( \frac{2 \pi i}{N} \right) \]
+                                        </h3>
+
+                                        <p>
+                                            Then connect these points with line segments in a loop to form an approximate circle drawing.  You can use <a href = "https://www.cplusplus.com/reference/cmath/cos/">cos</a>, <a href = "https://www.cplusplus.com/reference/cmath/sin">sin</a>, and <code>M_PI</code> in <code>math.h</code> to help you (NOTE: if it tells you <code>M_PI</code> is undefined, just define a constant <code>3.141</code> for pi).
+                                        </p>
+
+                                        <p>
+                                            Below is an example of drawing two circles with this class.  
+											The first circle is blue with a thickness of 4, centered at <code>(150, 150)</code> with a radius of 100, using 15 line segments.
+											The second circle is orange (<span style="color: rgb(255, 165, 0);">rgb(255, 165, 0)</span>) with a thickness of 2, centered at <code>(350, 350)</code> with a radius of 50, using 100 line segments.
+                                        </p>
+
+                                        <img src = "Circles.png" style="border: 5px solid #555;">
+										<p></p>
+										<HR>
+
+                                        <h3><a name = "together">Task 4: Putting It All Together (1.5 Points)</a></h3>
+                                        <p>
+                                            Fill in some code in <code>driver.cpp</code> to draw at least one of each shape you've created before your final submission.  You may actually want to make an interesting drawing, but that's not required here.
+                                        </p>
+
+
+										<p></p>
+										<HR>
+										<h3><a name = "extra">Extra Credit: Friend Classes</a></h3>
+										<p>
+											For up to one extra point, use <a href = "https://www.geeksforgeeks.org/friend-class-function-cpp/">friend classes</a> in an appropriate way to make your code more succinct.  Feel free to modify <code>Point.h</code> or <code>LineSegment.h</code> in the process of doing this if it helps.
+										</p>
+
+
+
+
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
+												<li><a href = "../../Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "../../Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#macos">Mac OS Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#virtualbox">VirtualBox</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a>
+												<ul>
+													<li><a href = "../../Assignments/HW1_VirtualCities/ArtContest">Art Contest</a></li>
+												</ul>
+												</li>
+												<li><a href = "../../Assignments/HW2_Steganography">Homework 2: Image Processing And Steganography</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays">Lab 1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a></li>
+												<li><a href = "../../Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises / Pre-Class Work</span>
+											<ul>
+												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
+												<li><a href = "../../ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
+												<li><a href = "../../../Modules/PointerFundamentals/Exercise1">Pointer Fundamentals Module</a></li>
+												<li><a href = "../../ClassExercises/Week2_3_PointerTricks">Week 2/3: C++ Pointers And Pitfalls</a></li>
+												<li><a href = "../../ClassExercises/Week3_Pointers_Arrays">Week 3: C++ Pointers And Arrays</a></li>
+												<li><a href = "../../ClassExercises/Week3_AudioFiltering">Week 3: Audio Filtering</a></li>
+												<li><a href = "../../ClassExercises/Week3_2048">Week 3: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week4_DynMem">Week 4: Command Line Arguments and Dynamic 2D Arrays</a></li>
+												<li><a href = "../../ClassExercises/Week4_BinaryDrills">Week 4: Binary Drills</a></li>
+												<li><a href = "https://ursinus.instructure.com/courses/13764/quizzes/18074">Week 4: Binary/Hex Module</a></li>
+												<li><a href = "../../ClassExercises/Week4_Binary_LFSR">Week 4: Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</a></li>
+												<li><a href = "../../ClassExercises/Week4_Bits">Week 4: Bits And XOR Encryption</a></li>
+												<li>
+													<a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics">Week 5: Object Basics Code</a>
+												</li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/CppClasses/Video1">Week 5/6: C++ Classes And Inheritance Module</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href = "../../style.html">Style Guide</a></li>
+										</li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>

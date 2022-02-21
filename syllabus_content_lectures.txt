@@ -63,9 +63,9 @@ C++ Classes: Static Variables, Information Hiding/Encapsulation (public and priv
 
 <ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics">Completed code from class</a></li><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm">TutorialsPoint: Notes on C++ Static Variables/Methods in Classes</a></li></ul>
 LECTURE
-Lab 3: Inheritance / Shape Drawing
+<a href = "Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a>
 
-
+<ul><li><a href = "https://atomicobject.com/resources/oo-programming/object-oriented-aggregation">Notes on aggregation</a></li></ul>
 LECTURE
 Discovering Polymorphism
 

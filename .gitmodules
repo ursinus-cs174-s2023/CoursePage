@@ -43,3 +43,6 @@
 [submodule "ClassExercises/Week5_Classes/Week5_ObjectBasics"]
 	path = ClassExercises/Week5_Classes/Week5_ObjectBasics
 	url = https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics.git
+[submodule "Labs/Lab3_ShapesInheritance/Lab3_ShapesInheritance"]
+	path = Labs/Lab3_ShapesInheritance/Lab3_ShapesInheritance
+	url = https://github.com/ursinus-cs174-s2022/Lab3_ShapesInheritance.git
