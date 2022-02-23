@@ -46,3 +46,6 @@
 [submodule "Labs/Lab3_ShapesInheritance/Lab3_ShapesInheritance"]
 	path = Labs/Lab3_ShapesInheritance/Lab3_ShapesInheritance
 	url = https://github.com/ursinus-cs174-s2022/Lab3_ShapesInheritance.git
+[submodule "Assignments/HW3_InvasiveSpecies/HW3_InvasiveSpecies"]
+	path = Assignments/HW3_InvasiveSpecies/HW3_InvasiveSpecies
+	url = https://github.com/ursinus-cs174-s2022/HW3_InvasiveSpecies.git
