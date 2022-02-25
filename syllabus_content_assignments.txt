@@ -40,18 +40,18 @@ Assignment 2 Check-In
 Assignment 2 Due
 
 2022-02-22
-Assignment 3 (Buddy): COVID Polymorphism Out
+<a href = "Assignments/HW3_InvasiveSpecies">Assignment 3 (Buddy): Invasive Species Polymorphism</a> Out
 
-2022-02-22
+2022-02-24
 <a href = "Labs/Lab3_ShapesInheritance">Lab 3</a> Due
 
 2022-02-25
-Assignment 3 Check-In
-
-2022-02-28
-Assignment 3 Due
+Assignment 3 Part 1 Due
 
 2022-03-04
+Assignment 3 Due
+
+2022-03-18
 <HR>Assignment 4 (Buddy): Doubly Linked Lists / Breadth-First Search Out
 
 2022-03-04

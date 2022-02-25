@@ -41,239 +41,198 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>The Terminal And Files</h2>
+                                        <h2>Homework 3: Invasive Species Polymorphism</h2>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
+										
 
-										<h3>
-											Table of contents
+
+                                        <h2><a name = "overview">Overview / Logistics</a></h2>
+										<p>
+                                            The purpose of this assignment is to get students practice with objects and inheritance in C++ in the service of a scientific application inspired by the research of our very own <a href = "https://www.ursinus.edu/live/profiles/5935-eric-takyi">Eric Takyi</a>.  Students will be building a Monte Carlo simulation of a model of invasive species undergoing reproduction.  Normally, there is a roughly 50% chance that a female will give birth to a male and a 50% chance that a female will give birth to a female.  But when we introduce <b>super males</b> into the environment, which have two Y chromosomes, then there is a 100% chance that the offspring will be a male.  This leads to an interesting, non-destructive, non-violent strategy for the eradication of a population of invasive species over time.  We will be building a very simple model of this using C++, though Dr. Takyi takes a very different approach by modeling differential equations for the population dynamics.
+										</p>
+
+										<p>
+                                            <h3><a name = "objectives">Learning Objectives</a></h3>
+                                            <ul>
+                                                <li>Use polymorphism to store and manage a collection of heterogenous but related objects</li>
+												<li>Create basic particle simulations on a 2D grid</li>
+												<li>Write reusable code </li>
+												<li>Sharpen debugging skills</li>
+                                            </ul>
+                                        </p>
+
+										<h3><a name = "building">Obtaining/Building Code</a></h3>
+                                        <p>
+                                            You can download the code for this assignment by using git in the terminal
+										</p>
+										
+										<p>
+											<code>
+												git clone https://github.com/ursinus-cs174-s2022/HW3_InvasiveSpecies.git
+											</code>
+										</p>
+										
+
+										<p>
+											The build process for this code is slightly more involved because the program uses a real time graphics API known as <a href = "https://www.opengl.org">OpenGL</a>, which runs on your <a href = "https://www.intel.com/content/www/us/en/products/docs/processors/what-is-a-gpu.html">GPU</a>, and whose compilation scheme is platform dependent.  Thankfully, <a href = "https://www.alinenormoyle.com/">Aline Normoyle</a>, my counterpart down the street at <a href = "https://www.brynmawr.edu/cs/">Bryn Mawr College</a>, has created a build script for this using <a href = "https://medium.com/@onur.dundar1/cmake-tutorial-585dd180109b">cmake</a>, which you've already tested on <a href = "../HW0_Warmup/index.html#opengl">homework 0</a>.  In a nutshell, cmake is a language on top of makefiles which creates makefiles for you automatically based on system parameters.  I've extended this build script slightly to include the files for this assignment.  To run it, execute the following commands from within the <code>HW3_InvasiveSpecies</code> folder you downloaded:
+                                        </p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											mkdir build
+											cd build
+											cmake ..
+										]]></script>
+
+										<p>
+											This will create a <code>makefile</code> in the new <code>build/</code> directory you created.  From now on, you can just type <code>make</code> in that directory to build the executable <code>driver</code>, which is the entry point for running your code.  Unless you add new files (which you don't have to for this assignment), you will not need to touch this makefile.  If you do happen to make new files, you should just add them to line 54 of <code>CMakeLists.txt</code> and repeat the above process to generate a new makefile.
+										</p>
+										
+
+                                        
+
+										<h3><a name = "timeline">Timeline</a></h3>
+										<p>
+											
+										</p>
+
+                                        <h3><a name = "readme">What to submit</a></h3>
+										
+										<p>
+											When you are finished, submit a zip file of all of your code.  This should include modified versions of <code>simulation.h</code>, <code>simulation.cpp</code>, <code>animal.h</code>, and <code>animal.cpp</code>.
+										</p>
+
+										
+										<h2><a name = "simulation">Part 1: Basic Particle Simulation</a></h2>
+
+										<p>
+											In the first part of this assignment, you should flesh out the <code>Animal</code> and <code>Simulation</code> classes to create a basic particle simulation with the animals.  Before proceeding, take a moment to study the cpp and header files for these classes to make sure they make sense.  Here are a few things to focus on:
 											<ul>
-												<li><a href = "#basics">Basics File/Folder Navigation</a></li>
-												<li><a href = "#filetrees">File Trees</a>
-													<ul>
-														<li><a href = "#absrel">Absolute vs Relative Paths</a></li>
-													</ul>
+												<li>
+													The <code>Simulation</code> class is setup to contain an <a href = "https://www.geeksforgeeks.org/list-cpp-stl/">STL list</a> of <code>Animal</code> object pointers that point to the animals in the simulation.
 												</li>
 												<li>
-													<a href = "#wsl1">Paths in WSL1 on Windows</a>
+													Each <code>Animal</code> object holds a reference back to the <code>Simulation</code> object that contains it.  You can use the <code>circle</code> method of the <code>Simulation</code> class to draw a dot for the animal, and you can also query parameters in the simulation like lifetime and gestation time.
 												</li>
-											</ul>
-										</h3>
-
-										<p>
-											We're going to talk now about a new programming environment which may seem daunting at first, but which is incredibly powerful and which will actually make things simpler for us.  It's known as the "command line" or the "shell" or the "terminal," and it's a fully text-based way of interacting your computer (in fact, it used to be the only way to interact with the computer).  Only text, you say??  How could this make things easier?  Well we won't need to point and click, and we'll be able automate things and totally slice through data.  There are also things that we will only be able to do with the terminal, as you will see.
+												<li>
+													The <code>Simulation</code> class has a method called <code>step</code> which moves the animation one step forward.  Right now, this just draws a red dot at the center of the canvas, but you will replace this with code to loop through all of the animals to take their actions and draw them.
+												</li>
+											</ul>        
 										</p>
 
-										<h3><a name = "basics">Basic File/Folder Navigation</a></h3>
+
+										<h3>Your Tasks</h3>
 
 										<p>
-											<b>Commands covered:</b> <code>pwd, ls, mkdir, cd, echo</code>
+											Each animal is located on a 2D grid and should have an <code>x</code> and <code>y</code> coordinate for its position on the unit square between 0 and 1.  In addition, each animal should have a <b>velocity</b>, or a direction in which its moving, which also has two coordinates <code>vx</code> and <code>vy</code> (which are unconstrained).  The image below depicts this, which the velocity <b>(vx, vy)</b> drawn as an arrow relative to the position <b>(x, y)</b>:
 										</p>
 
+										<img src = "Grid.svg" width=300>
+
 										<p>
-											So, without further ado, let's fire it up.  You can follow along on your own computer if you'd like.  Here's what my terminal looks like when I first open it on my laptop running Ubuntu Linux
+											As time elapses, the dots should move according to their velocities.  The equations for motion are 
 										</p>
 
-										<img src = "term1.png">
+										<div style="width:200px;">
+											<h4>
+												\[ x \gets x +  \Delta t \times vx \]
+												\[ y \gets y +  \Delta t \times vy \]
+											</h4>
+										</div>
 
 										<p>
-											Most lay people would throw up their hands and assume their computer was broken at this point.  But it won't take us long to do a lot.  Let's start by typing <code>pwd</code> and pressing <code>ENTER</code>
-										</p>
-
-										<img src = "pwd.png">
-
-										<p>
-											<code>pwd</code> stands for "print working directory."  In this case, we see that we're in the directory <code>/home/ctralie</code> (this will vary slightly on your computer depending on what operating system you're using and what your username is).  But regardless, I see I'm in my home directory.
-										</p>
-
-										<p>
-											Now let's type <code>ls</code>, which stands for "list directory."  We see the following:
-										</p>
-
-										<img src = "ls.png">
-
-										<p>
-											This is showing us all of the files that are in this directory.  Just to check, this is exactly what we see in the regular file browser:
-										</p>
-
-										<img src = "lsdir.png" width=600>
-
-										<p>
-											Now let's make a new directory within this directory which we will use as a sandbox.  I'll call it <code>dangerous</code>.  I'll use the <code>mkdir</code> command
-										</p>
-
-										<img src = "mkdir.png">
-
-										<p>
-											Now let me go into this directory in the terminal.  I'll use the <code>cd</code>, or "change directory," command at this point
-										</p>
-
-										<img src = "cd.png">
-
-										<p>
-											As a sanity check, when we type pwd, we now see we're one directory "further in" at <code>/home/ctralie/dangerous</code>
-										</p>
-
-										<p>
-											Now let's explore a different kind of command type <code>echo "Test string"</code> into the terminal
-										</p>
-
-										<img src = "echo.png">
-
-										<p>
-											The <code>echo</code> command simply prints back out exactly what we pass to it.  Seems like kind of a trivial thing, but a powerful use case emerges when when we <b>redirect</b> its output to a file.  In particular, when we type 
-										</p>
-
-										<p>
-											<code>echo "Test string" > out.txt</code>
-										</p>
-
-										<p>
-											this sends the output of the echo command to the file <code>out.txt</code>.  If this file doesn't exist, it's created with the contents "Test string".  If it does exist, it's overwritten with these contents (so we should be careful with this).  If we want to simply add something to the end of a file, or <b>append</b>, we instead type
-										</p>
-
-										<p>
-											<code>echo "Something new" >> out.txt</code>
-										</p>
-
-										<p>
-											So a one &gt; is overwrite, and two &gt; &gt; is append
-										</p>
-
-										<p>
-											Let's examine one more interesting case of echo.  Type <code>echo $PATH</code>.  On my computer, this prints out the following
-										</p>
-
-										<img src = "echopath.png">
-
-										<p>
-											$PATH is what's known as the "path variable" (a $ in the terminal means variable) and it stores a list of directories where we can find all possible commands to run in the terminal.  In fact, this gives us a new perspective on the terminal commands.  Every command you run is actually a program which exists in one of these directories.  When you type the command, it looks through all of the directories in <code>PATH</code> to see if it can find a program with a matching name, and if it does, it runs it.  For example, the <code>pwd</code> command is actually a program living in <code>/usr/bin/pwd</code>.  So I could run it this way
-										</p>
-
-										<img src = "pwdfull.png">
-
-										<p>
-											One upshot is that sometimes if you install new software that's not in one of the paths, you'll have to add a new directory to the <code>PATH</code> variable.  Another upshot is that when you make new programs, you're essentially just programming in new commands to the terminal!
-										</p>
-
-										<HR>
-										<h3><a name = "filetrees">File Trees</a></h3>
-
-										<p>
-											<b>New commands: </b> <code>find</code>
-										</p>
-
-										<p>
-											Now that we know a little bit about the terminal, let's setup some more files and folders in our <code>dangerous</code> directory to elucidate file hierarchies a bit more:
-										</p>
-
-										<img src = "oneinner.png">
-
-										<p>
-											At this point, when we type <code>ls</code>, we see nothing.  However, when we type <code>ls -all</code>, which is often used to look at hidden files, we see the following two files <code>.</code> and <code>..</code>
-										</p>
-
-										<img src = "lsall.png">
-
-										<p>
-											Actually, these are folders, not files.  If we try to <code>cd</code> into <code>.</code>, nothing happens.  However, if we <code>cd</code> into <code>..</code>, we actually go "up one" directory
-										</p>
-
-										<img src = "cddotdot.png">
-
-										<p>
-											Let's keep doing this and create another nested sequence of folders parallel to the one we just created
-										</p>
-
-										<img src = "morefolders.png">
-
-										<p>
-											At this point, it would be helpful to draw a picture of what we've made as a <b>tree data structure</b>.  We'll draw each folder as a box, and we'll draw an arrow from each folder to files/folders that are in it.
-										</p>
-
-										<img src = "dangerous.svg" width=600>
-
-										<p>
-											If we also superimpose the <code>.</code> and <code>..</code> arrows, we get the following
+											In the above image, <code>vx</code> and <code>vy</code> are both positive, so the particle will move up and to the right.
 										</p>
 										
-										<img src = "dangerousback.svg" width=600>
+
+										<h3>Variables / Instantiation (5 Points)</h3>
+										<p>
+											Create <b>protected</b> variables for the position and velocity of an animal.  Randomly initialize the position coordinates to be between 0 and 1, and randomly initialize the velocity coordinates to be between -0.2 and 0.2, using the <code>RandFloat</code> class provided in <code>randutils.h</code>
+										</p>
+
+										<h3>Drawing (5 Points)</h3>
 
 										<p>
-											This picture whos us how having a hierarchy of folders allows us to have duplicate file and foldernames (e.g. there are two copies of both <code>inner</code> and <code>innermost</code>).  It also gives us a very nice, visual way to construct <i>relative file paths</i>.  For instance, we're currently in the leftmost directory called <code>innermost</code>.  If we want to go to the directory <code>inner</code> on the right, we just follow a bunch of arrows.  <i>Each time we follow an arrow, we add a slash <b>/</b></i>.  So this would translate into the relative path 
+											Create a <code>draw</code> method in the <code>Animal</code> class that draws a black dot of radius <b>0.01</b> at the animal's position, using the <code>circle</code> method in the <code>Simulation</code> class.  Then, add a loop to the <code>step</code> method to draw all of the animals.
 										</p>
 
 										<p>
-											<code>../../../two/inner</code>
+											Before proceeding, add a few animals to the simulation in the <code>Simulation</code> constructor, and make sure you see that number of animals on the screen as black dots
 										</p>
 
-										<img src = "buildrelpath.png">
+										<h3>Motion (5 Points)</h3>
 
 										<p>
-											If we've forgotten what we've made, we can use the <code>find</code> command to recursively visits all of our folders starting from where we are:
-										</p>
-
-										<img src = "find.png">
-
-										<h4><a name = "absrel">Absolute vs Relative Paths</a></h4>
-
-										<p>
-											Whenever a path starts with a <b>/</b>, it is treated as an <b>absolute path</b>.  This means that it starts <i>at the top of the file hierarchy</i>.  So, for example, if I typed <code>cd /one/inner</code>, I'd get "No such file or directory," but if I typed
+											Create an <code>action</code> method in the <code>Animal</code> class that moves the animal according to elapsed time in the simulation and according to its velocity.  
 										</p>
 										<p>
-											<code>cd /home/ctralie/dangerous/one/inner</code>
+											To make the animals bounce off of the walls of the simulation, you should reset a coordinate to 1 and negate the velocity on that axis if it goes beyond 1 (and likewise, you should reset the coordinates to 0 if they go less than 0).  So, for instance, if <code>vx = 0.06</code> and you find that <code>x = 1.01</code>, then you should reset <code>x</code> to 1 and <code>vx</code> to -0.06;
 										</p>
 										<p>
-											that would work
+											Be sure to call this method from within the <code>Simulation</code> method <code>step</code> so that the animals move, in addition to being drawn.  Before proceeding, make sure the black dots now move around, as shown below:
 										</p>
 
-										<HR>
-											<h3><a name = "wsl1">Paths in WSL1 on Windows</a></h3>
+										<img src = "Motion1.gif">
+										<p></p>
 
-											<p>
-												If you're on windows under <a href = "../../Software/index.html#windows">WSL</a>, you should be aware of how to access files in your regular windows filesystem so that you can also open the files/folders you're manipulating in Windows explorer.  The <code>C:</code> drive is actually mounted under the directory <code>/mnt/c</code>.  Then, based on your username, you can go further deeper into <code>Users/username</code>.  So, for example, let's suppose I had a folder called <code>CS174</code> on my desktop.  Then the absolute path to this folder would be  
-											</p>
+										<h3>Lifetimes / Destruction (10 Points)</h3>
 
-											<p>
-												<code>/mnt/c/Users/ctralie/Desktop/CS174</code>
-											</p>
+										<p>
+											Add two variables to the simulation:
+											<ol>
+												<li>
+													A <code>private float</code> that stores how long it takes an animal to become an adult.
+												</li>
+												<li>
+													A <code>private float</code> that stores how long an animal lives until it dies.
+												</li>
+											</ol>
+											Then, add a <b>protected</b> variable to each animal that keeps track of how long it's been alive (summing up the <code>dt</code> parameter in <code>step</code>).  If it's younger than an adult, draw it with a radius of <code>0.005</code>.  If it's an adult, switch to a radius of <code>0.01</code>.  Once it's exceeded the max lifetime, you should remove it from the simulation list so it isn't drawn anymore.  Be sure to clean up memory when you remove it!  
+										</p>
+										<p>
+											Finally, remove all animals in the destructor of the simulation to free up memory.
+										</p>
 
-											<p>
-												It might be a bit tedious to keep typing this every time you open your terminal, so you can remember this in a terminal variable called <code>CS174</code> by typing 
-											</p>
+										<p>
+											Below is an example with a time to adult of 5 and a lifetime of 10
+										</p>
+										<img src = "Motion_withDeath.gif">
 
-											<p>
-												<code>echo "export CS174=/mnt/c/Users/ctralie/Desktop/CS174" >> ~/.bashrc</code>
-											</p>
-											<p>
-												<code>source ~/.bashrc</code>
-											</p>
-
-											<p>
-												Now if you type 
-											</p>
-
-											<p>
-												<code>cd $CS174</code>
-											</p>
-
-											<p>
-												it will take you right there.  Below is proof that this worked for me.  Of course, you should replace this path with wherever you've chosen to store your 174 files
-											</p>
+										<p></p>
 
 
-											<p>
-												<img src = "wsl.png">
-											</p>
+										<h3>Motion To Neighbors (10 Points)</h3>
 
+										<p>
+											Create a method in the <code>Simulation</code> class that accepts a pointer to animal <b>A</b> and which returns a pointer to animal <b>B</b> in the simulation which is closest to <b>A</b> (where B &NotEqual; A), or NULL if <b>A</b> is the only animal in the simulation.  Recall that the distance between two coordinate pairs <b>(A.x, A.y)</b> and <b>(B.x, B.y)</b> is 
+										</p>
 
+										<div style="width:100px;">
+											<h3>
+												\[ d = \sqrt{(A.x-B.x)^2 + (A.y-B.y)^2} \]
+											</h3>
+										</div>
 
+										<p>
+											We will need this in a moment to make males pursue females.  For now, to test that this is working properly, call it from within the <code>action</code> method of the <code>Animal</code> class, and change course to move towards animal <b>B</b> if animal is greater than <b>0.1</b> units away from <b>B</b>.  To do this, change the velocity of <b>A</b> to be 
+										</p>
+
+										<div style="width:100px;">
+											<h3>
+												\[ vx = 0.1 \times (B.x - A.x)/ \sqrt{(A.x-B.x)^2 + (A.y-B.y)^2}  \]
+
+												\[ vy = 0.1 \times (B.y - A.y)/ \sqrt{(A.x-B.x)^2 + (A.y-B.y)^2}  \]
+											</h3>
+										</div>
+
+										<p>
+											If you've done this properly, you should get dynamics like the ones below (where this example is showing 10 animals).
+										</p>
+
+										<img src = "MotionClose.gif">
 										
-										
-										
-
                                     
                                 </div>
 						</div>
@@ -422,5 +381,3 @@
 			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../../assets/js/main.js"></script>
 <!-- End Scripts -->
-	</body>
-</html>

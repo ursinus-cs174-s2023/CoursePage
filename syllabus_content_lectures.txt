@@ -71,7 +71,7 @@ Discovering Polymorphism
 
 
 LECTURE
-Code Roundup, Abstract Classes
+STL Linked Lists, Abstract Classes
 
 
 LECTURE
