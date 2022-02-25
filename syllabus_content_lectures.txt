@@ -67,15 +67,15 @@ LECTURE
 
 <ul><li><a href = "https://atomicobject.com/resources/oo-programming/object-oriented-aggregation">Notes on aggregation</a></li></ul>
 LECTURE
-Discovering Polymorphism
+Begin Polymorphism
 
 
 LECTURE
-STL Linked Lists, Abstract Classes
+Finish Polymorphism, STL Linked Lists
 
 
 LECTURE
-Class Exercise: Comparators And Insertion Sort
+Abstract Classes, Lab 4: Comparators And Insertion Sort
 
 
 LECTURE
@@ -87,11 +87,11 @@ Unit 3: Object-Oriented Data Structures
 
 
 LECTURE
-Lab 4: Dynamic Array ADT
+Linked List Implementations with Nodes/Aggregation
 
 
 LECTURE
-Linked Lists
+Linked List Brush-Up, Lab 5: Dynamic Array ADT
 
 
 LECTURE
@@ -103,11 +103,11 @@ Code Roundup, Recursion: Factorial, Fibonacci, Ackermann
 
 
 LECTURE
-Lab 6: Recursive Drawing / Fractals
+Towers of Hanoi / Binary Search
 
 
 LECTURE
-Towers of Hanoi / Binary Search
+Lab 6: Recursive Drawing / Fractals
 
 
 LECTURE
