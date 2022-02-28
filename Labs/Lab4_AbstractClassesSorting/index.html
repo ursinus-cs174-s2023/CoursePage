@@ -41,41 +41,178 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h1>Binary Drills</h1>
-										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h2>Lab 4: Abstract Classes And Sorting (5 Points)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
-										
+
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this lab is to give you practice with the abstract classes and inheritance.  In the process, you will also implement an algorithm to sort objects along a number line.
+                                        </p>
+
+										<p>
+											You can obtain the starter code by typing
+										</p>
+
+										<p>
+											<code>git clone https://github.com/ursinus-cs174-s2022/Lab4_AbstractSorting.git</code>
+										</p>
+
+										<p>
+											I have provided a makefile, and the entry point for running the code with a <code>main</code> is in <code>driver.cpp</code>
+										</p>
 
 										
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+												<li>Separate out class specification from implementation between header files and cpp files, respectively</li>
+                                                <li>Implement general code to implement algorithms that can apply to many specific types, using abstract classes</li>
+                                            </ul>
+                                        </p>
+
+                                            
+
+										<h2>Background: Abstract Classes And Comparable Objects</h2>
 										<p>
-											As you recall, instead of 10 digits in each place and powers of 10 in each place, binary numbers have only 0s and 1s as digits and powers of 2.  In particular, we have the 1s place, the 2s place, the 4s place, the 8s place, the 16s place, etc.  
+											<b>Abstract Classes</b> are classes that include <b>pure virtual</b> methods.  The declarations look like this:
 										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											virtual type methodName(...)=0;
+                                        ]]></script>
+
 										<p>
-											I've coded up a few applets below so you can practice representing binary numbers.  The first two are drills on converting back and forth between binary and base 10, and the last one shows binary addition step by step.  Do these until you feel comfortable.  If you are <b>totally new</b> to Binary, read <a href = "https://diveintosystems.org/book/C4-Binary/bases.html">4.1 and 4.2 of Dive Into Systems</a>, and, if you'd like watch the first five Khan Academy Videos at <a href = "https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/number-systems-introduction">this link</a> (up to and including converting from decimal to hexadecimal), which go through the same content but in a more visual way.
+											where the <code>=0</code> is what causes this to be pure virtual.  What this means is that we <b>must</b> override the class with a subclass that implements this method; we cannot use the abstract class by itself.  Thus, we think of an abstract class as <b>specifying a functionality that we would like inheriting objects to have</b>.  For this reason, abstract classes are often named as "something-<b>able</b>".  
 										</p>
+
 										<p>
-											Regardless, you should do these drills until you feel comfortable
+											You will be working with an abstract class called <code>Comparable</code>, which specifies the ability to compare two objects in a total order via the pure virtual method <code>compareTo</code>.  The method works as follows:
+											<ul>
+												<li>
+													If <code>x.compareTo(y) &lt; 0</code>, then <code>x &lt; y</code>
+												</li>
+												<li>
+													If <code>x.compareTo(y) == 0</code>, then <code>x = y</code>
+												</li>
+												<li>
+													If <code>x.compareTo(y) &gt; 0</code>, then <code>x &gt; y</code>
+												</li>
+											</ul>
 										</p>
-										
-										<iframe src = "BinaryBase10.html" width=100% height=1200></iframe>
+
+										<p>
+											I've provided one class, <code>CompInt</code>, which implements this method for <code>int</code> variables.  This class is a very thin <b>wrapper class</b> around an ordinary <code>int</code>, and the <code>compareTo</code> method is implemented quite simply as 
+										</p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											/**
+											* @brief Compare one CompInt to another
+											* 
+											* @param other Other CompInt object
+											* @return This int minus the other int
+											*/
+											int CompInt::compareTo(Comparable* other) {
+												CompInt* cother = (CompInt*)other;
+												return x - cother->x;
+											}
+                                        ]]></script>
+
+										<p>
+											The only trick here is that we have to cast <code>other</code> to a <code>CompInt*</code> type in order to access the field <code>x</code>.
+										</p>
+
 										<HR>
-										<iframe src = "BinaryHex.html" width=100% height=1200></iframe>
-										<HR>
-										<iframe src = "HexBase10.html" width=100% height=1200></iframe>
-
-										<iframe src = "CardGame.html" width=100% height=800></iframe>
+										<h2>Task 1: <code>getMinIndex</code> (1 Point)</h2>
+										<p>
+											One amazing thing we can do with abstract classes is to implement general purpose algorithms that can apply to many specific types.  In our case, anything that is <code>Comparable</code> can be put into what's known as a <a href = "https://en.wikipedia.org/wiki/Total_order">total order</a>; put simply, we can order <code>Comparable</code> objects along a number line.
+										</p>
 
 										<p>
-											Below is a binary clock.  Professor Schilling and I both have them in our offices, although hers is blue and mine is red
+											To demonstrate this, fill in the definition of the <code>getMinIndex</code> method in <code>comparable.cpp</code>, which takes in an array of <code>Comparable*</code> pointers, and which should return the index of the element which is smaller than all of the others, according to the total order induced by the <code>compareTo</code> method.  If there are ties, then it should return the smallest index.
 										</p>
-										<iframe src = "Clock.html" width=100% height=800></iframe>
-									
-									
-												
-										
-										
+
+										<p>
+											As an example, I have setup an array of 10 <code>CompInt*</code> references in <code>driver.cpp</code>.  The minimum index in that example should be <code>7</code>.
+										</p>
+
+										<HR>
+											<h2>Task 2: <code>CompString</code> String Wrapper (2 points)</h2>
+
+											<p>
+												To show off the generality of your code in the last part, create a class called <code>CompString</code> that wraps around a C++ string and implements the <code>compareTo</code> method to sort strings alphabetically.  You can use the <code>&lt;</code> operator to compare <code>char</code> components of each string.  For example, you would find in C++ that <code>'a' &lt; 'c'</code> evaluates to <code>true</code>.
+											</p>
+
+											<p>
+												When you are finished, test your <code>getMinIndex</code> method on an array of <code>CompString*</code> references.  As an example, suppose you had the following array of 10 <code>CompString</code> objects
+											</p>
+
+											<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+												    Comparable** cx = new Comparable*[10];
+													cx[0] = new CompString("collegeville");
+													cx[1] = new CompString("ursinus");
+													cx[2] = new CompString("program");
+													cx[3] = new CompString("object");
+													cx[4] = new CompString("college");
+													cx[5] = new CompString("polymorphism");
+													cx[6] = new CompString("inheritance");
+													cx[7] = new CompString("debugging");
+													cx[8] = new CompString("cplusplus");
+													cx[9] = new CompString("gdb");]]></script>
+
+											<p>
+												Then you should find that the minimum index is <code>4</code>, which corresponds to the string <code>"college"</code> (note how "college" comes before "collegeville" in the alphabet).
+											</p>
+
+										<HR>
+											<h2>Task 3: Insertion Sort (2 points)</h2>
+
+											<p>
+												In addition to <code>findMinIndex</code>, create a void method <code>sort</code> which puts the elements in a <code>Comparable*</code> array into sorted order, according to their <code>compareTo</code> method.  For this, you can use an algorithm known as <b>insertion sort</b>.  The pseudocode for this algorithm is as follows:
+											</p>
+
+											<script type="syntaxhighlighter" class="brush: py"><![CDATA[
+												i = 1
+												while i < N:
+													j = i
+													while j > 0 and arr[j-1] > arr[j]:
+														swap(arr[j], arr[j-1])
+														j = j-1
+													end while
+													i = i+1
+												end while
+											]]></script>
+
+
+											<p>
+												If this works properly, then the strings in the example in task 2 should print in the following order after calling sort:
+											</p>
+
+											<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+												college
+												collegeville
+												cplusplus
+												debugging
+												gdb
+												inheritance
+												object
+												polymorphism
+												program
+												ursinus]]></script>
+
+										<p>
+											To help you understand better why insertion sort works, have a look at the following two videos below:
+										</p>
+
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/8oJS1BMKE64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/ROalU379l3U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+											
+
+
 
                                     
                                 </div>
@@ -227,4 +364,3 @@
 			<script src="../../assets/js/main.js"></script>
 <!-- End Scripts -->
 	</body>
-</html>

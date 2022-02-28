@@ -52,3 +52,6 @@
 [submodule "ClassExercises/Week6_Polymorphism/Week6_Polymorphism"]
 	path = ClassExercises/Week6_Polymorphism/Week6_Polymorphism
 	url = https://github.com/ursinus-cs174-s2022/Week6_Polymorphism.git
+[submodule "Labs/Lab4_AbstractClassesSorting/Lab4_AbstractSorting"]
+	path = Labs/Lab4_AbstractClassesSorting/Lab4_AbstractSorting
+	url = https://github.com/ursinus-cs174-s2022/Lab4_AbstractSorting.git

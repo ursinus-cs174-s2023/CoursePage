@@ -77,7 +77,7 @@ Finish Polymorphism, STL Linked Lists
 LECTURE
 Abstract Classes, Lab 4: Comparators And Insertion Sort
 
-
+<ul><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm">TutorialsPoint: Notes on Interfaces in C++</a></li></ul>
 LECTURE
 Multiple Inheritance, The Diamond Problem
 
