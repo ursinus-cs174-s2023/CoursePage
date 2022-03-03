@@ -119,10 +119,6 @@ Binary Search Trees
 
 
 LECTURE
-Huffman Trees Concept, C++ Templates
-
-<ul><li><a href = "https://www.cplusplus.com/doc/oldtutorial/templates/">CPlusPlus.com Templates Reference</a></li><li><a href = "https://github.com/Ursinus-CS174-F2020/Week10_Code/commit/6700d4644594e119bf2ed94caa26a8a8ee28302c">Template edits to LinkedList code from class</a></li></ul>
-LECTURE
 Introduction to C++ STL: Vector, Priority Queue
 
 <ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
@@ -138,6 +134,10 @@ LECTURE
 Finish LinkedMap Implementation, Introduce Hash Tables Concept
 
 
+LECTURE
+Lab 8: Huffman Trees
+
+
 SECTION
 Unit 4: Advanced Topics in Systems Programming
 
@@ -151,7 +151,7 @@ Parallel Programming And Threads
 
 <ul><li><a href = "https://www.classes.cs.uchicago.edu/archive/2014/spring/12300-1/labs/lab4/">UChicago Notes on <code>pthread</code></a></li></ul>
 LECTURE
-Lab 8: Road Detection with Threads
+Lab 9: Road Detection with Threads
 
 
 LECTURE
@@ -167,7 +167,7 @@ Fundamentals of Assembly Language
 
 <ul><li><a href = "https://web.stanford.edu/class/archive/cs/cs107/cs107.1166/guide_x86-64.html">Stanford Notes on x64 Assembly</a></li><li><a href = "http://www.idryman.org/blog/2014/12/02/writing-64-bit-assembly-on-mac-os-x/">Mac</a> <a href = "https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/MakingCode64-BitClean/MakingCode64-BitClean.html">resources</a> on x64 assembly</li><li><a href = "https://rderik.com/blog/using-lldb-for-reverse-engineering/">RDerik: Using lldb for reverse engineering</a></li></ul>
 LECTURE
-Lab 9: Loops in Assembly Language
+Lab 10: Loops in Assembly Language
 
 
 LECTURE
@@ -179,10 +179,7 @@ Assembly Language Practice / Debugging
 
 
 LECTURE
-Lab 10: Buffer Overrun Attack
+Lab 11: Buffer Overrun Attack
 
 
-LECTURE
-Program Optimization
 
-<ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-12-optimization.html">Chapter 12</a></li></ul>

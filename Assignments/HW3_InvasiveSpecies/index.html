@@ -131,8 +131,8 @@
 												<li>By Monday 2/28, finish variables and drawing</li>
 												<li>By Thursday 3/3, finish motion, lifetimes/destruction</li>
 												<li>By Friday 3/4, finish motion to neighbors (part 1 due)</li>
-												<li>By Wednesday 3/15, finish males and females</li>
-												<li>By Friday 3/17, finish supermales (final deadline)</li>
+												<li>By Friday 3/17, finish males and females</li>
+												<li>By Monday 3/21, finish supermales (final deadline)</li>
 											</ul>
 										</p>
 
@@ -335,7 +335,16 @@
 										</p>
 
 										<p>
-											Now you're at the stage where you can test some of the code.  Below is a simulation that starts with 30 males and 30 females.  Your results may vary, but you should see all of the behaviors described above:
+											Now you're at the stage where you can test some of the code.  Below is a simulation that starts with 30 males and 30 females, with the following simulation parameters:
+											<ul>
+												<li> adultTime = 5 </li>
+												<li> lifetime = 20 </li>
+												<li> gestationTime = 3 </li>
+												<li> mateDist = 0.01 </li>
+											</ul>
+											
+											
+											Your results may vary, but you should see all of the behaviors described above:
 										</p>
 
 										<img src = "MaleFemale.gif">
@@ -346,7 +355,7 @@
 										<p>
 											Create a class called <code>SuperMale</code> the inherits from <code>Male</code>.  All of the behavior should be the same, except you should draw the dot as <span style="color:rgb(28, 219, 209);">rgb(28, 219, 209)</span>, and it has a 100% chance of impregnating a female with a male child.  For full credit in this section, I expect you to use polymorphism to factor out a method that performs a mating action on a female, so that you do not have to override the <code>action</code> method from the <code>Male</code> class.  If you've done this properly, your code for the <code>SuperMale</code> class should be very short!
 										</p>
-											To put it all together, add 5 supermales every 5 seconds if there are more than 5 females left in the simulation.  Below is an example of this applied to a starting simulation with 30 ordinary males and 30 females:
+											To put it all together, add 5 supermales every 5 seconds if there are more than 5 females left in the simulation.  Below is an example of this applied to a starting simulation with 30 ordinary males and 30 females, using the same parameters as above.  Overall, you will find it is more likely that the population will go extinct with the periodic addition of super males, although there is still a possibility it will explode.  
 										</p>
 
 										<img src = "MaleSupermaleFemale.gif">
