@@ -41,17 +41,49 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Homework 3: Invasive Species Polymorphism</h2>
+                                        <h2>Homework 3: Invasive Species Polymorphism (70 Points)</h2>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
+										<ul>
+											<li><a href = "#overview">Overview / Logistics</a>
+											<ul>
+												<li><a href = "#objectives">Learning Objectives</a></li>
+												<li><a href = "#building">Obtaining/Building Code</a></li>
+												<li><a href = "#timeline">Suggested Timeline</a></li>
+												<li><a href = "#readme">What to submit</a></li>
+											</ul>
+											</li>
+											
+
+											<li><a href = "#simulation">Part 1: Basic Particle Simulation</a>
+											<ul>
+												<li><a href = "#vars">Variables / Instantiation (5 Points)</a></li>
+												<li><a href = "#drawing">Drawing (5 Points)</a></li>
+												<li><a href = "#motion">Motion (5 Points)</a></li>
+												<li><a href = "#lifetimes">Lifetimes / Destruction (10 Points)</a></li>
+												<li><a href = "#neighbormotion">Motion To Neighbors (10 Points)</a></li>
+											</ul>
+											</li>
+											<li><a href = "#population">Part 2: Population Dynamics</a>
+											<ul>
+												<li><a href = "#female">Females (15 Points)</a></li>
+												<li><a href = "#male">Males (10 Points)</a></li>
+												<li><a href = "#supermale">Super Males (10 Points)</a></li>
+											</ul>
+											</li>
+										
+										</ul>
+										
+										
+										
 										
 
 
                                         <h2><a name = "overview">Overview / Logistics</a></h2>
 										<p>
-                                            The purpose of this assignment is to get students practice with objects, polymorphism, and inheritance in C++ in the service of a scientific application inspired by the research of our very own <a href = "https://www.ursinus.edu/live/profiles/5935-eric-takyi">Eric Takyi</a>.  Students will be building a Monte Carlo simulation of a model of invasive species undergoing reproduction.  Normally, there is a roughly 50% chance that a female will give birth to a male and a 50% chance that a female will give birth to a female.  But when we introduce <b>super males</b> into the environment, which have two Y chromosomes, then there is a 100% chance that the offspring will be a male.  This leads to an interesting, non-destructive, non-violent strategy for the eradication of a population of invasive species over time.  We will be building a very simple model of this using C++, though Dr. Takyi takes a very different approach by modeling differential equations for the population dynamics.
+                                            The purpose of this assignment is to get students practice with objects, polymorphism, and inheritance in C++ in the service of a scientific application inspired by the research of our very own <a href = "https://www.ursinus.edu/live/profiles/5935-eric-takyi">Eric Takyi</a>.  Students will be building a Monte Carlo simulation of a model of invasive species undergoing reproduction.  Normally, there is a roughly 50% chance that a female will give birth to a male and a 50% chance that a female will give birth to a female.  But when we introduce <b>super males</b> into the environment, which have two Y chromosomes, then there is a 100% chance that the offspring will be a male.  This leads to an interesting, non-destructive, non-violent strategy for the eradication of a population of invasive species over time.  We will be building a very simple model of this using C++, though Dr. Takyi takes a very different approach by <a href = "https://arxiv.org/pdf/1907.06079.pdf">modeling differential equations for the population dynamics</a>.
 										</p>
 
 										<p>
@@ -93,9 +125,15 @@
 
                                         
 
-										<h3><a name = "timeline">Timeline</a></h3>
+										<h3><a name = "timeline">Suggested Timeline</a></h3>
 										<p>
-											
+											<ul>
+												<li>By Monday 2/28, finish variables and drawing</li>
+												<li>By Thursday 3/3, finish motion, lifetimes/destruction</li>
+												<li>By Friday 3/4, finish motion to neighbors (part 1 due)</li>
+												<li>By Wednesday 3/15, finish males and females</li>
+												<li>By Friday 3/17, finish supermales (final deadline)</li>
+											</ul>
 										</p>
 
                                         <h3><a name = "readme">What to submit</a></h3>
@@ -147,12 +185,12 @@
 										</p>
 										
 
-										<h3>Variables / Instantiation (5 Points)</h3>
+										<h3><a name = "vars">Variables / Instantiation (5 Points)</a></h3>
 										<p>
 											Create <b>protected</b> variables for the position and velocity of an animal.  Randomly initialize the position coordinates to be between 0 and 1, and randomly initialize the velocity coordinates to be between -0.2 and 0.2, using the <code>RandFloat</code> class provided in <code>randutils.h</code>
 										</p>
 
-										<h3>Drawing (5 Points)</h3>
+										<h3><a name = "drawing">Drawing (5 Points)</a></h3>
 
 										<p>
 											Create a <code>draw</code> method in the <code>Animal</code> class that draws a black dot of radius <b>0.01</b> at the animal's position, using the <code>circle</code> method in the <code>Simulation</code> class.  Then, add a loop to the <code>step</code> method to draw all of the animals.
@@ -162,7 +200,7 @@
 											Before proceeding, add a few animals to the simulation in the <code>Simulation</code> constructor, and make sure you see that number of animals on the screen as black dots
 										</p>
 
-										<h3>Motion (5 Points)</h3>
+										<h3><a name = "motion">Motion (5 Points)</a></h3>
 
 										<p>
 											Create an <code>action</code> method in the <code>Animal</code> class that moves the animal according to elapsed time in the simulation and according to its velocity.  
@@ -177,7 +215,7 @@
 										<img src = "Motion1.gif">
 										<p></p>
 
-										<h3>Lifetimes / Destruction (10 Points)</h3>
+										<h3><a name = "lifetimes">Lifetimes / Destruction (10 Points)</a></h3>
 
 										<p>
 											Add two variables to the simulation:
@@ -203,7 +241,7 @@
 										<p></p>
 
 
-										<h3>Motion To Neighbors (10 Points)</h3>
+										<h3><a name = "neighbormotion">Motion To Neighbors (10 Points)</a></h3>
 
 										<p>
 											Create a method in the <code>Simulation</code> class that accepts a pointer to animal <b>A</b> and which returns a pointer to animal <b>B</b> in the simulation which is closest to <b>A</b> (where B &NotEqual; A), or NULL if <b>A</b> is the only animal in the simulation.  Recall that the distance between two coordinate pairs <b>(A.x, A.y)</b> and <b>(B.x, B.y)</b> is 
@@ -233,6 +271,86 @@
 
 										<img src = "MotionClose.gif">
 										
+										<p></p>
+
+										<HR>
+										<h2><a name = "population">Part 2: Population Dynamics</a></h2>
+
+										<p>
+											Now that we have basic motion and actions setup, we will use inheritance and polymorphism to branch off into different behaviors.  The picture below shows the hierarchy of inheritance.
+										</p>
+
+										<img src = "InheritanceHierarchy.svg">
+
+										<p>
+											And the descriptions below explain how to implement each subclass.
+										</p>
+										<p>
+											<b>NOTE: </b> You won't be able to fully test <code>Male</code> or <code>Female</code> until they are both implemented, because they both depend on each other.
+										</p>
+
+										<h3><a name = "female">Females (15 Points)</a></h3>
+										<p>
+											Add a variable to the simulation for storing a gestation time, or the time it takes from impregnation until a baby is born.  Then, create a subclass of the <code>Animal</code> class called <code>Female</code>, with a forward declaration in <code>animal.h</code> and an implementation in <code>animal.cpp</code>.  In addition to the inherited variables/methods from the <code>Animal</code> class, a <code>Female</code> should have the following variables/methods:
+											<ul>
+												<li>
+													A <b>private</b> variable for storing whether the female is pregnant, a <b>private</b> variable for storing the amount of time pregnant, and another <b>private</b> variable for storing whether the baby is a male or a female.
+												</li>
+												<li>
+													A <b>public</b> method called <code>impregnate</code> which accepts a <code>bool</code> indicating whether the child will be a male or a female.  If the female is of age, you should update the above variables.  Otherwise, do nothing.
+												</li>
+												
+											</ul>
+										</p>
+										<p>
+											Then, override the <code>action</code> method of the <code>Female</code> class to keep track of how long a female has been pregnant if she is pregnant, in addition to moving as normal (you may want to factor out your motion code into a helper method so you can reuse it here).  When the gestation time has been reached, add a new animal to simulation of the appropriate gender <b>at the current position of the female</b>.
+										</p>
+										<p>
+											Finally, to indicate gender and pregnancy, you should override the <code>draw</code> method so that in addition to drawing the dots smaller when the female is a child and larger when she is an adult, you should use the following colors:
+
+											<ul>
+												<li>
+													<span style="color:rgb(251, 117, 117);">rgb(251, 117, 117)</span> if the female is not pregnant
+												</li>
+												<li>
+													<span style="color:rgb(221, 29, 221);">rgb(221, 29, 221)</span> if the female is pregnant with a female
+												</li>
+												<li>
+													<span style="color:rgb(255, 187, 0);">rgb(255, 187, 0)</span> if the female is pregnant with a male
+												</li>
+												
+											</ul>
+											
+										</p>
+
+										<h3><a name = "male">Males (10 Points)</a></h3>
+										<p>
+											Add a variable to the simulation for "mating distance," or the distance an adult male needs to be away from an unpregnant adult female to impregnate her.  Then, create a class <code>Male</code> that's a subclass of <code>Animal</code>.
+										</p>
+										<p>
+											First, override the <code>draw</code> method so that a male is drawn as <span style="color:rgb(28, 95, 219);">rgb(28, 95, 219)</span>
+										</p>
+										<p>
+											Then, override the <code>action</code> method so that a male moves as normal, unless <b>he is of age and the nearest animal is an unpregnant female of age</b>.  In that case, he should head towards her (using your <a href = "#neighbormotion">motion to neighbors</a> code), and if he is <b>within the mating distance</b>, he should impregnate her.  The offspring should be male 50% of the time and female 50% of the time.
+										</p>
+
+										<p>
+											Now you're at the stage where you can test some of the code.  Below is a simulation that starts with 30 males and 30 females.  Your results may vary, but you should see all of the behaviors described above:
+										</p>
+
+										<img src = "MaleFemale.gif">
+										<p></p>
+
+										<h3><a name = "supermale">Super Males (10 Points)</a></h3>
+
+										<p>
+											Create a class called <code>SuperMale</code> the inherits from <code>Male</code>.  All of the behavior should be the same, except you should draw the dot as <span style="color:rgb(28, 219, 209);">rgb(28, 219, 209)</span>, and it has a 100% chance of impregnating a female with a male child.  For full credit in this section, I expect you to use polymorphism to factor out a method that performs a mating action on a female, so that you do not have to override the <code>action</code> method from the <code>Male</code> class.  If you've done this properly, your code for the <code>SuperMale</code> class should be very short!
+										</p>
+											To put it all together, add 5 supermales every 5 seconds if there are more than 5 females left in the simulation.  Below is an example of this applied to a starting simulation with 30 ordinary males and 30 females:
+										</p>
+
+										<img src = "MaleSupermaleFemale.gif">
+
                                     
                                 </div>
 						</div>
