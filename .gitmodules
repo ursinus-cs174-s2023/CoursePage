@@ -55,3 +55,9 @@
 [submodule "Labs/Lab4_AbstractClassesSorting/Lab4_AbstractSorting"]
 	path = Labs/Lab4_AbstractClassesSorting/Lab4_AbstractSorting
 	url = https://github.com/ursinus-cs174-s2022/Lab4_AbstractSorting.git
+[submodule "Assignments/HW4_LinkedListMaze/HW4_LinkedListMaze"]
+	path = Assignments/HW4_LinkedListMaze/HW4_LinkedListMaze
+	url = https://github.com/ursinus-cs174-s2022/HW4_LinkedListMaze.git
+[submodule "ClassExercises/Week7_LinkedLists/Week7_LinkedLists"]
+	path = ClassExercises/Week7_LinkedLists/Week7_LinkedLists
+	url = https://github.com/ursinus-cs174-s2022/Week7_LinkedLists.git

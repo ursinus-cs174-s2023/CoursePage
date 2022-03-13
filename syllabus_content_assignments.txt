@@ -55,27 +55,39 @@ Assignment 3 Part 1 Due
 Assignment 3 Due
 
 2022-03-21
-<HR>Assignment 4 (Buddy): Doubly Linked Lists / Breadth-First Search Out
+<HR>Assignment 4 Part 1(Buddy): Doubly Linked Lists Out
 
-2022-03-04
+2022-03-21
 Lab 5 Due
 
 2022-03-22
-Assignment 4 Due
-
-2022-04-01
-Lab 6 Due
+Assignment 4 Part 1 Due
 
 2022-03-28
+<HR>Assignment 4 Part 2 (Buddy): Solving Mazes Out
+
+2022-03-28
+Lab 6 Due
+
+2022-03-30
+Assignment 4 Part 2 Due
+
+2022-04-04
+<HR>Assignment 5 (Buddy): Basketball Hashing Out
+
+2022-04-04
 Lab 7 Due
 
-2022-04-06
-<HR>Assignment 6a (Buddy): Basketball Hashing Out
+2022-04-11
+Assignment 5 Due
 
-2022-04-06
-Assignment 6a Due
+2022-04-15
+<HR>Assignment 6 (Buddy): Huffman Trees Out
 
-2022-04-20
-<HR>Assignment 6b (Individual): The Shazam Algorithm (Final Project) Out
+2022-04-15
+Assignment 6 Due
 
-2022-04-20
+2022-04-25
+<HR>Final Assignment (Individual): Shazam Out
+
+2022-04-25

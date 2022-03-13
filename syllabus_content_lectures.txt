@@ -35,7 +35,7 @@ LECTURE
 
 <ul><li><a href = "ClassExercises/Week3_2048">Class Exercise: Making The 2048 Game Together</a></li></ul>
 LECTURE
-Code Roundup, Dynamic Memory, Valgrind
+Dynamic Memory, Valgrind
 
 
 LECTURE
@@ -75,11 +75,15 @@ Finish Polymorphism, STL Linked Lists
 
 
 LECTURE
-Abstract Classes, Lab 4: Comparators And Insertion Sort
+<p>Abstract Classes</p><a href = "Labs/Lab4_AbstractClassesSorting">Lab 4: Comparators And Insertion Sort</a>
 
 <ul><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm">TutorialsPoint: Notes on Interfaces in C++</a></li></ul>
 LECTURE
 Multiple Inheritance, The Diamond Problem
+
+
+LECTURE
+Catch-Up Day
 
 
 SECTION
@@ -91,23 +95,47 @@ Linked List Implementations with Nodes/Aggregation
 
 
 LECTURE
-Linked List Brush-Up, Lab 5: Dynamic Array ADT
+Lab 5: Dynamic Array ADT
 
-
+<ul><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li></ul>
 LECTURE
 Stacks And Queues
 
 
 LECTURE
-Code Roundup, Recursion: Factorial, Fibonacci, Ackermann
+Doubly-Linked Lists
+
+
+LECTURE
+STL Priority Queue
+
+<ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
+LECTURE
+Lab 6: Prim's Algorithm And Mazes
+
+
+LECTURE
+STL Set, STL Map, Begin LinkedMap Implementation
+
+<ul><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
+LECTURE
+LinkedMap Implementation
+
+
+LECTURE
+Hash Tables
+
+<ul><li><a href = "../ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
+LECTURE
+Recursion: Factorial, Fibonacci, Ackermann
+
+
+LECTURE
+Lab 7: Recursive Drawing / Fractals
 
 
 LECTURE
 Towers of Hanoi / Binary Search
-
-
-LECTURE
-Lab 6: Recursive Drawing / Fractals
 
 
 LECTURE
@@ -119,23 +147,7 @@ Binary Search Trees
 
 
 LECTURE
-Introduction to C++ STL: Vector, Priority Queue
-
-<ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
-LECTURE
-Lab 7: Prim's Algorithm And Mazes
-
-
-LECTURE
-STL Set, STL Map, LinkedMap Implementation
-
-<ul><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li><li><a href = "../ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
-LECTURE
-Finish LinkedMap Implementation, Introduce Hash Tables Concept
-
-
-LECTURE
-Lab 8: Huffman Trees
+Finish Binary Search Trees, Huffman Trees Background
 
 
 SECTION
@@ -143,15 +155,15 @@ Unit 4: Advanced Topics in Systems Programming
 
 
 LECTURE
-C++ Function Pointers
+Function Pointers
 
-
+<ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li>Class Exercise: Convolutional Image Filters</li></ul>
 LECTURE
 Parallel Programming And Threads
 
 <ul><li><a href = "https://www.classes.cs.uchicago.edu/archive/2014/spring/12300-1/labs/lab4/">UChicago Notes on <code>pthread</code></a></li></ul>
 LECTURE
-Lab 9: Road Detection with Threads
+Lab 8: Road Detection with Threads
 
 
 LECTURE
@@ -167,19 +179,10 @@ Fundamentals of Assembly Language
 
 <ul><li><a href = "https://web.stanford.edu/class/archive/cs/cs107/cs107.1166/guide_x86-64.html">Stanford Notes on x64 Assembly</a></li><li><a href = "http://www.idryman.org/blog/2014/12/02/writing-64-bit-assembly-on-mac-os-x/">Mac</a> <a href = "https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/MakingCode64-BitClean/MakingCode64-BitClean.html">resources</a> on x64 assembly</li><li><a href = "https://rderik.com/blog/using-lldb-for-reverse-engineering/">RDerik: Using lldb for reverse engineering</a></li></ul>
 LECTURE
-Lab 10: Loops in Assembly Language
+Loops in Assembly Language
 
 
 LECTURE
-Function Calls in Assembly Language
+Lab 9: Function Calls in Assembly Language
 
 <ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-4-all-about-functions.html">Chapter 4</a></li></ul>
-LECTURE 
-Assembly Language Practice / Debugging
-
-
-LECTURE
-Lab 11: Buffer Overrun Attack
-
-
-
