@@ -1,0 +1,429 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming,Spring 2022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Spring 2022</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Lab 5: My Vector (Dynamic Array ADT)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+									</header>
+
+									<div id="page-content">
+
+                                        <h2>Overview / Logistics</h2>
+										<p>
+                                            The purpose of this lab is to give you practice designing collections, and to explore what goes on under the hood of popular data structures such as the <a href = "https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html">Java Arraylist</a>, the <a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">C++ vector</a>, or the <a href = "https://docs.python.org/3/tutorial/datastructures.html">Python list</a>.
+                                        </p>
+
+										<p>
+											You can obtain the starter code by typing
+										</p>
+
+										<p>
+											<code>git clone https://github.com/ursinus-cs174-s2022/Lab5_MyVector.git</code>
+										</p>
+
+										<p>
+											I have provided a makefile, and the entry point for running the code with a <code>main</code> is in <code>driver.cpp</code>.  I have also provided a file <code>tester.cpp</code> with a main, which you can use to test your code rigorously when it's finished.
+										</p>
+
+                                        <p>
+                                            <h3>Learning Objectives</h3>
+                                            <ul>
+                                                <li>Manipulate public and private variables/methods in classes to accomplish information hiding</li>
+                                                <li>Gain experience using information hiding and object references to implement a user-friendly collection class.</li>
+												<li>
+													Maintain an underlying array to implement a flexible ArrayList-like data structure
+												</li>
+                                            </ul>
+                                        </p>
+
+                                        <h2>Background</h2>
+                                        <p>
+                                            The <code><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">vector</a></code> container class in the C++ standard template library (STL) provides a more flexible alternative to the traditional array.  It still has the "random access" property like regular arrays, so we can jump instantly to particular indices.  But it is much more flexible for adding and deleting elements than a traditional array.  Recall, for instance, if we wanted to add an element to the end of a regular array, we would have to make an entirely new array, copy everything over that was in there before, and then finally put in the new element:
+                                        </p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                            /**
+                                            * Create a new array with all of the elements in the original 
+                                            * array, plus a new one at the end
+                                            * @param array Original array
+											* @param N Length of array
+                                            * @param elem Element to add
+                                            * @return The new array
+                                            */
+                                           int* addElement(int* array, int N, int elem) {
+                                               int* newArray = new int[N+1];
+                                               for (int i = 0; i < N; i++) {
+                                                   newArray[i] = array[i];
+                                               }
+                                               newArray[N] = elem;
+                                               return newArray;
+                                           }
+                                           ... 
+                                           int* arr = new int[N];
+                                           ... 
+                                           arr = addElement(arr, N, elem); // Add some element to the array
+                                        ]]></script>
+
+                                        <p>
+                                            By contrast, if we have an <code>vector</code>, all we have to do is say 
+
+                                            <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                                vector<int> arr;
+                                                ...
+                                                arr.push_back(elem); // Add some element to the end of a vector
+                                            ]]></script>
+                                        </p>
+
+										<p>
+											And, as we will see in a moment, adding things to the end of a <code>vector</code> can be done in "<b>constant amortized time</b>"; that is, on average, it only takes some small number of operations independent of how many elements there are in the array.  This contrasts to the <code>addElement</code> code above, which always takes <b>N</b> operations if there are <b>N</b> elements in the array.  In this way, the <code>vector</code> has all of the flexible benefits of a linked list, while also maintaining the random access property of an ordinary array.
+										</p>
+
+										<p>
+											Finally, the <code>vector</code> class has the advantage that it is an object, not just a pointer like a regular array.  This means we can implement safeguards like bounds checking in its access methods.
+										</p>
+
+
+                                        <h3>Flexible resizing algorithm</h3>
+                                        <p>
+                                            Behind the scenes, a <code>C++ vector</code> actually has an array of generic items, which we call the "<b>underlying array</b>."  This private array is resized and maintained to accommodate the elements that are added to /removed from it.
+                                        </p>
+                                        <p>
+                                            One possible implementation of a vector would create a new array every time an element is added to the end, but this is very inefficient.  A better strategy is actually to keep an array that's longer than we need, and <b>only to resize it when we run out of room</b>.  When it runs out of room, we can double its size.  This ensures that the average "time complexity" (amount of time it takes per task) of adding an element to the end of the list is still a constant number of steps on average.  Or in more CS language, we have a "constant amortized cost for an add operation."  For example, let's say we start with an underlying array of size 10 and we add 100 elements to it.  We have to resize at the following places:
+                                            <ul>
+                                                <li>At 10, copying over 10 elements</li>
+                                                <li>At 20, copying over 20 elements</li>
+                                                <li>At 40, copying over 40 elements</li>
+                                                <li>At 80, copying over 80 elements</li>
+                                            </ul>
+                                            Otherwise, it's a simple assignment to an array index which takes constant time.  So the total number of steps is (100 + 10 + 20 + 40 + 80), or an average of <b>2.875</b> operations per add task (and this will never be more than 3 with the doubling scheme).
+                                        </p>
+
+                                        <p>
+                                            By the same token, if a lot of items are removed, it's wasteful to keep too large of an array in memory.  So if the list is holding <b>fewer than 1/3</b> the capacity of the underlying array after you remove an element, then you should halve the underlying array.
+                                        </p>
+
+                                        <p>
+                                            Bearing this in mind, below are the private variables of the <code>myvector</code> class
+                                        </p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											Item* items; // Underlying array that holds everything
+											int N; // size of the vector
+											int capacity; // Capacity of the underlying array
+                                        ]]></script>
+
+                                        <p>
+                                            There are actually three member variables per object: one for the underlying array, one for its size, and another for storing how many elements have actually been added to it (since the underlying array is usually larger than the number of elements in the vector).  By default, the underlying array starts off with a capacity of <code>DEFAULT_CAPACITY</code>, but it is possible to initialize it with an overloaded constructor where this initial capacity is a parameter:
+                                        </p>
+
+                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+                                            /**
+											* Initialize an ArrayList object with a particular 
+											* starting capacity
+											* @param startSize Initial capacity of the array
+											*/
+											template <typename Item>
+											myvector<Item>::myvector(int startSize) {
+												items = new Item[startSize];
+												N = 0;
+												capacity = startSize;
+											}
+											/**
+											* Initialize an ArrayList object with the underlying array
+											* having the default capacity
+											*/
+											template <typename Item> 
+											myvector<Item>::myvector() {
+												items = new Item[DEFAULT_CAPACITY];
+												N = 0;
+												capacity = DEFAULT_CAPACITY;
+											}
+                                        ]]></script>
+
+                                        <h2>Programming Tasks</h2>
+                                        <p>
+                                            Your job will be to fill in methods to add and remove items from the data structure, while maintaining the underlying array.  <b>You should not use any methods from the built-in C++ <code>vector</code> class</b>.  Rather, you will be making your own implementation from scratch that has the same performance characteristics of C++'s version.
+                                        </p>
+                                        <p>
+                                            First, study the provided code in <code>myvector.cpp</code> and <code>myvector.h</code>.  A number of methods have been provided to you already, and numerous hints have been provided in the comments.  Below are the methods you should implement.  It is recommended that you implement them in the order specified below.  
+                                        </p>
+
+										<h3>Operations To Implement</h3>
+
+                                        <ul>
+                                            <li>
+												<b>(1 Point)</b> <code>void doubleCapacity()</code>
+												<p>
+													Double the capacity of the underlying array by creating a new underlying array and copying everything over that was there before up to N.  You may want to refer to <code>halveCapacity()</code> as a reference.
+												</p>
+												<p>
+													<b>NOTE: </b> <code>doubleCapacity</code> and <code>halveCapacity</code> are both private methods, since someone using the class need not know what's going on behind the scenes.
+												</p>
+												<p>
+													<b>NOTE ALSO:</b> Be sure to avoid memory leaks from the old underlying array!
+												</p>
+											</li>
+                                            <li>
+                                                <b>(1 Point)</b> <code>void push_back(Item item)</code>
+												<p>
+													Add an item to the end of the list and update its size.  The default implementation throws an exception if the underlying array runs out of space, but you should call your <code>doubleCapacity()</code> method to make space if needed so this doesn't happen.
+												</p>
+                                            </li>
+                                            <li>
+                                                <b>(1 Point)</b> <code>void insert(int index, Item item)</code>
+												<p>
+													This is an overloaded version of the add method in which an item is added at a specific index in the array.  You should move the item that was at that index before, and everything to the right of it, over by one index to accommodate this new item.  You should double the capacity of the underlying array if necessary.
+												</p>
+                                            </li>
+                                            <li>
+                                                <b>(1 Point)</b> <code>Item remove(int index)</code>: Remove an item at a particular index and return it.  You should also move everything to the right of this index over one to the left and update the size N. Also, be mindful of the following things:
+												
+												<ul>
+													<li>
+														If the new number of elements being stored is small enough, you should halve the capacity (using the provided <code>halveCapacity()</code> method).
+													</li>
+													<li>
+														Be sure to throw an out of bounds error if the index to remove is out of bounds (look at the <code>at</code> method for an example of this)
+													</li>
+												</ul>
+                                            </li>
+                                            <li>
+                                                <b>(1 Point)</b> <code>Item removeItem(Item item)</code>
+												<p>
+													Remove the first occurrence of a particular item in the list if it is present and returns it.  You may want to use the <code>remove</code> method as a helper method.
+												</p>
+											</li>
+                                        </ul>
+
+									<h3>Testing</h3>
+
+									<p>
+										Play around with some simple tests in the <code>driver.cpp</code> file.  Once you feel your code is working well, test it out rigorously with the file <code>tester.cpp</code>, which compares your method implementations to an actual C++ <code>vector</code> object on a random set of many of these operations.  This program takes two command line arguments: the number of operations, and a seed.  Like the taps/initial state in a <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#lfsr">linear feedback shift register</a>, the seed will lead to a repeatable, pseudorandom sequence.  So if you get a bug for a particular number of operations and a particular seed, you will get that same bug when running it again with the same parameters.
+									</p>
+
+									<p>
+										As an example, if your program is working properly and you run 
+									</p>
+
+									<p>
+										<code>/tester 10000 0</code>
+									</p>
+
+									<p>
+										Then the last 5 operations should be
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										...
+										insert(3744, 1519)
+										push_back(3869)
+										set(6089, 7407)
+										push_back(7413)
+										set(4208, 5865)
+									]]></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
+												<li><a href = "../../Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "../../Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#macos">Mac OS Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#virtualbox">VirtualBox</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a>
+												<ul>
+													<li><a href = "../../Assignments/HW1_VirtualCities/ArtContest">Art Contest</a></li>
+												</ul>
+												</li>
+												<li><a href = "../../Assignments/HW2_Steganography">Homework 2: Image Processing And Steganography</a></li>
+												<li><a href = "../../Assignments/HW3_InvasiveSpecies">Homework 3: Invasive Species Polymorphism</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays">Lab 1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a></li>
+												<li><a href = "../../Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a></li>
+												<li><a href = "../../Labs/Lab4_AbstractClassesSorting">Lab 4: Abstract Classes And Sorting</a></li>
+												<li><a href = "../../Labs/Lab5_MyVector">Lab 5: My Vector (Dynamic Array ADT)</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises / Pre-Class Work</span>
+											<ul>
+												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
+												<li><a href = "../../ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
+												<li><a href = "../../../Modules/PointerFundamentals/Exercise1">Pointer Fundamentals Module</a></li>
+												<li><a href = "../../ClassExercises/Week2_3_PointerTricks">Week 2/3: C++ Pointers And Pitfalls</a></li>
+												<li><a href = "../../ClassExercises/Week3_Pointers_Arrays">Week 3: C++ Pointers And Arrays</a></li>
+												<li><a href = "../../ClassExercises/Week3_AudioFiltering">Week 3: Audio Filtering</a></li>
+												<li><a href = "../../ClassExercises/Week3_2048">Week 3: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week4_DynMem">Week 4: Command Line Arguments and Dynamic 2D Arrays</a></li>
+												<li><a href = "../../ClassExercises/Week4_BinaryDrills">Week 4: Binary Drills</a></li>
+												<li><a href = "https://ursinus.instructure.com/courses/13764/quizzes/18074">Week 4: Binary/Hex Module</a></li>
+												<li><a href = "../../ClassExercises/Week4_Binary_LFSR">Week 4: Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</a></li>
+												<li><a href = "../../ClassExercises/Week4_Bits">Week 4: Bits And XOR Encryption</a></li>
+												<li>
+													<a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics">Week 5: Object Basics Code</a>
+												</li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/CppClasses/Video1">Week 5/6: C++ Classes And Inheritance Module</a>
+												</li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedList/Video0">Week 8: Linked List Module</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href = "../../style.html">Style Guide</a></li>
+										</li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>

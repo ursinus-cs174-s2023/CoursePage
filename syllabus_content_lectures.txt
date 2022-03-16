@@ -95,7 +95,7 @@ Linked List Implementations with Nodes/Aggregation
 
 
 LECTURE
-Lab 5: Dynamic Array ADT
+<a href = "Labs/Lab5_MyVector">Lab 5: My Vector (Dynamic Array ADT)</a>
 
 <ul><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li></ul>
 LECTURE
