@@ -99,11 +99,11 @@ LECTURE
 
 <ul><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li></ul>
 LECTURE
-Stacks And Queues
+More Linked Lists, Stacks
 
-
+<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week8_LinkedList_Stack">Code for today</a></li></ul>
 LECTURE
-Doubly-Linked Lists
+Doubly-Linked Lists And Queues
 
 
 LECTURE

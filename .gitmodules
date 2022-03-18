@@ -61,3 +61,6 @@
 [submodule "Labs/Lab5_MyVector/Lab5_MyVector"]
 	path = Labs/Lab5_MyVector/Lab5_MyVector
 	url = https://github.com/ursinus-cs174-s2022/Lab5_MyVector.git
+[submodule "ClassExercises/Week8_LinkedList_Stack"]
+	path = ClassExercises/Week8_LinkedList_Stack
+	url = https://github.com/ursinus-cs174-s2022/Week8_LinkedList_Stack.git
