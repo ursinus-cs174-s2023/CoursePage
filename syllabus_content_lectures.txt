@@ -99,21 +99,21 @@ LECTURE
 
 <ul><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li></ul>
 LECTURE
-More Linked Lists, Stacks
+Continue Linked Lists
 
 <ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week8_LinkedList_Stack">Code for today</a></li></ul>
 LECTURE
-Doubly-Linked Lists And Queues
+Linked Lists / Stacks
+
+<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week8_LinkedList_Stack/tree/class2sol">Code from today</a></li></ul>
+LECTURE
+Doubly-Linked Lists, Queues
 
 
 LECTURE
-STL Priority Queue
+STL Priority Queue, Lab 6: Prim's Algorithm And Mazes
 
 <ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
-LECTURE
-Lab 6: Prim's Algorithm And Mazes
-
-
 LECTURE
 STL Set, STL Map, Begin LinkedMap Implementation
 

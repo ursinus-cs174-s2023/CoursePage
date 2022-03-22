@@ -55,7 +55,7 @@ Assignment 3 Part 1 Due
 Assignment 3 Due
 
 2022-03-21
-<HR>Assignment 4 Part 1(Buddy): Doubly Linked Lists Out
+<HR><a href = "Assignments/HW4_LinkedListMaze/part1.html">Assignment 4 Part 1(Buddy): Doubly Linked Lists</a> Out
 
 2022-03-21
 Lab 5 Due
@@ -63,10 +63,10 @@ Lab 5 Due
 2022-03-22
 Assignment 4 Part 1 Due
 
-2022-03-28
-<HR>Assignment 4 Part 2 (Buddy): Solving Mazes Out
+2022-03-29
+Assignment 4 Part 2 (Buddy): Solving Mazes Out
 
-2022-03-28
+2022-03-29
 Lab 6 Due
 
 2022-03-30
