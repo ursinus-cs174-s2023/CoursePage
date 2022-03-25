@@ -67,16 +67,13 @@ Assignment 4 Part 1 Due
 Assignment 4 Part 2 (Buddy): Solving Mazes Out
 
 2022-03-29
-Lab 6 Due
-
-2022-03-30
 Assignment 4 Part 2 Due
 
 2022-04-04
 <HR>Assignment 5 (Buddy): Basketball Hashing Out
 
 2022-04-04
-Lab 7 Due
+Lab 6 Due
 
 2022-04-11
 Assignment 5 Due

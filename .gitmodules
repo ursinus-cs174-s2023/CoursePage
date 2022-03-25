@@ -64,3 +64,6 @@
 [submodule "ClassExercises/Week8_LinkedList_Stack"]
 	path = ClassExercises/Week8_LinkedList_Stack
 	url = https://github.com/ursinus-cs174-s2022/Week8_LinkedList_Stack.git
+[submodule "ClassExercises/Week9_PrimMaze/Week9_PrimMaze"]
+	path = ClassExercises/Week9_PrimMaze/Week9_PrimMaze
+	url = https://github.com/ursinus-cs174-s2022/Week9_PrimMaze.git

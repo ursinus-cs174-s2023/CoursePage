@@ -111,9 +111,9 @@ Doubly-Linked Lists, Queues
 
 
 LECTURE
-STL Priority Queue, Lab 6: Prim's Algorithm And Mazes
+STL Priority Queue, Prim's Algorithm
 
-<ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
+<ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li><li><a href = "https://github.com/ursinus-cs174-s2022/Week9_PrimMaze/">Class Exercise: Making Mazes</a></li></ul>
 LECTURE
 STL Set, STL Map, Begin LinkedMap Implementation
 
@@ -131,7 +131,7 @@ Recursion: Factorial, Fibonacci, Ackermann
 
 
 LECTURE
-Lab 7: Recursive Drawing / Fractals
+Lab 6: Recursive Drawing / Fractals
 
 
 LECTURE
@@ -163,7 +163,7 @@ Parallel Programming And Threads
 
 <ul><li><a href = "https://www.classes.cs.uchicago.edu/archive/2014/spring/12300-1/labs/lab4/">UChicago Notes on <code>pthread</code></a></li></ul>
 LECTURE
-Lab 8: Road Detection with Threads
+Lab 7: Road Detection with Threads
 
 
 LECTURE
@@ -183,6 +183,6 @@ Loops in Assembly Language
 
 
 LECTURE
-Lab 9: Function Calls in Assembly Language
+Lab 8: Function Calls in Assembly Language
 
 <ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-4-all-about-functions.html">Chapter 4</a></li></ul>
