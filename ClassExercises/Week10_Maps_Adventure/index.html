@@ -41,103 +41,175 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Assignment 4 Part 1: Doubly-Linked Lists (36 Pts)</h2>
-                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h2>Week 10 Exercise: Choose Your Own Adventure</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a>, heavily inspired by <a href = "http://www.billmongan.com/">Bill Mongan</a></h3>
 									</header>
 
 									<div id="page-content">
 
                                         <h2>Overview / Logistics</h2>
 										<p>
-                                            The purpose of this assignment is to give you practice designing collections, and to demonstrate mastery of object references and pointers in C++ while implementing a doubly-linked list data structure from scratch.  In the next part of this assignment, you will use this data structure to solve mazes.
+                                            The purpose of this exercise is to give you practice with C++ STL Maps, as a warmup for when you create your own implementation of maps on homework 5.  The idea for this exercise was inspired by an assignment that <a href = "http://www.billmongan.com/">Bill Mongan</a> ran in CS 173 a few years ago.  This is basically the C++ version of his assignment.
                                         </p>
 
 										<p>
-											You can obtain the code by typing
+											To obtain the code for this exercise, type 
 										</p>
 
 										<p>
-											<code>git clone https://github.com/ursinus-cs174-s2022/HW4_DoublyLinkedList.git</code>
-										</p>
-
-										<p>
-											When you are finished, upload your <code>linkedlist.h</code> and <code>linkedlist.cpp</code> files to canvas.
+											<code>git clone https://github.com/ursinus-cs174-s2022/Week10_MyAdventure.git</code>
 										</p>
 
                                         <p>
                                             <h3>Learning Objectives</h3>
                                             <ul>
-                                                <li>Gain experience using information hiding and object references to implement a user-friendly collection class.</li>
-                                                <li>Use object references to perform efficient lookups yielding constant time operations in a collection</li>
-												<li>Manage dynamic memory in C++</li>
-												<li>Use templates in C++ to write general purpose code</li>
+                                                <li>Use proper data structures as keys and values in <a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">C++ maps</a></li>
+                                                <li>Choose an appropriate loop structure for a given task</li>
                                             </ul>
                                         </p>
 
                                         <h2>Background</h2>
                                         <p>
-                                            In class, we showed how it is possible to remove an item from the front of a singly-linked list in "constant time" (i.e. no loops) by simply referencing the head (<a href = "https://github.com/ursinus-cs174-s2022/Week8_LinkedList_Stack/blob/afecdc2500aea5cecfaff38d158ba581fad8f710/linkedlist.cpp#L80">click here</a> to review that code).  We then showed that if we want to be able to remove a node from the end of the list in constant time, we instead have to store a tail with arrows going backwards instead of forwards.  To get the best of both worlds, we can implement a <b>doubly-linked list</b> in which every node has both a pointer to the previous node and to the next node, and there's both a head and a tail: 
+                                            <a href = "https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure">Choose Your Own Adventure</a> books are a series of books from the '80s and '90s in which the reader takes a more active than usual role.  In particular, the books are written in the second person, and they turn over key decisions to the reader.  Based on these decisions, the reader jumps to different pages to see the outcome of those decisions.
                                         </p>
-                                        <img src = "LinkedLists.svg" width=100%>
                                         <p>
-                                            This data structure makes it possible to add/remove from the beginning/end of the list int constant time.  We now have to maintain two arrows for every node, which makes some of the operations more complicated, but this is a relatively small cost to pay for the functionality it affords.
+                                            In this exercise, you'll be designing a <i>Choose Your Own Adventure</i>-style program to tell a dynamic story.  There are four pieces of information that you should represent in your program
+                                            <ol>
+                                                <li>A list of places you can be in your world</li>
+                                                <li>A little blurb describing each place</li>
+                                                <li>A list of places you can travel to next from each place</li>
+                                                <li>Which place you start, and which place ends</li>
+                                            </ol>
                                         </p>
 
-                                        <h2>Programming Tasks</h2>
                                         <p>
-                                            Your job will be to fill in methods to create a functional doubly-linked list and to maintain its structure.  All operations should run in constant time (i.e. no loops) except for <code>toArray()</code> and <code>remove(Item value)</code> methods.  You will have to maintain the proper object references to enable this efficiency.  You should refer to the <a href = "https://github.com/ursinus-cs174-s2022/Week8_LinkedList_Stack/blob/main/linkedlist.cpp">linkedlist.cpp</a> file we wrote in class, though your implementation will differ in several key ways:
-											<ul>
-												<li>
-													The inner node class will have to have both a <code>next</code> and a <code>prev</code> reference (for forward and backwards arrows, respectively)
-												</li>
-												<li>
-													The main doubly-linked list class will need to have both a <code>head</code> and a <code>tail</code>.
-												</li>
-												<li>
-													This code uses templates instead of void* pointers.  Refer to <a href = "https://github.com/ursinus-cs174-s2022/Lab5_MyVector/blob/main/myvector.cpp">myvector.cpp</a> from the last lab to see how to define class methods with templates, and how to declare which types will be used with them at the bottom of the C++ file.
-												</li>
-											</ul>
-										
-										<h3>Methods To Implement</h3>
-                                        <p>
-                                            Lots of information and hints have been provided in the header file <code>linkedlist.h</code>, but they are repeated below for completeness.  Each method is worth 4 points.
+                                            Your Below is a very simple example to illustrate this idea, which pretty much sums up my life as an instructor during quarantine last year (thank goodness those days are over for now...).  The game starts in the office, and it ends whenever someone reaches the outside.
                                         </p>
+
+                                        <img src = "MyHouse.svg" width = 800 height = 400>
+
+                                        <p>
+                                            A sample run through the program might look like this
+                                        </p>
+
                                         <ul>
-											<li>
-                                                <code>void addFirst(Item value)</code>: Add an item to the beginning of the doubly-linked list. This method should run in constant time
-                                            </li>
                                             <li>
-                                                <code>void addLast(Item value)</code>: Add an item to the end of the doubly-linked list. This method should run in constant time
+                                                
+                                                <p>
+                                                    You are in the Office.  The place where you frantically try to get everything ready for class.  Where would you like to go?
+                                                </p>
+                                                <p>
+                                                    Options: [Kitchen, Bathroom]
+                                                </p>
+                                                <p>
+                                                    <b>Input: </b> Kitchen
+                                                </p>
                                             </li>
+
                                             <li>
-                                                <code>Item removeFirst()</code>: Remove and return the first item from the doubly-linked list, if it exists. This method should run in constant time.
+                                                
+                                                <p>
+                                                    You are in the Kitchen.  The place where you heat up frozen food and sometimes (but rarely) cook.  Where would you like to go?
+                                                </p>
+                                                <p>
+                                                    Options: [Office, Upstairs Bedroom, Outside]
+                                                </p>
+                                                <p>
+                                                    <b>Input: </b> Upstairs Bedroom
+                                                </p>
                                             </li>
-                                            <li>
-                                                <code>Item removeLast()</code>: Remove and return the last item from the doubly-linked list, if it exists.  This method should run in constant time.
-                                            </li>
-											<li><code>Item* toArray()</code>: Return an array representation of the items in the doubly-linked list. If there are N elements, the array should be of length N. Because of some Java weirdness, we have to return an array of type <code>Object</code> instead of type <code>Item</code>, but every class in Java is a subclass of <code>Object</code>, so the cast will happen automatically upon assignment</li>
-											<li><code>void print()</code>: Print out the linked list using <code> ==&gt; </code> to separate items.  For instance, if the list has 1, 2, 3, it should be printed out as 
-											
-											<p>
-												<code>1 ==&gt; 2 ==&gt; 3 ==&gt;</code>
-											</p></li>
-											<li><code>~LinkedList()</code>: The destructor should clean up all dynamically allocated node wrappers so that there are no memory leaks from this class.  As a hint, you can use your <code>removeFirst()</code> or <code>removeLast()</code> methods as helper methods here to make this easier.</li>
-                                            <li><code>Item remove(Item value)</code>:  Remove and return the first occurrence of an item from the doubly-linked list, if it exists.  This method does not have to run in constant time, and should probably use a while or do while loop)</li>
-                                            <li><code>size_t size()</code>: Return how many elements are currently stored in the doubly-linked list. This method should run in constant time.  The easiest way to do this is by storing a private variable that tracks the size as different operations are performed.  It should be fairly trivial if you've been updating that variable in your other methods as you've been going along.</li>
                                             
+                                            <li>
+                                                
+                                                <p>
+                                                    You are in the Upstairs Bedroom.  The place you go rarely when you've finished your work for the day.  Where would you like to go?
+                                                </p>
+                                                <p>
+                                                    Options: [Kitchen, Upstairs Bathroom]
+                                                </p>
+                                                <p>
+                                                    <b>Input: </b> Kitchen
+                                                </p>
+                                            </li>
+
+                                            <li>
+                                                
+                                                <p>
+                                                    You are in the Kitchen.  The place where you heat up frozen food and sometimes (but rarely) cook.  Where would you like to go?
+                                                </p>
+                                                <p>
+                                                    Options: [Office, Upstairs Bedroom, Outside]
+                                                </p>
+                                                <p>
+                                                    <b>Input: </b> Upstairs Bedroom
+                                                </p>
+                                            </li>
+
+                                            <li>
+                                                ......
+                                            </li>
+
                                         </ul>
+                                            
 
-										<h3>Testing</h3>
-										<p>
-											You are encouraged to write simple tests to test your methods in <code>driver.cpp</code>.  You can build just this file by typing <code>make driver</code>.  In the spirit of <a href = "../../index.html#smallbits">incremental development</a>, you should test one method at a time.
-										</p>
-										<p>
-											Once you are confident they are working, you can use a rigorous tester I provided that's similar to <a href = "../../Labs/Lab5_MyVector/index.html#testing">the one on lab 5</a>.  For instance, you can run the tester with <code>./tester 1000 0</code>, and it will try out 1000 operations with the pseudorandom seed 0.  It will compare your implementation of a doubly-linked list to the <a href = "https://www.geeksforgeeks.org/list-cpp-stl/">STL List class in C++</a>.
-										</p>
+                                        <h2>Programming Task</h2>
+                                        <p>
+                                            You should create a map called <code>places</code> whose keys are strings with the names of the different places you can go in your story.  The values associated to different keys should be vectors of strings strings.  The first element in this vector should be a description of the place, and the remaining elements in this vector should be the strings of the places you can reach from this place.  Your program should go through a loop where in each iteration, it prints the place you are and its description, followed by a list of places you can go.  Then, you should wait for input from the user to say which place to go.  Finally, you should have a constant string which represents where the loop starts, and a constant string to represent when the loop should terminate.
+                                        </p>
+
+                                        <p>
+                                            The example I gave is pretty boring (because it mirrors my life!).  But you should feel free to be as creative as you want.  It is recommended that you sketch your world out of paper before you translate it into code.  We will share some of your examples on the class web site.  Have fun!
+                                        </p>
+
+										<!--
+
+                                        <HR>
+                                        <h2><a name ="student">Student Adventures</a></h2>
+                                        <p>
+                                            Below are the fabulous stories that students in our class came up with in very little time.  Click through them to explore!
+                                        </p>
+
+                                        <table style="width:800px;">
+                                            <tr>
+                                                <td>Choose Adventure</td>
+                                                <td>
+                                                    <div class = "select-wrapper">
+                                                        <select id="adventureMenu" name = "Student Story"></select>
+                                                    </div>
+                                                </td>
+                                                <td colspan="2">
+                                                    <button id = "startStory" onclick="startStory()">▶️ Start Story!</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Location</td>
+                                                <td colspan="2">Description</td>
+                                                <td>Next Step</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div id="location"></div>
+                                                </td>
+                                                <td colspan="2">
+                                                    <div id="description"></div>
+                                                </td>
+                                                <td>
+                                                    <div class = "select-wrapper">
+                                                        <select id="nextMenu" name = "Student Story">
+                                                    </select>
+                                                    <button id = "goToNext" onclick="goToNext()">▶️ Go!</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                                
+                                            
+                                        </table>
 
 
+                                        <script src="stories.js"></script>
 
-
+										-->
 
 
 
@@ -300,4 +372,3 @@
 			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../../assets/js/main.js"></script>
 <!-- End Scripts -->
-	</body>

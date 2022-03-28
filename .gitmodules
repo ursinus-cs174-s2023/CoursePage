@@ -67,3 +67,6 @@
 [submodule "ClassExercises/Week9_PrimMaze/Week9_PrimMaze"]
 	path = ClassExercises/Week9_PrimMaze/Week9_PrimMaze
 	url = https://github.com/ursinus-cs174-s2022/Week9_PrimMaze.git
+[submodule "ClassExercises/Week10_Maps_Adventure/Week10_MyAdventure"]
+	path = ClassExercises/Week10_Maps_Adventure/Week10_MyAdventure
+	url = https://github.com/ursinus-cs174-s2022/Week10_MyAdventure.git

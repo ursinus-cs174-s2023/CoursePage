@@ -117,7 +117,7 @@ STL Priority Queue, Prim's Algorithm
 LECTURE
 STL Set, STL Map, Begin LinkedMap Implementation
 
-<ul><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
+<ul><li><a href = "https://www.geeksforgeeks.org/set-in-cpp-stl/">GeeksForGeeks STL Set</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
 LECTURE
 LinkedMap Implementation
 
