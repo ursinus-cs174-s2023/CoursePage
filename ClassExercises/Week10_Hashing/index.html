@@ -41,238 +41,44 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>The Terminal And Files</h2>
-										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h2>Hash Tables</h2>
+										<h3>Chris Tralie</h3>
 									</header>
 
 									<div id="page-content">
-
-										<h3>
-											Table of contents
-											<ul>
-												<li><a href = "#basics">Basics File/Folder Navigation</a></li>
-												<li><a href = "#filetrees">File Trees</a>
-													<ul>
-														<li><a href = "#absrel">Absolute vs Relative Paths</a></li>
-													</ul>
-												</li>
-												<li>
-													<a href = "#wsl1">Paths in WSL1 on Windows</a>
-												</li>
-											</ul>
-										</h3>
-
-										<p>
-											We're going to talk now about a new programming environment which may seem daunting at first, but which is incredibly powerful and which will actually make things simpler for us.  It's known as the "command line" or the "shell" or the "terminal," and it's a fully text-based way of interacting your computer (in fact, it used to be the only way to interact with the computer).  Only text, you say??  How could this make things easier?  Well we won't need to point and click, and we'll be able automate things and totally slice through data.  There are also things that we will only be able to do with the terminal, as you will see.
+                                        <p>
+                                            In class, we showed how it is possible to implement a <a href = "https://en.wikipedia.org/wiki/Associative_array">map data structure</a> by using a linked list (the so-called <a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedMap/Video1">LinkedMap</a>), but that this leads to slow (linear time) average and worst case times for the <code>get()</code>, <code>containsKey()</code>, and <code>remove()</code> operations.  
 										</p>
-
-										<h3><a name = "basics">Basic File/Folder Navigation</a></h3>
-
 										<p>
-											<b>Commands covered:</b> <code>pwd, ls, mkdir, cd, echo</code>
-										</p>
-
-										<p>
-											So, without further ado, let's fire it up.  You can follow along on your own computer if you'd like.  Here's what my terminal looks like when I first open it on my laptop running Ubuntu Linux
-										</p>
-
-										<img src = "term1.png">
-
-										<p>
-											Most lay people would throw up their hands and assume their computer was broken at this point.  But it won't take us long to do a lot.  Let's start by typing <code>pwd</code> and pressing <code>ENTER</code>
-										</p>
-
-										<img src = "pwd.png">
-
-										<p>
-											<code>pwd</code> stands for "print working directory."  In this case, we see that we're in the directory <code>/home/ctralie</code> (this will vary slightly on your computer depending on what operating system you're using and what your username is).  But regardless, I see I'm in my home directory.
-										</p>
-
-										<p>
-											Now let's type <code>ls</code>, which stands for "list directory."  We see the following:
-										</p>
-
-										<img src = "ls.png">
-
-										<p>
-											This is showing us all of the files that are in this directory.  Just to check, this is exactly what we see in the regular file browser:
-										</p>
-
-										<img src = "lsdir.png" width=600>
-
-										<p>
-											Now let's make a new directory within this directory which we will use as a sandbox.  I'll call it <code>dangerous</code>.  I'll use the <code>mkdir</code> command
-										</p>
-
-										<img src = "mkdir.png">
-
-										<p>
-											Now let me go into this directory in the terminal.  I'll use the <code>cd</code>, or "change directory," command at this point
-										</p>
-
-										<img src = "cd.png">
-
-										<p>
-											As a sanity check, when we type pwd, we now see we're one directory "further in" at <code>/home/ctralie/dangerous</code>
-										</p>
-
-										<p>
-											Now let's explore a different kind of command type <code>echo "Test string"</code> into the terminal
-										</p>
-
-										<img src = "echo.png">
-
-										<p>
-											The <code>echo</code> command simply prints back out exactly what we pass to it.  Seems like kind of a trivial thing, but a powerful use case emerges when when we <b>redirect</b> its output to a file.  In particular, when we type 
-										</p>
-
-										<p>
-											<code>echo "Test string" > out.txt</code>
-										</p>
-
-										<p>
-											this sends the output of the echo command to the file <code>out.txt</code>.  If this file doesn't exist, it's created with the contents "Test string".  If it does exist, it's overwritten with these contents (so we should be careful with this).  If we want to simply add something to the end of a file, or <b>append</b>, we instead type
-										</p>
-
-										<p>
-											<code>echo "Something new" >> out.txt</code>
-										</p>
-
-										<p>
-											So a one &gt; is overwrite, and two &gt; &gt; is append
-										</p>
-
-										<p>
-											Let's examine one more interesting case of echo.  Type <code>echo $PATH</code>.  On my computer, this prints out the following
-										</p>
-
-										<img src = "echopath.png">
-
-										<p>
-											$PATH is what's known as the "path variable" (a $ in the terminal means variable) and it stores a list of directories where we can find all possible commands to run in the terminal.  In fact, this gives us a new perspective on the terminal commands.  Every command you run is actually a program which exists in one of these directories.  When you type the command, it looks through all of the directories in <code>PATH</code> to see if it can find a program with a matching name, and if it does, it runs it.  For example, the <code>pwd</code> command is actually a program living in <code>/usr/bin/pwd</code>.  So I could run it this way
-										</p>
-
-										<img src = "pwdfull.png">
-
-										<p>
-											One upshot is that sometimes if you install new software that's not in one of the paths, you'll have to add a new directory to the <code>PATH</code> variable.  Another upshot is that when you make new programs, you're essentially just programming in new commands to the terminal!
-										</p>
-
-										<HR>
-										<h3><a name = "filetrees">File Trees</a></h3>
-
-										<p>
-											<b>New commands: </b> <code>find</code>
-										</p>
-
-										<p>
-											Now that we know a little bit about the terminal, let's setup some more files and folders in our <code>dangerous</code> directory to elucidate file hierarchies a bit more:
-										</p>
-
-										<img src = "oneinner.png">
-
-										<p>
-											At this point, when we type <code>ls</code>, we see nothing.  However, when we type <code>ls -all</code>, which is often used to look at hidden files, we see the following two files <code>.</code> and <code>..</code>
-										</p>
-
-										<img src = "lsall.png">
-
-										<p>
-											Actually, these are folders, not files.  If we try to <code>cd</code> into <code>.</code>, nothing happens.  However, if we <code>cd</code> into <code>..</code>, we actually go "up one" directory
-										</p>
-
-										<img src = "cddotdot.png">
-
-										<p>
-											Let's keep doing this and create another nested sequence of folders parallel to the one we just created
-										</p>
-
-										<img src = "morefolders.png">
-
-										<p>
-											At this point, it would be helpful to draw a picture of what we've made as a <b>tree data structure</b>.  We'll draw each folder as a box, and we'll draw an arrow from each folder to files/folders that are in it.
-										</p>
-
-										<img src = "dangerous.svg" width=600>
-
-										<p>
-											If we also superimpose the <code>.</code> and <code>..</code> arrows, we get the following
+											Motivated by this, is possible to use something called a <b>hash table</b> to reduce the time of queries in a map data structure, which you will implement in <a href = "../../Assignments/HW5_BasketballHashing/">homework 5</a>.  The idea is to have a deterministic function called a <b>hash function</b> that gives a particular number, or a <b>hash code</b> for each object.  One can then jump right to a <b>bucket</b> corresponding to this hash code, which contains a linked list of all objects in the collection that have this hash code (objects that have the same hash code are said to be in "<b>collision</b>").  For instance, if we do hashing on a select bunch of <a href = "../AlgorithmsDemos/Hashing/Hashing.html">Harry Potter characters</a>, and their hash code is the month during which they were born, then we have the following hash table:
 										</p>
 										
-										<img src = "dangerousback.svg" width=600>
+										<img src = "HarryPotter.svg">
 
 										<p>
-											This picture whos us how having a hierarchy of folders allows us to have duplicate file and foldernames (e.g. there are two copies of both <code>inner</code> and <code>innermost</code>).  It also gives us a very nice, visual way to construct <i>relative file paths</i>.  For instance, we're currently in the leftmost directory called <code>innermost</code>.  If we want to go to the directory <code>inner</code> on the right, we just follow a bunch of arrows.  <i>Each time we follow an arrow, we add a slash <b>/</b></i>.  So this would translate into the relative path 
+											Then, if we are looking for <a href = "https://en.wikipedia.org/wiki/Neville_Longbottom">Neville Longbottom</a> (i.e. <a href = "https://en.wikipedia.org/wiki/Matthew_Lewis_(actor)">Matthew Lewis</a>), for example, we compute his birth month of 6 and jump straight to bucket 6 and follow two pointers to get to him.
 										</p>
 
+										<h3>Number of Buckets</h3>
 										<p>
-											<code>../../../two/inner</code>
-										</p>
-
-										<img src = "buildrelpath.png">
-
-										<p>
-											If we've forgotten what we've made, we can use the <code>find</code> command to recursively visits all of our folders starting from where we are:
-										</p>
-
-										<img src = "find.png">
-
-										<h4><a name = "absrel">Absolute vs Relative Paths</a></h4>
-
-										<p>
-											Whenever a path starts with a <b>/</b>, it is treated as an <b>absolute path</b>.  This means that it starts <i>at the top of the file hierarchy</i>.  So, for example, if I typed <code>cd /one/inner</code>, I'd get "No such file or directory," but if I typed
+											We can choose a fixed number of buckets, regardless of the range of our hash function, by simply taking the modulus of our hash code by the number of buckets, giving us the bucket indices 
 										</p>
 										<p>
-											<code>cd /home/ctralie/dangerous/one/inner</code>
+											<code>[0, 1, 2, ..., NBuckets-1]</code>  
 										</p>
 										<p>
-											that would work
+										For example, if we want to use only 5 buckets, then Percy Weasley in bucket 11 above would get bucket index 
 										</p>
-
-										<HR>
-											<h3><a name = "wsl1">Paths in WSL1 on Windows</a></h3>
-
-											<p>
-												If you're on windows under <a href = "../../Software/index.html#windows">WSL</a>, you should be aware of how to access files in your regular windows filesystem so that you can also open the files/folders you're manipulating in Windows explorer.  The <code>C:</code> drive is actually mounted under the directory <code>/mnt/c</code>.  Then, based on your username, you can go further deeper into <code>Users/username</code>.  So, for example, let's suppose I had a folder called <code>CS174</code> on my desktop.  Then the absolute path to this folder would be  
-											</p>
-
-											<p>
-												<code>/mnt/c/Users/ctralie/Desktop/CS174</code>
-											</p>
-
-											<p>
-												It might be a bit tedious to keep typing this every time you open your terminal, so you can remember this in a terminal variable called <code>CS174</code> by typing 
-											</p>
-
-											<p>
-												<code>echo "export CS174=/mnt/c/Users/ctralie/Desktop/CS174" >> ~/.bashrc</code>
-											</p>
-											<p>
-												<code>source ~/.bashrc</code>
-											</p>
-
-											<p>
-												Now if you type 
-											</p>
-
-											<p>
-												<code>cd $CS174</code>
-											</p>
-
-											<p>
-												it will take you right there.  Below is proof that this worked for me.  Of course, you should replace this path with wherever you've chosen to store your 174 files
-											</p>
-
-
-											<p>
-												<img src = "wsl.png">
-											</p>
-
-
-
+										<p>
+											<code>11 % 5 = 1</code>
+										</p>
+										<p>
+											There is a classic space vs time efficiency trade-off here, however.  Assuming we have a hash function which evenly distributes objects over the available buckets, then the more buckets we use, the faster queries and additions/removals will be, but the more memory is needed to store the buckets.  Conversely, if we use fewer buckets, we need less memory, but these operations take longer.  The most extreme case is a single bucket, in which case a HashTable reduces to a LinkedMap.
+										</p>
 										
-										
-										
+
+
+
 
                                     
                                 </div>
@@ -440,4 +246,3 @@
 			<script src="../../assets/js/main.js"></script>
 <!-- End Scripts -->
 	</body>
-</html>

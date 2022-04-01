@@ -70,3 +70,6 @@
 [submodule "ClassExercises/Week10_Maps_Adventure/Week10_MyAdventure"]
 	path = ClassExercises/Week10_Maps_Adventure/Week10_MyAdventure
 	url = https://github.com/ursinus-cs174-s2022/Week10_MyAdventure.git
+[submodule "Assignments/HW5_BasketballHashing/HW5_BasketballHashing"]
+	path = Assignments/HW5_BasketballHashing/HW5_BasketballHashing
+	url = https://github.com/ursinus-cs174-s2022/HW5_BasketballHashing.git

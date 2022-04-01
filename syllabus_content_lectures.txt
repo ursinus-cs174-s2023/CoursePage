@@ -125,7 +125,7 @@ LinkedMap Implementation
 LECTURE
 Hash Tables
 
-<ul><li><a href = "../ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
+<ul><li><a href = "ClassExercises/Week10_Hashing">Hash Tables Class Notes</a></li><li><a href = "ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
 LECTURE
 Recursion: Factorial, Fibonacci, Ackermann
 
