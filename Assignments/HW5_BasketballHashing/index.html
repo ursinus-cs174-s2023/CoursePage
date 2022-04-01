@@ -48,14 +48,23 @@
 									<div id="page-content">
 
 										<ul>
-											<li><a href = "#overview">Overview/Logistics/OOP Design</a></li>
+											<li><a href = "#overview">Overview/Logistics/OOP Design</a>
+											<ul>
+												<li><a href = "#learning">Learning Objectives</a></li>
+												<li><a href = "#purpose">Purpose / Getting Started</a></li>
+												<li><a href = "#design">Overview of Code Design</a></li>
+												<li><a href = "#data">Overview of Data</a></li>
+											</ul>
+											
+											</li>
 											<li>
 												<a href = "#programming">Programming Tasks</a>
 												<ul>
-													<li><a href = "#loading">Player Loading / Database Queries (10 pts)</a></li>
+													<li><a href = "#loading">Player Loading (8 Points)</a></li>
+													<li><a href = "#database">Database Queries (7 Points)</a></li>
 													<li><a href = "#string">String Hashing (5 pts)</a></li>
 													<li><a href = "#HashMap">Hash Map Implementation (30 Pts)</a></li>
-													<li><a href = "#comparison">HashMap / LinkedMap Comparison (8 pts)</a></li>
+													<li><a href = "#comparison">HashMap / LinkedMap Comparison (10 pts)</a></li>
 												</ul>
 											</li>
 										</ul>
@@ -64,7 +73,7 @@
                                         <h2><a name = "overview">Overview / Logistics / OOP Design</a></h2>
 
 										<p>
-                                            <h3>Learning Objectives</h3>
+                                            <h3><a name = "learning">Learning Objectives</a></h3>
                                             <ul>
 												<li>Use object references to perform efficient lookups yielding constant time operations in a collection</li>
 												<li>Leverage polymorphism to quickly swap out different implementations of abstract data types (LinkedMap and HashMap)</li>
@@ -72,7 +81,7 @@
                                             </ul>
                                         </p>
 
-										<h3>Purpose / Getting Started</h3>
+										<h3><a name = "purpose">Purpose / Getting Started</a></h3>
 										<p>
                                             The purpose of this assignment is to give you practice designing collections in C++, and to explore how the right implementation of an abstract data type can lead to much faster queries in an unordered collection.  In particular, you will create a hash table implementation for the map data structure, and you will compare this to the linked map data structure experimentally to verify that it is superior.  
                                         </p>
@@ -94,7 +103,7 @@
 											You will be creating the files <code>hashmap.h</code>, <code>hashmap.cpp</code>, <code>stringtest.cpp</code>, and <code>mapcheck.cpp</code>
 										</p>
 
-										<h3>Overview of Code Design</h3>
+										<h3><a name = "design">Overview of Code Design</a></h3>
 										<p>
 											In this assignment, you will implement your own <code>HashMap</code> (<code>hashmap.cpp</code>, <code>hashmap.h</code>) data structure and compare it to a <code>LinkedMap</code> (<code>linkedmap.cpp</code>, <code>linkedmap.h</code>) that has been provided for you.  The follow design choices have been made for you:
 											
@@ -115,7 +124,7 @@
 											</ul>
 										</p>
 										
-										<h3>Overview of Data</h3>
+										<h3><a name = "data">Overview of Data</a></h3>
 										<p>
 											To test <code>LinkedMap</code> and <code>HashMap</code>, you will load in information about <a href = "HW5_BasketballHashing/players.txt">NBA players born between 1913-1997</a> (data obtained at <a href = "https://www.kaggle.com/drgilermo/nba-players-stats">this link</a>), including
 											<ul>
@@ -162,8 +171,14 @@
 										<h2><a name = "programming">Programming Tasks</a></h2>
 										
 										<p>
-											Below are the tasks you should work through in sequence
+											Below are the tasks you should work through in sequence.  A suggested timeline is as follows:
 										</p>
+
+										<ul>
+											<li>By <b>Wednesday 4/6</b>, finish up player loading and database queries</li>
+											<li>By <b>Wednesday 4/13</b>, finish up and debug your hash table implementation</li>
+											<li>By <b>Friday 4/15</b>, complete all tasks (the final deadline)</li>
+										</ul>
 
                                         <h3><a name = "loading">Player Loading (8 Points)</a></h3>
                                         <p>
@@ -174,7 +189,7 @@
 											<b>Hint: </b> You should have a variable that keeps track of what line you're on as you're loading <a href = "HW5_BasketballHashing/players.txt">players.txt</a> so that you know what field you're loading.  Once you've loaded all 5 pieces of information, you can create a new object and add it to the map, and then move onto the next one.
 										</p>
 
-										<h3><a name = "queries">Database Queries (7 Points)</a></h3>
+										<h3><a name = "database">Database Queries (7 Points)</a></h3>
 										<p>
 											Once you have loaded in the players, you should fill in the file <code>playerlookup.cpp</code> to lookup a player in the map specified on the command line.  For instance, 
 										</p>
