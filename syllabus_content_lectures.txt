@@ -129,7 +129,7 @@ Hash Tables
 LECTURE
 Recursion And Memoization: Factorial, Fibonacci, Ackermann
 
-<ul><li><a href = "ClassNotes/Week11_RecursionBasics">Class Notes on Recursion/Memoization</a></li></ul>
+<ul><li><a href = "ClassExercises/Week11_Recursion">Class Notes on Recursion/Memoization</a></li></ul>
 LECTURE
 Lab 6: Recursive Drawing / Fractals
 
