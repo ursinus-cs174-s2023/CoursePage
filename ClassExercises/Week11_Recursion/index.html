@@ -41,41 +41,283 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h1>Binary Drills</h1>
-										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h2>Recursive Functions And Memoization</h2>
+										<h3>Chris Tralie</h3>
 									</header>
 
 									<div id="page-content">
-										
+                                        <p>
+                                            We talked in class about how a recursive function is a function that calls itself from within itself.  This might seem like a strange idea at first, but it will allow us to write very elegant code to do complicated things that are difficult to do with loops. 
+										</p>
+
+										<h3>A Warmup Example</h3>
+										<p>
+											To start off with an example, let's consider the function 
+										</p>
+
+										<h3>
+
+											\[ h(x) = \left\{ \begin{array}{cc} h(x-7) + 1 & x > 5 \\ x & 0 \leq x \leq 5 \\ h(x+3) & x < 0 \end{array} \right\} \]
+										</h3>
+
+										<p>
+											If we ask for <b>h(11)</b>, we actually have to compute <b>h(6)</b> first.  But then to compute <b>h(6)</b>, we actually have to compute <b>h(-1)</b> first.  But then to compute <b>h(-1)</b>, we have to compute <b>h(2)</b> first.  Then, finally, it stops, and we find <b>h(2) = 2</b>, and we can substitute in the results all the way back up to <b>h(11)</b>.  The diagram below shows this
+										</p>
+
+										<img src = "hEvals.svg" width="400">
+
+										<p>
+											Below is C++ code to compute this
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											int h(int x) {
+												int result;
+												if (x > 5) {
+													result = h(x-7) + 1;
+												}
+												else if (x >= 0 && x <= 5) {
+													result = x;
+												}
+												else {
+													result = h(x+3);
+												}
+												return result;
+											}
+										]]></script>
+
+										<p>
+											Note that the middle if statement is called the <b>stopping condition</b>; this is where we return something directly instead of a recursive call.  Code must have a stopping condition, or we'll end up with <i>infinite recursion</i>.
+										</p>
+
+										<p>
+											Below is some fancier code that keeps track of the <b>depth</b> of the recursion, or how many recursive calls we've made to get to the point we are at.  I print out as many tabs as there are depth to help format the recursive calls to show what happens:
+										</p>
 
 										
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											void printTabs(int depth) {
+												for (int i = 0; i < depth; i++) {
+													cout << "    ";
+												}
+											}
+
+
+											int h(int x, int depth) {
+												int result;
+												if (x > 5) {
+													printTabs(depth);
+													cout << "h(" << x << ") = h(" << x-7 << ") + 1 \n";
+													result = h(x-7, depth+1) + 1;
+													printTabs(depth);
+													cout << "h(" << x << ") = h(" << x-7 << ") + 1 = " << result << "\n";
+												}
+												else if (x >= 0 && x <= 5) {
+													result = x;
+													printTabs(depth);
+													cout << "h(" << x << ") = " << x << "\n";
+												}
+												else {
+													printTabs(depth);
+													cout <<  "h(" << x << ") = h(" << x+3 << ")\n";
+													result = h(x+3, depth+1);
+													printTabs(depth);
+													cout <<  "h(" << x << ") = h(" << x+3 << ") = " << result << "\n";
+												}
+												return result;
+											}
+										]]></script>
 										<p>
-											As you recall, instead of 10 digits in each place and powers of 10 in each place, binary numbers have only 0s and 1s as digits and powers of 2.  In particular, we have the 1s place, the 2s place, the 4s place, the 8s place, the 16s place, etc.  
+											For example, if we call <code>h(13, 0)</code> (starting off at a depth of 0), we get the following output
 										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											h(13) = h(6) + 1 
+												h(6) = h(-1) + 1 
+													h(-1) = h(2)
+														h(2) = 2
+													h(-1) = h(2) = 2
+												h(6) = h(-1) + 1 = 3
+											h(13) = h(6) + 1 = 4
+										]]></script>
+
 										<p>
-											I've coded up a few applets below so you can practice representing binary numbers.  The first two are drills on converting back and forth between binary and base 10, and the last one shows binary addition step by step.  Do these until you feel comfortable.  If you are <b>totally new</b> to Binary, read <a href = "https://diveintosystems.org/book/C4-Binary/bases.html">4.1 and 4.2 of Dive Into Systems</a>, and, if you'd like watch the first five Khan Academy Videos at <a href = "https://www.khanacademy.org/math/algebra-home/alg-intro-to-algebra/algebra-alternate-number-bases/v/number-systems-introduction">this link</a> (up to and including converting from decimal to hexadecimal), which go through the same content but in a more visual way.
+											Actually, this is a form of what's known of as <b>tail recursion</b>, where we make exactly one recursive call per function call if we make a recursive call, and once we reach the stopping condition, we back all the way back up.  The video below shows a physical example of tail recursion in real life with bricks 
 										</p>
-										<p>
-											Regardless, you should do these drills until you feel comfortable
-										</p>
-										
-										<iframe src = "BinaryBase10.html" width=100% height=1200></iframe>
+										<iframe width="560" height="315" src="https://www.youtube.com/embed/nMMqWOPUe0o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+										<p></p>
+
 										<HR>
-										<iframe src = "BinaryHex.html" width=100% height=1200></iframe>
-										<HR>
-										<iframe src = "HexBase10.html" width=100% height=1200></iframe>
-
-										<iframe src = "CardGame.html" width=100% height=800></iframe>
+										<h3>The Factorial Function</h3>
 
 										<p>
-											Below is a binary clock.  Professor Schilling and I both have them in our offices, although hers is blue and mine is red
+											A famous example of a tail recursive function is the factorial function 
 										</p>
-										<iframe src = "Clock.html" width=100% height=800></iframe>
-									
-									
-												
-										
-										
+
+										<h3>
+											\[ N!  = N (N-1) (N-2) ... 1\]
+										</h3>
+
+										<p>
+											This is an extremely important example in computer science, because it describes the complexity of algorithms that consider all possible shuffles over a set with <b>N</b> elements.  Defined recursively, the factorial is written as 
+										</p>
+
+										<h3>
+											\[ \text{fac}(N) = \left\{ \begin{array}{cc} N \times \text{fac}(N-1) & N > 1 \\ 1 & N = 1\end{array} \right\} \]
+										</h3>
+
+										<p>
+											Note the stopping condition at <b>N = 1</b> (it would continue infinitely without this).
+										</p>
+
+										<p>
+											Below is a recursive implementation of this function
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											int fac(int N) {
+												int res = 1;
+												if (N > 1) {
+													res = N*fac(N-1);
+												}
+												return res;
+											}
+										]]></script>
+
+										<p>
+											If we call this on N = 1, 2, ..., 10, we get <code>1 2 6 24 120 720 5040 40320 362880 3628800</code>, so we can see how quickly this function grows.
+										</p>
+
+										<p>
+											As a side note, since this is tail recursion, we can implement it with a loop
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											int fac(int N) {
+												int res = 1;
+												while (N > 1) {
+													res = res*N;
+													N--;
+												}
+												return res;
+											}
+										]]></script>
+
+										<p>
+											But note how in the recursive version, we didn't need a loop at all!
+										</p>
+
+										<HR>
+											<h3>The Fibonacci Sequence And Branching in Recursion</h3>
+
+											<p>
+												Up to this point, we could do everything with loops, so why introduce this additional confusion?  Well, recursion gives us a way to generalize loop structures by <i>branching</i>.  As an example, let's consider the <b>Fibonacci sequence</b>, of which the first 10 numbers are 
+											</p>
+
+											<p>
+												<code>1 1 2 3 5 8 13 21 34 55 89</code>
+											</p>
+
+											<p>
+												If we look at this closely, we realize the rule is that each number is the sum of the two numbers that come before it.  Written recursively, we can say 
+											</p>
+
+											<h3>
+												\[ \text{fib}(N) = \left\{ \begin{array}{cc} \text{fib}(N-1) + \text{fib}(N-2) & N > 2 \\ 1 & N = 1, 2\end{array} \right\} \]
+											</h3>
+
+											<p>
+												Note that since we actually need the previous two terms, we actually need two stopping conditions; one for <b>N = 1</b> and one for <b>N = 2</b>.
+											</p>
+
+											<p>
+												Below is code to implement this
+											</p>
+
+											<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+												int fib(int N) {
+													if (N == 1 || N == 2) {
+														return 1;
+													}
+													else {
+														return fib(N-1) + fib(N-2);
+													}
+												}
+											]]></script>
+
+											<p>
+												Let's compare the recursive calls between <code>fib</code> and <code>fac</code>.  The diagram below compares <code>fib(4)</code> to <code>fac(5)</code>
+											</p>
+
+											<img src = "FibBranching.svg" width="80%">
+
+											<p>
+												With tail recursion, we go down in a line, while with branching out to two recursive calls, we quickly double the number of recursive calls we make.  This means that the number of recursive calls we make for <code>fib(N)</code> grows as <b>2<SUP>N</SUP></b> with <b>N</b>, which blows up very quickly!  There's got to be a better way!
+											</p>
+
+
+											<HR>
+												<h3>Memoization Using Maps</h3>
+
+												<p>
+													Part of the problem with the way we setup the Fibonacci function above is that we have <b>overlapping subproblems</b> everywhere.  For example, to compute <b>fib(5)</b>, we need to compute <b>fib(4)</b> first, then <b>fib(3)</b>.  But in the process of computing <b>fib(4)</b>, we compute <b>fib(3)</b>.  So if we can remember <b>fib(3)</b>, we won't have to repeat the work when we go to compute it later, and we can just look it up!  The picture below shows how much we can cut out doing this:
+												</p>
+
+												<p>
+													<img src = "FibMemoization.svg" width="70%">
+												</p>
+
+												<p>
+													The process of remembering the result of certain inputs to recursive functions and recalling them later is known as <b>memoization</b>.  An ideal data structure for this is a map, where the key is the input the function, and the associated value is what the function returns at that input.  
+												</p>
+
+												<p>
+													The code below shows how to use memoization for Fibonacci
+												</p>
+
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													#include <map>
+													using namespace std;
+
+													...
+
+													/**
+													* @brief 
+													* 
+													* @param N Input to fibonacci
+													* @param calls A pointer to an int that counts how many calls we've made
+													* @param memory A map that memoizes different calls to the fibonacci for future use
+													* @return int fib(N)
+													*/
+												   int fib(int N, int* calls, map<int, int>& memory) {
+													   (*calls)++;
+													   int res = 0;
+													   // Is the N I'm asking for in the memory
+													   if (memory.find(N) != memory.end()) {
+														   // Look it up
+														   res = memory[N];
+													   }
+													   else {
+														   // If not, compute it from scratch
+														   if (N == 0 || N == 1) {
+															   res = 1;
+														   }
+														   else if (N > 1) {
+															   res = fib(N-1, calls, memory) + fib(N-2, calls, memory);
+														   }
+														   // Remember it in case it comes up gain
+														   memory.insert(pair<int, int>(N, res));
+													   }
+													   return res;
+												   }
+												]]></script>
+
+												<p>
+													This cuts down the recursive calls to <b>~2N</b> instead of <b>2<SUP>N</SUP></b>, which is an enormous gain in efficiency!
+												</p>
+
+
 
                                     
                                 </div>
@@ -246,4 +488,3 @@
 			<script src="../../assets/js/main.js"></script>
 <!-- End Scripts -->
 	</body>
-</html>

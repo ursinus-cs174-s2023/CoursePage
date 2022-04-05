@@ -88,3 +88,9 @@ Assignment 6 Due
 <a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedList/Video0">Linked List Module</a> Due
 
 2022-03-15
+<a href = "https://ursinus-cs174-s2022.github.io/Modules/Ackermann/Exercise1">Ackermann Exercise 1 Due</a>
+
+2022-04-06
+<a href = "https://ursinus-cs174-s2022.github.io/Modules/Ackermann/Exercise2">Ackermann Exercise 2 Due</a>
+
+2022-04-08

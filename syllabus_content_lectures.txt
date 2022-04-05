@@ -127,9 +127,9 @@ Hash Tables
 
 <ul><li><a href = "ClassExercises/Week10_Hashing">Hash Tables Class Notes</a></li><li><a href = "ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
 LECTURE
-Recursion: Factorial, Fibonacci, Ackermann
+Recursion And Memoization: Factorial, Fibonacci, Ackermann
 
-
+<ul><li><a href = "ClassNotes/Week11_RecursionBasics">Class Notes on Recursion/Memoization</a></li></ul>
 LECTURE
 Lab 6: Recursive Drawing / Fractals
 
@@ -148,6 +148,10 @@ Binary Search Trees
 
 LECTURE
 Finish Binary Search Trees, Huffman Trees Background
+
+
+LECTURE
+Merge Sort
 
 
 SECTION
@@ -182,7 +186,4 @@ LECTURE
 Loops in Assembly Language
 
 
-LECTURE
-Lab 8: Function Calls in Assembly Language
 
-<ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-4-all-about-functions.html">Chapter 4</a></li></ul>
