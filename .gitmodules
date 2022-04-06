@@ -73,3 +73,6 @@
 [submodule "Assignments/HW5_BasketballHashing/HW5_BasketballHashing"]
 	path = Assignments/HW5_BasketballHashing/HW5_BasketballHashing
 	url = https://github.com/ursinus-cs174-s2022/HW5_BasketballHashing.git
+[submodule "Labs/Lab6_RecursiveDrawing/Lab6_RecursiveDrawing"]
+	path = Labs/Lab6_RecursiveDrawing/Lab6_RecursiveDrawing
+	url = https://github.com/ursinus-cs174-s2022/Lab6_RecursiveDrawing.git
