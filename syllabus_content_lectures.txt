@@ -135,10 +135,6 @@ LECTURE
 
 
 LECTURE
-Towers of Hanoi / Binary Search
-
-
-LECTURE
 Binary Trees: Preorder, Inorder, Postorder / Drawing Binary Trees
 
 
@@ -147,11 +143,15 @@ Binary Search Trees
 
 
 LECTURE
-Finish Binary Search Trees, Huffman Trees Background
+Lab 7: Huffman Trees
 
 
 LECTURE
 Merge Sort
+
+
+LECTURE
+Intermezzo: Digital Audio And Shazam
 
 
 SECTION
@@ -167,11 +167,7 @@ Parallel Programming And Threads
 
 <ul><li><a href = "https://www.classes.cs.uchicago.edu/archive/2014/spring/12300-1/labs/lab4/">UChicago Notes on <code>pthread</code></a></li></ul>
 LECTURE
-Lab 7: Road Detection with Threads
-
-
-LECTURE
-Intermezzo: Digital Audio And Shazam
+Lab 8: Road Detection with Threads
 
 
 LECTURE
@@ -186,4 +182,8 @@ LECTURE
 Loops in Assembly Language
 
 
+LECTURE
+Lab 9: Function Calls in Assembly Language
+
+<ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-4-all-about-functions.html">Chapter 4</a></li></ul>
 

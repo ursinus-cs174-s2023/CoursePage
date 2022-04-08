@@ -73,3 +73,6 @@
 [submodule "Assignments/HW5_BasketballHashing/HW5_BasketballHashing"]
 	path = Assignments/HW5_BasketballHashing/HW5_BasketballHashing
 	url = https://github.com/ursinus-cs174-s2022/HW5_BasketballHashing.git
+[submodule "ClassExercises/Week11_BinaryTrees/Week11-BinaryTrees"]
+	path = ClassExercises/Week11_BinaryTrees/Week11-BinaryTrees
+	url = https://github.com/ursinus-cs174-s2022/Week11-BinaryTrees.git
