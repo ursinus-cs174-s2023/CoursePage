@@ -76,3 +76,6 @@
 [submodule "ClassExercises/Week11_BinaryTrees/Week11-BinaryTrees"]
 	path = ClassExercises/Week11_BinaryTrees/Week11-BinaryTrees
 	url = https://github.com/ursinus-cs174-s2022/Week11-BinaryTrees.git
+[submodule "Labs/Lab6_RecursiveDrawing/Lab6_RecursiveDrawing"]
+	path = Labs/Lab6_RecursiveDrawing/Lab6_RecursiveDrawing
+	url = https://github.com/ursinus-cs174-s2022/Lab6_RecursiveDrawing.git

@@ -135,11 +135,10 @@ LECTURE
 
 
 LECTURE
-Binary Trees: Preorder, Inorder, Postorder / Drawing Binary Trees
-
+Binary Search Trees: Cleanup, Addition, Traversal with Preorder/Inorder/Postorder
 
 LECTURE
-Binary Search Trees
+Binary Search Trees: Drawing
 
 
 LECTURE
