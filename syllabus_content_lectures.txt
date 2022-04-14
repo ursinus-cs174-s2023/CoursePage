@@ -142,7 +142,7 @@ Binary Search Trees: Drawing
 
 
 LECTURE
-Lab 7: Huffman Trees
+<a href = "Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a>
 
 
 LECTURE

@@ -41,179 +41,208 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Week 10 Exercise: Choose Your Own Adventure</h2>
-                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a>, heavily inspired by <a href = "http://www.billmongan.com/">Bill Mongan</a></h3>
+                                        <h2>Lab 7: Huffman Trees (4 Points)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
 
                                         <h2>Overview / Logistics</h2>
+										
 										<p>
-                                            The purpose of this exercise is to give you practice with C++ STL Maps, as a warmup for when you create your own implementation of maps on homework 5.  The idea for this exercise was inspired by an assignment that <a href = "http://www.billmongan.com/">Bill Mongan</a> ran in CS 173 a few years ago.  This is basically the C++ version of his assignment.
-                                        </p>
-
-										<p>
-											To obtain the code for this exercise, type 
+											The purpose of this lab is to get you practice with tree data structures
 										</p>
 
 										<p>
-											<code>git clone https://github.com/ursinus-cs174-s2022/Week10_MyAdventure.git</code>
+											<code>git clone --recursive https://github.com/ursinus-cs174-s2022/Lab7_HuffmanTrees.git</code>
+										</p>
+
+										<p>
+											The code layout is based on <a href = "https://github.com/ursinus-cs174-s2022/Week11-BinaryTrees/tree/precomputedraw">code we wrote in class</a> to draw binary trees.  In this lab, you will be making a different kind of tree from the bottom up called a <b>Huffman Tree</b>, which can be used to compress and encrypt data.
+										</p>
+
+										<p>
+											When you are finished, upload your <code>tree.cpp</code> file to canvas
 										</p>
 
                                         <p>
                                             <h3>Learning Objectives</h3>
                                             <ul>
-                                                <li>Use proper data structures as keys and values in <a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">C++ maps</a></li>
-                                                <li>Choose an appropriate loop structure for a given task</li>
+												<li>Use recursion to traverse tree structures</li>
+												<li>Use priority queues to build trees from the ground up</li>
+												<li>Build Huffman Trees based on character counts</li>
                                             </ul>
                                         </p>
 
-                                        <h2>Background</h2>
-                                        <p>
-                                            <a href = "https://en.wikipedia.org/wiki/Choose_Your_Own_Adventure">Choose Your Own Adventure</a> books are a series of books from the '80s and '90s in which the reader takes a more active than usual role.  In particular, the books are written in the second person, and they turn over key decisions to the reader.  Based on these decisions, the reader jumps to different pages to see the outcome of those decisions.
-                                        </p>
-                                        <p>
-                                            In this exercise, you'll be designing a <i>Choose Your Own Adventure</i>-style program to tell a dynamic story.  There are four pieces of information that you should represent in your program
-                                            <ol>
-                                                <li>A list of places you can be in your world</li>
-                                                <li>A little blurb describing each place</li>
-                                                <li>A list of places you can travel to next from each place</li>
-                                                <li>Which place you start, and which place ends</li>
-                                            </ol>
-                                        </p>
-
-                                        <p>
-                                            Your Below is a very simple example to illustrate this idea, which pretty much sums up my life as an instructor during quarantine last year (thank goodness those days are over for now...).  The game starts in the office, and it ends whenever someone reaches the outside.
-                                        </p>
-
-                                        <img src = "MyHouse.svg" width = 800 height = 400>
-
-                                        <p>
-                                            A sample run through the program might look like this
-                                        </p>
-
-                                        <ul>
-                                            <li>
-                                                
-                                                <p>
-                                                    You are in the Office.  The place where you frantically try to get everything ready for class.  Where would you like to go?
-                                                </p>
-                                                <p>
-                                                    Options: [Kitchen, Bathroom]
-                                                </p>
-                                                <p>
-                                                    <b>Input: </b> Kitchen
-                                                </p>
-                                            </li>
-
-                                            <li>
-                                                
-                                                <p>
-                                                    You are in the Kitchen.  The place where you heat up frozen food and sometimes (but rarely) cook.  Where would you like to go?
-                                                </p>
-                                                <p>
-                                                    Options: [Office, Upstairs Bedroom, Outside]
-                                                </p>
-                                                <p>
-                                                    <b>Input: </b> Upstairs Bedroom
-                                                </p>
-                                            </li>
-                                            
-                                            <li>
-                                                
-                                                <p>
-                                                    You are in the Upstairs Bedroom.  The place you go rarely when you've finished your work for the day.  Where would you like to go?
-                                                </p>
-                                                <p>
-                                                    Options: [Kitchen, Upstairs Bathroom]
-                                                </p>
-                                                <p>
-                                                    <b>Input: </b> Kitchen
-                                                </p>
-                                            </li>
-
-                                            <li>
-                                                
-                                                <p>
-                                                    You are in the Kitchen.  The place where you heat up frozen food and sometimes (but rarely) cook.  Where would you like to go?
-                                                </p>
-                                                <p>
-                                                    Options: [Office, Upstairs Bedroom, Outside]
-                                                </p>
-                                                <p>
-                                                    <b>Input: </b> Upstairs Bedroom
-                                                </p>
-                                            </li>
-
-                                            <li>
-                                                ......
-                                            </li>
-
-                                        </ul>
                                             
 
-                                        <h2>Programming Task</h2>
-                                        <p>
-                                            You should create a map called <code>places</code> whose keys are strings with the names of the different places you can go in your story.  The values associated to different keys should be vectors of strings strings.  The first element in this vector should be a description of the place, and the remaining elements in this vector should be the strings of the places you can reach from this place.  Your program should go through a loop where in each iteration, it prints the place you are and its description, followed by a list of places you can go.  Then, you should wait for input from the user to say which place to go.  Finally, you should have a constant string which represents where the loop starts, and a constant string to represent when the loop should terminate.
-                                        </p>
+										<h2>Background: Huffman Trees</h2>
 
-                                        <p>
-                                            The example I gave is pretty boring (because it mirrors my life!).  But you should feel free to be as creative as you want.  It is recommended that you sketch your world out of paper before you translate it into code.  We will share some of your examples on the class web site.  Have fun!
-                                        </p>
+										<p>
+											Let's suppose we wanted to do a binary encoding of the 26 letters in the alphabet, plus a space, plus a period, for a total of 28 characters.  Then we would need <b>ceil(log2(28)) = 5</b> bits to represent each character.  For example, we might then have this codebook:
+										</p>
 
-										<!--
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											' ': 00000
+											'.': 00001
+											'a': 00010
+											'b': 00011
+											'c': 00100
+											'd': 00101
+											'e': 00110
+											'f': 00111
+											'g': 01000
+											'h': 01001
+											'i': 01010
+											'j': 01011
+											'k': 01100
+											'l': 01101
+											'm': 01110
+											'n': 01111
+											'o': 10000
+											'p': 10001
+											'q': 10010
+											'r': 10011
+											's': 10100
+											't': 10101
+											'u': 10110
+											'v': 10111
+											'w': 11000
+											'x': 11001
+											'y': 11010
+											'z': 11011
+                                        ]]></script>
+										
+										<p>
+											One drawback of this, however, is that we use some characters more than others.  For example, we use an <b>e</b> much more than a <b>q</b>.  In fact, the histogram below shows how often characters were used across a <a href = "https://ai.googleblog.com/2006/08/all-our-n-gram-are-belong-to-you.html">snapshot of the entire Internet captured by Google</a>
+										</p>
 
-                                        <HR>
-                                        <h2><a name ="student">Student Adventures</a></h2>
-                                        <p>
-                                            Below are the fabulous stories that students in our class came up with in very little time.  Click through them to explore!
-                                        </p>
+										<img src = "Histogram.png">
 
-                                        <table style="width:800px;">
-                                            <tr>
-                                                <td>Choose Adventure</td>
-                                                <td>
-                                                    <div class = "select-wrapper">
-                                                        <select id="adventureMenu" name = "Student Story"></select>
-                                                    </div>
-                                                </td>
-                                                <td colspan="2">
-                                                    <button id = "startStory" onclick="startStory()">▶️ Start Story!</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Location</td>
-                                                <td colspan="2">Description</td>
-                                                <td>Next Step</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div id="location"></div>
-                                                </td>
-                                                <td colspan="2">
-                                                    <div id="description"></div>
-                                                </td>
-                                                <td>
-                                                    <div class = "select-wrapper">
-                                                        <select id="nextMenu" name = "Student Story">
-                                                    </select>
-                                                    <button id = "goToNext" onclick="goToNext()">▶️ Go!</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
+										<p>
+											So we might like to use fewer bits to encode an <b>e</b> than a <b>q</b>.  The challenge, though, is to create a code that is <b>prefix free</b> and <b>uniquely decodable</b>, which means that no encoding is a prefix of another one, and we can unambiguously go back from a binary representation back to a code.  For example, if we had an encoding where 
+											<ul>
+												<li>
+													<b>e</b> is a <b>0</b>
+												</li>
+												<li>
+													<b>r</b> is a <b>01</b>
+												</li>
+												<li>
+													<b>q</b> was a <b>00010</b>
+												</li>
+											</ul>
+											Then we wouldn't be able to tell whether a string <b>0000100</b> was, for instance, a <b>eeeree</b> or a <b>eqe</b>.
+										</p>
 
-                                                
-                                            
-                                        </table>
+										<p>
+											One solution to this problem is to build something called a <b>Huffman Tree</b>.  The image below shows one such Huffman tree you will be building in this assignment, as drawn by the assignment tree drawing code:
+										</p>
 
+										<p>
+											<img src = "tree.png">
+										</p>
 
-                                        <script src="stories.js"></script>
+										<p>
+											Each letter in the codebook is a leaf node (a node with no children).  To create a code, examine the path going down from the root to each letter's leaf node.  Every time the path goes to the left, append a <b>0</b> to the string, and every time the path goes to the right, append a <b>1</b> to the string.  From this, we get the following codebook:
+										</p>
 
-										-->
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											' ': 001
+											'.': 111101
+											'a': 1100
+											'b': 011001
+											'c': 10011
+											'd': 10010
+											'e': 000
+											'f': 110101
+											'g': 111100
+											'h': 01101
+											'i': 1010
+											'j': 011000110
+											'k': 0110000
+											'l': 11011
+											'm': 01000
+											'n': 1000
+											'o': 1011
+											'p': 111110
+											'q': 0110001111
+											'r': 0101
+											's': 0111
+											't': 1110
+											'u': 01001
+											'v': 1111110
+											'w': 1111111
+											'x': 01100010
+											'y': 110100
+											'z': 0110001110
+                                        ]]></script>
 
+										<p>
+											Notice now how character that the two most often used characters, a <b>space</b> and an <b>e</b>, only need 3 bits, while other commonly used characters like <b>a</b>, <b>i</b>, <b>n</b>, <b>o</b>, <b>r</b>, <b>s</b>, and <b>t</b> only need 4 bits.  So we're saving our original 5 bits that we would have used on them.  By contrast, we double the number of bits needed for uncommon characters z and q from 5 to 10, but on average we still use fewer than 5 bits, because z and q come up so infrequently.
+										</p>
 
+										<h2>Programming Tasks</h2>
 
+										<p>
+											For all of the tasks, you will simply need to make edits to <code>tree.cpp</code>.  Executables with main methods to run the tasks have been provided for you
+										</p>
 
+										<h3>
+											Building The Tree (2 Points)
+										</h3>
+
+										<p>
+											Build a Huffman tree from the bottom up by filling in the method <code>buildHuffmanTree</code> in <code>tree.cpp</code>.  This method starts out by putting all of the letters onto a priority queue as leaf nodes.  As explained in the comments of that file, you will need to add internal nodes that merge together the nodes on the priority queue with the smallest counts.  
+										</p>
+
+										<p>
+											Recall that to see what's at the top of the priority queue, you say <code>nodes.top()</code>, and to take off what's at the top of a priority queue, you say <code>nodes.pop()</code>.  Be sure to assign pointers properly in the new nodes.
+										</p>
+
+										<p>
+											Once you believe this is working, execute the file <code>draw.cpp</code> by typing 
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./draw
+                                        ]]></script>
+
+										<p>
+											This should output a drawing of the Huffman tree shown in the background to a file called <code>tree.png</code>
+										</p>
+
+										<h3>
+											Encoding (1 Point)
+										</h3>
+
+										<p>
+											Fill in the <code>encode</code> method in <code>tree.cpp</code> to use the Huffman tree to encode an arbitrary string to a binary string that you output.  You can test this with the <code>encode.cpp</code> file.  For instance, if you say 
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./encode "i love cs"
+                                        ]]></script>
+
+										<p>
+											Then you should get <code>10100011101110111111110000001100110111</code> as the output.
+										</p>
+
+										<h3>
+											Decoding (1 Point)
+										</h3>
+										<p>
+											Fill in the <code>decode</code> method in <code>tree.cpp</code> to use the Huffman tree to decode a binary string into a string of characters.  You can test this with the <code>decode.cpp</code> file.  For instance, if you say 
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./decode 01101010011101011101010100011001000001010110111001101100000111
+                                        ]]></script>
+
+										<p>
+											Your program should print <b>huffman rocks</b>
+										</p>
+										
                                     
                                 </div>
 						</div>
@@ -387,3 +416,4 @@
 			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../../assets/js/main.js"></script>
 <!-- End Scripts -->
+	</body>

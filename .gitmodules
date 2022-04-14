@@ -79,3 +79,6 @@
 [submodule "Labs/Lab6_RecursiveDrawing/Lab6_RecursiveDrawing"]
 	path = Labs/Lab6_RecursiveDrawing/Lab6_RecursiveDrawing
 	url = https://github.com/ursinus-cs174-s2022/Lab6_RecursiveDrawing.git
+[submodule "Labs/Lab7_HuffmanTrees/Lab7_HuffmanTrees"]
+	path = Labs/Lab7_HuffmanTrees/Lab7_HuffmanTrees
+	url = https://github.com/ursinus-cs174-s2022/Lab7_HuffmanTrees.git
