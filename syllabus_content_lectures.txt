@@ -137,18 +137,19 @@ LECTURE
 LECTURE
 Binary Search Trees: Cleanup, Addition, Traversal with Preorder/Inorder/Postorder
 
+
 LECTURE
 Binary Search Trees: Drawing
 
-
+<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week11-BinaryTrees/tree/precomputedraw">Solution from class</a></li></ul>
 LECTURE
 <a href = "Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a>
 
 
 LECTURE
-Merge Sort
+Continue Huffman Trees, Merge Sort
 
-
+<ul><li><a href = "https://ursinus-cs174-s2022.github.io/Modules/MergeSort/Exercise">Merge sort class exercise</a></li></ul>
 LECTURE
 Intermezzo: Digital Audio And Shazam
 
