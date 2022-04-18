@@ -150,10 +150,6 @@ LECTURE
 Continue Huffman Trees, Merge Sort
 
 <ul><li><a href = "https://ursinus-cs174-s2022.github.io/Modules/MergeSort/Exercise">Merge sort class exercise</a></li></ul>
-LECTURE
-Intermezzo: Digital Audio And Shazam
-
-
 SECTION
 Unit 4: Advanced Topics in Systems Programming
 
@@ -161,7 +157,11 @@ Unit 4: Advanced Topics in Systems Programming
 LECTURE
 Function Pointers
 
-<ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li>Class Exercise: Convolutional Image Filters</li></ul>
+<ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "ClassExercises/Week13_ImageFilters">Class Exercise: Convolutional Image Filters</a></li></ul>
+LECTURE
+Intermezzo: Digital Audio And Shazam
+
+
 LECTURE
 Parallel Programming And Threads
 

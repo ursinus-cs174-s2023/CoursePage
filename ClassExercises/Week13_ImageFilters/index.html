@@ -41,105 +41,106 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Week 4 Exercise: Bits And XOR Encryption</h2>
-										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h2>Function Pointers And Image Filters</h2>
+										<h3>Chris Tralie</h3>
 									</header>
 
 									<div id="page-content">
 
 										<p>
-											You can obtain the code for today's exercise here:
-										</p>
-
-										<p>
-											<code>git clone https://github.com/ursinus-cs174-s2022/Week4_Bits.git</code>
+											You can obtain today's code with 
 										</p>
 										
-										<h2>Exercise 1: Printing numbers in binary</h2>
+										<code>git clone --recursive https://github.com/ursinus-cs174-s2022/Week13_ImageFilters.git</code>
+                                        
+
+										<p></p>
+										<h2>Mean Blur</h2>
+
+
+										<table>
+											<tr>
+												<td>
+													<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+														./imfilter --in cats.jpg --out blur2.png --mean --kernelWidth 2
+														]]></script>
+												</td>
+												<td>
+													<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+														./imfilter --in cats.jpg --out blur10.png --mean --kernelWidth 10
+														]]></script>
+													
+												</td>
+											</tr>
+											<tr>
+												<td><img src="blur2.png" width="80%"></td>
+												<td><img src="blur10.png" width="80%"></td>
+											</tr>
+										</table>
+
+										<h2>Motion Blur</h2>
 										<p>
-											I've provided a file <code>num2binary.cpp</code> which takes in an <code>int</code> as a command line argument and prints out a corresponding 32-bit unsigned binary string using the "textbook algorithm" for doing this.  For example, 
+											Each pixel <code>[x, y]</code> is the average of <code>[x-3, y-3]</code>, <code>[x, y]</code>, and <code>[x+3, y+3]</code>
 										</p>
 
-										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											./num2binary 2000000000
-										]]></script>
+										
+										<table>
+											<tr>
+												<td>
+													<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+														/imfilter --in cats.jpg --motionBlur --kernelWidth 3 --out motionBlur3.png
+														]]></script>
+												</td>
+												<td>
+													<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+														./imfilter --in cats.jpg --motionBlur --kernelWidth 10 --out motionBlur10.png
+														]]></script>
+													
+												</td>
+											</tr>
+											<tr>
+												<td><img src="motionBlur3.png" width="80%"></td>
+												<td><img src="motionBlur10.png" width="80%"></td>
+											</tr>
+										</table>
+
+										<h2>Sharpen</h2>
 
 										<p>
-											will print out <code>01110111001101011001010000000000</code>
+											Make the pixel 9*[x, y] minus the surrounding 8 pixels
 										</p>
 
+										<table style="width:200px;"><tr><td>-1</td><td>-1</td><td>-1</td></tr>
+											<tr><td>-1</td><td>9</td><td>-1</td></tr>
+											<tr><td>-1</td><td>-1</td><td>-1</td></tr>
+										</table>
+
+
+										<table>
+											<tr>
+												<td>
+													<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+														./imfilter --in cats.jpg --sharpen --out sharpen.png
+														]]></script>
+												</td>
+											</tr>
+											<tr>
+												<td><img src="sharpen.png" width="40%"></td>
+											</tr>
+										</table>
+
+										<h2>Emboss</h2>
 										<p>
-											Your job will be to fill out a file <code>mynum2binary.cpp</code> that accomplishes the same thing, but <b>only using bitwise operators</b>:
+											Take the pixels in the following pattern
 										</p>
+										<table style="width:200px;">
+											<tbody><tr><td>-1</td><td>-1</td><td>0</td></tr>
+											<tr><td>-1</td><td>0</td><td>1</td></tr>
+											<tr><td>0</td><td>1</td><td>1</td></tr>
+											</tbody>
+										</table>
 
-										<ul>
-                                            <li><b>Allowed: </b> Binary AND (<b>&</b>), Binary OR (<b>|</b>), Binary XOR (<b>^</b>), Left Binary Shift (<b>&lt &lt</b>), and Unsigned Right Binary Shift (<b>&gt &gt &gt</b>)</li>
-                                            <li>
-                                                <b>NOT Allowed: +, -, /, *, %</b>
-                                            </li>
-                                        </ul>
-
-
-										<h2>Exercise 2: Converting a binary string to a number</h2>
-
-										<p>
-											I've provided a file <code>binary2num.cpp</code> which takes a binary string as a command line argument and which prints out the number corresponding to it.  For example
-										</p>
-
-										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											./binary2num 11011
-										]]></script>
-
-										<p>
-											will print out <code>27</code>
-										</p>
-
-										<p>
-											Your job will be to fill out a file <code>mybinary2num.cpp</code> that accomplishes the same thing, but <b>only using bitwise operators</b>
-										</p>
-
-										<h2>Exercise 3: XOR Encryption</h2>
-										<p>
-											Fill in the file <code>encrypt.cpp</code> to implement XOR encryption/decryption.  The command line arguments refer to three files:
-											<ol>
-												<li>
-													The first file is thought of either as the "plain text" (original message) or the "cipher text" (encrypted message)
-												</li>
-												<li>
-													The second file is the "cipher," or what we use to encrypt information
-												</li>
-												<li>
-													The third file is the output file which stores the cipher text or the decrypted text
-												</li>
-											</ol>
-										</p>
-
-										<p>
-											For example, if you run 
-										</p>
-
-										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											./encrypt hidden password.txt decrypted.txt
-										]]></script>
-
-										<p>
-											It will decrypt the bytes in <code>hidden</code> by XORing with the bytes in <code>password.txt</code> and save the result to <code>decrypted.txt</code>.  If this works, you should be able to read the text in <code>decrypted.txt</code>
-										</p>
-
-										<p>
-											The steps to accomplish this are as follows:
-										</p>
-
-										<ol>
-											<li>Load in file1</li>
-											<li>Load file2</li>
-											<li>Loop through and replace each byte in file1 with the XOR of the corresponding byte in file2.  If file2 reaches the end, loop back to the beginning</li>
-											<li>Write out the resulting XORED file</li>
-										</ol>
-
-
-
-
+                                    
                                 </div>
 						</div>
 					</div>
@@ -319,4 +320,3 @@
 			<script src="../../assets/js/main.js"></script>
 <!-- End Scripts -->
 	</body>
-</html>

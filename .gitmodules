@@ -82,3 +82,9 @@
 [submodule "Labs/Lab7_HuffmanTrees/Lab7_HuffmanTrees"]
 	path = Labs/Lab7_HuffmanTrees/Lab7_HuffmanTrees
 	url = https://github.com/ursinus-cs174-s2022/Lab7_HuffmanTrees.git
+[submodule "Assignments/FinalProject_Shazam/FinalProject_Shazam"]
+	path = Assignments/FinalProject_Shazam/FinalProject_Shazam
+	url = https://github.com/ursinus-cs174-s2022/FinalProject_Shazam.git
+[submodule "ClassExercises/Week13_ImageFilters/Week13_ImageFilters"]
+	path = ClassExercises/Week13_ImageFilters/Week13_ImageFilters
+	url = https://github.com/ursinus-cs174-s2022/Week13_ImageFilters.git
