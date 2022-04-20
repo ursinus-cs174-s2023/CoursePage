@@ -41,17 +41,16 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Final Project: The Shazam Algorithm (100 Points)</h2>
-                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+                                        <h2>Final Project: The Shazam Algorithm for Audio Fingerprinting (100 Points)</h2>
+										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
 
+                                        
 										<ul>
 											<li><a href = "#overview">Overview/Logistics</a>
 												<ul>
-													<li><a href = "#code">Starter Code</a></li>
-													<li><a href = "#readme">What To Submit</a></li>
 												</ul>
 											</li>
 											
@@ -68,20 +67,31 @@
 
                                         <h2><a name = "overview">Overview / Logistics</a></h2>
 										<p>
-                                            We have now reached the climax of the course!  This assignment is a direct followup to the <a href = "../HW5_BasketballHashing/">last assignment on basketball hashing</a>.  Now that we have a hash table implementation, we're going to use it for an even more exciting task of quickly identifying a song from a short (and possibly degraded) audio clip of that song.  We will be implementing the so-called "<a href = "https://en.wikipedia.org/wiki/Shazam_(application)">Shazam</a> algorithm," which you can read more about in <a href = "Wang03-shazam.pdf">this paper</a>, though I will break down parts of the algorithm one by one in this assignment, and you will implement them yourself.  In a nutshell, we will be building something called an <b>audio fingerprint</b>, which can be used to identify songs from short clips of audio.
+                                            We have now reached the climax of the course!  This assignment is a direct followup to the <a href = "../HW5_BasketballHashing/">last assignment on basketball hashing</a>.  Now that we have a hash table implementation, we're going to use it for an even more exciting task of quickly identifying a song from a short (and possibly degraded) audio clip of that song.  We will be implementing the so-called "<a href = "https://en.wikipedia.org/wiki/Shazam_(application)">Shazam</a> algorithm," which you can read more about in <a href = "Wang03-shazam.pdf">this paper</a>, and which I have broken down with audio examples at <a href = "background.html">this link</a>.  In a nutshell, we will be building something called an <b>audio fingerprint</b>, which can be used to identify songs from short clips of audio.
                                         </p>
 
+										<h4>The Design Is Yours!</h4>
+										<p>
+											I am giving you the freedom to design the code any way you want in this assignment, so you should take some time to plan out what you're going to do before you start coding.  Think about what classes you're going to write, what entry point programs with mains you'll write to run your code, and how everything will fit together.  Your code should be <b>modular</b>, <b>reusable</b>, and <b>well encapsulated</b>.
+										</p>
+
                                         <p>
-                                            <h3>Learning Objectives </h3>
+                                            <h3>Summative Learning Objectives</h3>
                                             <ul>
-                                                <li>Use makefiles in C++ to build a medium scale project with many files</li>
+												<li>Design and implement code that uses object oriented principles</li>
                                                 <li>Use multiple classes together in concert to accomplish a task</li>
 												<li>Use hash tables to organize and find data quickly</li>
 												<li>Manipulate 2D arrays in C++</li>
-												<li>Manipulate STL vectors in C++</li>
 												<li>Manage dynamic memory and object references in C++</li>
 												<li>Implement audio features for content-based music information retrieval</li>
                                             </ul>
+										</p>
+
+										<h3>
+											Background
+										</h3>
+										<p>
+											<a href = "background.html">Click here</a> to view background notes on the algorithm you will be implementing.
 										</p>
 										
 										<p>
@@ -91,194 +101,12 @@
 
 
                                         <h3><a name = "readme">What to submit</a></h3>
-                                            When you are finished, please submit <code>fingerprint.cpp</code> to Canvas.  Please also answer the questions below
-										
-										<ol>
-											<li>
-												Approximately how many hours it took you to finish this assignment (<i>I will not judge you for this at all...I am simply using it to gauge if the assignments are too easy or hard</i>)
-											</li>
-											<li>
-												Your overall impression of the assignment. Did you love it, hate it, or were you neutral? One word answers are fine, but if you have any suggestions for the future let me know.
-											</li>
-											<li>
-												Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
-											</li>
-										</ol>
+                                            <p>
+												When you are finished, please submit a .zip file with your code (not including the database) to canvas, as well as a README file explaining a brief overview of your code files and the design decisions you made
+											</p>
 
-                                        <h2><a name = "spectrograms">Background: Audio Spectrograms / The Shazam Challenge</a></h2>
-                                        <p>
-											As we discussed in class, it is possible to turn audio into an image called a <a href = "https://en.wikipedia.org/wiki/Spectrogram">spectrogram</a>, in which the x-axis represents time and the y-axis represents "frequency content"; that is, higher up on y are pixels corresponding to higher pitches, and movement to the right indicates progression in time.  A bright pixel indicates that there is a lot of energy at that time and frequency, and a darker pixel indicates that there is less energy.  Below is an example audio clip and its corresponding spectrogram, from 0 to 4000hz sampled at 1 pixel every 46 milliseconds.  Once you build the skeleton code, you can generate that image yourself with the following command line invocation:
-											
-											<script type="syntaxhighlighter" class="brush: cpp">./loadFingerprints -audio ExampleQueries/wangchungClean.wav -impath spectrogram.bmp</script>
-										</p>
-										<p>
-											<audio controls>
-												<source src="HW5b_Shazam/ExampleQueries/wangchungClean.wav" type="audio/ogg">
-												Your browser does not support the audio element.
-												</audio> 
-										</p>
-										<p>
-											<img src = "spectrogram.png">
-										</p>
-										<p>
-											Lots of interesting features are present in this image.  For instance, it is possible to pick out beats, as well as <a href = "https://en.wikipedia.org/wiki/Harmonic">harmonics</a> of musical instruments and vocals.  Our challenge in the shazam task will be to summarize these images for quick queries in a way that is robust to different transformations of audio, such as 
-											<ul>
-												<li>Changes in loudness</li>
-												<li>Background noise</li>
-												<li>Low quality audio / distorted audio</li>
-											</ul>
-											To make things even more challenging, we want to do this with small audio clips, since we want people to be able to jump in the middle of a song, and we don't want them to wait too long to know what song it is.  We also want it to run quickly so that it can be done real time.
-										</p>
-
-										<p>
-											In this assignment, you will slowly work through a series of steps to address all of these issues.  As has been the case many times before, a hash table will be the central data structure that allows us to tackle this seemingly impossible task.
-										</p>
 
 										
-
-										<h2><a name = "anchors">Programming Task 1: Fingerprint Anchors (10 Points)</a></h2>
-										<p>
-											The first insight of the Shazam technique is that bright spots in the spectrogram tell us more than dark spots.  In particular, we want to find <b>maxes</b> of brightness in the image which are brighter than their surrounding pixels in some region.  These are referred to as <b>anchors</b>.  Even if the audio gets quieter, the maxes will still be the greatest relative to their neighbors.  Furthermore, they are some of the most important pixels in the image, and are the least likely to disappear in the presence of noise or other distortions.
-										</p>
-
-										
-										<p>
-											More specifically, a pixel in the spectrogram is said to be an anchor if it is greater than all other pixels in a rectangle surrounding it.  The rectangle is specified by the parameters <code>timeWin</code> and <code>freqWin</code>, which are half of the length of a rectangle in the time and frequency axes, respectively, centered at the pixel in question.  The image below shows an example of a max 
-										</p>
-										<p>
-										<img src = "WindowMaxLabeled.svg">
-										</p>
-
-										<p>
-											Your task in this section will be to compute all of the anchors and add them to a <code><a href = "http://www.cplusplus.com/reference/vector/vector/at/">vector</a></code> list.  In code, each anchor is an object of type <code>Anchor</code>, and you call the constructor with the frequency and time at which it occurred.  
-										</p>
-										<p>
-											To find anchors, you'll be looping through the 2D spectrogram array <code>S</code>, which has <code>maxFreq</code> rows and <code>nwin</code> columns.First, you should fill in the <code>isMax()</code> method in fingerprint.cpp.  Then, you should fill in the <code>findAnchors()</code> method, using <code>isMax()</code> as a helper method to check each pixel to see if it's an anchor.  You should only include an anchor if it is both a max <b>and</b> if the value exceeds the threshold <code>thresh</code> passed along to findAnchors().
-										</p>
-
-										<p>
-											Once your code is working properly, you should see the image below when you run this in the command line
-										</p>
-										<script type="syntaxhighlighter" class="brush: cpp">./loadFingerprints -audio ExampleQueries/wangchungClean.wav -impath anchors.bmp</script>
-										<img src = "anchors.png">
-
-										<h2><a name = "fingerprints">Programming Task 2: Pairing Anchors in Target Zones (10 Points)</a></h2>
-										<p>
-											One way to make anchors even more descriptive is to associate them to other anchors slightly ahead of them in time.  Then, we actually capture some of the temporal evolution of the song, rather than just isolated time frequency points.  This is the basis of the Shazam fingerprint.  In particular, for each anchor, we search for other anchors in a rectangle slightly shifted to the right (forward in time), as shown in the image below for the dark blue anchor
-										</p>
-
-										<p>
-											<img src = "targetZoneLabeled.svg">
-										</p>
-
-										<p>
-											<code>dCenter</code> refers to the time difference between the anchor and the center of the box, <code>width</code> (&lt dCenter) refers to half of the width of the rectangle around its center, and <code>height</code> refers to half of its height in frequency above and below its center.
-										</p>
-
-										<p>
-											To accomplish this in code, you should first fill in the <code>searchTargetZone()</code> method of the <code>Anchor</code> class, which should dynamically allocate and fill in a vector of other anchors that are in a specified target zone for this anchor.  Then, you should fill in the <code>getFingerprints()</code> method, which should loop through all of the anchors and call the <code>searchTargetZone()</code> method on all of them.  For each anchor and a pair found in the target zone, you should create an object of type <code>Fingerprint</code>, which takes the two anchors as arguments (original anchor, then pair in target zone), and then add the fingerprint to the vector of fingerprints.  If you've done this correctly, then you should see the following image of (many!) fingerprints after running the following command
-										</p>
-
-										<script type="syntaxhighlighter" class="brush: cpp">./loadFingerprints -audio ExampleQueries/wangchungClean.wav -impath fingerprints.bmp</script>
-
-										<p>
-											<img src = "allfingerprints.png">
-										</p>
-
-										<h2><a name = "hashing">Programming Task 3: Hashing Fingerprints (5 Points)</a></h2>
-										<p>
-											Soon we are going to create a database of many, many fingerprints across a collection of music, so we need a way to look them up quickly.  We can create a hash code based on three pieces of information:
-											<ol>
-												<li>The frequency index of the first anchor, <code>f1</code></li>
-												<li>The frequency index of the second anchor, <code>f2</code></li>
-												<li>The time lag between the two anchors, <code>dw = win2 - win1</code></li>
-											</ol>
-											To wrap all of these up into one number to be used as a hash code, you should use the following formula
-
-											<h3>
-												\[ f1 + f2*256 + dw*256*256 \]
-											</h3>
-										</p>
-										<p>
-											To implement this, you should fill in the <code>getHash()</code> method of the <code>Fingerprint</code> class, which inherits from <code>Hashable</code> so that fingerprints can be used as keys in a <code>HashTable</code>.  If you have done this properly, then when you run the code 
-										</p>
-										<script type="syntaxhighlighter" class="brush: cpp">./loadFingerprints -audio ExampleQueries/wangchungClean.wav -fpath fingerprints.txt -artist WangChung -title EverybodyHaveFunTonight
-										</script>
-
-										<p>
-											Then you should output a file <a href = "fingerprints.txt">fingerprints.txt</a>.  You should verify that your file looks exactly like <a href = "fingerprints.txt">this one</a> before proceeding.
-										</p>
-
-										<h2><a name = "queries">Programming Task 4: Audio Queries (15 Points)</a></h2>
-										<p>
-											Now that we know how to compute fingerprints, we are ready to try to match the fingerprints in a short "query" audio clip to the database to figure out which song in the database it might be (NOTE: In CS, a "query" generally refers to something that you're looking up in a database; e.g. text that you type into Google is a "search query").  It is possible that multiple songs share the same fingerprint, so it will take some work to narrow down which song the query might be.  To see how this might work, let's consider the fingerprints in the audio clip below, which is a snippet from Wang Chung's "Everybody Have Fun Tonight" with lots of static added.
-										</p>
-
-										<p>
-											<audio controls>
-												<source src="HW5b_Shazam/ExampleQueries/wangchungNoise.wav" type="audio/ogg">
-												Your browser does not support the audio element.
-												</audio> 
-										</p>
-										
-										<p>
-											Once we compute its fingerprints, we can match each one to all of the songs in the database.  If there is a match, we can plot the time where the query fingerprint starts against the time of that same fingerprint in the matching song in the database.  When we do this on the first three songs in the database for the above query, we see the following plots:
-										</p>
-
-										<p>
-											<img src = "WangChungNoise_Scatter.svg">
-										</p>
-
-										<p>
-											First of all, we notice that there are more matching fingerprints in the correct song than in the others, but we can go further.  If we zoom in on a smaller time interval in the database song for "Everybody Have Fun Tonight," we see the following pattern:
-										</p>
-										<p>
-											<img src = "WangChungNoise_ScatterZoom.svg">
-										</p>
-										<p>
-											The feature that pops out here, which does not exist in the other plots, is that many of the dots concentrate along a diagonal line with a slope of one.  This indicates that a bunch of fingerprints match in sequence with the same relative offset, which is <a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">extremely unlikely to happen</a> unless this is a true match of the query.  So somehow, we need to look for these kinds of diagonal lines and to count how many dots are along them.  One very simple way to do this is to create a histogram of the difference of the window index of this fingerprint in the database song and that of the query.  Each bin in the histogram is a time difference (in units of spectrogram windows), and its count is the number of matching fingerprints that had that difference.  The plot below shows the histograms for the first three songs in the database, zoomed around the peak in those histograms
-										</p>
-										<p>
-											<img src = "WangChungNoise_Hist.svg">
-										</p>
-
-										<p>
-											What we see here is a very clear winner, where "Everybody Have Fun Tonight" has over 300 scatterpoints in sequence at an offset of about 2585, while the false matches don't have more than 6 points maximum in sequence.
-										</p>
-
-										<HR>
-										<p>
-											Just to see another example, consider the following audio clip captured with a phone microphone, as emitted by a low quality laptop speaker
-										</p>
-
-										<p>
-											<audio controls>
-												<source src="HW5b_Shazam/ExampleQueries/baddayLaptop.wav" type="audio/ogg">
-												Your browser does not support the audio element.
-												</audio> 
-										</p>
-
-										<p>
-											The scatterplots with the first three songs look like this:
-										</p>
-
-										<img src = "BaddayLaptop_Scatter.svg">
-
-										<p>
-											Again, we see that the matching song has a lot more fingerprints, and when we zoom in, we see a diagonal line, indicating that our query songs matches an interval in the song "Bad Day"
-										</p>
-
-										<img src = "BaddayLaptop_HistZoom.svg">
-
-										<p>
-											And the histograms of difference in fingerprint times are as follows
-										</p>
-
-										<img src = "BaddayLaptop_Hist.svg">
-
-										<p>
-											So again, it's not even close which song has a higher count in the max bin in the histogram, and we get the correct estimate out of these three by picking the one with the max histogram count, even though the query audio is highly degraded.
-										</p>
 
 										<h3>Code to write</h3>
 										<p>
@@ -478,11 +306,8 @@
 
 
 
-
-
-
-
-
+										
+										
                                     
                                 </div>
 						</div>
@@ -655,3 +480,11 @@
             <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <!-- End Sidebar !-->
 
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</
