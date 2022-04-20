@@ -51,28 +51,65 @@
 										<ul>
 											<li><a href = "#overview">Overview/Logistics</a>
 												<ul>
+													<li><a href = "#design">The Design Is Yours!</a></li>
+													<li><a href = "#objectives">Summative Learning Objectives</a></li>
+													<li>
+														<a href = "background.html">Background</a>
+													</li>
+													<li>
+														<a href = "#readme">What to submit</a>
+													</li>
 												</ul>
 											</li>
-											
+											<li>
+												<a href = "#code"><a href = "#startercode">Starter Code / Utilities</a></a>
+												<ul>
+													<li>
+														<a href = "#spectrograms">Audio spectrograms</a>
+													</li>
+													<li>
+														<a href = "#debugplot">Debugging by Plotting</a>
+													</li>
+													<li>
+														<a href = "#precomputed">Precomputed Fingerprints</a>
+													</li>
+													<li>
+														<a href = "#hash">Hash Maps</a>
+													</li>
+												</ul>
+											</li>
+											<li>
+												<a href = "#programming">Programming Tasks</a>
+												<ul>
+													<li>
+														<a href = "#main">Main Program Specification</a>
+													</li>
+													<li>
+														<a href = "#efficiency">Efficiency</a>
+													</li>
+													<li>
+														<a href = "#debugging">Debugging Tools</a>
+													</li>
+													<li>
+														<a href = "#further">Going Further!</a>
+													</li>
+												</ul>
+											</li>
+											<li><a href = "#grading">Grading Rubric</a></li>
 										</ul>
-
-										<p>
-											Full database can be found at <a href = "https://drive.google.com/file/d/1rjcIW81FpMMnik0P4o8W6HWZqL420ShB/view?usp=sharing">this link</a>
-										</p>
-										
 
                                         <h2><a name = "overview">Overview / Logistics</a></h2>
 										<p>
                                             We have now reached the climax of the course!  This assignment is a direct followup to the <a href = "../HW5_BasketballHashing/">last assignment on basketball hashing</a>.  Now that we have a hash table implementation, we're going to use it for an even more exciting task of quickly identifying a song from a short (and possibly degraded) audio clip of that song.  We will be implementing the so-called "<a href = "https://en.wikipedia.org/wiki/Shazam_(application)">Shazam</a> algorithm," which you can read more about in <a href = "Wang03-shazam.pdf">this paper</a>, and which I have broken down with audio examples at <a href = "background.html">this link</a>.  In a nutshell, we will be building something called an <b>audio fingerprint</b>, which can be used to identify songs from short clips of audio.
                                         </p>
 
-										<h4>The Design Is Yours!</h4>
+										<h3><a name = "design">The Design Is Yours!</a></h3>
 										<p>
 											I am giving you the freedom to design the code any way you want in this assignment, so you should take some time to plan out what you're going to do before you start coding.  Think about what classes you're going to write, what entry point programs with mains you'll write to run your code, and how everything will fit together.  Your code should be <b>modular</b>, <b>reusable</b>, and <b>well encapsulated</b>.
 										</p>
 
                                         <p>
-                                            <h3>Summative Learning Objectives</h3>
+                                            <h3><a name = "objectives">Summative Learning Objectives</a></h3>
                                             <ul>
 												<li>Design and implement code that uses object oriented principles</li>
                                                 <li>Use multiple classes together in concert to accomplish a task</li>
@@ -84,7 +121,7 @@
 										</p>
 
 										<h3>
-											Background
+											<a name = "background">Background</a>
 										</h3>
 										<p>
 											<a href = "background.html">Click here</a> to view background notes on the algorithm you will be implementing.
@@ -92,7 +129,7 @@
 
                                         <h3><a name = "readme">What to submit</a></h3>
                                             <p>
-												When you are finished, submit a .zip file with your code (not including the database) to canvas, as well as a README file explaining a brief overview of your code files and the design decisions you made
+												When you are finished, submit a .zip file with your code (not including the <a href = "#precomputed">database</a>) to canvas, as well as a README file explaining a brief overview of your code files and the design decisions you made.
 											</p>
 
 
@@ -152,179 +189,112 @@
 
 											<h3><a name = "precomputed">Precomputed Fingerprints</a></h3>
 											<p>
-												
+												The starter code comes with fingerprints from 8 full length songs using the parameters:
+												<ul>
+													<li><code>win = 1024</code></li>
+													<li><code>hop = 512</code></li>
+													<li><code>maxBin = 128</code></li>
+												</ul>
 											</p>
+											<p>
+												To make sure your queries are compatible with these examples, you should use the same parameters for the spectrograms when computing new fingerprints.
+											</p>
+
+											<p>
+												The 8 precomputed songs can be found in the folder <code><a href = "https://github.com/ursinus-cs174-s2022/FinalProject_Shazam/tree/main/Database">Database</a></code>.  They are stored in plain text files with the following conventions:
+											</p>
+											<ul>
+												<li>The first line is the name of the artist</li>
+												<li>The second line is the name of the song</li>
+												<li>Every subsequent line contains a fingerprint formatted into a <a href = "background.html#hashcode">hash code</a>, followed by the window index at which that fingerprint occurs in the song</li>
+											</ul>
+
+											<p>
+												For example, the first 10 lines of <code>0.txt</code> look like:
+											</p>
+
+											<script type="syntaxhighlighter" class="brush: cpp">
+												Kanye West
+												Touch the Sky
+												2884098 102
+												3539458 102
+												4129282 102
+												7143938 102
+												5113858 102
+												6359298 102
+												8587778 102
+												7212034 102
+												...
+											</script>
+
+
+											<h4>Stress Testing</h4>
+											<p>
+												You should start by making sure you can correctly identify the given 10 second clips in <a href = "https://github.com/ursinus-cs174-s2022/FinalProject_Shazam/tree/main/ExampleQueries">example queries</a> among the 8 examples in this database.  Once you're confident your code is working well, you can make the problem harder and see if you can identify those same clips among a database of 275 songs, which can be downloaded at <a href = "https://drive.google.com/file/d/1rjcIW81FpMMnik0P4o8W6HWZqL420ShB/view?usp=sharing">this link</a>.
+											</p>
+
+											<h3><a name = "hash">Hash Maps</a></h3>
+											<p>
+												Code has not been provided for this, but when you're ready to look up queries in the database, you should splice in your hash map code from <a href = "../HW5_BasketballHashing/">homework 5</a> to help you look up fingerprints quickly.
+											</p>
+
 
 											
 
 										<HR>
-										<h2>Programming Tasks</h2>
-										
+										<h2><a name = "programming">Programming Tasks</a></h2>
 
-
-										<h3>Testing</h3>
+										<h3><a name = "main">Main Program Specification</a></h3>
 										<p>
-											To see if this works correctly, you can run the file <code>query</code>
+											Your code should culminate in a program called <code>query</code>, which takes two command line arguments:
+											<ol>
+												<li>A path to a query audio file to be identified</li>
+												<li>A path to a folder containing a <a href = "#precomputed">database of precomputed fingerprints</a></li>
+											</ol>
+											Your program should then load in the query audio and fingerprints in the database, and it should output the artist name and song name of the song in the database that is the best match to the query file.  
 										</p>
 
-										<script type="syntaxhighlighter" class="brush: cpp">./query -audio ExampleQueries/wangchungClean.wav
-										</script>
-
-										which will then output something like the following
+										<p>
+											As an example, if you typed in 
+										</p>
 
 										<script type="syntaxhighlighter" class="brush: cpp">
-											Getting spectrogram...
-											Finished getting spectrogram
-											0 seconds elapsed processing query audio
-											Loading Kanye West: Touch the Sky
-											Loading Wang Chung: Everybody Have Fun Tonight
-											Loading Daniel Powter: Bad Day
-											Loading Transplants: California Babylon
-											Loading Bananarama: Cruel Summer
-											Loading Jeff Kashiwa: Ooh Ah
-											0 seconds elapsed loading database
-											Wang Chung: Everybody Have Fun Tonight
-											0 seconds elapsed performing query
+											./query ExampleQueries/despacitoNoise.wav Database
 										</script>
 
 										<p>
-											So it's correctly found that the song is "Wang Chung: Everybody Have Fun Tonight."  Your program should also print out that song for the following two inputs
+											Your program should output <code>Luis Fonsi ft Daddy Yankee - Despacito</code>
 										</p>
 
-										<table>
-											<tr>
-												<td>
-													<h4>
-														ExampleQueries/wangchungLaptop.wav
-													</h4>
-													</td>
-												<td>
-													<audio controls>
-														<source src="HW5b_Shazam/ExampleQueries/wangchungLaptop.wav" type="audio/ogg">
-														Your browser does not support the audio element.
-													</audio> 
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<h4>
-														ExampleQueries/wangchungNoise.wav
-													</h4>
-													</td>
-												<td>
-													<audio controls>
-														<source src="HW5b_Shazam/ExampleQueries/wangchungNoise.wav" type="audio/ogg">
-														Your browser does not support the audio element.
-													</audio> 
-												</td>
-											</tr>
-
-											<tr>
-												<td colspan=2>
-													For the following three queries below, the program should print out "Daniel Powter: Bad Day"
-												</td>
-											</tr>
-											
-											<tr>
-												<td>
-													<h4>
-														ExampleQueries/baddayClean.wav
-													</h4>
-													</td>
-												<td>
-													<audio controls>
-														<source src="HW5b_Shazam/ExampleQueries/baddayClean.wav" type="audio/ogg">
-														Your browser does not support the audio element.
-													</audio> 
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<h4>
-														ExampleQueries/baddayLaptop.wav
-													</h4>
-													</td>
-												<td>
-													<audio controls>
-														<source src="HW5b_Shazam/ExampleQueries/baddayLaptop.wav" type="audio/ogg">
-														Your browser does not support the audio element.
-													</audio> 
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<h4>
-														ExampleQueries/baddayNoise.wav
-													</h4>
-													</td>
-												<td>
-													<audio controls>
-														<source src="HW5b_Shazam/ExampleQueries/baddayNoise.wav" type="audio/ogg">
-														Your browser does not support the audio element.
-													</audio> 
-												</td>
-											</tr>
-
-										
-
-
-											<tr>
-												<td colspan=2>
-													For the following three queries below, the program should print out "Kanye West: Touch The Sky"
-												</td>
-											</tr>
-
-											<tr>
-												<td>
-													<h4>
-														ExampleQueries/skyClean.wav
-													</h4>
-													</td>
-												<td>
-													<audio controls>
-														<source src="HW5b_Shazam/ExampleQueries/skyClean.wav" type="audio/ogg">
-														Your browser does not support the audio element.
-													</audio> 
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<h4>
-														ExampleQueries/skyLaptop.wav
-													</h4>
-													</td>
-												<td>
-													<audio controls>
-														<source src="HW5b_Shazam/ExampleQueries/skyLaptop.wav" type="audio/ogg">
-														Your browser does not support the audio element.
-													</audio> 
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<h4>
-														ExampleQueries/skyNoise.wav
-													</h4>
-													</td>
-												<td>
-													<audio controls>
-														<source src="HW5b_Shazam/ExampleQueries/skyNoise.wav" type="audio/ogg">
-														Your browser does not support the audio element.
-													</audio> 
-												</td>
-											</tr>
-										</table>
-
+										<h3><a name = "efficiency">Efficiency</a></h3>
 										<p>
-											To help debug your program, you should print out the maximum number of counts that you find in a bin for the song you've chosen.
+											Your program should be very fast on the database of just 8 songs!  Even on the database of 275 songs, my code only takes about 10 seconds to load the entire database, and the query is nearly instantaneous.  The key to making this work efficiently is to use a hash table.  You can use as many buckets as there are unique <a href = "background#hashing">hash codes</a>, which is roughly 17 million.
 										</p>
 
-										<h3>Stress Testing</h3>
+										<h3><a name = "debugging">Debugging Tools</a></h3>
 										<p>
-											Once the above is working, you can try loading a larger database to see if it still works.  <a href = "https://drive.google.com/file/d/14BUUmi4gifjJtHJJ4bB9VZ2hSj48lJB3/view?usp=sharing">Click here</a> to download a .zip file with 266 songs, including the first 6 in this list, and update the query file to load more than the first 6 songs.  The problem technically gets harder, since there are more potential songs to confuse with in the database.  It will also take much longer to load the database and to setup the hash table.  But if this works, you'll know you have a robust system.
+											Of course, you'll probably want to write several other programs to help you test as you go along.  Below are a few suggestions:
 										</p>
+										<ul>
+											<li>
+												A program that computes and plots the <a href = "background.html#anchors">constellation</a> for a particular audio clip (note that plotting is upside down)</li>
+											</li>
+											<li>
+												A program that computes and plots the <a href = "background.html#fingerprints">fingerprints</a> for a particular audio clip</li>
+											</li>
+											<li>
+												A program that parses one of the database example text files and loads its fingerprints into a hash map
+											</li>
+											<li>
+												A program that prints out information about <a href = "background.html#queries">histograms that you make</a> of the difference between a fingerprint's window index in the database and the fingerprint's window index in the audio.
+											</li>
+											<li>
+												...other things to help you debug?!
+											</li>
+										</ul>
 
-										<h3>Going Further!</h3>
+
+										<h3><a name = "further">Going Further!</a></h3>
 										<p>
 											At this point, you have a fully functional basic implementation of audio fingerprinting for content-based music retrieval.  This is not required, but you should try it on your own music!  See if you can add a song to the database and query it with a clip.  Note that the parameters are setup so that the database is expecting single channel audio sampled at 22050hz in the .wav file format.  You can use <a href = "https://www.audacityteam.org/download/">Audacity</a> to do the conversion.  Questions to ask yourself as you go include:
 											<ul>
@@ -340,8 +310,72 @@
 											</ul>
 										</p>
 
-										
+										<p>
+											Beyond that, you can also write code to create clips to fool the Shazam algorithm, like I did in <a href = "http://www.beepytunes.com/">http://www.beepytunes.com/</a>.  This is as simple as creating a tune that has short time cosines at every anchor location in the constellation.
+										</p>
 
+										
+										<HR>
+											<h2><a name = "grading">Grading Rubric</a></h2>
+
+											<p>
+												Below is how I will score your final submissions
+											</p>
+
+											<h3>To Receive an A</h3>
+											<ul>
+												<li>
+													Each item required for a grade of B is included
+												</li>
+												<li>
+													Classes use information hiding (public/private/protected) and a clear separation between implementation (cpp files) and specification (h files)
+												</li>
+												<li>
+													The program runs without memory leaks
+												</li>
+											</ul>
+
+											<h3>To Receive a B</h3>
+											<ul>
+												<li>
+													Each item required for a grade of C is included
+												</li>
+												<li>
+													Fingerprints and database song entries are well-encapsulated within class structures
+												</li>
+												<li>
+													Code has been reused where appropriate, using object oriented paradigms
+												</li>
+												<li>
+													Code is clean and well-documented
+												</li>
+											</ul>
+
+											<h3>To Receive a C</h3>
+											<ul>
+												<li>
+													Each item required for a grade of D is included
+												</li>
+												<li>
+													The query program returns the correct songs, as per the specification
+												</li>
+												<li>
+													The query program runs efficiently, as per the specification
+												</li>
+											</ul>
+
+											<h3>To Receive a D</h3>
+											<ul>
+												<li>
+													It is possible to build your <code>query</code> program from scratch by typing <code>make</code> in the command line
+												</li>
+												<li>
+													Your <code>query</code> program successfully computes anchors, fingerprints, and hash codes for the fingerprints
+												</li>
+												<li>
+													Your <code>query</code> program is able to load all of the fingerprints from a database into a hash map
+												</li>
+											</ul>
 
 
 										
@@ -414,6 +448,13 @@
 												<li><a href = "../../Assignments/HW3_InvasiveSpecies">Homework 3: Invasive Species Polymorphism</a></li>
 												<li><a href = "../../Assignments/HW4_LinkedListMaze/part1.html">Homework 4: Doubly Linked Lists</a></li>
 												<li><a href = "../../Assignments/HW5_BasketballHashing">Homework 5: Basketball Hashing</a></li>
+												<li><a href = "../../Assignments/FinalProject_Shazam">Final Project: The Shazam Algorithm for Audio Fingerprinting</a>
+												<ul>
+													<li>
+														<a href = "../../Assignments/FinalProject_Shazam/background.html">Shazam background</a>
+													</li>
+												</ul>
+												</li>
 											</ul>
 										</li>
 										<li>
@@ -525,4 +566,3 @@
 			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="../../assets/js/main.js"></script>
 <!-- End Scripts -->
-	</
