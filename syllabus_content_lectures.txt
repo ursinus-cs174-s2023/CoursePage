@@ -161,7 +161,7 @@ Function Pointers
 LECTURE
 Intermezzo: Digital Audio And Shazam
 
-
+<ul><li><a href = "Assignments/FinalProject_Shazam/background.html">Shazam algorithm background</a></li></ul>
 LECTURE
 Parallel Programming And Threads
 
