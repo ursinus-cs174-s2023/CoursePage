@@ -57,6 +57,9 @@
 														<a href = "background.html">Background</a>
 													</li>
 													<li>
+														<a href = "#timeline">Suggested Timeline</a>
+													</li>
+													<li>
 														<a href = "#readme">What to submit</a>
 													</li>
 												</ul>
@@ -135,19 +138,19 @@
 										<h3><a name = "timeline">Suggested Timeline</a></h3>
 											<ul>
 												<li>
-													By Tuesday 4/26, you should be finishing up computing anchors
+													By <b>Tuesday 4/26</b>, you should be finishing up computing anchors
 												</li>
 												<li>
-													By Friday 4/29, you should be finishing up computing fingerprints
+													By <b>Friday 4/29</b>, you should be finishing up computing fingerprints
 												</li>
 												<li>
-													By Monday 5/2, you should be finished integrating your hash map code from homework 5 into your codebase
+													By <b>Monday 5/2</b>, you should be finished integrating your hash map code from homework 5 into your codebase
 												</li>
 												<li>
-													By Wednesday 5/3, you should have a data structure setup to accommodate a database where multiple songs have the same fingerprint
+													By <b>Wednesday 5/3</b>, you should have a data structure setup to accommodate a database where multiple songs have the same fingerprint
 												</li>
 												<li>
-													By Monday 5/9, you should be at the stage where you are able to compile a list of songs that have fingerprints in common with a query song, and you should be on your way to organizing histograms of timing offsets between your query and the database songs for each song
+													By <b>Monday 5/9</b>, you should be at the stage where you are able to compile a list of songs that have fingerprints in common with a query song, and you should be on your way to organizing histograms of timing offsets between your query and the database songs for each song
 												</li>
 												<li>
 													Final deadline on Friday 5/13!
@@ -181,15 +184,24 @@
 												
 												<script type="syntaxhighlighter" class="brush: cpp">./plotSpectrogram --audiopath ExampleQueries/despacitoLaptop.wav --impath spectrogramLaptop.png --win 1024 --hop 512 --maxBin 128</script>
 											</p>
+
+											<p>
+												It will yield this image
+											</p>
+
 											<p>
 												<img src = "spectrogram.png" width="80%">
+											</p>
+
+											<p>
+												Have a look at <code><a href = "FinalProject_Shazam/plotSpectrogram.cpp">plotSpectrogram.cpp</a></code> for an example of how to load in audio and construct a spectrogram with the provided code.
 											</p>
 
 											<h3>
 												<a name = "debugplot">Debugging by Plotting</a>
 											</h3>
 											<p>
-												I am a big proponent of debugging with visual output.  As you're going along and computing <a href = "background.html#anchors">anchors</a> and <a href = "background.html#fingerprints">fingerprints</a>, I would highly recommend plotting them on examples to make sure your code is working properly.  You can use the <code>SimpleCanvas</code> library that we've been using with all of the other assignments/labs involving images.  Documentation for SimpleCanvas can be found at <a href = "https://ursinus-cs174-s2022.github.io/simplecanvas/docs/html/classSimpleCanvas.html">this link</a>.  <b>Just note that the spectrograms are actually plotted upside down!</b>  So you may have to flip your anchors/fingerprints.
+												I am a big proponent of debugging with visual output.  <a href = "../../index.html#smallbits">As you're going along</a> and computing <a href = "background.html#anchors">anchors</a> and <a href = "background.html#fingerprints">fingerprints</a>, I would highly recommend plotting them on examples to make sure your code is working properly.  You can use the <code>SimpleCanvas</code> library that we've been using with all of the other assignments/labs involving images.  Documentation for SimpleCanvas can be found at <a href = "https://ursinus-cs174-s2022.github.io/simplecanvas/docs/html/classSimpleCanvas.html">this link</a>.  <b>Just note that the spectrograms are actually plotted upside down!</b>  So you may have to flip your anchors/fingerprints.
 											</p>
 
 											<p>
@@ -219,7 +231,7 @@
 												</ul>
 											</p>
 											<p>
-												To make sure your queries are compatible with these examples, you should use the same parameters for the spectrograms when computing new fingerprints.
+												<b>To make sure your queries are compatible with these examples, you should use the same parameters for the spectrograms when computing new fingerprints.</b>
 											</p>
 
 											<p>
