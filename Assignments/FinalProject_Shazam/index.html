@@ -153,7 +153,7 @@
 													By <b>Monday 5/9</b>, you should be at the stage where you are able to compile a list of songs that have fingerprints in common with a query song, and you should be on your way to organizing histograms of timing offsets between your query and the database songs for each song
 												</li>
 												<li>
-													Final deadline on Friday 5/13!
+													Final deadline on <b>Friday 5/13</b>!
 												</li>
 											</ul>
 
@@ -212,24 +212,49 @@
 												// Create spectrogram
 												int win = 1024;
 												int hop = 512;
-												int maxBin = 128;
+												int maxBin = 128; // Height of the spectrogram S (number of rows)
 												DSP dsp(win);
-												int NWin;
+												int NWin; // Width of the spectrogram S (number of cols)
 												double** S = dsp.spectrogram(samples, N, win, hop, true, &NWin);
-												// Plot the spectrogram and save to an image
+												// Plot the spectrogram S and save to an image
 												SimpleCanvas canvas = plotSpectrogram(S, maxBin, NWin, 1, 1);
 												canvas.write("spectrogram.png");
 											</script>
 
 											<h3><a name = "precomputed">Precomputed Fingerprints</a></h3>
 											<p>
-												The starter code comes with fingerprints from 8 full length songs using the parameters:
+												The starter code comes with fingerprints from 8 full length songs using the following parameters for the spectrogram
 												<ul>
 													<li><code>win = 1024</code></li>
 													<li><code>hop = 512</code></li>
 													<li><code>maxBin = 128</code></li>
 												</ul>
 											</p>
+
+											<p>
+												and the following parameters for the anchors
+												<ul>
+													<li><code>freqWin = 8</code></li>
+													<li><code>int timeWin = 6</code></li>
+												</ul>
+											</p>
+
+											<p>
+												and the following parameters for the fingerprints
+											</p>
+											<ul>
+												<li>
+													<code>dCenter = 86</code>
+												</li>
+												<Li>
+													<code>width = 50</code>
+												</Li>
+												<li>
+													<code>height = 21</code>
+												</li>
+											</ul>
+
+
 											<p>
 												<b>To make sure your queries are compatible with these examples, you should use the same parameters for the spectrograms when computing new fingerprints.</b>
 											</p>
