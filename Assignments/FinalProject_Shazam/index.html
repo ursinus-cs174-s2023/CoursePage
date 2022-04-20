@@ -1,0 +1,657 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming,Spring 2022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Spring 2022</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+                                        <h2>Final Project: The Shazam Algorithm (100 Points)</h2>
+                                        <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
+									</header>
+
+									<div id="page-content">
+
+										<ul>
+											<li><a href = "#overview">Overview/Logistics</a>
+												<ul>
+													<li><a href = "#code">Starter Code</a></li>
+													<li><a href = "#readme">What To Submit</a></li>
+												</ul>
+											</li>
+											
+										</ul>
+
+										<p>
+											Documentation for SimpleCanvas can be found at <a href = "https://ursinus-cs174-s2022.github.io/simplecanvas/docs/html/classSimpleCanvas.html">this link</a>.
+										</p>
+
+										<p>
+											Full database can be found at <a href = "https://drive.google.com/file/d/1rjcIW81FpMMnik0P4o8W6HWZqL420ShB/view?usp=sharing">this link</a>
+										</p>
+										
+
+                                        <h2><a name = "overview">Overview / Logistics</a></h2>
+										<p>
+                                            We have now reached the climax of the course!  This assignment is a direct followup to the <a href = "../HW5_BasketballHashing/">last assignment on basketball hashing</a>.  Now that we have a hash table implementation, we're going to use it for an even more exciting task of quickly identifying a song from a short (and possibly degraded) audio clip of that song.  We will be implementing the so-called "<a href = "https://en.wikipedia.org/wiki/Shazam_(application)">Shazam</a> algorithm," which you can read more about in <a href = "Wang03-shazam.pdf">this paper</a>, though I will break down parts of the algorithm one by one in this assignment, and you will implement them yourself.  In a nutshell, we will be building something called an <b>audio fingerprint</b>, which can be used to identify songs from short clips of audio.
+                                        </p>
+
+                                        <p>
+                                            <h3>Learning Objectives </h3>
+                                            <ul>
+                                                <li>Use makefiles in C++ to build a medium scale project with many files</li>
+                                                <li>Use multiple classes together in concert to accomplish a task</li>
+												<li>Use hash tables to organize and find data quickly</li>
+												<li>Manipulate 2D arrays in C++</li>
+												<li>Manipulate STL vectors in C++</li>
+												<li>Manage dynamic memory and object references in C++</li>
+												<li>Implement audio features for content-based music information retrieval</li>
+                                            </ul>
+										</p>
+										
+										<p>
+											<h3><a name = "code">Starter Code</a></h3>
+											<a href = "https://github.com/Ursinus-CS174-F2020/HW5b_Shazam/archive/main.zip">Click here</a> to download the starter code for this assignment.  You will be filling in code in the <code>fingerprint.cpp</code> file.  You'll notice that it shares a lot of code with the previous assignment, and it has a makefile to manage building all of the little files.  <b>The very first think you should do <u>before</u> you type <code>make</code> is to copy in your working <code>hashtable.cpp</code> from last assignment</b>.  If this worked, your code should build, and you should be able to generate the example spectrogram in the <a href = "#spectrograms">next section</a>.  Please do not proceed until that is working!
+										</p>
+
+
+                                        <h3><a name = "readme">What to submit</a></h3>
+                                            When you are finished, please submit <code>fingerprint.cpp</code> to Canvas.  Please also answer the questions below
+										
+										<ol>
+											<li>
+												Approximately how many hours it took you to finish this assignment (<i>I will not judge you for this at all...I am simply using it to gauge if the assignments are too easy or hard</i>)
+											</li>
+											<li>
+												Your overall impression of the assignment. Did you love it, hate it, or were you neutral? One word answers are fine, but if you have any suggestions for the future let me know.
+											</li>
+											<li>
+												Any other concerns that you have. For instance, if you have a bug that you were unable to solve but you made progress, write that here. The more you articulate the problem the more partial credit you will receive (fine to leave this blank)
+											</li>
+										</ol>
+
+                                        <h2><a name = "spectrograms">Background: Audio Spectrograms / The Shazam Challenge</a></h2>
+                                        <p>
+											As we discussed in class, it is possible to turn audio into an image called a <a href = "https://en.wikipedia.org/wiki/Spectrogram">spectrogram</a>, in which the x-axis represents time and the y-axis represents "frequency content"; that is, higher up on y are pixels corresponding to higher pitches, and movement to the right indicates progression in time.  A bright pixel indicates that there is a lot of energy at that time and frequency, and a darker pixel indicates that there is less energy.  Below is an example audio clip and its corresponding spectrogram, from 0 to 4000hz sampled at 1 pixel every 46 milliseconds.  Once you build the skeleton code, you can generate that image yourself with the following command line invocation:
+											
+											<script type="syntaxhighlighter" class="brush: cpp">./loadFingerprints -audio ExampleQueries/wangchungClean.wav -impath spectrogram.bmp</script>
+										</p>
+										<p>
+											<audio controls>
+												<source src="HW5b_Shazam/ExampleQueries/wangchungClean.wav" type="audio/ogg">
+												Your browser does not support the audio element.
+												</audio> 
+										</p>
+										<p>
+											<img src = "spectrogram.png">
+										</p>
+										<p>
+											Lots of interesting features are present in this image.  For instance, it is possible to pick out beats, as well as <a href = "https://en.wikipedia.org/wiki/Harmonic">harmonics</a> of musical instruments and vocals.  Our challenge in the shazam task will be to summarize these images for quick queries in a way that is robust to different transformations of audio, such as 
+											<ul>
+												<li>Changes in loudness</li>
+												<li>Background noise</li>
+												<li>Low quality audio / distorted audio</li>
+											</ul>
+											To make things even more challenging, we want to do this with small audio clips, since we want people to be able to jump in the middle of a song, and we don't want them to wait too long to know what song it is.  We also want it to run quickly so that it can be done real time.
+										</p>
+
+										<p>
+											In this assignment, you will slowly work through a series of steps to address all of these issues.  As has been the case many times before, a hash table will be the central data structure that allows us to tackle this seemingly impossible task.
+										</p>
+
+										
+
+										<h2><a name = "anchors">Programming Task 1: Fingerprint Anchors (10 Points)</a></h2>
+										<p>
+											The first insight of the Shazam technique is that bright spots in the spectrogram tell us more than dark spots.  In particular, we want to find <b>maxes</b> of brightness in the image which are brighter than their surrounding pixels in some region.  These are referred to as <b>anchors</b>.  Even if the audio gets quieter, the maxes will still be the greatest relative to their neighbors.  Furthermore, they are some of the most important pixels in the image, and are the least likely to disappear in the presence of noise or other distortions.
+										</p>
+
+										
+										<p>
+											More specifically, a pixel in the spectrogram is said to be an anchor if it is greater than all other pixels in a rectangle surrounding it.  The rectangle is specified by the parameters <code>timeWin</code> and <code>freqWin</code>, which are half of the length of a rectangle in the time and frequency axes, respectively, centered at the pixel in question.  The image below shows an example of a max 
+										</p>
+										<p>
+										<img src = "WindowMaxLabeled.svg">
+										</p>
+
+										<p>
+											Your task in this section will be to compute all of the anchors and add them to a <code><a href = "http://www.cplusplus.com/reference/vector/vector/at/">vector</a></code> list.  In code, each anchor is an object of type <code>Anchor</code>, and you call the constructor with the frequency and time at which it occurred.  
+										</p>
+										<p>
+											To find anchors, you'll be looping through the 2D spectrogram array <code>S</code>, which has <code>maxFreq</code> rows and <code>nwin</code> columns.First, you should fill in the <code>isMax()</code> method in fingerprint.cpp.  Then, you should fill in the <code>findAnchors()</code> method, using <code>isMax()</code> as a helper method to check each pixel to see if it's an anchor.  You should only include an anchor if it is both a max <b>and</b> if the value exceeds the threshold <code>thresh</code> passed along to findAnchors().
+										</p>
+
+										<p>
+											Once your code is working properly, you should see the image below when you run this in the command line
+										</p>
+										<script type="syntaxhighlighter" class="brush: cpp">./loadFingerprints -audio ExampleQueries/wangchungClean.wav -impath anchors.bmp</script>
+										<img src = "anchors.png">
+
+										<h2><a name = "fingerprints">Programming Task 2: Pairing Anchors in Target Zones (10 Points)</a></h2>
+										<p>
+											One way to make anchors even more descriptive is to associate them to other anchors slightly ahead of them in time.  Then, we actually capture some of the temporal evolution of the song, rather than just isolated time frequency points.  This is the basis of the Shazam fingerprint.  In particular, for each anchor, we search for other anchors in a rectangle slightly shifted to the right (forward in time), as shown in the image below for the dark blue anchor
+										</p>
+
+										<p>
+											<img src = "targetZoneLabeled.svg">
+										</p>
+
+										<p>
+											<code>dCenter</code> refers to the time difference between the anchor and the center of the box, <code>width</code> (&lt dCenter) refers to half of the width of the rectangle around its center, and <code>height</code> refers to half of its height in frequency above and below its center.
+										</p>
+
+										<p>
+											To accomplish this in code, you should first fill in the <code>searchTargetZone()</code> method of the <code>Anchor</code> class, which should dynamically allocate and fill in a vector of other anchors that are in a specified target zone for this anchor.  Then, you should fill in the <code>getFingerprints()</code> method, which should loop through all of the anchors and call the <code>searchTargetZone()</code> method on all of them.  For each anchor and a pair found in the target zone, you should create an object of type <code>Fingerprint</code>, which takes the two anchors as arguments (original anchor, then pair in target zone), and then add the fingerprint to the vector of fingerprints.  If you've done this correctly, then you should see the following image of (many!) fingerprints after running the following command
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp">./loadFingerprints -audio ExampleQueries/wangchungClean.wav -impath fingerprints.bmp</script>
+
+										<p>
+											<img src = "allfingerprints.png">
+										</p>
+
+										<h2><a name = "hashing">Programming Task 3: Hashing Fingerprints (5 Points)</a></h2>
+										<p>
+											Soon we are going to create a database of many, many fingerprints across a collection of music, so we need a way to look them up quickly.  We can create a hash code based on three pieces of information:
+											<ol>
+												<li>The frequency index of the first anchor, <code>f1</code></li>
+												<li>The frequency index of the second anchor, <code>f2</code></li>
+												<li>The time lag between the two anchors, <code>dw = win2 - win1</code></li>
+											</ol>
+											To wrap all of these up into one number to be used as a hash code, you should use the following formula
+
+											<h3>
+												\[ f1 + f2*256 + dw*256*256 \]
+											</h3>
+										</p>
+										<p>
+											To implement this, you should fill in the <code>getHash()</code> method of the <code>Fingerprint</code> class, which inherits from <code>Hashable</code> so that fingerprints can be used as keys in a <code>HashTable</code>.  If you have done this properly, then when you run the code 
+										</p>
+										<script type="syntaxhighlighter" class="brush: cpp">./loadFingerprints -audio ExampleQueries/wangchungClean.wav -fpath fingerprints.txt -artist WangChung -title EverybodyHaveFunTonight
+										</script>
+
+										<p>
+											Then you should output a file <a href = "fingerprints.txt">fingerprints.txt</a>.  You should verify that your file looks exactly like <a href = "fingerprints.txt">this one</a> before proceeding.
+										</p>
+
+										<h2><a name = "queries">Programming Task 4: Audio Queries (15 Points)</a></h2>
+										<p>
+											Now that we know how to compute fingerprints, we are ready to try to match the fingerprints in a short "query" audio clip to the database to figure out which song in the database it might be (NOTE: In CS, a "query" generally refers to something that you're looking up in a database; e.g. text that you type into Google is a "search query").  It is possible that multiple songs share the same fingerprint, so it will take some work to narrow down which song the query might be.  To see how this might work, let's consider the fingerprints in the audio clip below, which is a snippet from Wang Chung's "Everybody Have Fun Tonight" with lots of static added.
+										</p>
+
+										<p>
+											<audio controls>
+												<source src="HW5b_Shazam/ExampleQueries/wangchungNoise.wav" type="audio/ogg">
+												Your browser does not support the audio element.
+												</audio> 
+										</p>
+										
+										<p>
+											Once we compute its fingerprints, we can match each one to all of the songs in the database.  If there is a match, we can plot the time where the query fingerprint starts against the time of that same fingerprint in the matching song in the database.  When we do this on the first three songs in the database for the above query, we see the following plots:
+										</p>
+
+										<p>
+											<img src = "WangChungNoise_Scatter.svg">
+										</p>
+
+										<p>
+											First of all, we notice that there are more matching fingerprints in the correct song than in the others, but we can go further.  If we zoom in on a smaller time interval in the database song for "Everybody Have Fun Tonight," we see the following pattern:
+										</p>
+										<p>
+											<img src = "WangChungNoise_ScatterZoom.svg">
+										</p>
+										<p>
+											The feature that pops out here, which does not exist in the other plots, is that many of the dots concentrate along a diagonal line with a slope of one.  This indicates that a bunch of fingerprints match in sequence with the same relative offset, which is <a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">extremely unlikely to happen</a> unless this is a true match of the query.  So somehow, we need to look for these kinds of diagonal lines and to count how many dots are along them.  One very simple way to do this is to create a histogram of the difference of the window index of this fingerprint in the database song and that of the query.  Each bin in the histogram is a time difference (in units of spectrogram windows), and its count is the number of matching fingerprints that had that difference.  The plot below shows the histograms for the first three songs in the database, zoomed around the peak in those histograms
+										</p>
+										<p>
+											<img src = "WangChungNoise_Hist.svg">
+										</p>
+
+										<p>
+											What we see here is a very clear winner, where "Everybody Have Fun Tonight" has over 300 scatterpoints in sequence at an offset of about 2585, while the false matches don't have more than 6 points maximum in sequence.
+										</p>
+
+										<HR>
+										<p>
+											Just to see another example, consider the following audio clip captured with a phone microphone, as emitted by a low quality laptop speaker
+										</p>
+
+										<p>
+											<audio controls>
+												<source src="HW5b_Shazam/ExampleQueries/baddayLaptop.wav" type="audio/ogg">
+												Your browser does not support the audio element.
+												</audio> 
+										</p>
+
+										<p>
+											The scatterplots with the first three songs look like this:
+										</p>
+
+										<img src = "BaddayLaptop_Scatter.svg">
+
+										<p>
+											Again, we see that the matching song has a lot more fingerprints, and when we zoom in, we see a diagonal line, indicating that our query songs matches an interval in the song "Bad Day"
+										</p>
+
+										<img src = "BaddayLaptop_HistZoom.svg">
+
+										<p>
+											And the histograms of difference in fingerprint times are as follows
+										</p>
+
+										<img src = "BaddayLaptop_Hist.svg">
+
+										<p>
+											So again, it's not even close which song has a higher count in the max bin in the histogram, and we get the correct estimate out of these three by picking the one with the max histogram count, even though the query audio is highly degraded.
+										</p>
+
+										<h3>Code to write</h3>
+										<p>
+											To implement the above technique in code, you'll be filling in the method <code>queryDatabase</code> in <code>fingerprint.cpp</code>, which is an instance method of a <code>SongData</code> containing the fingerprints of a query song (which are accessible via <code>fingerprints</code> instance variable).  The method takes in a list of songs in the database of type <code>songInfo</code>, which is simply a wrapper around a string for the title and artist of a song in the database.  It also takes in a hash table whose keys are <code>Fingerprint</code> objects and whose values are references to type <code>FingerprintList</code>.  A <code>FingerprintList</code> object wraps around a vector containing objects of type <code>fingerprintInfo</code>, which contains a list with information about every copy of that exact fingerprint that was seen <i>across all songs in the database</i>.  A <code>fingerprintInfo</code> object has a number of fields, and you will need to focus on these two:
+											<ul>
+												<li>
+													<code>offset</code>: The time window index of the first anchor in the fingerprint
+												</li>
+												<li>
+													<code>index</code>: The index of the song to which it belongs, in the array of songs in the database
+												</li>
+											</ul>
+										</p>
+										<p>
+											To find a candidate match, you should loop through all of the fingerprints in the query song.  For each query fingerprint, you should look at all matching copies of this fingerprint in the database, which you can get as the value of the fingerprint key in the HashTable <code>db</code>.  For each of these matches, you should add one to the corresponding song's histogram at a bin which is the difference between the song's fingerprint offset and window of the query's first anchor.  It is possible to do this with an array, but an easier way to implement a histogram is as a HashMap whose keys and values are both <code>HashableInt</code> objects, where the key is the bin index and the value is the count.  Since you'll need a histogram for every song in the database, the code comes setup with an array of such hash maps.  You should fill in those hash maps and keep track of the song corresponding to the maximum count as you go along, as you will eventually return this song as the candidate match.
+										</p>
+
+										<h3>Testing</h3>
+										<p>
+											To see if this works correctly, you can run the file <code>query</code>
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp">./query -audio ExampleQueries/wangchungClean.wav
+										</script>
+
+										which will then output something like the following
+
+										<script type="syntaxhighlighter" class="brush: cpp">
+											Getting spectrogram...
+											Finished getting spectrogram
+											0 seconds elapsed processing query audio
+											Loading Kanye West: Touch the Sky
+											Loading Wang Chung: Everybody Have Fun Tonight
+											Loading Daniel Powter: Bad Day
+											Loading Transplants: California Babylon
+											Loading Bananarama: Cruel Summer
+											Loading Jeff Kashiwa: Ooh Ah
+											0 seconds elapsed loading database
+											Wang Chung: Everybody Have Fun Tonight
+											0 seconds elapsed performing query
+										</script>
+
+										<p>
+											So it's correctly found that the song is "Wang Chung: Everybody Have Fun Tonight."  Your program should also print out that song for the following two inputs
+										</p>
+
+										<table>
+											<tr>
+												<td>
+													<h4>
+														ExampleQueries/wangchungLaptop.wav
+													</h4>
+													</td>
+												<td>
+													<audio controls>
+														<source src="HW5b_Shazam/ExampleQueries/wangchungLaptop.wav" type="audio/ogg">
+														Your browser does not support the audio element.
+													</audio> 
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<h4>
+														ExampleQueries/wangchungNoise.wav
+													</h4>
+													</td>
+												<td>
+													<audio controls>
+														<source src="HW5b_Shazam/ExampleQueries/wangchungNoise.wav" type="audio/ogg">
+														Your browser does not support the audio element.
+													</audio> 
+												</td>
+											</tr>
+
+											<tr>
+												<td colspan=2>
+													For the following three queries below, the program should print out "Daniel Powter: Bad Day"
+												</td>
+											</tr>
+											
+											<tr>
+												<td>
+													<h4>
+														ExampleQueries/baddayClean.wav
+													</h4>
+													</td>
+												<td>
+													<audio controls>
+														<source src="HW5b_Shazam/ExampleQueries/baddayClean.wav" type="audio/ogg">
+														Your browser does not support the audio element.
+													</audio> 
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<h4>
+														ExampleQueries/baddayLaptop.wav
+													</h4>
+													</td>
+												<td>
+													<audio controls>
+														<source src="HW5b_Shazam/ExampleQueries/baddayLaptop.wav" type="audio/ogg">
+														Your browser does not support the audio element.
+													</audio> 
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<h4>
+														ExampleQueries/baddayNoise.wav
+													</h4>
+													</td>
+												<td>
+													<audio controls>
+														<source src="HW5b_Shazam/ExampleQueries/baddayNoise.wav" type="audio/ogg">
+														Your browser does not support the audio element.
+													</audio> 
+												</td>
+											</tr>
+
+										
+
+
+											<tr>
+												<td colspan=2>
+													For the following three queries below, the program should print out "Kanye West: Touch The Sky"
+												</td>
+											</tr>
+
+											<tr>
+												<td>
+													<h4>
+														ExampleQueries/skyClean.wav
+													</h4>
+													</td>
+												<td>
+													<audio controls>
+														<source src="HW5b_Shazam/ExampleQueries/skyClean.wav" type="audio/ogg">
+														Your browser does not support the audio element.
+													</audio> 
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<h4>
+														ExampleQueries/skyLaptop.wav
+													</h4>
+													</td>
+												<td>
+													<audio controls>
+														<source src="HW5b_Shazam/ExampleQueries/skyLaptop.wav" type="audio/ogg">
+														Your browser does not support the audio element.
+													</audio> 
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<h4>
+														ExampleQueries/skyNoise.wav
+													</h4>
+													</td>
+												<td>
+													<audio controls>
+														<source src="HW5b_Shazam/ExampleQueries/skyNoise.wav" type="audio/ogg">
+														Your browser does not support the audio element.
+													</audio> 
+												</td>
+											</tr>
+										</table>
+
+										<p>
+											To help debug your program, you should print out the maximum number of counts that you find in a bin for the song you've chosen.
+										</p>
+
+										<h3>Stress Testing</h3>
+										<p>
+											Once the above is working, you can try loading a larger database to see if it still works.  <a href = "https://drive.google.com/file/d/14BUUmi4gifjJtHJJ4bB9VZ2hSj48lJB3/view?usp=sharing">Click here</a> to download a .zip file with 266 songs, including the first 6 in this list, and update the query file to load more than the first 6 songs.  The problem technically gets harder, since there are more potential songs to confuse with in the database.  It will also take much longer to load the database and to setup the hash table.  But if this works, you'll know you have a robust system.
+										</p>
+
+										<h3>Going Further!</h3>
+										<p>
+											At this point, you have a fully functional basic implementation of audio fingerprinting for content-based music retrieval.  This is not required, but you should try it on your own music!  See if you can add a song to the database and query it with a clip.  Note that the parameters are setup so that the database is expecting single channel audio sampled at 22050hz in the .wav file format.  You can use <a href = "https://www.audacityteam.org/download/">Audacity</a> to do the conversion.  Questions to ask yourself as you go include:
+											<ul>
+												<li>
+													How much audio does it seem like you need to do a robust identification?
+												</li>
+												<li>
+													How noisy or distorted does can the audio be before the identification fails?
+												</li>
+												<li>
+													Does this work on different versions of the song (e.g. cover songs)?  Why do you think that might be?
+												</li>
+											</ul>
+										</p>
+
+										
+
+
+
+
+
+
+
+
+                                    
+                                </div>
+						</div>
+					</div>
+
+					<!--LaTeX in Javascript!-->
+					<script src="../../../../jsMath/easy/load.js"></script>
+					<!--Syntax highlighting in Javascript!-->
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shCore.js"></script>
+					<script type="text/javascript" src="../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+                    <script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushXml.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+					<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+					<link type="text/css" rel="stylesheet" href="../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+					<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../../index.html#overview">Overview</a></li>
+												<li><a href = "../../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../../index.html#grading">Grading</a></li>
+												<li><a href = "../../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../../index.html#participation">Participation</a></li>
+												<li><a href = "../../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
+												<li><a href = "../../Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "../../Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#macos">Mac OS Setup Instructions</a></li>
+												<li><a href = "../../Software/index.html#virtualbox">VirtualBox</a></li>
+											</ul>
+										</li>
+										<li><a href = "../../index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<li><a href = "../../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a>
+												<ul>
+													<li><a href = "../../Assignments/HW1_VirtualCities/ArtContest">Art Contest</a></li>
+												</ul>
+												</li>
+												<li><a href = "../../Assignments/HW2_Steganography">Homework 2: Image Processing And Steganography</a></li>
+												<li><a href = "../../Assignments/HW3_InvasiveSpecies">Homework 3: Invasive Species Polymorphism</a></li>
+												<li><a href = "../../Assignments/HW4_LinkedListMaze/part1.html">Homework 4: Doubly Linked Lists</a></li>
+												<li><a href = "../../Assignments/HW5_BasketballHashing">Homework 5: Basketball Hashing</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "../../Labs/Lab1_Holidays">Lab 1: HTML Holidays</a></li>
+												<li><a href = "../../Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a></li>
+												<li><a href = "../../Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a></li>
+												<li><a href = "../../Labs/Lab4_AbstractClassesSorting">Lab 4: Abstract Classes And Sorting</a></li>
+												<li><a href = "../../Labs/Lab5_MyVector">Lab 5: My Vector (Dynamic Array ADT)</a></li>
+												<li><a href = "../../Labs/Lab6_RecursiveDrawing">Lab 6: Recursive Drawing</a></li>
+												<li><a href = "../../Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a></li>
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises / Pre-Class Work</span>
+											<ul>
+												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
+												<li><a href = "../../ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
+												<li><a href = "../../../Modules/PointerFundamentals/Exercise1">Pointer Fundamentals Module</a></li>
+												<li><a href = "../../ClassExercises/Week2_3_PointerTricks">Week 2/3: C++ Pointers And Pitfalls</a></li>
+												<li><a href = "../../ClassExercises/Week3_Pointers_Arrays">Week 3: C++ Pointers And Arrays</a></li>
+												<li><a href = "../../ClassExercises/Week3_AudioFiltering">Week 3: Audio Filtering</a></li>
+												<li><a href = "../../ClassExercises/Week3_2048">Week 3: Building The 2048 Game Together</a></li>
+												<li><a href = "../../ClassExercises/Week4_DynMem">Week 4: Command Line Arguments and Dynamic 2D Arrays</a></li>
+												<li><a href = "../../ClassExercises/Week4_BinaryDrills">Week 4: Binary Drills</a></li>
+												<li><a href = "https://ursinus.instructure.com/courses/13764/quizzes/18074">Week 4: Binary/Hex Module</a></li>
+												<li><a href = "../../ClassExercises/Week4_Binary_LFSR">Week 4: Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</a></li>
+												<li><a href = "../../ClassExercises/Week4_Bits">Week 4: Bits And XOR Encryption</a></li>
+												<li>
+													<a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics">Week 5: Object Basics Code</a>
+												</li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/CppClasses/Video1">Week 5/6: C++ Classes And Inheritance Module</a>
+												</li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedList/Video0">Week 8: Linked List Module</a>
+												</li>
+												<li>
+													<a href = "https://github.com/ursinus-cs174-s2022/Week9_PrimMaze/">Week 9: Prim's Algorithm And Mazes</a>
+												</li>
+												<li><a href = "../../ClassExercises/Week10_Maps_Adventure">Week 10: STL Maps, Choose Your Own Adventure</a></li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedMap/Video1">Week 10: Linked Map Module</a>
+												</li>
+												<li>
+													<a href = "../../ClassExercises/Week10_Hashing">Week 10: Hash Tables</a>
+												</li>
+												<li>
+													<a href = "../../ClassExercises/Week11_Recursion">Week 11: Class Notes on Recursive Functions And Memoization</a>
+												</li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/Ackermann/Exercise1">Week 11: Ackermann Module</a>
+												</li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/MergeSort/Exercise">Week 12: Merge Sort Exercise</a>
+												</li>
+												<li>
+													<a href = "../../ClassExercises/Week13_ImageFilters">Week 13: Function Pointers And Image Filters</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href = "../../style.html">Style Guide</a></li>
+										</li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
