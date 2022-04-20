@@ -97,7 +97,7 @@
 										</p>
 
 										<img src = "DespacitoWaveform.png" width="80%">
-
+										<p></p>
 										<p>
 											Though we can roughly pick out some of the beats, this representation turns out to be less amenable to analysis than another common representation, known as a <b><a href = "https://en.wikipedia.org/wiki/Spectrogram">spectrogram</a></b>.  A spectrogram is a way of turning audio into an image, in which the x-axis represents time and the y-axis represents "frequency content"; that is, higher up on y are pixels corresponding to higher pitches, and movement to the right indicates progression in time.  A bright pixel indicates that there is a lot of energy at that time and frequency, and a darker pixel indicates that there is less energy.
 										</p>
@@ -154,7 +154,7 @@
 										
 										<HR>
 
-										<h2><a name = "anchors">Shazam Step 1: Fingerprint Constellations</a></h2>
+										<h2><a name = "anchors">Shazam Step 1: Anchors And Constellations</a></h2>
 										<p>
 											The first insight of the Shazam technique is that bright spots in the spectrogram tell us more than dark spots.  In particular, we want to find <b>maxes</b> of brightness in the image which are brighter than their surrounding pixels in some region.  These are referred to as <b>anchors</b>, and all together, they form what's known as a <b>constellation</b>.  Even if the audio gets quieter, the maxes will still be the greatest relative to their neighbors.  Furthermore, they are some of the most important pixels in the image, and are the least likely to disappear in the presence of noise or other distortions.
 										</p>
@@ -175,7 +175,7 @@
 										<p></p>
 
 										<HR>
-										<h2><a name = "fingerprints">Shazam Step 2: Pairing Anchors in Target Zones</a></h2>
+										<h2><a name = "fingerprints">Shazam Step 2: Fingerprints by Pairing Anchors in Target Zones</a></h2>
 										<p>
 											One way to make anchors even more descriptive is to associate them to other anchors slightly ahead of them in time.  Then, we actually capture some of the temporal evolution of the song, rather than just isolated time frequency points.  This is the basis of the Shazam fingerprint.  In particular, for each anchor, we search for other anchors in a rectangle slightly shifted to the right (forward in time), which is known as the <b>target zone</b>.  This is depicted in the image below for the dark blue anchor
 										</p>

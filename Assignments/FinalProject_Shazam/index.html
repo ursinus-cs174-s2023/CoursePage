@@ -57,10 +57,6 @@
 										</ul>
 
 										<p>
-											Documentation for SimpleCanvas can be found at <a href = "https://ursinus-cs174-s2022.github.io/simplecanvas/docs/html/classSimpleCanvas.html">this link</a>.
-										</p>
-
-										<p>
 											Full database can be found at <a href = "https://drive.google.com/file/d/1rjcIW81FpMMnik0P4o8W6HWZqL420ShB/view?usp=sharing">this link</a>
 										</p>
 										
@@ -93,36 +89,78 @@
 										<p>
 											<a href = "background.html">Click here</a> to view background notes on the algorithm you will be implementing.
 										</p>
-										
-										<p>
-											<h3><a name = "code">Starter Code</a></h3>
-											<a href = "https://github.com/Ursinus-CS174-F2020/HW5b_Shazam/archive/main.zip">Click here</a> to download the starter code for this assignment.  You will be filling in code in the <code>fingerprint.cpp</code> file.  You'll notice that it shares a lot of code with the previous assignment, and it has a makefile to manage building all of the little files.  <b>The very first think you should do <u>before</u> you type <code>make</code> is to copy in your working <code>hashtable.cpp</code> from last assignment</b>.  If this worked, your code should build, and you should be able to generate the example spectrogram in the <a href = "#spectrograms">next section</a>.  Please do not proceed until that is working!
-										</p>
-
 
                                         <h3><a name = "readme">What to submit</a></h3>
                                             <p>
-												When you are finished, please submit a .zip file with your code (not including the database) to canvas, as well as a README file explaining a brief overview of your code files and the design decisions you made
+												When you are finished, submit a .zip file with your code (not including the database) to canvas, as well as a README file explaining a brief overview of your code files and the design decisions you made
 											</p>
 
 
+										<h2><a name = "code"><a name = "startercode">Starter Code / Utilities</a></a></h2>
+											<p>
+												You can obtain the code for this assignment with 
+											</p>
+
+											<p>
+												<code>
+													git clone --recursive https://github.com/ursinus-cs174-s2022/FinalProject_Shazam.git
+												</code>
+											</p>
+
+											<p>
+												You'll have to design all of the code to do the Shazam algorithm yourself, but I've started you off with utilities for loading audio and computing and plotting <a href = "background.html#spectrograms">audio spectrograms</a>.  To see how these all work together, have a look at the code in <a href = "https://github.com/ursinus-cs174-s2022/FinalProject_Shazam/blob/main/plotSpectrogram.cpp">plotSpectrogram.cpp</a>
+											</p>
+
+											<h3><a name = "spectrograms">Audio spectrograms</a></h3>
+
+											<p>
+												As an example of an audio spectrogram, let's say we wanted to do an STFT on the example query "despacitoClean.wav" provided with this code, using a window length of 1024, a hop length of 512, and a cutoff of 128 frequency bins. Then we'd run this:
+											</p>
+
+											<p>
+												Code has been provided with your assignment to generate spectrograms from audio clips.  For example, if we run the following code
+												
+												<script type="syntaxhighlighter" class="brush: cpp">./plotSpectrogram --audiopath ExampleQueries/despacitoLaptop.wav --impath spectrogramLaptop.png --win 1024 --hop 512 --maxBin 128</script>
+											</p>
+											<p>
+												<img src = "spectrogram.png" width="80%">
+											</p>
+
+											<h3>
+												<a name = "debugplot">Debugging by Plotting</a>
+											</h3>
+											<p>
+												I am a big proponent of debugging with visual output.  As you're going along and computing <a href = "background.html#anchors">anchors</a> and <a href = "background.html#fingerprints">fingerprints</a>, I would highly recommend plotting them on examples to make sure your code is working properly.  You can use the <code>SimpleCanvas</code> library that we've been using with all of the other assignments/labs involving images.  Documentation for SimpleCanvas can be found at <a href = "https://ursinus-cs174-s2022.github.io/simplecanvas/docs/html/classSimpleCanvas.html">this link</a>.  <b>Just note that the spectrograms are actually plotted upside down!</b>  So you may have to flip your anchors/fingerprints.
+											</p>
+
+											<p>
+												As a snippet to get you started, here's some code that computes a spectrogram on a 1D array <code>samples</code> with <b>N</b> audio samples
+											</p>
+
+											<script type="syntaxhighlighter" class="brush: cpp">
+												// Create spectrogram
+												int win = 1024;
+												int hop = 512;
+												int maxBin = 128;
+												DSP dsp(win);
+												int NWin;
+												double** S = dsp.spectrogram(samples, N, win, hop, true, &NWin);
+												// Plot the spectrogram and save to an image
+												SimpleCanvas canvas = plotSpectrogram(S, maxBin, NWin, 1, 1);
+												canvas.write("spectrogram.png");
+											</script>
+
+											<h3><a name = "precomputed">Precomputed Fingerprints</a></h3>
+											<p>
+												
+											</p>
+
+											
+
+										<HR>
+										<h2>Programming Tasks</h2>
 										
 
-										<h3>Code to write</h3>
-										<p>
-											To implement the above technique in code, you'll be filling in the method <code>queryDatabase</code> in <code>fingerprint.cpp</code>, which is an instance method of a <code>SongData</code> containing the fingerprints of a query song (which are accessible via <code>fingerprints</code> instance variable).  The method takes in a list of songs in the database of type <code>songInfo</code>, which is simply a wrapper around a string for the title and artist of a song in the database.  It also takes in a hash table whose keys are <code>Fingerprint</code> objects and whose values are references to type <code>FingerprintList</code>.  A <code>FingerprintList</code> object wraps around a vector containing objects of type <code>fingerprintInfo</code>, which contains a list with information about every copy of that exact fingerprint that was seen <i>across all songs in the database</i>.  A <code>fingerprintInfo</code> object has a number of fields, and you will need to focus on these two:
-											<ul>
-												<li>
-													<code>offset</code>: The time window index of the first anchor in the fingerprint
-												</li>
-												<li>
-													<code>index</code>: The index of the song to which it belongs, in the array of songs in the database
-												</li>
-											</ul>
-										</p>
-										<p>
-											To find a candidate match, you should loop through all of the fingerprints in the query song.  For each query fingerprint, you should look at all matching copies of this fingerprint in the database, which you can get as the value of the fingerprint key in the HashTable <code>db</code>.  For each of these matches, you should add one to the corresponding song's histogram at a bin which is the difference between the song's fingerprint offset and window of the query's first anchor.  It is possible to do this with an array, but an easier way to implement a histogram is as a HashMap whose keys and values are both <code>HashableInt</code> objects, where the key is the bin index and the value is the count.  Since you'll need a histogram for every song in the database, the code comes setup with an array of such hash maps.  You should fill in those hash maps and keep track of the song corresponding to the maximum count as you go along, as you will eventually return this song as the candidate match.
-										</p>
 
 										<h3>Testing</h3>
 										<p>
