@@ -88,3 +88,12 @@
 [submodule "Assignments/FinalProject_Shazam/FinalProject_Shazam"]
 	path = Assignments/FinalProject_Shazam/FinalProject_Shazam
 	url = https://github.com/ursinus-cs174-s2022/FinalProject_Shazam.git
+[submodule "ClassExercises/Week14_Threads/Week14_Threads"]
+	path = ClassExercises/Week14_Threads/Week14_Threads
+	url = https://github.com/ursinus-cs174-s2022/Week14_Threads.git
+[submodule "Labs/Lab8_ImageFilters/simplecanvas"]
+	path = Labs/Lab8_ImageFilters/simplecanvas
+	url = https://github.com/ursinus-cs174-s2022/simplecanvas.git
+[submodule "Labs/Lab8_ImageFilters/Lab8_ImageThreads"]
+	path = Labs/Lab8_ImageFilters/Lab8_ImageThreads
+	url = https://github.com/ursinus-cs174-s2022/Lab8_ImageThreads.git

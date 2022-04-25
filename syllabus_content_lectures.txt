@@ -163,11 +163,15 @@ Intermezzo: Digital Audio And Shazam
 
 <ul><li><a href = "Assignments/FinalProject_Shazam/background.html">Shazam algorithm background</a></li></ul>
 LECTURE
+Shazam Continued
+
+
+LECTURE
 Parallel Programming And Threads
 
-<ul><li><a href = "https://www.classes.cs.uchicago.edu/archive/2014/spring/12300-1/labs/lab4/">UChicago Notes on <code>pthread</code></a></li></ul>
+<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week14_Threads">Code from class</a></li></ul>
 LECTURE
-Lab 8: Road Detection with Threads
+Lab 8: Image Filtering with Threads
 
 
 LECTURE
@@ -179,11 +183,6 @@ Fundamentals of Assembly Language
 
 <ul><li><a href = "https://web.stanford.edu/class/archive/cs/cs107/cs107.1166/guide_x86-64.html">Stanford Notes on x64 Assembly</a></li><li><a href = "http://www.idryman.org/blog/2014/12/02/writing-64-bit-assembly-on-mac-os-x/">Mac</a> <a href = "https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/MakingCode64-BitClean/MakingCode64-BitClean.html">resources</a> on x64 assembly</li><li><a href = "https://rderik.com/blog/using-lldb-for-reverse-engineering/">RDerik: Using lldb for reverse engineering</a></li></ul>
 LECTURE
-Loops in Assembly Language
-
-
-LECTURE
-Lab 9: Function Calls in Assembly Language
+Loops And Function Calls in Assembly Language
 
 <ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-4-all-about-functions.html">Chapter 4</a></li></ul>
-
