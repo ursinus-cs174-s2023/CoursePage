@@ -41,252 +41,172 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Lab 3: Drawing Shapes with Aggregation And Inheritance (6 Points)</h2>
+                                        <h2>Lab 8: Bilateral Image Filtering with Threads (5 Points)</h2>
                                         <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
 
+										<h3>Table of Contents</h3>
+										<ul>
+											<li><a href = "#bilateral">Background: Bilateral Filter</a></li>
+											<li><a href = "#tasks">Your Tasks</a>
+												<ul>
+													<li><a href = "#threads">Task 1: Parallelize with Threads (3 Points)</a></li>
+													<li><a href = "#artcontest">Task 2: Mandatory Art Contest (2 Points)</a></li>
+												</ul>
+											</li>
+										</ul>
+
                                         <h2>Overview / Logistics</h2>
-										<p>
-                                            The purpose of this lab is to give you practice with the class declarations, aggregation, and inheritance with a visual application of drawing different types of shapes.
-                                        </p>
-
-										<p>
-											<b>Inheritance</b> will come into play when you create new shapes, as every shape will inherit from the provided <code>Shape</code> class so that they have common, linked methods.
-										</p>
-
-										<p>
-											<b>Aggregation</b> will come into play, because the new shape classes you're making will contain <code>LineSegment</code> objects.
-										</p>
-
 										
+										<p>
+											The purpose of this lab is to get you practice using threads to speed up parallelizable code.  You can obtain the starter code here:
+										</p>
+
+										<p>
+											<code>git clone --recursive https://github.com/ursinus-cs174-s2022/Lab8_ImageThreads.git</code>
+										</p>
+
+										<p>
+											The code layout is similar to that of the <a href = "../../ClassExercises/Week13_ImageFilters/">class exercise we did on image filters</a>, except there is only one filter: the <a href = "#bilateral">bilateral filter</a> (explained more below).  But it currently only runs on one thread, and it is very slow, so your job will be to put threads around it to speed it up.
+										</p>
+
+										<p>
+											When you are finished, upload a .zip file of your code to canvas, which should include the input and output images for your art contest, and a brief title and pseudonym for the art contest.
+										</p>
 
                                         <p>
                                             <h3>Learning Objectives</h3>
                                             <ul>
-                                                <li>Manipulate <code>public</code>, <code>private</code>, and <code>protected</code> variables/methods in classes</li>
-												<li>Separate out class specification from implementation between header files and cpp files, respectively</li>
-                                                <li>Leverage code sharing between parent classes and child classes</li>
-                                                <li>Use multiple classes together in concert to accomplish a task, including aggregation</li>
+												<li>Split up a parallelizable problem into sub-batches</li>
+												<li>Use threads in C++ to speed up computation</li>
                                             </ul>
                                         </p>
 
                                             
 
-                                        <h2>Programming Task</h2>
+										<h2><a name = "bilateral">Background: Bilateral Filter</a></h2>
 
 										<p>
-											You can obtain the starter code by typing
+											A bilateral filter is an image filter designed to blur image features without blurring edges of the image.  You can read more about it at <a href = "https://ursinus-cs476-f2020.github.io/CoursePage/Assignments/Assignment3_Shaders/index.html#bilateral">this link from my graphics class</a> (it's a great example of using GPU hardware to parallelize to a huge degree).  For example, let's suppose we start with the following image, which has been provided with your code:
 										</p>
+
+										<img src = "Lab8_ImageThreads/RockyMountain.png">
 
 										<p>
-											<code>git clone --recursive https://github.com/ursinus-cs174-s2022/Lab3_ShapesInheritance.git</code>
+											And let's suppose we issue the following command to blur by a spatial factor of  (<code>--s 5</code>; a larger number is more blurring)
 										</p>
 
-                                        <p>
-                                            In this lab, you will be designing classes to draw different 2D shapes on an image.  There is a superclass called <code>Shape</code> which stores the thickness with which to draw the shape and the color to use when drawing the shape, as well as setter methods for these two variables.  You should create a child class of this class for each new shape that you draw.  Every shape you draw should be made up of a series of <a href = "#linesegment">line segments</a>.  
-                                        <p>
-                                            There are three shell methods provided in the <code>Shape</code> class which you should override in all of your shapes
-											<ul>
-												<li>
-													<code>void draw(SimpleCanvas* canvas)</code>: A method that draws the shape to a particular canvas
-												</li>
-												<li>
-													<code>float getArea()</code>: A method to return the area of this shape
-												</li>
-												<li>
-													<code>string toString()</code>: A method that returns a string with information about this shape
-												</li>
-											</ul>
-                                        </p>
-
-										<p>
-											You can test your code by putting things in <code>driver.cpp</code>, which contains a <code>main</code> method that you can run.  You can see the results by opening the image that's saved when running your code.
-										</p>
-
-
-                                        <p>
-                                            Finally, be mindful of <a href = "../../style.html">style</a> as you are coding this!
-                                        </p>
-
-                                        <h3><a name = "point">Point (Given Example)</a></h3>
-                                        <p>
-                                            The simplest thing we can draw is a point.  Have a look at the provided <code>Point</code> class in <code>Point.cpp</code> and <code>Point.h</code>.  Objects of this type will be used in the <code>LineSegment</code> class, and you may also want to use them in your classes.
-                                        </p>
-
-                                        <h3><a name = "linesegment">Line Segment (Given Example)</a></h3>
-                                        <p>
-                                            Study the <code>LineSegment</code> class that was provided with the code <code>LineSegment.h</code> and <code>LineSegment.cpp</code>, and notice how it extends from the <code>Shape</code> class and aggregates the <code>Point</code> class.  You will be doing similar things in the shapes below.  You should also use objects of the <code>LineSegment</code> class in the draw methods for your shapes.  For instance, a triangle can be drawn with three line segments.  
-                                        </p>
-
-                                        <p>
-                                            As an example of how to use this class, consider the code below, which is currently in the main of <code>driver.cpp</code>
-                                        </p>
-
-                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											SimpleCanvas canvas(500, 500);
-											canvas.clearRect(255, 255, 255);
-											int color[3] = {255, 0, 0};
-											float thickness = 4;
-											Point p1(thickness, color, 100, 100);
-											Point p2(thickness, color, 400, 400);
-											LineSegment line(thickness, color, p1, p2);
-											line.draw(&canvas);
-											cout << line.toString() << "\n";
-											cout << "Length = " << line.getLength() << "\n";
-											canvas.write("out.png");
-                                        ]]></script>
-
-                                        <p>
-                                            This will print out the following
-                                        </p>
-
-                                        <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											Line Segment from Point(100, 100) to Point(400, 400)
-											Length = 424.264
-                                        ]]></script>
-
-                                        <p>
-                                            And it will draw a picture that looks like this.
-                                        </p>
-
-                                        <img src = "LineSegment.png" style="border: 5px solid #555;">
-
-										<p>
-
-										</p>
-										<HR>
-
-                                        <h3><a name = "triangle">Task 1: Triangle (1.5 Points)</a></h3>
-                                        <p>
-                                            Create a class called <code>Triangle</code> which takes in 3 points in the constructor, and which then stores three line segments as private variables (aggregation).  Use the methods of the line segments when computing the area of the triangle and when drawing it.  <i>Be sure to update your makefile so you can build things more easily, and be sure to pass along the correct color and thickness when drawing the line segments</i>
-                                        </p>
-
-                                        <p>
-                                            To compute the area of a triangle, you can use Heron's formula.  If <b>a</b>, <b>b</b>, and <b>c</b> are the three lengths of the triangle, then define the semi-perimeter as
-                                        </p>
-
-                                        \[ s = \frac{a+b+c}{2} \]
-
-                                        Then, the area of the triangle can be computed as
-
-                                        \[ A = \sqrt{ s(s-a)(s-b)(s-c) } \]
-
-                                        <p>
-                                            As an example, below is a picture of a triangle with points <code>(100, 400), (400, 400), (250, 100)</code>. It should have an area of 45000, and the string it returns should be 
-                                        </p>
 
 										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											Triangle between Point(100, 400), Point(400, 400), and Point(250, 100)
+											./imfilter --in RockyMountain.png --out RockyMountainBlur.png --s 5
                                         ]]></script>
 
-										<p></p>
+										<p>
+											Then we get this image, where everything is uniformly blurrier:
+										</p>
 
-										
-
-
-                                        <img src = "Triangle.png" style="border: 5px solid #555;">
+										<img src = "RockyMountainBlur.png">
 
 										<p>
-											Below is a snippet that initialized this in the driver
+											On the other hand, if we specify some edge-based limitations with the parameter <code>--b 0.05</code> (lower number is more preservation of edges), we get the following:
 										</p>
+
 										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											int cyan[3] = {0, 255, 255};
-											float thickness = 4;
-											Point a(thickness, cyan, 100, 400);
-											Point b(thickness, cyan, 400, 400);
-											Point c(thickness, cyan, 250, 100);
-											Triangle tri(thickness, cyan, a, b, c);
+											./imfilter --in RockyMountain.png --out RockyMountainBlur.png --s 5 --b 0.05
                                         ]]></script>
 
-										
-										<p></p>
-										<HR>
-
-                                        <h3><a name = "square">Task 2: Square (1.5 Points)</a></h3>
-                                        <p>
-                                            Create a class called <code>Square</code> which stores the center of the square and the length of its sides.  Recall that the area of a square is its side length squared (hence the name "square").  As with the triangle, you should store private variables for <code>LineSegment</code> objects for each side.
-                                        </p>
+										<img src = "RockyMountainBilateralBlur.png">
 
 										<p>
-											Below is an example of a blue square of thickness 4 centered at (150, 150) with a side length of 200 and a green square of thickness 1 centered at (250, 250) with a side length of 0.3.
+											Notice how the fine texture details of the mountain, road, and trees is lost, but we can still see very sharply the edge between the road and its surroundings and the edges between the mountain and the trees.
 										</p>
-										
-
-                                        <img src = "Squares.png" style="border: 5px solid #555;">
 
 										<p>
-											Below is a snippet that initialized this in the driver
+											In fact, if we apply this filter multiple times, we can get a cartoon effect. Below is the result of blurring an image of <a href = "https://nscoville.github.io/website/">Dr. Scoville</a> three times in succession
 										</p>
+
 										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											float thickness = 4;
-											float len = 200;
-											Point center(thickness, blue, 150, 150);
-											Square square(thickness, blue, center, len);
-											square.draw(&canvas);
-											float thickness2 = 1;
-											Point center2(thickness2, green, 250, 250);
-											float len2 = 100;
-											Square square2(thickness2, green, center2, len2);
-											square2.draw(&canvas);
+											./imfilter --in drscoville.jpg --out drscoville_blurred.png --s 5 --b 0.05 --reps 3
                                         ]]></script>
 
+										<img src = "drscoville_blurred.png">
 
-										<p></p>
-										<HR>
-
-										<h3><a name = "circle">Task 3: Circle (1.5 Points)</a></h3>
-                                        <p>
-                                            Create a class called <code>Circle</code> which stores the center of a circle and its radius.  Recall that the area of a circle of radius <code>r</code> is
-                                        </p>
-
-                                        <h3>
-                                        \[ \pi r^2 \]
-                                        </h3>
-
-                                        <p>
-                                            A circle would require an infinite amount of line segments to draw properly, but you can draw an approximate circle as a regular polygon with many sides.  You can specify the number of sides to draw as a parameter to the constructor.  If you have <code>N</code> sides for a circle of radius <code>r</code> centered at <code>(cx, cy)</code>, then you can generate the coordinates of the <code>i<SUP>th</SUP></code> point as
-                                        </p>
-
-                                        <h3>
-                                        \[ x = cx + r* \cos \left( \frac{2 \pi i}{N} \right) \]
-                                        </h3>
-                                        <h3>
-                                        \[ y = cy + r* \sin \left( \frac{2 \pi i}{N} \right) \]
-                                        </h3>
-
-                                        <p>
-                                            Then connect these points with line segments in a loop to form an approximate circle drawing.  You can use <a href = "https://www.cplusplus.com/reference/cmath/cos/">cos</a>, <a href = "https://www.cplusplus.com/reference/cmath/sin">sin</a>, and <code>M_PI</code> in <code>math.h</code> to help you (NOTE: if it tells you <code>M_PI</code> is undefined, just define a constant <code>3.141</code> for pi).
-                                        </p>
-
-                                        <p>
-                                            Below is an example of drawing two circles with this class.  
-											The first circle is blue with a thickness of 4, centered at <code>(150, 150)</code> with a radius of 100, using 15 line segments.
-											The second circle is orange (<span style="color: rgb(255, 165, 0);">rgb(255, 165, 0)</span>) with a thickness of 2, centered at <code>(350, 350)</code> with a radius of 50, using 100 line segments.
-                                        </p>
-
-                                        <img src = "Circles.png" style="border: 5px solid #555;">
-										<p></p>
-										<HR>
-
-                                        <h3><a name = "together">Task 4: Putting It All Together (1.5 Points)</a></h3>
-                                        <p>
-                                            Fill in some code in <code>driver.cpp</code> to draw at least one of each shape you've created before your final submission.  You may actually want to make an interesting drawing, but that's not required here.
-                                        </p>
-
-
-										<p></p>
-										<HR>
-										<h3><a name = "extra">Extra Credit: Friend Classes</a></h3>
 										<p>
-											For up to one extra point, use <a href = "https://www.geeksforgeeks.org/friend-class-function-cpp/">friend classes</a> in an appropriate way to make your code more succinct.  Feel free to modify <code>Point.h</code> or <code>LineSegment.h</code> in the process of doing this if it helps.
+											And here's the succession of bilateral blurs that gave rise to that
+										</p>
+
+										<img src = "drscoville_blurred_progressive.gif">
+
+										<p>
+											Here's another example with <a href = "https://www.jamestralie.com/">my brother</a>'s cats
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./imfilter --in cats.jpg --out cats_blurred.png --s 5 --b 0.08 --reps 5
+                                        ]]></script>
+
+										<img src = "cats_blurred.png">
+
+										<p>
+											And here's the succession of bilateral blurs that gave rise to that.  Notice how the fine details of the fur go away, but the spots, eyes, and outlines of the heads are preserved
+										</p>
+
+										<img src = "cats_blurred_progressive.gif">
+
+										<HR>
+
+										<H2><a name = "tasks">Your Tasks</a></H2>
+										<p>
+											Below is what you have to do in this lab
+										</p>
+
+										<h3><a name = "threads">Task 1: Parallelize with Threads (3 Points)</a></h3>
+										<p>
+											Speed up the code using threads.  The program has been setup to take the number of threads as a command line parameter.  If this is working properly, you should see an overall speedup.  For example, on my computer, running
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./imfilter --in drscoville.jpg --out drscoville_blurred.png --s 5 --b 0.05 --reps 3
+                                        ]]></script>
+
+										<p>
+											Takes <b>37693ms</b> seconds, while running
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./imfilter --in drscoville.jpg --out drscoville_blurred.png --s 5 --b 0.05 --reps 3 --nthreads 2
+                                        ]]></script>
+
+										<p>
+											takes <b>18956ms</b>, for a speedup factor of about 2x, while running
+										</p>
+
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											./imfilter --in drscoville.jpg --out drscoville_blurred.png --s 5 --b 0.05 --reps 3 --nthreads 12
+                                        ]]></script>
+
+										<p>
+											only takes <b>6011ms</b>, for a speedup factor of over 6x.  Of course, to rigorously assess this, you would need to do many experiments and create a scatterplot since this is a random process, but it's fine just to run it a few times to get the gist.
+										</p>
+
+										<p>
+											Depending on how many corse you have on your computer, you may see a lesser speedup, but you should have at least two cores
+										</p>
+
+										<p>
+											<b>NOTE: </b> You won't have to use a mutex here, because you'll never be writing to the same pixels in parallel.  Filtering images like this is an example of an <a href = "https://www.computerhope.com/jargon/e/embarrassingly-parallel.htm">embarrassingly parallelizable</a> problem.
 										</p>
 
 
+										<h3><a name = "artcontest">Task 2: Mandatory Art Contest (2 Points)</a></h3>
+										<p>
+											Use this program to make something creative.  We will have a class wide art gallery, much like we did for <a href = "../../Assignments/HW1_VirtualCities/ArtContest/">homework 1</a>.  You can use a pseudonym if you're not comfortable using your real name.  The winner will get 1 point of extra credit towards labs
+										</p>
 
-
-
+										
+										
                                     
                                 </div>
 						</div>

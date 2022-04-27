@@ -167,11 +167,15 @@ Shazam Continued
 
 
 LECTURE
-Parallel Programming And Threads
+Begin Parallel Programming And Threads
 
 <ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week14_Threads">Code from class</a></li></ul>
 LECTURE
-Lab 8: Image Filtering with Threads
+Race Conditions And Mutexes
+
+
+LECTURE
+<a href = "Labs/Lab8_ImageFilters">Lab 8: Image Filtering with Threads</a>
 
 
 LECTURE
@@ -182,7 +186,3 @@ LECTURE
 Fundamentals of Assembly Language
 
 <ul><li><a href = "https://web.stanford.edu/class/archive/cs/cs107/cs107.1166/guide_x86-64.html">Stanford Notes on x64 Assembly</a></li><li><a href = "http://www.idryman.org/blog/2014/12/02/writing-64-bit-assembly-on-mac-os-x/">Mac</a> <a href = "https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/64bitPorting/MakingCode64-BitClean/MakingCode64-BitClean.html">resources</a> on x64 assembly</li><li><a href = "https://rderik.com/blog/using-lldb-for-reverse-engineering/">RDerik: Using lldb for reverse engineering</a></li></ul>
-LECTURE
-Loops And Function Calls in Assembly Language
-
-<ul><li>Bartlett <a href = "http://programminggroundup.blogspot.com/2007/01/chapter-4-all-about-functions.html">Chapter 4</a></li></ul>
