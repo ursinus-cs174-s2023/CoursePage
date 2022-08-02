@@ -1,96 +1,96 @@
 Last Day To Drop with A "W"
 
-2022-03-23
+2022-10-31
 Survey/Syllabus Quiz Due
 
-2022-01-20
+2022-08-30
 <a href = "../Modules/CPPBasics/Video1">C++ Fundamentals Module</a> Due before Class
 
-2022-01-21
+2022-08-31
 <a href = "Assignments/HW0_Warmup">Assignment 0: Software Test</a> Due
 
-2022-01-24
+2022-09-03
 <HR><a href = "Assignments/HW1_VirtualCities">Assignment 1 (Individual): Design Your Own City</a> Out
 
-2022-01-24
+2022-09-03
 <a href = "https://ursinus-cs174-s2022.github.io/Modules/PointerFundamentals/Exercise1">Pointers Fundamentals Exercises</a> Due Before Class
 
-2022-01-28
+2022-09-07
 Lab 1 Due
 
-2022-01-31
+2022-09-10
 Assignment 1 Due
 
-2022-02-04
+2022-09-14
 <a href = "https://ursinus.instructure.com/courses/13764/quizzes/18074">Binary And Hex Module</a> Due Before Class
 
-2022-02-07
+2022-09-17
 Lab 2 Due
 
-2022-02-08
+2022-09-18
 <a href = "Assignments/HW2_Steganography">Assignment 2 (Buddy): Image Processing And Steganography</a> Out
 
-2022-02-09
+2022-09-19
 Assignment 2 Check-In
 
-2022-02-15
+2022-09-25
 <a href = "https://ursinus-cs174-s2022.github.io/Modules/CppClasses/Video1">CS 174: Classes And Inheritance</a> Modue Due Before Class
 
-2022-02-21
+2022-10-01
 Assignment 2 Due
 
-2022-02-22
+2022-10-02
 <a href = "Assignments/HW3_InvasiveSpecies">Assignment 3 (Buddy): Invasive Species Polymorphism</a> Out
 
-2022-02-24
+2022-10-04
 <a href = "Labs/Lab3_ShapesInheritance">Lab 3</a> Due
 
-2022-02-25
+2022-10-05
 Assignment 3 Part 1 Due
 
-2022-03-04
+2022-10-12
 <HR><a href = "Labs/Lab4_AbstractClassesSorting">Lab 4</a> Due
 
-2022-03-04
+2022-10-12
 Assignment 3 Due
 
-2022-03-21
+2022-10-29
 <HR><a href = "Assignments/HW4_LinkedListMaze/part1.html">Assignment 4 Part 1(Buddy): Doubly Linked Lists</a> Out
 
-2022-03-21
+2022-10-29
 Lab 5 Due
 
-2022-03-22
+2022-10-30
 Assignment 4 Part 1 Due
 
-2022-03-30
+2022-11-07
 <a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedMap/Video1">Linked Map Module</a> Due
 
-2022-03-31
+2022-11-08
 Assignment 5 (Buddy): Basketball Hashing Out
 
-2022-04-01
+2022-11-09
 <a href = "Labs/Lab6_RecursiveDrawing">Lab 6</a> Due
 
-2022-04-11
+2022-11-19
 Assignment 5 Due
 
-2022-04-15
+2022-11-23
 <a href = "Assignments/FinalProject_Shazam">Final Assignment (Individual): Shazam</a> Out
 
-2022-04-20
+2022-11-28
 <a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedList/Video0">Linked List Module</a> Due
 
-2022-03-15
+2022-10-23
 <a href = "https://ursinus-cs174-s2022.github.io/Modules/Ackermann/Exercise1">Ackermann Exercise 1 Due</a>
 
-2022-04-06
+2022-11-14
 <a href = "https://ursinus-cs174-s2022.github.io/Modules/Ackermann/Exercise2">Ackermann Exercise 2 Due</a>
 
-2022-04-08
+2022-11-16
 Lab 7 Due
 
-2022-04-19
+2022-11-27
 Lab 8 Due
 
-2022-05-04
+2022-12-12
