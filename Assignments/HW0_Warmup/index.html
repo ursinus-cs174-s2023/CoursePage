@@ -41,7 +41,7 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Homework 0: Welcome To CS 174 / Software Test (15 Points)</h2>
+                                        <h2>Homework 0: Welcome To CS 174 / Software Test (12 Points)</h2>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
@@ -79,10 +79,10 @@
 											You should see these folders/files 
 										</p>
 										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											assembly  canvas  leak.cpp  LICENSE  README.md  sound  tinygl-cpp</script>  
+											canvas  leak.cpp  LICENSE  README.md  sound  tinygl-cpp</script>  
 										
 										<p>
-											If that all worked, proceed to the following tests.  Take note of what you see, and submit the results to <a href = "https://ursinus.instructure.com/courses/13764/assignments/138659">this link</a> on Canvas
+											If that all worked, proceed to the following tests.  Take note of what you see, and submit the results to <a href = "https://ursinus.instructure.com/courses/14913/assignments/149244">this link</a> on Canvas
 										</p>
 										
 										<HR>
@@ -154,38 +154,6 @@
 										<p>
 											<b>NOTE: </b> Windows users should be sure that they are <a href = "../../Software/index.html#vcxsrvrestart">vcXsrv</a> in the background before executing <code>mysteryletter</code>
 										</p>
-
-										<HR>
-											<h3><a name = "assembly">GCC / x64 Assembly Test (3 Points)</a></h3>
-										<p>
-											Now go back up to the root of <code>HW0_Warmup</code> and into the directory <code>assembly</code>.  If you are under windows, type 
-										</p>
-										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											gcc -o mysterynumber mysterynumber.s</script> 
-										<p>
-											Or, if your on a mac, execute the following (since assembly on mac uses <a href = "http://www.idryman.org/blog/2014/12/02/writing-64-bit-assembly-on-mac-os-x/">slightly different syntax</a>)
-										</p>
-										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											gcc -o mysterynumber mysterynumbermac.s</script> 
-										<p>
-											Then, execute the program
-										</p>
-										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											./mysterynumber</script> 
-										<p>
-											Take note of the number that is output to the console, and indicate it on canvas
-										</p>
-
-										<p>
-											<b>NOTE: If you get an error <code>Symbol `printf' causes overflow in R_X86_64_PC32 relocation</code></b>, then compile by typing
-										</p>
-										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											gcc -no-pie -o mysterynumber mysterynumber.s</script> 
-
-										<p>
-											as per this <a href = "https://stackoverflow.com/questions/48071280/nasm-symbol-printf-causes-overflow-in-r-x86-64-pc32-relocation">StackOverflow post</a>
-										</p>
-
 										
 
 										<HR>
