@@ -1,3 +1,9 @@
 [submodule "Assignments/HW0_Warmup/HW0_Warmup"]
 	path = Assignments/HW0_Warmup/HW0_Warmup
 	url = https://github.com/ursinus-cs174-f2022/HW0_Warmup.git
+[submodule "Assignments/HW1_VirtualCities/ggslac"]
+	path = Assignments/HW1_VirtualCities/ggslac
+	url = https://github.com/ctralie/ggslac.git
+[submodule "Assignments/HW1_VirtualCities/ArtContest/ggslac"]
+	path = Assignments/HW1_VirtualCities/ArtContest/ggslac
+	url = https://github.com/ctralie/ggslac.git
