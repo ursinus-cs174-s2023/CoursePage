@@ -11,7 +11,7 @@ The Terminal, Filesystem Navigation
 
 <ul><li><a href = "ClassExercises/Week1_CMD">Class notes on the terminal</a></li><li><a href = "https://www.learnenough.com/command-line-tutorial/">Learn Enough of The Command Line To Be Dangerous</a><li><a href = "https://www.cs.princeton.edu/courses/archive/spr18/cos217/precepts/17linux2/">Bob Dondero's Linux Cheatsheets</a></li></ul>
 LECTURE
-C++ Practice (10 Heads in A Row), Header files
+C++ Practice (10 Heads in A Row), Header files, Makefiles
 
 <ul><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown: 10 Heads in A Row</a></li><li><a href = "https://math.temple.edu/~paulos/oldsite/scam.html">Stock market scan</a></li><li><a href = "http://faculty.cs.niu.edu/~mcmahon/CS241/c241man/node90.html">Notes on header guards</a></li></ul>
 LECTURE
@@ -27,7 +27,7 @@ C Pointers And Arrays, Dynamic Memory
 
 <ul><li><a href = "ClassExercises/Week3_Pointers_Arrays">Class notes on pointers and arrays</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.4, 2.5.1</li></ul>
 LECTURE
-<a href = "Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a>, LLDB
+Lab 2: C++ Bug Hunt, LLDB
 
 <ul><li><a href = "https://diveintosystems.org/book/C3-C_debug/valgrind.html">Dive Into Systems Ch. 3.3</a></li><li><a href = "https://lldb.llvm.org/use/tutorial.html">Extended lldb tutorial</a></li><li><a href = "https://www.youtube.com/watch?v=3BkEOvI36Ds">Quick and Dirty LLDB Tutorial (5 Minutes)</a></li><li><a href = "https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf">LLDB Cheat Sheet</a> (You will return to this often)</li></ul>
 LECTURE
@@ -63,7 +63,7 @@ C++ Classes: Static Variables, Information Hiding/Encapsulation (public and priv
 
 <ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics">Completed code from class</a></li><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm">TutorialsPoint: Notes on C++ Static Variables/Methods in Classes</a></li></ul>
 LECTURE
-<a href = "Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a>
+Lab 3: Drawing Shapes with Aggregation And Inheritance
 
 <ul><li><a href = "https://atomicobject.com/resources/oo-programming/object-oriented-aggregation">Notes on aggregation</a></li></ul>
 LECTURE
@@ -75,15 +75,11 @@ Finish Polymorphism, STL Linked Lists
 
 
 LECTURE
-<p>Abstract Classes</p><a href = "Labs/Lab4_AbstractClassesSorting">Lab 4: Comparators And Insertion Sort</a>
+<p>Abstract Classes</p>Lab 4: Comparators And Insertion Sort
 
 <ul><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm">TutorialsPoint: Notes on Interfaces in C++</a></li></ul>
 LECTURE
 Multiple Inheritance, The Diamond Problem
-
-
-LECTURE
-Catch-Up Day
 
 
 SECTION
@@ -95,7 +91,7 @@ Linked List Implementations with Nodes/Aggregation
 
 
 LECTURE
-<a href = "Labs/Lab5_MyVector">Lab 5: My Vector (Dynamic Array ADT)</a>
+Lab 5: My Vector (Dynamic Array ADT)
 
 <ul><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li></ul>
 LECTURE
@@ -131,7 +127,7 @@ Recursion And Memoization: Factorial, Fibonacci, Ackermann
 
 <ul><li><a href = "ClassExercises/Week11_Recursion">Class Notes on Recursion/Memoization</a></li></ul>
 LECTURE
-<a href = "Labs/Lab6_RecursiveDrawing">Lab 6: Recursive Drawing / Fractals</a>
+Lab 6: Recursive Drawing / Fractals
 
 
 LECTURE
@@ -143,13 +139,13 @@ Binary Search Trees: Drawing
 
 <ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week11-BinaryTrees/tree/precomputedraw">Solution from class</a></li></ul>
 LECTURE
-<a href = "Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a>
+Lab 7: Huffman Trees
 
 
 LECTURE
 Continue Huffman Trees, Merge Sort
 
-<ul><li><a href = "https://ursinus-cs174-s2022.github.io/Modules/MergeSort/Exercise">Merge sort class exercise</a></li></ul>
+<ul><li>Merge sort class exercise</li></ul>
 SECTION
 Unit 4: Advanced Topics in Systems Programming
 
