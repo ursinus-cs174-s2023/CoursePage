@@ -3,41 +3,37 @@ Unit 1: Introduction To C/C++ And Systems Programming
 
 
 LECTURE
-Course Overview, C Primitives and printf, Loops, Conditionals, Arrays
-
-<ul><li><a href = "../Modules/FreeRun">C++ Coding in the browser!</a></li></li><li><a href = "http://www.cplusplus.com/reference/cstdio/printf/">printf reference</a></li></ul>
-LECTURE
-The Terminal, Filesystem Navigation
+Course Overview, The Terminal, Filesystem Navigation
 
 <ul><li><a href = "ClassExercises/Week1_CMD">Class notes on the terminal</a></li><li><a href = "https://www.learnenough.com/command-line-tutorial/">Learn Enough of The Command Line To Be Dangerous</a><li><a href = "https://www.cs.princeton.edu/courses/archive/spr18/cos217/precepts/17linux2/">Bob Dondero's Linux Cheatsheets</a></li></ul>
 LECTURE
+C Primitives and printf, Loops, Conditionals, Arrays
+
+<ul><li><a href = "../Modules/FreeRun">C++ Coding in the browser!</a></li></li><li><a href = "http://www.cplusplus.com/reference/cstdio/printf/">printf reference</a></li></ul>
+LECTURE
 C++ Practice (10 Heads in A Row), Header files, Makefiles
 
-<ul><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown: 10 Heads in A Row</a></li><li><a href = "https://math.temple.edu/~paulos/oldsite/scam.html">Stock market scan</a></li><li><a href = "http://faculty.cs.niu.edu/~mcmahon/CS241/c241man/node90.html">Notes on header guards</a></li></ul>
-LECTURE
-Makefiles, <a href = "Labs/Lab1_Holidays">Lab 1: HTML Holidays</a>
-
-
+<ul><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown: 10 Heads in A Row</a></li><li><a href = "https://math.temple.edu/~paulos/oldsite/scam.html">Stock market scam</a></li></ul>
 LECTURE
 Pointers
 
 <ul><li><a href = "ClassExercises/Week2_3_PointerTricks">Class notes on pointers and pitfalls</a></li><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.1 - 2.3</li></ul>
 LECTURE
+<a href = "Labs/Lab1_Holidays">Lab 1: HTML Holidays</a>
+
+
+LECTURE
 C Pointers And Arrays, Dynamic Memory
 
 <ul><li><a href = "ClassExercises/Week3_Pointers_Arrays">Class notes on pointers and arrays</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.4, 2.5.1</li></ul>
-LECTURE
-Lab 2: C++ Bug Hunt, LLDB
-
-<ul><li><a href = "https://diveintosystems.org/book/C3-C_debug/valgrind.html">Dive Into Systems Ch. 3.3</a></li><li><a href = "https://lldb.llvm.org/use/tutorial.html">Extended lldb tutorial</a></li><li><a href = "https://www.youtube.com/watch?v=3BkEOvI36Ds">Quick and Dirty LLDB Tutorial (5 Minutes)</a></li><li><a href = "https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf">LLDB Cheat Sheet</a> (You will return to this often)</li></ul>
 LECTURE
 2D Arrays, 2048 Game
 
 <ul><li><a href = "ClassExercises/Week3_2048">Class Exercise: Making The 2048 Game Together</a></li></ul>
 LECTURE
-Dynamic Memory, Valgrind
+Lab 2: C++ Bug Hunt, LLDB
 
-
+<ul><li><a href = "https://diveintosystems.org/book/C3-C_debug/valgrind.html">Dive Into Systems Ch. 3.3</a></li><li><a href = "https://lldb.llvm.org/use/tutorial.html">Extended lldb tutorial</a></li><li><a href = "https://www.youtube.com/watch?v=3BkEOvI36Ds">Quick and Dirty LLDB Tutorial (5 Minutes)</a></li><li><a href = "https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf">LLDB Cheat Sheet</a> (You will return to this often)</li></ul>
 LECTURE
 Command Line Arguments, 2D Array Allocation/Cleanup
 
@@ -159,7 +155,7 @@ Intermezzo: Digital Audio And Shazam
 
 <ul><li><a href = "Assignments/FinalProject_Shazam/background.html">Shazam algorithm background</a></li></ul>
 LECTURE
-Shazam Continued
+Shazam Work Session
 
 
 LECTURE
@@ -175,7 +171,7 @@ LECTURE
 
 
 LECTURE
-Work Session / Classes In Java
+Shazam Work Session
 
 
 

@@ -9,26 +9,26 @@ Survey/Syllabus Quiz Due
 2022-08-31
 <a href = "Assignments/HW0_Warmup">Assignment 0: Software Test</a> Due
 
-2022-09-03
+2022-09-02
 <HR><a href = "Assignments/HW1_VirtualCities">Assignment 1 (Individual): Design Your Own City</a> Out
 
-2022-09-03
+2022-09-02
 <a href = "https://ursinus-cs174-s2022.github.io/Modules/PointerFundamentals/Exercise1">Pointers Fundamentals Exercises</a> Due Before Class
 
 2022-09-07
 Lab 1 Due
 
-2022-09-10
+2022-09-12
 Assignment 1 Due
 
 2022-09-14
 Binary And Hex Module Due Before Class
 
-2022-09-17
-Lab 2 Due
+2022-09-19
+<HR>Lab 2 Due
 
-2022-09-18
-Assignment 2 (Buddy): Image Processing And Steganography Out
+2022-09-19
+<HR>Assignment 2 (Buddy): Image Processing And Steganography Out
 
 2022-09-19
 Assignment 2 Check-In

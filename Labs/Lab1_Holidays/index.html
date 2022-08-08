@@ -61,7 +61,7 @@
                                         </p>
 
                                         <p>
-                                            <a href = "https://github.com/ursinus-cs174-s2022/Lab1_Holidays/archive/refs/heads/main.zip">Click here</a> to download the skeleton code for this assignment, which you can open and edit with <a href = "../../Software/index.html#vscode">Visual Studio Code</a>.  You will be editing <code>holidays.cpp</code>, <code>dateutils.h</code>, and <code>dateutils.cpp</code>.
+                                            <a href = "https://github.com/ursinus-cs174-f2022/Lab1_Holidays/archive/refs/heads/main.zip">Click here</a> to download the skeleton code for this assignment, which you can open and edit with <a href = "../../Software/index.html#vscode">Visual Studio Code</a>.  You will be editing <code>holidays.cpp</code>, <code>dateutils.h</code>, and <code>dateutils.cpp</code>.
                                         </p>
 
                                         <p>
@@ -180,13 +180,13 @@
                                         const string HOLIDAY_NAMES[NUM_HOLIDAYS] = {
                                             "Labor Day",
                                             "Rosh Hashanah (New Year)",
+                                            "Navratri/Dussehra",
                                             "Yom Kippur (Day of Atonement)",
+                                            "Mawlid al-Nabi (birthday of Mohammad)",
                                             "Sukkot (Feast of Tabernacles)",
+                                            "Indigenous Peoples Day",
                                             "Shemini Atzeret",
                                             "Simchat Torah",
-                                            "Navratri/Dussehra",
-                                            "Indigenous Peoples Day",
-                                            "Mawlid al-Nabi (birthday of Mohammad)",
                                             "Diwali",
                                             "Veterans Day",
                                             "Thanksgiving Day",
@@ -197,30 +197,29 @@
                                             "Orthodox Christmas",
                                             "Martin Luther King Day",
                                             "Lunar New Year",
-                                            "Presidents' Day",
                                             "Maha Shivaratri",
-                                            "Beginning of Lent",
+                                            "Presidents' Day",
                                             "Ash Wednesday",
                                             "Purim",
                                             "Holi",
-                                            "April Fool's",
                                             "Beginning of Ramadan",
-                                            "Ramanavami",
-                                            "Good Friday",
+                                            "Rama Navami",
+                                            "April Fool's",
                                             "Passover (Pesach)",
+                                            "Good Friday",
                                             "Easter",
                                             "Orthodox Good Friday",
                                             "Orthodox Easter",
                                             "Lailat al-Qadr",
                                             "Eid al-Fitr (End of Ramadan)",
-                                            "Memorial Day",
                                             "Shavuot",
+                                            "Memorial Day",
                                             "Juneteenth",
-                                            "Independence Day",
                                             "Eid al-Adha",
+                                            "Independence Day",
                                             "Muharram (Al Hijrah New Year)",
                                             "Janmashtami"
-                                        }                                  
+                                        };                                
                                     ]]></script>  
 
                                     <p>
@@ -228,10 +227,9 @@
                                     </p>
                                     <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
                                         const int HOLIDAY_MONTHS[NUM_HOLIDAYS] = {
-                                            9,9,9,9,9,9,10,10,10,11,11,11,11,11,12,1,1,1,
-                                            2,2,3,3,3,3,3,4,4,4,4,4,4,4,4,4,5,5,6,6,7,7,7,8
+                                            9,9,9,10,10,10,10,10,10,10,11,11,11,12,12,1,1,
+                                            1,1,2,2,2,3,3,3,3,4,4,4,4,4,4,4,4,5,5,6,6,7,7,9
                                         };
-
                                     ]]></script>  
 
                                     <p>
@@ -259,7 +257,7 @@
                                     </p>  
 
                                     <p>
-                                        FOr each row, you should print out HTML code that creates 3 columns
+                                        For each row, you should print out HTML code that creates 3 columns
                                         <ol>
                                             <li>The name of the holiday</li>
                                             <li>The weekday of the holiday</li>
@@ -269,55 +267,54 @@
                                     </p>
 
                                     <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-                                        <tr><tr><td>Labor Day</td><td>Monday</td> September 6, 2021</td></tr>
+                                        <tr><tr><td>Labor Day</td><td>Monday</td> September 5, 2022</td></tr>
                                         ]]></script>  
                                     
                                     <p>
                                         If all goes well, when you put all of the rows together and write them out to <code>holidays.html</code>, you should see a table with the following information:
                                     </p>
                                     <table style="width:600px;"><tr><td>Holiday</td><td>Weekday</td><td>Date</td></tr>
-                                        <tr><tr><td>Labor Day</td><td>Monday</td><td>September 6, 2021</td></tr>
-                                        <tr><tr><td>Rosh Hashanah (New Year)</td><td>Tuesday</td><td>September 7, 2021</td></tr>
-                                        <tr><tr><td>Yom Kippur (Day of Atonement)</td><td>Thursday</td><td>September 16, 2021</td></tr>
-                                        <tr><tr><td>Sukkot (Feast of Tabernacles)</td><td>Tuesday</td><td>September 21, 2021</td></tr>
-                                        <tr><tr><td>Shemini Atzeret</td><td>Tuesday</td><td>September 28, 2021</td></tr>
-                                        <tr><tr><td>Simchat Torah</td><td>Wednesday</td><td>September 29, 2021</td></tr>
-                                        <tr><tr><td>Navratri/Dussehra</td><td>Thursday</td><td>October 7, 2021</td></tr>
-                                        <tr><tr><td>Indigenous Peoples Day</td><td>Monday</td><td>October 11, 2021</td></tr>
-                                        <tr><tr><td>Mawlid al-Nabi (birthday of Mohammad)</td><td>Monday</td><td>October 18, 2021</td></tr>
-                                        <tr><tr><td>Diwali</td><td>Thursday</td><td>November 4, 2021</td></tr>
-                                        <tr><tr><td>Veterans Day</td><td>Thursday</td><td>November 11, 2021</td></tr>
-                                        <tr><tr><td>Thanksgiving Day</td><td>Thursday</td><td>November 25, 2021</td></tr>
-                                        <tr><tr><td>Native American Heritage Day</td><td>Friday</td><td>November 26, 2021</td></tr>
-                                        <tr><tr><td>Hanukkah (Chanukah)</td><td>Sunday</td><td>November 28, 2021</td></tr>
-                                        <tr><tr><td>Christmas Day</td><td>Saturday</td><td>December 25, 2021</td></tr>
-                                        <tr><tr><td>New Years Day</td><td>Saturday</td><td>January 1, 2022</td></tr>
-                                        <tr><tr><td>Orthodox Christmas</td><td>Friday</td><td>January 7, 2022</td></tr>
-                                        <tr><tr><td>Martin Luther King Day</td><td>Monday</td><td>January 17, 2022</td></tr>
-                                        <tr><tr><td>Lunar New Year</td><td>Tuesday</td><td>February 1, 2022</td></tr>
-                                        <tr><tr><td>Presidents' Day</td><td>Monday</td><td>February 21, 2022</td></tr>
-                                        <tr><tr><td>Maha Shivaratri</td><td>Tuesday</td><td>March 1, 2022</td></tr>
-                                        <tr><tr><td>Beginning of Lent</td><td>Wednesday</td><td>March 2, 2022</td></tr>
-                                        <tr><tr><td>Ash Wednesday</td><td>Wednesday</td><td>March 2, 2022</td></tr>
-                                        <tr><tr><td>Purim</td><td>Thursday</td><td>March 17, 2022</td></tr>
-                                        <tr><tr><td>Holi</td><td>Friday</td><td>March 18, 2022</td></tr>
-                                        <tr><tr><td>April Fool's</td><td>Friday</td><td>April 1, 2022</td></tr>
-                                        <tr><tr><td>Beginning of Ramadan</td><td>Saturday</td><td>April 2, 2022</td></tr>
-                                        <tr><tr><td>Ramanavami</td><td>Sunday</td><td>April 10, 2022</td></tr>
-                                        <tr><tr><td>Good Friday</td><td>Friday</td><td>April 15, 2022</td></tr>
-                                        <tr><tr><td>Passover (Pesach)</td><td>Saturday</td><td>April 16, 2022</td></tr>
-                                        <tr><tr><td>Easter</td><td>Sunday</td><td>April 17, 2022</td></tr>
-                                        <tr><tr><td>Orthodox Good Friday</td><td>Friday</td><td>April 22, 2022</td></tr>
-                                        <tr><tr><td>Orthodox Easter</td><td>Sunday</td><td>April 24, 2022</td></tr>
-                                        <tr><tr><td>Lailat al-Qadr</td><td>Thursday</td><td>April 28, 2022</td></tr>
-                                        <tr><tr><td>Eid al-Fitr (End of Ramadan)</td><td>Tuesday</td><td>May 3, 2022</td></tr>
-                                        <tr><tr><td>Memorial Day</td><td>Monday</td><td>May 30, 2022</td></tr>
-                                        <tr><tr><td>Shavuot</td><td>Sunday</td><td>June 5, 2022</td></tr>
-                                        <tr><tr><td>Juneteenth</td><td>Sunday</td><td>June 19, 2022</td></tr>
-                                        <tr><tr><td>Independence Day</td><td>Monday</td><td>July 4, 2022</td></tr>
-                                        <tr><tr><td>Eid al-Adha</td><td>Sunday</td><td>July 10, 2022</td></tr>
-                                        <tr><tr><td>Muharram (Al Hijrah New Year)</td><td>Saturday</td><td>July 30, 2022</td></tr>
-                                        <tr><tr><td>Janmashtami</td><td>Thursday</td><td>August 18, 2022</td></tr>
+                                        <tr><tr><td>Labor Day</td><td>Monday</td><td>September 5, 2022</td></tr>
+                                        <tr><tr><td>Rosh Hashanah (New Year)</td><td>Sunday</td><td>September 25, 2022</td></tr>
+                                        <tr><tr><td>Navratri/Dussehra</td><td>Monday</td><td>September 26, 2022</td></tr>
+                                        <tr><tr><td>Yom Kippur (Day of Atonement)</td><td>Tuesday</td><td>October 4, 2022</td></tr>
+                                        <tr><tr><td>Mawlid al-Nabi (birthday of Mohammad)</td><td>Friday</td><td>October 7, 2022</td></tr>
+                                        <tr><tr><td>Sukkot (Feast of Tabernacles)</td><td>Sunday</td><td>October 9, 2022</td></tr>
+                                        <tr><tr><td>Indigenous Peoples Day</td><td>Monday</td><td>October 10, 2022</td></tr>
+                                        <tr><tr><td>Shemini Atzeret</td><td>Sunday</td><td>October 16, 2022</td></tr>
+                                        <tr><tr><td>Simchat Torah</td><td>Monday</td><td>October 17, 2022</td></tr>
+                                        <tr><tr><td>Diwali</td><td>Monday</td><td>October 24, 2022</td></tr>
+                                        <tr><tr><td>Veterans Day</td><td>Friday</td><td>November 11, 2022</td></tr>
+                                        <tr><tr><td>Thanksgiving Day</td><td>Thursday</td><td>November 24, 2022</td></tr>
+                                        <tr><tr><td>Native American Heritage Day</td><td>Friday</td><td>November 25, 2022</td></tr>
+                                        <tr><tr><td>Hanukkah (Chanukah)</td><td>Sunday</td><td>December 18, 2022</td></tr>
+                                        <tr><tr><td>Christmas Day</td><td>Sunday</td><td>December 25, 2022</td></tr>
+                                        <tr><tr><td>New Years Day</td><td>Sunday</td><td>January 1, 2023</td></tr>
+                                        <tr><tr><td>Orthodox Christmas</td><td>Saturday</td><td>January 7, 2023</td></tr>
+                                        <tr><tr><td>Martin Luther King Day</td><td>Monday</td><td>January 16, 2023</td></tr>
+                                        <tr><tr><td>Lunar New Year</td><td>Sunday</td><td>January 22, 2023</td></tr>
+                                        <tr><tr><td>Maha Shivaratri</td><td>Saturday</td><td>February 18, 2023</td></tr>
+                                        <tr><tr><td>Presidents' Day</td><td>Monday</td><td>February 20, 2023</td></tr>
+                                        <tr><tr><td>Ash Wednesday</td><td>Wednesday</td><td>February 22, 2023</td></tr>
+                                        <tr><tr><td>Purim</td><td>Monday</td><td>March 6, 2023</td></tr>
+                                        <tr><tr><td>Holi</td><td>Wednesday</td><td>March 8, 2023</td></tr>
+                                        <tr><tr><td>Beginning of Ramadan</td><td>Wednesday</td><td>March 22, 2023</td></tr>
+                                        <tr><tr><td>Rama Navami</td><td>Thursday</td><td>March 30, 2023</td></tr>
+                                        <tr><tr><td>April Fool's</td><td>Saturday</td><td>April 1, 2023</td></tr>
+                                        <tr><tr><td>Passover (Pesach)</td><td>Wednesday</td><td>April 5, 2023</td></tr>
+                                        <tr><tr><td>Good Friday</td><td>Friday</td><td>April 7, 2023</td></tr>
+                                        <tr><tr><td>Easter</td><td>Sunday</td><td>April 9, 2023</td></tr>
+                                        <tr><tr><td>Orthodox Good Friday</td><td>Friday</td><td>April 14, 2023</td></tr>
+                                        <tr><tr><td>Orthodox Easter</td><td>Sunday</td><td>April 16, 2023</td></tr>
+                                        <tr><tr><td>Lailat al-Qadr</td><td>Tuesday</td><td>April 18, 2023</td></tr>
+                                        <tr><tr><td>Eid al-Fitr (End of Ramadan)</td><td>Friday</td><td>April 21, 2023</td></tr>
+                                        <tr><tr><td>Shavuot</td><td>Thursday</td><td>May 25, 2023</td></tr>
+                                        <tr><tr><td>Memorial Day</td><td>Monday</td><td>May 29, 2023</td></tr>
+                                        <tr><tr><td>Juneteenth</td><td>Monday</td><td>June 19, 2023</td></tr>
+                                        <tr><tr><td>Eid al-Adha</td><td>Wednesday</td><td>June 28, 2023</td></tr>
+                                        <tr><tr><td>Independence Day</td><td>Tuesday</td><td>July 4, 2023</td></tr>
+                                        <tr><tr><td>Muharram (Al Hijrah New Year)</td><td>Saturday</td><td>July 29, 2023</td></tr>
+                                        <tr><tr><td>Janmashtami</td><td>Wednesday</td><td>September 6, 2023</td></tr>
                                         </table>
 
 

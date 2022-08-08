@@ -7,3 +7,6 @@
 [submodule "Assignments/HW1_VirtualCities/ArtContest/ggslac"]
 	path = Assignments/HW1_VirtualCities/ArtContest/ggslac
 	url = https://github.com/ctralie/ggslac.git
+[submodule "Labs/Lab1_Holidays/Lab1_Holidays"]
+	path = Labs/Lab1_Holidays/Lab1_Holidays
+	url = https://github.com/ursinus-cs174-f2022/Lab1_Holidays.git
