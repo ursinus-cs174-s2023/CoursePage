@@ -1,7 +1,10 @@
 Last Day To Drop with A "W"
 
 2022-10-31
-Survey/Syllabus Quiz Due
+<a href = "https://ursinus.instructure.com/courses/14913/quizzes/19009">Syllabus Quiz</a> Due
+
+2022-08-29
+<a href = "https://ursinus.co1.qualtrics.com/jfe/form/SV_1zxfrP1E1DKM8dw">Student Survey</a> Due
 
 2022-08-30
 <a href = "../Modules/CPPBasics/Video1">C++ Fundamentals Module</a> Due before Class
@@ -13,19 +16,25 @@ Survey/Syllabus Quiz Due
 <HR><a href = "Assignments/HW1_VirtualCities">Assignment 1 (Individual): Design Your Own City</a> Out
 
 2022-09-02
-<a href = "https://ursinus-cs174-s2022.github.io/Modules/PointerFundamentals/Exercise1">Pointers Fundamentals Exercises</a> Due Before Class
+<a href = "https://ursinus-cs174-s2022.github.io/Modules/PointerFundamentals/Exercise1">Pointers Fundamentals Exercises</a> Due
 
-2022-09-07
-Lab 1 Due
+2022-09-05
+<a href = "https://ursinus.instructure.com/courses/14913/quizzes/19047">Pointers And Arrays Exercise</a> Due
+
+2022-09-09
+<a href = "Labs/Lab1_Holidays">Lab 1</a> Due
 
 2022-09-12
 <a href = "Assignments/HW1_VirtualCities">Assignment 1</a>  Due
 
 2022-09-14
-Binary And Hex Module Due Before Class
+<a href = "https://ursinus.instructure.com/courses/14913/quizzes/19048">Binary And Hex Module</a> Due
 
-2022-09-19
-<HR>Lab 2 Due
+2022-09-18
+<a href = "https://ursinus.instructure.com/courses/14913/quizzes/19046">Bitwise Module</a> Due
+
+2022-09-18
+Lab 2 Due
 
 2022-09-19
 <HR>Assignment 2 (Buddy): Image Processing And Steganography Out

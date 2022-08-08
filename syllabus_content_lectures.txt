@@ -57,7 +57,7 @@ C++ Classes practice and header files
 LECTURE
 C++ Classes: Static Variables, Information Hiding/Encapsulation (public and private)
 
-<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics">Completed code from class</a></li><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm">TutorialsPoint: Notes on C++ Static Variables/Methods in Classes</a></li></ul>
+<ul><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm">TutorialsPoint: Notes on C++ Static Variables/Methods in Classes</a></li></ul>
 LECTURE
 Lab 3: Drawing Shapes with Aggregation And Inheritance
 
@@ -97,7 +97,7 @@ Continue Linked Lists
 LECTURE
 Linked Lists / Stacks
 
-<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week8_LinkedList_Stack/tree/class2sol">Code from today</a></li></ul>
+
 LECTURE
 Doubly-Linked Lists, Queues
 
@@ -105,7 +105,7 @@ Doubly-Linked Lists, Queues
 LECTURE
 STL Priority Queue, Prim's Algorithm
 
-<ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li><li><a href = "https://github.com/ursinus-cs174-s2022/Week9_PrimMaze/">Class Exercise: Making Mazes</a></li></ul>
+<ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li><li>Class Exercise: Making Mazes</li></ul>
 LECTURE
 STL Set, STL Map, Begin LinkedMap Implementation
 
@@ -133,7 +133,7 @@ Binary Search Trees: Cleanup, Addition, Traversal with Preorder/Inorder/Postorde
 LECTURE
 Binary Search Trees: Drawing
 
-<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week11-BinaryTrees/tree/precomputedraw">Solution from class</a></li></ul>
+
 LECTURE
 Lab 7: Huffman Trees
 
@@ -161,7 +161,7 @@ Shazam Work Session
 LECTURE
 Begin Parallel Programming And Threads
 
-<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week14_Threads">Code from class</a></li></ul>
+
 LECTURE
 Race Conditions And Mutexes
 
