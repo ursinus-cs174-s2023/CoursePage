@@ -11,9 +11,9 @@ C Primitives and printf, Loops, Conditionals, Arrays
 
 <ul><li><a href = "../Modules/FreeRun">C++ Coding in the browser!</a></li></li><li><a href = "http://www.cplusplus.com/reference/cstdio/printf/">printf reference</a></li></ul>
 LECTURE
-C++ Practice (10 Heads in A Row), Header files, Makefiles
+More C++ Practice, Header files, Makefiles
 
-<ul><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown: 10 Heads in A Row</a></li><li><a href = "https://math.temple.edu/~paulos/oldsite/scam.html">Stock market scam</a></li></ul>
+<ul><li><a href = "https://ursinus-cs174-f2022.github.io/Modules/TenHeads">Class Exercise: 10 Heads in A Row</a></li></li><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown: 10 Heads in A Row</a></li><li><a href = "https://math.temple.edu/~paulos/oldsite/scam.html">Stock market scam</a></li></ul>
 LECTURE
 Pointers
 
