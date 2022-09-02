@@ -50,7 +50,7 @@
 
                                     <h2>Overview</h2>
                                     <p>
-                                        The purpose of this exercise to give students practice with dynamic arrays, loops, and methods in C++ Java by implementing a "filtering" method, in which parts of an audio clip are removed based on different criteria.
+                                        The purpose of this exercise to give students practice with dynamic arrays, loops, and methods in C++ by implementing a "filtering" method, in which parts of an audio clip are removed based on different criteria.
                                     </p>
 
                                     <h2>Code</h2>
@@ -59,7 +59,7 @@
                                     </p>
 
                                     <p>
-                                        <code>git clone https://github.com/ursinus-cs174-s2022/Week3_AudioFiltering.git</code>
+                                        <code>git clone https://github.com/ursinus-cs174-f2022/Week1_AudioFiltering.git</code>
                                     </p>
 
                                     
@@ -67,18 +67,7 @@
 
                                     <h2>Overview</h2>
                                     <p>
-                                        Digital audio can be represented as an array of doubles between -1 and 1, which we refer to as <i>samples</i>.  In this exercise, you will fill in a method <code>filter</code> that takes in a sequence of audio samples <code>x</code> and creates a new array of audio samples <code>y</code> which is a subset of <code>x</code>.  There are three options, and you should implement at least one.  Each option consists of the following steps:
-                                        <ol>
-                                            <li>Count the number of samples in <code>x</code> that are above or below a certain threshold ("energy" for loudness filtering or "zero crossings" for vowel/consonant filtering).  This will be the length of the new array you make</li>
-                                            <li>
-                                                Dynamically create array <code>y</code> of the appropriate size.
-                                            </li>
-                                            <li>
-                                                Copy over the values from <code>x</code> to <code>y</code> that exceed a threshold.
-                                            </li>
-                                        </ol>
-                                        Don't forget to free your array memory when you're done with it!
-                                        
+                                        Digital audio can be represented as an array of doubles between -1 and 1, which we refer to as <i>samples</i>.  In this exercise, you will fill in a method <code>filter</code> that takes in a sequence of audio samples <code>x</code> and creates a new array of audio samples <code>y</code>.  There are three options, and you should implement at least one.  For each option, you should copy over <b>only the values of x that exceed a certain threshold</b>
                                     </p>
                                     <P>
                                         Below is more information about what the thresholds are for the three different options:
@@ -227,7 +216,9 @@
 											<ul>
 												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
 												<li><a href = "../../ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
-												<li><a href = "../../../Modules/PointerFundamentals/Exercise1">Pointer Fundamentals Module</a></li>
+												<li><a href = "https://ursinus-cs174-f2022.github.io/Modules/TenHeads">Week 1: Ten Heads in A Row</a></li>
+												<li><a href = "../../ClassExercises/Week1_AudioFiltering">Week 1: Audio Filtering</a></li>
+												<li><a href = "../../../Modules/PointerFundamentals/Exercise1">Week 2: Pointer Fundamentals Module</a></li>
 												<li><a href = "../../ClassExercises/Week2_3_PointerTricks">Week 2/3: C++ Pointers And Pitfalls</a></li>
 												<li><a href = "../../ClassExercises/Week3_Pointers_Arrays">Week 3: C++ Pointers And Arrays</a></li>
 												<!--

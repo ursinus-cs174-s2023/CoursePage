@@ -11,11 +11,11 @@ C Primitives and printf, Loops, Conditionals, Arrays
 
 <ul><li><a href = "../Modules/FreeRun">C++ Coding in the browser!</a></li></li><li><a href = "http://www.cplusplus.com/reference/cstdio/printf/">printf reference</a></li></ul>
 LECTURE
-More C++ Practice, Header files, Makefiles
+More C++ Practice: 10 Heads in A Row and Audio Filtering
 
-<ul><li><a href = "https://ursinus-cs174-f2022.github.io/Modules/TenHeads">Class Exercise: 10 Heads in A Row</a></li></li><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown: 10 Heads in A Row</a></li><li><a href = "https://math.temple.edu/~paulos/oldsite/scam.html">Stock market scam</a></li></ul>
+<ul><li><a href = "https://ursinus-cs174-f2022.github.io/Modules/TenHeads">Class Exercise: 10 Heads in A Row</a></li><li><a href = "ClassExercises/Week1_AudioFiltering">Audio Filtering</a></li><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown: 10 Heads in A Row</a></li><li><a href = "https://math.temple.edu/~paulos/oldsite/scam.html">Stock market scam</a></li></ul>
 LECTURE
-Pointers
+Pointers, Header files, Makefiles
 
 <ul><li><a href = "ClassExercises/Week2_3_PointerTricks">Class notes on pointers and pitfalls</a></li><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.1 - 2.3</li></ul>
 LECTURE
