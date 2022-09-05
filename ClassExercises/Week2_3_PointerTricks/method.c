@@ -1,12 +1,15 @@
 #include <stdio.h>
 
-void foo(int param) {
-    param = 274;
+// Passing param "by value"
+void foo(int* paramAddr) {
+    *paramAddr = 274;
 }
 
 int main() {
     int x = 174;
-    foo(x);
+    printf("Memory address of x: %u\n", &x);
+    int* xaddr = &x;
+    foo(xaddr);
     printf("%i\n", x);
     return 0;
 }
