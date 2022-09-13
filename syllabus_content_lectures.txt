@@ -23,13 +23,13 @@ LECTURE
 
 
 LECTURE
-C Pointers And Arrays, Dynamic Memory
+Workshopping Lab 1, HW1
+
+
+LECTURE
+C Pointers And Arrays, Dynamic Memory, 2048 (time permitting)
 
 <ul><li><a href = "ClassExercises/Week3_Pointers_Arrays">Class notes on pointers and arrays</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.4, 2.5.1</li></ul>
-LECTURE
-2D Arrays, 2048 Game
-
-<ul><li><a href = "ClassExercises/Week3_2048">Class Exercise: Making The 2048 Game Together</a></li></ul>
 LECTURE
 Lab 2: C++ Bug Hunt, LLDB
 
