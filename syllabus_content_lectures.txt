@@ -31,7 +31,7 @@ C Pointers And Arrays, Dynamic Memory, 2048 (time permitting)
 
 <ul><li><a href = "ClassExercises/Week3_Pointers_Arrays">Class notes on pointers and arrays</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.4, 2.5.1</li></ul>
 LECTURE
-Lab 2: C++ Bug Hunt, LLDB
+Continue Arrays + Pointers, <a href = "Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a>, LLDB
 
 <ul><li><a href = "https://diveintosystems.org/book/C3-C_debug/valgrind.html">Dive Into Systems Ch. 3.3</a></li><li><a href = "https://lldb.llvm.org/use/tutorial.html">Extended lldb tutorial</a></li><li><a href = "https://www.youtube.com/watch?v=3BkEOvI36Ds">Quick and Dirty LLDB Tutorial (5 Minutes)</a></li><li><a href = "https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf">LLDB Cheat Sheet</a> (You will return to this often)</li></ul>
 LECTURE
