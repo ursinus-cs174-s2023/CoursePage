@@ -13,3 +13,6 @@
 [submodule "ClassExercises/Week1_AudioFiltering/Week1_AudioFiltering"]
 	path = ClassExercises/Week1_AudioFiltering/Week1_AudioFiltering
 	url = https://github.com/ursinus-cs174-f2022/Week1_AudioFiltering.git
+[submodule "Assignments/HW1_VirtualCities/HW1_VirtualCities"]
+	path = Assignments/HW1_VirtualCities/HW1_VirtualCities
+	url = https://github.com/ursinus-cs174-f2022/HW1_VirtualCities.git
