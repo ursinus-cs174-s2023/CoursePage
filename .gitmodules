@@ -16,3 +16,9 @@
 [submodule "Assignments/HW1_VirtualCities/HW1_VirtualCities"]
 	path = Assignments/HW1_VirtualCities/HW1_VirtualCities
 	url = https://github.com/ursinus-cs174-f2022/HW1_VirtualCities.git
+[submodule "ClassExercises/Week3_ArrayList"]
+	path = ClassExercises/Week3_ArrayList
+	url = https://github.com/ctralie/Week3_ArrayList.git
+[submodule "ClassExercises/Week4_Bits/Week4_Bits"]
+	path = ClassExercises/Week4_Bits/Week4_Bits
+	url = https://github.com/ursinus-cs174-f2022/Week4_Bits.git

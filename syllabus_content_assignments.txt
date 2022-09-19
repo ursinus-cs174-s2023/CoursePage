@@ -36,7 +36,7 @@ Last Day To Drop with A "W"
 2022-09-18
 <a href = "Labs/Lab2_BugHunt">Lab 2</a> Due
 
-2022-09-20
+2022-09-22
 Assignment 2 (Buddy): Image Processing And Steganography Out
 
 2022-09-19
