@@ -41,75 +41,99 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Assignment 2: Image Processing And Steganography (46 Points)</h2>
+                                        <h2>Assignment 2: Image Processing And Steganography</h2>
+										<h2>Part 3: Image Encoding (15 Points)</h2>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
 
-										<ul>
-											<li><h2><a href = "part1.html">Part 1: Drawing Ellipses (16 Points)</a></h2></li>
-											<li><h2><a href = "part2.html">Part 2: Image Decoding (15 Points)</a></h2></li>
-											<li><h2><a href = "part3.html">Part 3: Image Encoding (15 Points)</a></h2></li>
-										</ul>
+									<p>
+										In the next part, you should create a program to hide your own text in images of your choice.  Create a program <code>encode.cpp</code> which takes in 3 command line arguments:
+										<ol>
+											<li>
+												A path to the image inside of which to hide the text
+											</li>
+											<li>
+												A path to a text file containing the text you want to hide
+											</li>
+											<li>
+												A path to the output image that will store the hidden text
+											</li>
+										</ol>
+									</p>
 
-                                        <h2><a name = "overview">Overview / Logistics</a></h2>
-										<p>
-                                            The purpose of this <a href = "../../index.html#buddy">buddy assignment</a> is to put your knowledge of <a href = "../../ClassExercises/Week4_BinaryDrills/">binary</a> and 2D arrays together into a fun application where you will hide secret text messages "in plain sight" by changing the colors of pixels in an image ever so slightly to store a binary encoding of text.  More specifically, you will be encoding the binary ASCII representation of a character string using the least significant bit of pixels in an RGB image.  This is a specific instance of <a href = "https://en.wikipedia.org/wiki/Steganography">steganography</a>, or hiding one type of data in another data stream.
-										</p>
+									<p>
+										For example, running the following to 
+									</p>
 
-                                        <p>
-                                            You can download the code for this assignment by using git in the terminal
-										</p>
-										
-										<p>
-											<code>
-												git clone --recursive https://github.com/ursinus-cs174-s2022/HW2_Steganography.git
-											</code>
-										</p>
-										
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										echo "Hello world" > hello.txt
+										./encode images/monalisa.png hello.txt hidden.png
+										./decode hidden.png]]></script>
+									
+									<p>
+										should create a text file with the contents <code>"Hello world"</code>, which is then hidden in the image <code>hidden.png</code>, which is then decoded.  So you should see <code>"Hello world"</code> in your console when these are finished.  
+									</p>
 
-										<p>
-											You will be writing a number of different C++ programs in this assignment, so I'd recommend that you update the makefile that I gave you as you go to make it easier to manage
-                                        </p>
+									<p>
+										Of course, you should also test this on more examples of your own and visually ensure that the images with hidden text are indistinguishable from the originals.
+									</p>
 
-										<p>
-											<b>Fun fact: </b> I proposed to <a href = "https://www.celialitovsky.com/">my partner</a> using a similar concept, and it worked 😻.  Maybe you can use a similar concept to propose to your significant other, or at least to send a top secret message to your friends.
-										</p>
+									<p>
+										<b>NOTE: </b> It is very important that you use a <a href = "https://en.wikipedia.org/wiki/Lossless_compression">lossless</a> image codec like <code>.png</code> to save your images.  If you use something lossly like jpeg, for example, it will destroy the information that you're putting in your image.  
+									</p>
+									<p>
+										As a related note, you will notice that the file sizes of your files containing the hidden text are larger than the originals.  This is because they are now storing information, and it makes it theoretically impossible to compress them more.
+									</p>
 
-                                        <p>
-                                            <h3><a name = "objectives">Learning Objectives</a></h3>
-                                            <ul>
-                                                <li>Manage 2D arrays with loops</li>
-												<li>Manage dynamic memory</li>
-												<li>Read and write bits in character strings</li>
-												<li>Use <a href = "../../ClassExercises/Week3_DynMem/index.html#cmdargs">command line arguments</a></li>
-												<li>Sharpen debugging skills</li>
-												<li>Practice makefiles for automating builds with header files and object files</li>
-                                            </ul>
-                                        </p>
+									<h4>Hint on loading text</h4>
 
-										<h3><a name = "timeline">Timeline</a></h3>
-										<p>
-											<ul>
-												<li>
-													By Tuesday 2/15 you should have <a href = "#decode">part 1</a> and <a href = "#encode">part 2</a> done.  I will have you submit these on canvas to show your progress
-												</li>
-												<li>
-													By Friday 2/18, you should have <a href = "#lfsr">part 3</a> done.
-												</li>
-												<li>
-													The final product will be due on Monday 2/21
-												</li>
-											</ul>
-										</p>
+									<p>
+										We haven't had much time to talk about file I/O in the class yet, so you can use the code snippet below to load a character string from a text file:
+									</p>
 
-                                        <h3><a name = "readme">What to submit</a></h3>
-										
-										<p>
-											When you are finished each part, submit a zip file of all of your code and your makefile to canvas.
-										</p>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											#include <string>
+											#include <sstream>
+											#include <fstream>
+											
+											using namespace std;
+											
+											/**
+											 * @brief Load in a character string from a text file
+											 * 
+											 * @param filename Path to filename you want to load
+											 * @return string Character string read from the file
+											 */
+											string loadFile(char* filename) {
+												ifstream t(filename);
+												stringstream buffer;
+												buffer << t.rdbuf();
+												t.close();
+												return buffer.str();
+											}
+											]]></script>
 
+
+									<h2><a name = "bored">Other Ideas for The Bored</a></h2>
+									<p>
+										Here are some other things you can try if these ideas really excite you and you finish early.  If you seriously pursue one of these, I may give you some extra credit
+									</p>
+									<ul>
+										<li>
+											One thing that makes this a little bit easier to detect programmatically (and hence less "secure" for embedding messages) is the fact that we take bits in "scanline order" from left to right, top down.  You could add some randomness here by using the LFSR to choose the row and column of the next bit to use, in addition to using it to encrypt the bits themselves.
+										</li>
+										<li>
+											Embedding the data as we have does have a statistically significant effect on the histogram of the RGB values.  See if you might make subtle changes to the pixels that don't hide data to preserve the histogram of the original image as well as possible.
+										</li>
+										<li>
+											We don't visually notice the difference by changing the least significant bit, but we probably also won't notice the difference of changing the least two significant bits (both the 1's place and the 2's place).  This will double the information capacity of the image.  What is the limit of this?  Is 3 bits still invisible?  4 bits?  Explore this.
+										</li>
+										<li>
+											We were hiding ASCII text in this example, but you can hide any sequence of bits this way.  Modify the program so that it encrypts any other file you specify in binary, and see if you can hide a small mp3 audio clip in your image, especially if you are able to increase the information capacity as suggested in the above point.
+										</li>
+									</ul>
 
                                 </div>
 						</div>

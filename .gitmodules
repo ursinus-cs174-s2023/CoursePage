@@ -22,3 +22,6 @@
 [submodule "ClassExercises/Week4_Bits/Week4_Bits"]
 	path = ClassExercises/Week4_Bits/Week4_Bits
 	url = https://github.com/ursinus-cs174-f2022/Week4_Bits.git
+[submodule "Assignments/HW2_Steganography/HW2_Steganography"]
+	path = Assignments/HW2_Steganography/HW2_Steganography
+	url = https://github.com/ursinus-cs174-f2022/HW2_Steganography.git

@@ -41,75 +41,115 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Assignment 2: Image Processing And Steganography (46 Points)</h2>
+                                        <h2>Assignment 2: Image Processing And Steganography</h2>
+										<h2>Part 1: Drawing Ellipses (16 Points)</h2>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
-
-										<ul>
-											<li><h2><a href = "part1.html">Part 1: Drawing Ellipses (16 Points)</a></h2></li>
-											<li><h2><a href = "part2.html">Part 2: Image Decoding (15 Points)</a></h2></li>
-											<li><h2><a href = "part3.html">Part 3: Image Encoding (15 Points)</a></h2></li>
-										</ul>
-
-                                        <h2><a name = "overview">Overview / Logistics</a></h2>
+									
 										<p>
-                                            The purpose of this <a href = "../../index.html#buddy">buddy assignment</a> is to put your knowledge of <a href = "../../ClassExercises/Week4_BinaryDrills/">binary</a> and 2D arrays together into a fun application where you will hide secret text messages "in plain sight" by changing the colors of pixels in an image ever so slightly to store a binary encoding of text.  More specifically, you will be encoding the binary ASCII representation of a character string using the least significant bit of pixels in an RGB image.  This is a specific instance of <a href = "https://en.wikipedia.org/wiki/Steganography">steganography</a>, or hiding one type of data in another data stream.
+											In the first part of this assignment, we will draw a simple shape on a 2D <b>grayscale image</b> as a warmup to dynamic memory with 2D arrays.  A grayscale image is a 2D array of type <code>unsigned char</code> which has values between 0 and 255 at each entry, where 0 is black, 255 is white, and everything in between is shades of gray (for 256 possible values total).  A shortcut for <code>unsigned char</code> that you can use in this assignment is <code>uint8_t</code>.
 										</p>
 
-                                        <p>
-                                            You can download the code for this assignment by using git in the terminal
+										<p>
+											In this task, you'll be three different methods.  Each method is specified in the file <code><a href = "https://github.com/ursinus-cs174-f2022/HW2_Steganography/blob/main/ellipse.h">ellipse.h</a></code> provided in the starter code.  Study the method specification provided in the <a href = "../../style.html#methoddoc">method docstrings</a>.  You will then implement these methods in the associated <code>ellipse.cpp</code> file as described below:
+											
+										</p>
+
+										<HR>
+										<h3>Task 1 (4 Points) </h3>
+										<h4><code>int8_t** allocateImage(int width, int height)</code></h4>
+										<p>
+											Create method to dynamically allocate a 2D array of the appropriate size for a grayscale image with height <code>height</code> and width <code>width</code>.  Review the <a href = "../..//ClassExercises/Week3_DynMem/index.html#dynarray2d">notes here</a> on how to dynamically allocate 2D arrays.
+										</p>
+
+										<HR>
+										<h3>Task 2 (4 Points)</h3>
+										<h4><code>void freeImage(uint8_t** image, int height)</code></h4>
+										<p>
+											Create a method to free all of the memory you allocated in task 1.  Before you proceed, you should call <code>allocateImage</code> and then call <code>freeImage</code> in a small test file just to make sure you don't have a memory leak
 										</p>
 										
-										<p>
-											<code>
-												git clone --recursive https://github.com/ursinus-cs174-s2022/HW2_Steganography.git
-											</code>
-										</p>
-										
+										<HR>
+											<h3>Task 3 (4 Points)</h3>
+											<h4><code>void drawEllipse(uint8_t** image, int width, int height, float cx, float cy, float sx, float sy, uint8_t shade)</code></h4>
+											<p>
+												Draw an ellipse in a 2D array.  Every pixel inside of the ellipse should be drawn with the grayscale value <code>shade</code>, and those outside should be drawn with a color of 0.  A pixel at location <code>(x, y)</code> is on the inside of an ellipse centered at coordinates <code>(cx, cy)</code> with axes of lengths <code>sx</code> and <code>sy</code> if
+											</p>
+											<h3>
+												\[ \frac{(x - cx)^2}{sx^2} + \frac{(y - cy)^2}{sy^2} \leq 1  \]
+											</h3>
 
-										<p>
-											You will be writing a number of different C++ programs in this assignment, so I'd recommend that you update the makefile that I gave you as you go to make it easier to manage
-                                        </p>
+											<p>
+												Once you have these three methods done, you can make the program <code>art</code>, and if you run it you should see the following image called <code>art.png</code> in your assignment folder
+											</p>
 
-										<p>
-											<b>Fun fact: </b> I proposed to <a href = "https://www.celialitovsky.com/">my partner</a> using a similar concept, and it worked 😻.  Maybe you can use a similar concept to propose to your significant other, or at least to send a top secret message to your friends.
-										</p>
+											<img src = "art.png" width="30%">
 
-                                        <p>
-                                            <h3><a name = "objectives">Learning Objectives</a></h3>
-                                            <ul>
-                                                <li>Manage 2D arrays with loops</li>
-												<li>Manage dynamic memory</li>
-												<li>Read and write bits in character strings</li>
-												<li>Use <a href = "../../ClassExercises/Week3_DynMem/index.html#cmdargs">command line arguments</a></li>
-												<li>Sharpen debugging skills</li>
-												<li>Practice makefiles for automating builds with header files and object files</li>
-                                            </ul>
-                                        </p>
+									<HR>
+										<h3>Task 4 (4 Points)</h3>
 
-										<h3><a name = "timeline">Timeline</a></h3>
-										<p>
-											<ul>
-												<li>
-													By Tuesday 2/15 you should have <a href = "#decode">part 1</a> and <a href = "#encode">part 2</a> done.  I will have you submit these on canvas to show your progress
-												</li>
-												<li>
-													By Friday 2/18, you should have <a href = "#lfsr">part 3</a> done.
-												</li>
-												<li>
-													The final product will be due on Monday 2/21
-												</li>
-											</ul>
-										</p>
+									<p>
+										For the final task in this part of the assignment, create a program called <code>drawEllipse</code> that includes <code>ellipse.h</code> and links in the object file <code>ellipse.o</code>, and which takes in 8 command line arguments:
+									</p>
 
-                                        <h3><a name = "readme">What to submit</a></h3>
-										
-										<p>
-											When you are finished each part, submit a zip file of all of your code and your makefile to canvas.
-										</p>
+									<Ul>
+										<li>
+											<code>filename</code>: A path to which to save the file.  You can use the provided <code>writeImage</code> method, as shown in <code>art.cpp</code>
+										</li>
+										<li>
+											<code>width</code>: The width of the image
+										</li>
+										<li>
+											<code>height</code>: The width of the image
+										</li>
+										<li>
+											<code>cx</code>: The x coordinate center in of the ellipse
+										</li>
+										<li>
+											<code>cy</code>: The y coordinate center in of the ellipse
+										</li>
+										<li>
+											<code>sx</code>: The x scale of the ellipse
+										</li>
+										<li>
+											<code>sy</code>: The y scale of the ellipse
+										</li>
+										<li>
+											<code>shade</code>: The shade of the ellipse
+										</li>
+									</Ul>
 
+									<p>
+										For example, running the program
+									</p>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./drawEllipse ellipse1.png 200 200 100 100 50 20 100]]></script>
+									
+									<p>
+										should output the image <code>ellipse1.png</code> that looks like this:
+									</p>
+
+									<img src = "ellipse1.png">
+
+									<p>
+										and running 
+									</p>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./drawEllipse ellipse2.png 300 300 100 150 20 100 255]]></script>
+									
+									<p>
+										should output the image <code>ellipse2.png</code> that looks like this:
+									</p>
+
+									<img src = "ellipse2.png">
+
+									<p>
+										You may want to review the <a href = "../..//ClassExercises/Week3_DynMem/index.html#cmdargs">notes here</a> on command line arguments.  You can use <code><a href = "https://cplusplus.com/reference/cstdlib/atoi/">atoi</a></code> to convert an argument to an int and <code><a href = "https://cplusplus.com/reference/cstdlib/atof/">atof</a></code> to convert a command line argument to a float.
+									</p>
+									
+									
 
                                 </div>
 						</div>

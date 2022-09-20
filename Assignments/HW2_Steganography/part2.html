@@ -41,76 +41,272 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Assignment 2: Image Processing And Steganography (46 Points)</h2>
+                                        <h2>Assignment 2: Image Processing And Steganography</h2>
+										<h2>Part 2: Image Decoding (15 Points)</h2>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
 									<div id="page-content">
+									
 
-										<ul>
-											<li><h2><a href = "part1.html">Part 1: Drawing Ellipses (16 Points)</a></h2></li>
-											<li><h2><a href = "part2.html">Part 2: Image Decoding (15 Points)</a></h2></li>
-											<li><h2><a href = "part3.html">Part 3: Image Encoding (15 Points)</a></h2></li>
-										</ul>
+									<h2><a name = "rgb">Background: RGB Images And Steganography</a></h2>
+									<p>
+										A color image is actually an array of pixels <b>with 3 dimensions</b>: a row, a column, and a "color channel"; that is, each color pixel has 3 numbers associated to it: red, green, and blue (as explained in the <a href = "../HW1_VirtualCities/index.html#colors">last assignment</a>).  As with grayscale images, each red/green/blue channel is 8-bits and ranges from 0 to 255.
+									</p>
 
-                                        <h2><a name = "overview">Overview / Logistics</a></h2>
-										<p>
-                                            The purpose of this <a href = "../../index.html#buddy">buddy assignment</a> is to put your knowledge of <a href = "../../ClassExercises/Week4_BinaryDrills/">binary</a> and 2D arrays together into a fun application where you will hide secret text messages "in plain sight" by changing the colors of pixels in an image ever so slightly to store a binary encoding of text.  More specifically, you will be encoding the binary ASCII representation of a character string using the least significant bit of pixels in an RGB image.  This is a specific instance of <a href = "https://en.wikipedia.org/wiki/Steganography">steganography</a>, or hiding one type of data in another data stream.
-										</p>
+									<p>
+										I've created a wrapper around the <a href = "https://github.com/nothings/stb/">stb image library</a> which exposes the pixels as a 3D array.  You can access this by using the <code>SimpleCanvas</code> class that I created.  For example, below is a code snippet that loads in the image of the penguin provided with your code, puts a 100x100 square at the center of the image, and writes a new version of it to the file <code>penguinredsquare.png</code>:
+									</p>
 
-                                        <p>
-                                            You can download the code for this assignment by using git in the terminal
-										</p>
-										
-										<p>
-											<code>
-												git clone --recursive https://github.com/ursinus-cs174-s2022/HW2_Steganography.git
-											</code>
-										</p>
-										
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										#include "simplecanvas/SimpleCanvas.h"
 
-										<p>
-											You will be writing a number of different C++ programs in this assignment, so I'd recommend that you update the makefile that I gave you as you go to make it easier to manage
-                                        </p>
+										int main() {
+											// Create an empty image with 400x400 pixels
+											SimpleCanvas image("images/penguin.png");
+											// Loop through the pixels in a 100x100 box around the center
+											// of the image
+											for (int i = image.height/2-50; i < image.height/2+50; i++) {
+												for (int j = image.width/2-50; j < image.width/2+50; j++) {
+													// Make the red channel [0] of the pixel
+													// at row i, column j 255, and the other
+													// channels 0
+													image.data[i][j][0] = 255; 
+													image.data[i][j][1] = 0;
+													image.data[i][j][2] = 0;
+												}
+											}
+											image.write("penguinredsquare.png");
+											return 0;
+										}]]></script>
 
-										<p>
-											<b>Fun fact: </b> I proposed to <a href = "https://www.celialitovsky.com/">my partner</a> using a similar concept, and it worked 😻.  Maybe you can use a similar concept to propose to your significant other, or at least to send a top secret message to your friends.
-										</p>
+									<p>
+										If you run this code, it will create the following image <code>penguinredsquare.png</code>
+									</p>
 
-                                        <p>
-                                            <h3><a name = "objectives">Learning Objectives</a></h3>
-                                            <ul>
-                                                <li>Manage 2D arrays with loops</li>
-												<li>Manage dynamic memory</li>
-												<li>Read and write bits in character strings</li>
-												<li>Use <a href = "../../ClassExercises/Week3_DynMem/index.html#cmdargs">command line arguments</a></li>
-												<li>Sharpen debugging skills</li>
-												<li>Practice makefiles for automating builds with header files and object files</li>
-                                            </ul>
-                                        </p>
+									<img src = "penguinredsquare.png" width=300>
 
-										<h3><a name = "timeline">Timeline</a></h3>
-										<p>
-											<ul>
-												<li>
-													By Tuesday 2/15 you should have <a href = "#decode">part 1</a> and <a href = "#encode">part 2</a> done.  I will have you submit these on canvas to show your progress
-												</li>
-												<li>
-													By Friday 2/18, you should have <a href = "#lfsr">part 3</a> done.
-												</li>
-												<li>
-													The final product will be due on Monday 2/21
-												</li>
-											</ul>
-										</p>
+									<p>
+										This example has pretty much everything you need for this assignment, but I've also provided the programs <code>grayscale.cpp</code> and <code>noise.cpp</code>, which show how to convert an image to grayscale an add noise to it, respectively.  For example, making the project and running 
+									</p>
 
-                                        <h3><a name = "readme">What to submit</a></h3>
-										
-										<p>
-											When you are finished each part, submit a zip file of all of your code and your makefile to canvas.
-										</p>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./grayscale images/birthday.png birthdaygray.png]]></script>
+									
+									<p>
+										creates this image
+									</p>
+
+									<img src = "birthdaygray.png" width=300>
+
+									<p>
+										and 
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./noise images/chewbacca.png 0.5 chewbaccanoise.png]]></script>
+									
+									<p>
+										creates the following image (for those interested, 0.5 is the <a href = "https://en.wikipedia.org/wiki/Signal-to-noise_ratio">signal to noise ratio</a>)
+									</p>
+
+									<img src = "chewbaccanoise.png" width=250>
+
+									<p>
+										You should study these examples to the extent that you understand how they're loading images, changing them, and then writing them to a folder, as specified by command line arguments.
+									</p>
+
+									<h3><a name = "lsb">Least Significant Bit Information Hiding</a></h3>
+									<p>
+										The main idea behind the program will be making can be illustrated by the following example.  Look at the two pictures below.  
+									</p>
+
+									<table style="width:650px;">
+										<tr>
+											<td><h4>Ordinary image</h4></td>
+											<td><h4>Hidden message</h4></td>
+										</tr>
+										<tr>
+											<td>
+												<img src = "HW2_Steganography/images/birthday.png" width=300>
+											</td>
+											<td>
+												<img src = "HW2_Steganography/images/birthday_encoded.png" width=300>
+											</td>
+										</tr>
+									</table>
+
+									<p>
+										The picture on the right contains 12 paragraphs of text on the Ursinus 150 strategic plan.  Can you see the difference?  No?  Well great, that's the point!  
+									</p>
+									<p>
+										So how do we do this?  The idea is beautifully simple, and is best understood with an example.  Consider the following 3-pixel image
+									</p>
+
+									<table style="width:250px;">
+										<tr>
+											<td style="background-color: #fe7732; width:50px; height:50px;"><span style="color:white">[254, 119, 50]</span></td>
+											<td style="background-color: #028dfe; width:50px; height:50px;"><span style="color:white">[2, 141, 254]</span></td>
+											<td style="background-color: #5b9f40; width:50px; height:50px;"><span style="color:white">[91, 159, 64]</span></td>
+										</tr>
+									</table>
+
+									<p>
+										We're going to extract a binary signal by looking at the <b>least significant bit</b> (the 1's place in binary) of each color channel in each pixel from left to right from red, to green, to blue, and put them together into one binary string.  In other words, for a particular pixel and a particular color channel, we'll extract a 0 if it's an even number and a 1 if it's an odd number.  Let's look at the first 8 bits in the above image.  We have 
+									</p>
+									<table style="width:50px;">
+										<tr>
+											<td>254</td><td>0</td>
+										</tr>
+										<tr>
+											<td>119</td><td>1</td>
+										</tr>
+										<tr>
+											<td>50</td><td>0</td>
+										</tr>
+										<tr>
+											<td>2</td><td>0</td>
+										</tr>
+										<tr>
+											<td>141</td><td>1</td>
+										</tr>
+										<tr>
+											<td>254</td><td>0</td>
+										</tr>
+										<tr>
+											<td>91</td><td>1</td>
+										</tr>
+										<tr>
+											<td>159</td><td>1</td>
+										</tr>
+									</table>
+
+									<p>
+										All together, this is the binary string <b>01001011</b>, which is the character <b>'K'</b> in <a href = "../../ClassExercises/Week4_Binary_LFSR/index.html#bgunicode">ASCII</a>.  What if we wanted to change it to some other character though?  Perhaps the character <b>'z'</b>, which is <b>0x7A</b> hex, or <b>01111010</b> in binary.  Then we can just tweak the 1's place of the pixel values as follows, where I've bolded the ones that have changed:
+									</p>
+
+									<table style="width:50px;">
+										<tr>
+											<td>254</td><td>0</td>
+										</tr>
+										<tr>
+											<td>119</td><td>1</td>
+										</tr>
+										<tr>
+											<td><b>51</b></td><td><b>1</b></td>
+										</tr>
+										<tr>
+											<td><b>3</b></td><td><b>1</b></td>
+										</tr>
+										<tr>
+											<td>141</td><td>1</td>
+										</tr>
+										<tr>
+											<td>254</td><td>0</td>
+										</tr>
+										<tr>
+											<td>91</td><td>1</td>
+										</tr>
+										<tr>
+											<td><b>158</b></td><td><b>0</b></td>
+										</tr>
+									</table>
+
+									<p>
+										Here's what these updated values look like 
+									</p>
+
+									<table style="width:250px;">
+										<tr>
+											<td style="background-color: #fe7733; width:50px; height:50px;"><span style="color:white">[254, 119, 51]</span></td>
+											<td style="background-color: #038dfe; width:50px; height:50px;"><span style="color:white">[3, 141, 254]</span></td>
+											<td style="background-color: #5b9e40; width:50px; height:50px;"><span style="color:white">[91, 158, 64]</span></td>
+										</tr>
+									</table>
+
+									<p>
+										If you were just looking at it and comparing it to what we started with, you would never notice the difference!  So we have freedom to tweak the least significant bit of every color channel of every pixel at will to encode text, and this is exactly what you will be doing in this assignment!.  In a 500x500 image, for example, this means we can store 250,000 bits.  Since each ASCII character is 8 bits, this is 31,250 characters total, or roughly about 6000 words (so you can put all of your <a href = "https://ursinus-cie200i-s2022.github.io/CoursePage/Papers/Paper1/">CIE essays</a> into a single image!)  
+									</p>
 
 
+
+									<h2><a name = "decode">Programming Task (15 Points)</a></h2>
+
+									<p>
+										As your first task, create a file <code>decode.cpp</code> which decodes the text hidden in an image.  Your program should take one command line argument, which is a path to the image you want to decode.  You should read the least significant bits of the image from red, green, blue channel row by row from top to bottom, and then assemble them into characters which you print out (every 8 bits you should print a character).  Continue until you encounter the null terminator <code>\0</code>.  Below are a few examples:
+									</p>
+
+									<h4>Example 1: tiny_encoded.png</h4>
+
+									<p>
+										Here's a good example of a very small 4x4 image that you can test as you're getting started. If you run the following
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./decode images/tiny_encoded.png
+										]]></script>
+									
+									<p>
+										you should get the bits <code>001100010011011100110100001000010000101000000000</code>.  If we group them up into ASCII <code>char</code> variables, we see this is the character string <code>"174!\n"</code> 
+									</p>
+
+									<table style="width:100px;">
+										<tr>
+											<td>00110001</td><td><code>'1'</code></td>
+										</tr>
+										<tr>
+											<td>00110111</td><td><code>'7'</code></td>
+										</tr>
+										<tr>
+											<td>00110100</td><td><code>'4'</code></td>
+										</tr>
+										<tr>
+											<td>00100001</td><td><code>'!'</code></td>
+										</tr>
+										<tr>
+											<td>00001010</td><td><code>'\n'</code></td>
+										</tr>
+										<tr>
+											<td>00000000</td><td><code>'\0'</code></td>
+										</tr>
+									</table>
+
+									<h4>Example 2: Mona Lisa</h4>
+									<p>
+										If you run 
+									</p>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./decode images/monalisa_encoded.png
+										]]></script>
+									
+									<p>
+										you'll get some "fun facts" about people trying to destroy the Mona Lisa
+									</p>
+
+									<h4>Example 3: Ursinus Birthday</h4>
+									<p>
+										If you run 
+									</p>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./decode images/birthday_encoded.png
+										]]>
+									</script>
+									
+									<p>
+										you'll get some information on the Ursinus 150 strategic plan
+									</p>
+
+									<h4>Example 4: Penguin</h4>
+									<p>
+										If you run 
+									</p>
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										./decode images/penguin_encoded.png
+										]]></script>
+									
+									<p>
+										you'll get a Robert Frost Poem
+									</p>
                                 </div>
 						</div>
 					</div>
