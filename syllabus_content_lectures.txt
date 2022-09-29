@@ -59,15 +59,15 @@ C++ Classes: Static Variables, Information Hiding/Encapsulation (public and priv
 
 <ul><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm">TutorialsPoint: Notes on C++ Static Variables/Methods in Classes</a></li></ul>
 LECTURE
+Classes Practice, Begin Inheritance
+
+
+LECTURE
 Lab 3: Drawing Shapes with Aggregation And Inheritance
 
 <ul><li><a href = "https://atomicobject.com/resources/oo-programming/object-oriented-aggregation">Notes on aggregation</a></li></ul>
 LECTURE
-Begin Polymorphism
-
-
-LECTURE
-Finish Polymorphism, STL Linked Lists
+Polymorphism
 
 
 LECTURE

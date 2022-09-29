@@ -40,12 +40,12 @@ Last Day To Drop with A "W"
 <a href = "Assignments/HW2_Steganography/part1.html">Assignment 2 Part 1</a> Due
 
 2022-09-23
-Classes And Inheritance Module Due Before Class
+<a href = "https://ursinus-cs174-f2022.github.io/Modules/CppClasses/Video1">Classes And Inheritance Module</a> Due Before Class
 
-2022-09-28
-<HR><a href = "Assignments/HW2_Steganography/part2.html">Assignment 2 Part 2</a> Due
+2022-09-30
+<a href = "Assignments/HW2_Steganography/part2.html">Assignment 2 Part 2</a> Due
 
-2022-09-28
+2022-09-29
 Lab 3 Due
 
 2022-10-03
