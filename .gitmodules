@@ -25,3 +25,6 @@
 [submodule "Assignments/HW2_Steganography/HW2_Steganography"]
 	path = Assignments/HW2_Steganography/HW2_Steganography
 	url = https://github.com/ursinus-cs174-f2022/HW2_Steganography.git
+[submodule "Labs/Lab3_ShapesInheritance/Lab3_ShapesInheritance"]
+	path = Labs/Lab3_ShapesInheritance/Lab3_ShapesInheritance
+	url = https://github.com/ursinus-cs174-f2022/Lab3_ShapesInheritance.git

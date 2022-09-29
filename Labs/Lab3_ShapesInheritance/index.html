@@ -81,11 +81,11 @@
 										</p>
 
 										<p>
-											<code>git clone --recursive https://github.com/ursinus-cs174-s2022/Lab3_ShapesInheritance.git</code>
+											<code>git clone --recursive https://github.com/ursinus-cs174-f2022/Lab3_ShapesInheritance.git</code>
 										</p>
 
                                         <p>
-                                            In this lab, you will be designing classes to draw different 2D shapes on an image.  There is a superclass called <code>Shape</code> which stores the thickness with which to draw the shape and the color to use when drawing the shape, as well as setter methods for these two variables.  You should create a child class of this class for each new shape that you draw.  Every shape you draw should be made up of a series of <a href = "#linesegment">line segments</a>.  
+                                            In this lab, you will design classes to draw different 2D shapes on an image.  There is a superclass called <code>Shape</code> which stores the thickness with which to draw the shape and the color to use when drawing the shape, as well as setter methods for these two variables.  You should create a child class of this class for each new shape that you draw.  Every shape you draw should be made up of a series of <a href = "#linesegment">line segments</a>.  
                                         <p>
                                             There are three shell methods provided in the <code>Shape</code> class which you should override in all of your shapes
 											<ul>
@@ -112,12 +112,12 @@
 
                                         <h3><a name = "point">Point (Given Example)</a></h3>
                                         <p>
-                                            The simplest thing we can draw is a point.  Have a look at the provided <code>Point</code> class in <code>Point.cpp</code> and <code>Point.h</code>.  Objects of this type will be used in the <code>LineSegment</code> class, and you may also want to use them in your classes.
+                                            The simplest thing we can draw is a point.  Have a look at the provided <code>Point</code> class in <code>Shapes.cpp</code> and <code>Shapes.h</code>.  Objects of this type will be used in the <code>LineSegment</code> class, and you may also want to use them in your classes.
                                         </p>
 
                                         <h3><a name = "linesegment">Line Segment (Given Example)</a></h3>
                                         <p>
-                                            Study the <code>LineSegment</code> class that was provided with the code <code>LineSegment.h</code> and <code>LineSegment.cpp</code>, and notice how it extends from the <code>Shape</code> class and aggregates the <code>Point</code> class.  You will be doing similar things in the shapes below.  You should also use objects of the <code>LineSegment</code> class in the draw methods for your shapes.  For instance, a triangle can be drawn with three line segments.  
+                                            Study the <code>LineSegment</code> class that was provided with the code <code>Shapes.h</code> and <code>Shapes.cpp</code>, and notice how it extends from the <code>Shape</code> class and aggregates the <code>Point</code> class.  You will be doing similar things in the shapes below.  You should also use objects of the <code>LineSegment</code> class in the draw methods for your shapes.  For instance, a triangle can be drawn with three line segments.  
                                         </p>
 
                                         <p>
@@ -280,7 +280,7 @@
 										<HR>
 										<h3><a name = "extra">Extra Credit: Friend Classes</a></h3>
 										<p>
-											For up to one extra point, use <a href = "https://www.geeksforgeeks.org/friend-class-function-cpp/">friend classes</a> in an appropriate way to make your code more succinct.  Feel free to modify <code>Point.h</code> or <code>LineSegment.h</code> in the process of doing this if it helps.
+											For up to one extra point, use <a href = "https://www.geeksforgeeks.org/friend-class-function-cpp/">friend classes</a> in an appropriate way to make your code more succinct.  Feel free to modify anything in <code>Shapes.h</code> in the process of doing this if it helps.
 										</p>
 
 
@@ -380,8 +380,8 @@
 											<ul>
 												<li><a href = "../../Labs/Lab1_Holidays">Lab 1: HTML Holidays</a></li>
 												<li><a href = "../../Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a></li>
-												<!--
 												<li><a href = "../../Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a></li>
+												<!--
 												<li><a href = "../../Labs/Lab4_AbstractClassesSorting">Lab 4: Abstract Classes And Sorting</a></li>
 												<li><a href = "../../Labs/Lab5_MyVector">Lab 5: My Vector (Dynamic Array ADT)</a></li>
 												<li><a href = "../../Labs/Lab6_RecursiveDrawing">Lab 6: Recursive Drawing</a></li>

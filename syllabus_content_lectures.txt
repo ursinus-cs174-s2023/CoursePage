@@ -63,7 +63,7 @@ Classes Practice, Begin Inheritance
 
 
 LECTURE
-Lab 3: Drawing Shapes with Aggregation And Inheritance
+<a href = "Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a>
 
 <ul><li><a href = "https://atomicobject.com/resources/oo-programming/object-oriented-aggregation">Notes on aggregation</a></li></ul>
 LECTURE
