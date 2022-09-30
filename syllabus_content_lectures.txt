@@ -71,13 +71,13 @@ Polymorphism
 
 
 LECTURE
+Finish Polymorphism, HW3 Workshopping
+
+
+LECTURE
 <p>Abstract Classes</p>Lab 4: Comparators And Insertion Sort
 
 <ul><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm">TutorialsPoint: Notes on Interfaces in C++</a></li></ul>
-LECTURE
-Multiple Inheritance, The Diamond Problem
-
-
 SECTION
 Unit 3: Object-Oriented Data Structures
 

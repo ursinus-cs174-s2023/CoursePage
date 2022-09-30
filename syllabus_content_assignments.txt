@@ -48,14 +48,14 @@ Last Day To Drop with A "W"
 2022-09-29
 Lab 3 Due
 
-2022-10-03
-<HR><a href = "Assignments/HW2_Steganography/part3.html">Assignment 2 Part 3</a> Due
+2022-10-05
+<a href = "Assignments/HW2_Steganography/part3.html">Assignment 2 Part 3</a> Due
 
 2022-10-03
 <a href = "Labs/Lab2_BugHunt">Lab 2</a> Due
 
 2022-09-26
-Assignment 3 (Buddy): Invasive Species Polymorphism Out
+<HR>Assignment 3 (Buddy): Invasive Species Polymorphism Out
 
 2022-10-05
 Assignment 3 Part 1 Due
