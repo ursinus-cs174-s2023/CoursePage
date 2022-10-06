@@ -73,6 +73,10 @@ Polymorphism
 LECTURE
 Finish Polymorphism, HW3 Workshopping
 
+<ul><li><a href = "https://github.com/ursinus-cs174-f2022/Week6_Polymorphism.git">Code from class</a></li></ul>
+LECTURE
+Dynamic Arrays, the STL <code>list</code> type
+
 
 LECTURE
 <p>Abstract Classes</p>Lab 4: Comparators And Insertion Sort
