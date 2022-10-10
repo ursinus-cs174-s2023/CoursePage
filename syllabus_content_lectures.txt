@@ -79,7 +79,7 @@ Dynamic Arrays, the STL <code>list</code> type
 
 
 LECTURE
-<p>Abstract Classes</p>Lab 4: Comparators And Insertion Sort
+<p>Abstract Classes</p><a href = "Labs/Lab4_AbstractClassesSorting">Lab 4: Comparators And Insertion Sort</a>
 
 <ul><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm">TutorialsPoint: Notes on Interfaces in C++</a></li></ul>
 SECTION
@@ -88,6 +88,10 @@ Unit 3: Object-Oriented Data Structures
 
 LECTURE
 Linked List Implementations with Nodes/Aggregation
+
+
+LECTURE
+<a href = "https://ursinus.edu/live/news/6481-introducing-robyn-hannigan-ursinus-colleges-19th">Robyn Hannigan</a> inauguration (NO CLASS)
 
 
 LECTURE
