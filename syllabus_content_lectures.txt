@@ -87,7 +87,7 @@ Unit 3: Object-Oriented Data Structures
 
 
 LECTURE
-Linked List Implementations with Nodes/Aggregation
+Work Session
 
 
 LECTURE
@@ -95,15 +95,11 @@ LECTURE
 
 
 LECTURE
-Lab 5: My Vector (Dynamic Array ADT)
+Linked List Implementations with Nodes/Aggregation
 
-<ul><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li></ul>
+<ul><li><a href = "https://github.com/ursinus-cs174-f2022/Week7_LinkedList_Stack">Code for today</a></li></ul>
 LECTURE
-Continue Linked Lists
-
-<ul><li><a href = "https://github.com/ursinus-cs174-s2022/Week8_LinkedList_Stack">Code for today</a></li></ul>
-LECTURE
-Linked Lists / Stacks
+Continue Linked Lists, Stacks
 
 
 LECTURE
@@ -111,7 +107,11 @@ Doubly-Linked Lists, Queues
 
 
 LECTURE
-STL Priority Queue, Prim's Algorithm
+Lab 5: My Vector (Dynamic Array ADT)
+
+<ul><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li></ul>
+LECTURE
+Continue Doubly-Linked Lists, STL Priority Queue, Prim's Algorithm
 
 <ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li><li>Class Exercise: Making Mazes</li></ul>
 LECTURE

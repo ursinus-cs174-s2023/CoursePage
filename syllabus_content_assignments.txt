@@ -66,17 +66,17 @@ Assignment 3 Part 1 Due
 2022-10-14
 Assignment 3 Due
 
-2022-10-26
-<HR>Assignment 4 Part 1(Buddy): Doubly Linked Lists Out
+2022-10-28
+<HR>Assignment 4 (Buddy): Doubly Linked Lists Out
 
-2022-10-26
-<HR>Last day to drop courses with a "W"
+2022-10-28
+Last day to drop courses with a "W"
 
 2022-10-26
 Lab 5 Due
 
 2022-10-30
-Assignment 4 Part 1 Due
+Assignment 4 Due
 
 2022-11-07
 Linked Map Module Due

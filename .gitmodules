@@ -34,3 +34,6 @@
 [submodule "Assignments/HW3_InvasiveSpecies/HW3_InvasiveSpecies"]
 	path = Assignments/HW3_InvasiveSpecies/HW3_InvasiveSpecies
 	url = https://github.com/ursinus-cs174-f2022/HW3_InvasiveSpecies.git
+[submodule "ClassExercises/Week7_LinkedList_Stack"]
+	path = ClassExercises/Week7_LinkedList_Stack
+	url = https://github.com/ursinus-cs174-f2022/Week7_LinkedList_Stack.git
