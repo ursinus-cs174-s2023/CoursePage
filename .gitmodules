@@ -37,3 +37,6 @@
 [submodule "ClassExercises/Week7_LinkedList_Stack"]
 	path = ClassExercises/Week7_LinkedList_Stack
 	url = https://github.com/ursinus-cs174-f2022/Week7_LinkedList_Stack.git
+[submodule "Assignments/HW4_LinkedListMaze/HW4_DoublyLinkedList"]
+	path = Assignments/HW4_LinkedListMaze/HW4_DoublyLinkedList
+	url = https://github.com/ursinus-cs174-f2022/HW4_DoublyLinkedList.git
