@@ -107,25 +107,13 @@ Doubly-Linked Lists, Queues
 
 
 LECTURE
-Lab 5: My Vector (Dynamic Array ADT)
+Continue doubly-linked lists
+
+
+LECTURE
+<a href = "Labs/Lab5_MyVector">Lab 5: My Vector (Dynamic Array ADT)</a>
 
 <ul><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li></ul>
-LECTURE
-Continue Doubly-Linked Lists, STL Priority Queue, Prim's Algorithm
-
-<ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li><li>Class Exercise: Making Mazes</li></ul>
-LECTURE
-STL Set, STL Map, Begin LinkedMap Implementation
-
-<ul><li><a href = "https://www.geeksforgeeks.org/set-in-cpp-stl/">GeeksForGeeks STL Set</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
-LECTURE
-LinkedMap Implementation
-
-
-LECTURE
-Hash Tables
-
-<ul><li><a href = "ClassExercises/Week10_Hashing">Hash Tables Class Notes</a></li><li><a href = "ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
 LECTURE
 Recursion And Memoization: Factorial, Fibonacci, Ackermann
 
@@ -147,9 +135,25 @@ Lab 7: Huffman Trees
 
 
 LECTURE
-Continue Huffman Trees, Merge Sort
+STL Set, STL Map, Begin LinkedMap Implementation
 
-<ul><li>Merge sort class exercise</li></ul>
+<ul><li><a href = "https://www.geeksforgeeks.org/set-in-cpp-stl/">GeeksForGeeks STL Set</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
+LECTURE
+Finish LinkedMap Implementation, Hash Tables
+
+<ul><li><a href = "ClassExercises/Week10_Hashing">Hash Tables Class Notes</a></li><li><a href = "ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
+LECTURE
+Merge Sort
+
+
+LECTURE
+STL Priority Queue, Prim's Algorithm
+
+<ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li><li>Class Exercise: Making Mazes</li></ul>
+LECTURE
+Final Project Proposals
+
+
 SECTION
 Unit 4: Advanced Topics in Systems Programming
 
@@ -159,15 +163,11 @@ Function Pointers
 
 <ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "ClassExercises/Week13_ImageFilters">Class Exercise: Convolutional Image Filters</a></li></ul>
 LECTURE
-Intermezzo: Digital Audio And Shazam
-
-<ul><li><a href = "Assignments/FinalProject_Shazam/background.html">Shazam algorithm background</a></li></ul>
-LECTURE
-Shazam Work Session
-
-
-LECTURE
 Begin Parallel Programming And Threads
+
+
+LECTURE
+Continue Parallel Programming And Threads
 
 
 LECTURE
@@ -179,7 +179,6 @@ LECTURE
 
 
 LECTURE
-Shazam Work Session
-
+Final Project Work Session
 
 

@@ -40,3 +40,6 @@
 [submodule "Assignments/HW4_LinkedListMaze/HW4_DoublyLinkedList"]
 	path = Assignments/HW4_LinkedListMaze/HW4_DoublyLinkedList
 	url = https://github.com/ursinus-cs174-f2022/HW4_DoublyLinkedList.git
+[submodule "Labs/Lab5_MyVector/Lab5_MyVector"]
+	path = Labs/Lab5_MyVector/Lab5_MyVector
+	url = https://github.com/ursinus-cs271-f2022/Lab5_MyVector.git
