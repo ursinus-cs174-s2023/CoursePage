@@ -119,7 +119,7 @@ Recursion And Memoization: Factorial, Fibonacci, Ackermann
 
 <ul><li><a href = "ClassExercises/Week11_Recursion">Class Notes on Recursion/Memoization</a></li></ul>
 LECTURE
-Lab 6: Recursive Drawing / Fractals
+<a href = "Labs/Lab6_RecursiveDrawing">Lab 6: Recursive Drawing / Fractals</a>
 
 
 LECTURE
