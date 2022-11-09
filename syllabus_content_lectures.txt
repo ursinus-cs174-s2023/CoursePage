@@ -123,7 +123,11 @@ LECTURE
 
 
 LECTURE
-Binary Search Trees: Cleanup, Addition, Traversal with Preorder/Inorder/Postorder
+Binary Search Trees
+
+
+LECTURE
+Binary Search Trees: Traversal with Preorder/Inorder/Postorder, Cleanup, Addition
 
 
 LECTURE
@@ -131,11 +135,11 @@ Binary Search Trees: Drawing
 
 
 LECTURE
-Lab 7: Huffman Trees
+Lab 7: STL Priority Queue, Huffman Trees
 
-
+<ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
 LECTURE
-STL Set, STL Map, Begin LinkedMap Implementation
+STL Set, STL Map, LinkedMap Implementation
 
 <ul><li><a href = "https://www.geeksforgeeks.org/set-in-cpp-stl/">GeeksForGeeks STL Set</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
 LECTURE
@@ -143,13 +147,9 @@ Finish LinkedMap Implementation, Hash Tables
 
 <ul><li><a href = "ClassExercises/Week10_Hashing">Hash Tables Class Notes</a></li><li><a href = "ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
 LECTURE
-Merge Sort
+Prim's Algorithm, Merge Sort
 
 
-LECTURE
-STL Priority Queue, Prim's Algorithm
-
-<ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li><li>Class Exercise: Making Mazes</li></ul>
 LECTURE
 Final Project Proposals
 

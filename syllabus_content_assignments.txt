@@ -79,9 +79,9 @@ Lab 5 Due
 Assignment 4 Due
 
 2022-11-11
-<HR>Assignment 5 (Buddy): Basketball Hashing Out
+Assignment 5 (Buddy): Basketball Hashing Out
 
-2022-11-11
+2022-11-14
 Lab 6 Due
 
 2022-11-7
@@ -90,7 +90,7 @@ Lab 7 Due
 2022-11-16
 Assignment 5 Due
 
-2022-11-30
+2022-12-02
 Lab 8 Due
 
 2022-12-12
