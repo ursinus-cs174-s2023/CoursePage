@@ -70,16 +70,13 @@ Assignment 3 Due
 Last day to drop courses with a "W"
 
 2022-10-26
-Ackermann Exercise Due
-
-2022-11-01
 Lab 5 Due
 
 2022-11-03
 Assignment 4 Due
 
-2022-11-11
-Assignment 5 (Buddy): Basketball Hashing Out
+2022-11-14
+<HR>Assignment 5 (Buddy): Basketball Hashing Out
 
 2022-11-14
 Lab 6 Due
