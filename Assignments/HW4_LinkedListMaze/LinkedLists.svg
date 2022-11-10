@@ -25,7 +25,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -44,9 +44,9 @@
      inkscape:window-height="980"
      id="namedview326"
      showgrid="false"
-     inkscape:zoom="0.49231399"
-     inkscape:cx="1027.8397"
-     inkscape:cy="-507.95596"
+     inkscape:zoom="1.3924742"
+     inkscape:cx="411.26178"
+     inkscape:cy="137.01983"
      inkscape:window-x="72"
      inkscape:window-y="27"
      inkscape:window-maximized="0"
@@ -285,7 +285,7 @@
   </g>
   <g
      id="g228"
-     transform="translate(-0.82210159,-2.2441092)">
+     transform="translate(-0.28707277,7.3864095)">
     <ellipse
        style="fill:#ffffff"
        cx="1143.28"
@@ -314,7 +314,7 @@
   </g>
   <g
      id="g236"
-     transform="translate(-0.82210159,-2.2441092)">
+     transform="translate(-0.28707277,7.3864095)">
     <line
        style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2"
        x1="1093.78"
@@ -324,11 +324,11 @@
        id="line230" />
     <polygon
        style="fill:#000000"
-       points="1044.24,130.764 1054.37,126.05 1051.73,130.977 1054.09,136.046 "
+       points="1054.37,126.05 1051.73,130.977 1054.09,136.046 1044.24,130.764 "
        id="polygon232" />
     <polygon
        style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2"
-       points="1044.24,130.764 1054.37,126.05 1051.73,130.977 1054.09,136.046 "
+       points="1054.37,126.05 1051.73,130.977 1054.09,136.046 1044.24,130.764 "
        id="polygon234" />
   </g>
   <text
@@ -344,7 +344,7 @@
   </text>
   <g
      id="g290"
-     transform="translate(-0.82210159,-2.2441092)">
+     transform="translate(-0.82210159,-16.998687)">
     <ellipse
        style="fill:#ffffff"
        cx="127.444"
@@ -373,7 +373,7 @@
   </g>
   <g
      id="g298"
-     transform="translate(-0.82210159,-2.2441092)">
+     transform="translate(-0.82210159,-16.998687)">
     <line
        style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2"
        x1="175.91"
@@ -383,11 +383,11 @@
        id="line292" />
     <polygon
        style="fill:#000000"
-       points="224.765,127.558 214.897,132.813 217.267,127.751 214.639,122.817 "
+       points="214.897,132.813 217.267,127.751 214.639,122.817 224.765,127.558 "
        id="polygon294" />
     <polygon
        style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2"
-       points="224.765,127.558 214.897,132.813 217.267,127.751 214.639,122.817 "
+       points="214.897,132.813 217.267,127.751 214.639,122.817 224.765,127.558 "
        id="polygon296" />
   </g>
   <g
@@ -447,4 +447,152 @@
        points="910.765,111.9 900.656,116.677 903.267,111.734 900.878,106.679 "
        id="polygon320" />
   </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12.64330387px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52680433"
+     x="388.98108"
+     y="100.57114"
+     id="text887"><tspan
+       sodipodi:role="line"
+       id="tspan885"
+       x="388.98108"
+       y="100.57114"
+       style="stroke-width:0.52680433">next</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12.64330387px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52680433"
+     x="640.5144"
+     y="103.02875"
+     id="text887-3"><tspan
+       sodipodi:role="line"
+       id="tspan885-6"
+       x="640.5144"
+       y="103.02875"
+       style="stroke-width:0.52680433">next</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12.64330387px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52680433"
+     x="861.45471"
+     y="102.65042"
+     id="text887-7"><tspan
+       sodipodi:role="line"
+       id="tspan885-5"
+       x="861.45471"
+       y="102.65042"
+       style="stroke-width:0.52680433">next</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12.64330387px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52680433"
+     x="393.77274"
+     y="122.74333"
+     id="text917"><tspan
+       sodipodi:role="line"
+       id="tspan915"
+       x="393.77274"
+       y="122.74333"
+       style="stroke-width:0.52680433">prev</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12.64330387px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52680433"
+     x="640.53943"
+     y="123.63647"
+     id="text917-3"><tspan
+       sodipodi:role="line"
+       id="tspan915-5"
+       x="640.53943"
+       y="123.63647"
+       style="stroke-width:0.52680433">prev</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12.64330387px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52680433"
+     x="866.05408"
+     y="124.1715"
+     id="text917-6"><tspan
+       sodipodi:role="line"
+       id="tspan915-2"
+       x="866.05408"
+       y="124.1715"
+       style="stroke-width:0.52680433">prev</tspan></text>
+  <g
+     id="g322-2"
+     transform="translate(190.93156,-0.62663943)">
+    <line
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2"
+       x1="850"
+       y1="110.55"
+       x2="903.26703"
+       y2="111.734"
+       id="line316-7" />
+    <polygon
+       style="fill:#000000"
+       points="900.656,116.677 903.267,111.734 900.878,106.679 910.765,111.9 "
+       id="polygon318-0" />
+    <polygon
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2"
+       points="900.656,116.677 903.267,111.734 900.878,106.679 910.765,111.9 "
+       id="polygon320-9" />
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12.64330387px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52680433"
+     x="1053.2084"
+     y="104.26789"
+     id="text887-7-3"><tspan
+       sodipodi:role="line"
+       id="tspan885-5-6"
+       x="1053.2084"
+       y="104.26789"
+       style="stroke-width:0.52680433">next</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12.64330387px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52680433"
+     x="1106.0577"
+     y="113.3855"
+     id="text985"><tspan
+       sodipodi:role="line"
+       id="tspan983"
+       x="1106.0577"
+       y="113.3855"
+       style="stroke-width:0.52680433">NULL</tspan></text>
+  <g
+     id="g202-7"
+     transform="translate(-686.98811,19.387782)">
+    <line
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2"
+       x1="913"
+       y1="130.7"
+       x2="859.73401"
+       y2="129.51601"
+       id="line196-9" />
+    <polygon
+       style="fill:#000000"
+       points="862.344,124.573 859.734,129.516 862.122,134.571 852.236,129.35 "
+       id="polygon198-2" />
+    <polygon
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2"
+       points="862.344,124.573 859.734,129.516 862.122,134.571 852.236,129.35 "
+       id="polygon200-0" />
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12.64330387px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52680433"
+     x="179.88811"
+     y="145.80339"
+     id="text917-6-2"><tspan
+       sodipodi:role="line"
+       id="tspan915-2-3"
+       x="179.88811"
+       y="145.80339"
+       style="stroke-width:0.52680433">prev</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:12.64330387px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.52680433"
+     x="123.77702"
+     y="153.91461"
+     id="text1049"><tspan
+       sodipodi:role="line"
+       id="tspan1047"
+       x="123.77702"
+       y="153.91461"
+       style="stroke-width:0.52680433">NULL</tspan></text>
 </svg>

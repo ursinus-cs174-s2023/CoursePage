@@ -138,12 +138,109 @@
 
 									<h2>Maze Programming Tasks (14 Points)</h2>
 
-									<p>Description coming soon...</p>
+									<p>
+										Now that we have a doubly linked list implementation, let's do something with it!  The ability to add and remove efficiently from both the beginning and end allows the linked list to be used both as a <b>queue (first in first out)</b> and a <b>stack (last in first out)</b>.  You will use this to implement two important graph traversal algorithms known as <b>breadth-first search</b> and <b>depth-first search</b>, respectively.  For more info on these algorithms in general, see my <a href = "https://ursinus-cs477-f2021.github.io/CoursePage/ClassExercises/Week2_BasicSearch/">class notes from artificial intelligence</a> (best viewed in Chrome).  For now, I'll give a brief overview of each of these algorithms.
+									</p>
 
+									<h3>
+										Breadth-First Search
+									</h3>
+
+									<p>
+										Below is pseudocode for breadth-first search.  It maintains a "frontier" of locations to visit next, and it visits them in the order that they were added to the list.  Upon visiting each location, it adds that location's neighbors to the list, until everything has been visited
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: py"><![CDATA[
+										frontier = [start]
+										while len(frontier) > 0
+										    location = frontier.removeFirst()
+											set location to be visited
+											for neighbor in location's neighbors:
+											    if neighbor has not been visited:
+												    frontier.addLast(neighbor)
+									]]></script>
+
+
+									<h3>
+										Depth-First Search
+									</h3>
+
+									<p>
+										Below is pseudocode for depth-first search.  It is incredibly similar to breadth-first search, but only a single line is different!  But this makes all the difference as a search strategy
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: py"><![CDATA[
+										frontier = [start]
+										while len(frontier) > 0
+										    location = frontier.removeLast() ## This is the only line that's different!
+											set location to be visited
+											for neighbor in location's neighbors:
+											    if neighbor has not been visited:
+												    frontier.addLast(neighbor)
+									]]></script>
+
+									<h3>Your Task</h3>
+									<p>
+										Fill in the <code>traverse</code> method in <b>maze.cpp</b> to implement breadth-first search and depth-first search, as applied to 2D mazes.  This code stores the maze as a 2D array of chars, where 
+										<ul>
+											<li>An ampersand <b>@</b> means occupied</li>
+											<li>A space means unoccupied and unvisited</li>
+											<li>A period <b>.</b> means unoccupied but visited</li>
+										</ul>
+										Your code will go through and changed unoccupied cells to visited according to the BFS and DFS algorithms.  For each cell at location <code>[i, j]</code>, you want to check the 4 neighbors
+										<ul>
+											<li>left: <code>[i, j-1]</code></li>
+											<li>right: <code>[i, j+1]</code></li>
+											<li>up: <code>[i-1, j]</code></li>
+											<li>down: <code>[i+1, j]</code></li>
+										</ul>
+									</p>
+
+									<p>
+										You should only add a neighbor to the list if it is within the bounds of the array and a space (unvisited/unoccupied).
+									</p>
+
+									<p>
+										To keep things simple, you can used a <code>LinkedList&lt;int&gt;</code> for your frontier and refer to each location by a unique number, instead of by both a row and column index.  If the maze has <code>rows</code> number of rows, then one possible scheme to convert a row/column index <code>[i, j]</code> into a unique number is
+										<ul>
+											<li>
+												Location <code>[i, j]</code> can be represented by the int <code>i*j+1</code>
+											</li>
+											<li>
+												An int <code>idx</code> can be converted back to a location by the equations:
+												<ul>
+													<li>
+														<code>													i = idx / rows; //(floor divide)
+														</code>
+													</li>
+													<li>
+														<code>
+															j = idx % rows;
+														</code>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</p>
+
+									<p>
+										The entry point for the code is in <code>mazetester.cpp</code>.  It takes a single command line argument which is a path to the maze.  I've provided one maze with this homework
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: py"><![CDATA[
+										./mazetester maze.txt
+									]]></script>
+
+									<p>
+										but you may want to try your own!  Below is a working implementation of <b>breadth-first search</b>
+									</p>
 									<p>
 										<img src = "BFS.gif">
 									</p>
 
+									<p>
+										Below is a working implementation of <b>depth-first search</b>
+									</p>
 									<p>
 										<img src = "DFS.gif">
 									</p>
