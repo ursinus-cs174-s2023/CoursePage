@@ -135,7 +135,7 @@ Binary Search Trees: Drawing
 
 
 LECTURE
-Lab 7: STL Priority Queue, Huffman Trees
+STL Priority Queue, <a href = "Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a>
 
 <ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
 LECTURE
