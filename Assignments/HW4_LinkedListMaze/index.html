@@ -201,10 +201,10 @@
 									</p>
 
 									<p>
-										To keep things simple, you can used a <code>LinkedList&lt;int&gt;</code> for your frontier and refer to each location by a unique number, instead of by both a row and column index.  If the maze has <code>rows</code> number of rows, then one possible scheme to convert a row/column index <code>[i, j]</code> into a unique number is
+										To keep things simple, you can used a <code>LinkedList&lt;int&gt;</code> for your frontier and refer to each location by a unique number, instead of by both a row and column index.  If the maze has <code>rows</code> number of rows and columns, then one possible scheme to convert a row/column index <code>[i, j]</code> into a unique number is
 										<ul>
 											<li>
-												Location <code>[i, j]</code> can be represented by the int <code>i*j+1</code>
+												Location <code>[i, j]</code> can be represented by the int <code>i*rows+j</code>
 											</li>
 											<li>
 												An int <code>idx</code> can be converted back to a location by the equations:
