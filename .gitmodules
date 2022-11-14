@@ -46,3 +46,6 @@
 [submodule "ClassExercises/Week10_BinaryTrees/Week10-BinaryTrees"]
 	path = ClassExercises/Week10_BinaryTrees/Week10-BinaryTrees
 	url = https://github.com/ursinus-cs174-f2022/Week10-BinaryTrees.git
+[submodule "ClassExercises/Week12_LinkedMap/Week12_LinkedMap"]
+	path = ClassExercises/Week12_LinkedMap/Week12_LinkedMap
+	url = https://github.com/ursinus-cs174-f2022/Week12_LinkedMap.git

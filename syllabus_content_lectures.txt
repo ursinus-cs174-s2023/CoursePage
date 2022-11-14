@@ -139,9 +139,9 @@ STL Priority Queue, <a href = "Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a>
 
 <ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
 LECTURE
-STL Set, STL Map, LinkedMap Implementation
+STL Map, LinkedMap Implementation
 
-<ul><li><a href = "https://www.geeksforgeeks.org/set-in-cpp-stl/">GeeksForGeeks STL Set</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
+<ul><li><a href = "ClassExercises/Week12_Maps_Adventure">Class Exercise: Choose Your Own Adventure</a></li><li><a href = "https://www.geeksforgeeks.org/set-in-cpp-stl/">GeeksForGeeks STL Set</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
 LECTURE
 Finish LinkedMap Implementation, Hash Tables
 

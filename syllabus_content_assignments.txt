@@ -76,7 +76,7 @@ Lab 5 Due
 Assignment 4 Due
 
 2022-11-14
-<HR>Assignment 5 (Buddy): Basketball Hashing Out
+<HR><a href = "Assignments/HW5_BasketballHashing">Assignment 5 (Buddy): Basketball Hashing</a> Out
 
 2022-11-14
 Lab 6 Due
