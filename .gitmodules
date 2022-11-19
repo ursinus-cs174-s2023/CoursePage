@@ -49,3 +49,6 @@
 [submodule "ClassExercises/Week12_LinkedMap/Week12_LinkedMap"]
 	path = ClassExercises/Week12_LinkedMap/Week12_LinkedMap
 	url = https://github.com/ursinus-cs174-f2022/Week12_LinkedMap.git
+[submodule "ClassExercises/Week12_PrimMaze/Week12_PrimMaze"]
+	path = ClassExercises/Week12_PrimMaze/Week12_PrimMaze
+	url = https://github.com/ursinus-cs174-f2022/Week12_PrimMaze.git

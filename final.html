@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Fall 2022</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Fall 2022</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h2>Final Project (100 Points)</h2>
+									</header>
+									
+
+									<h2>Overview</h2>
+                                    <p>
+                                        We have covered a wide range of assignments and class exercises spanning <a href = "Assignments/HW1_VirtualCities/">3D design</a>, drawing <a href = "Labs/Lab3_ShapesInheritance/">shapes</a> and <a href = "Labs/Lab6_RecursiveDrawing/">fractals</a>, <a href = "ClassExercises/Week1_AudioFiltering">audio processing</a>, <a href = "Assignments/HW2_Steganography/">image processing and information hiding</a>, <a href = "Assignments/HW3_InvasiveSpecies/">particle simulations</a>, <a href = "Assignments/HW4_LinkedListMaze/">maze solvers</a>, and <a href = "Assignments/HW5_BasketballHashing/">databases</a>.  Now it's time to use some inspiration from these assignments to implement your own medium scale project from scratch.  Try to pick something that interests you, and be mindful of the <a href = "#rubric">grading rubric</a> below.  Don't worry too much about intentionally trying to hit all of the goals there, though; if you just start pursuing something you're interested in and it's complex enough, it's very likely you will hit the objectives naturally.
+                                    </p>
+									
+
+									<H3>Objectives</H3>
+									<ul>
+										<li>Students will learn to scope out and follow through on a medium sized, open ended project</li>
+										<li>Students will practice object oriented design from scratch</li>
+                                        <li>Students will show facility with C++ programming</li>
+                                        <li>Students will learn how to give and receive constructive feedback in a professional setting.</li>
+									</ul>
+
+                                    <h3>Scoping</h3>
+									<p>
+                                    One of the biggest challenges will be to <u>appropriately scope out your project</u> under the time constraints.  You want to have enough done that it's clear what's interesting about the problem, what's working, and what the future challenges are.  In this way, you can think about your efforts this semester as the background work you might do to write a grant.  Whatever you do, you don't want to over-engineer and get stuck without anything to show.
+                                    </p>
+                                    <p>To get an idea about scoping, have a look at <a href = "https://learn.unity.com/tutorial/your-first-game">these excellent videos</a>.  Even though they're about video game design, much of the wisdom there applies to scientific projects as well.  In sum, you can think about this project as finding a "thin slice" through an idea.  You want to slice all the way through from start to finish, even if you have to really simplify some steps.
+									</p>
+                                    
+									<a name = "presentations"><h2>Documentation</h2></a>
+                                    
+									<p>
+                                    To save time in class, students will be required to make videos summarizing their work.  Students may want to talk over a slide show and/or show some live demos of code they wrote.  Feel free to upload this video to Microsoft Stream or to Youtube. 
+                                    </p>
+
+
+
+                                    <p>
+                                        A good open source screen capture option for Windows is <a href = "https://mathewsachin.github.io/Captura/">Captura</a>.  For Linux, I use <a href = "http://recordmydesktop.sourceforge.net/downloads.php">RecordMyDesktop</a>.  There is also an option to record directly in Powerpoint while you're narrating the slides, and the final result can be uploaded directly to our Microsoft Stream.  <a href = "https://support.office.com/en-us/article/record-a-slide-show-with-narration-and-slide-timings-0b9502c6-5f6c-40ae-b1e7-e47d8741161c?ns=POWERPNT&version=90&ui=en-US&rs=en-US&ad=US">Click here</a> for more information.
+                                    </p>
+                                    
+                                    <p>Once the videos are completed, each student will be randomly assigned 3-4 videos from other students in the course to watch and for which to provide <i>quality critical feedback</i>.  In particular, whether positive or negative, your feedback must be both <b>specific</b> and <b>actionable</b>.  This feedback will factor into the participation grade.  <BR>
+									<b>NOTE: I will of course also be watching each video carefully myself.</b><BR>
+									</p>  
+
+									<p>
+									No formal writeup will be required for the projects, but students will be expected to submit a brief document summarizing their accomplishments in bullet form, providing a summary of completed code, and providing directions to run the code.
+									</p>
+                                    <h2><a name = "rubric">Grading Rubric</a></h2>
+
+                                    <p>
+                                        Below is how I will score your final submissions
+                                    </p>
+
+                                    <h3>To Receive an A</h3>
+                                    <ul>
+                                        <li>
+                                            Each item required for a grade of B is included
+                                        </li>
+                                        <li>
+                                            Classes use <b>information hiding</b> (public/private/protected) and a clear separation between implementation (cpp files) and specification (h files)
+                                        </li>
+                                        <li>
+                                            The program runs without memory leaks
+                                        </li>
+                                    </ul>
+
+                                    <h3>To Receive a B</h3>
+                                    <ul>
+                                        <li>
+                                            Each item required for a grade of C is included
+                                        </li>
+                                        <li>
+                                            Code is well <b>encapsulated</b> within methods and classes
+                                        </li>
+                                        <li>
+                                            Code has been <b>reused</b> where appropriate, using object oriented paradigms
+                                        </li>
+                                        <li>
+                                            Code is clean and well-documented
+                                        </li>
+                                    </ul>
+
+                                    <h3>To Receive a C</h3>
+                                    <ul>
+                                        <li>
+                                            Each item required for a grade of D is included
+                                        </li>
+                                        <li>
+                                            The program uses at least two different classes in tandem
+                                        </li>
+                                        <li>
+                                            The program uses <b>at least one of</b>: 
+                                            <ol>
+                                                <li>
+                                                    Templates (your own, or classes you use from the standard template library like <code>vector</code> and <code>map</code>)
+                                                </li>
+                                                <li>
+                                                    Inheritance
+                                                </li>
+                                                <li>
+                                                    Abstract classes
+                                                </li>
+                                            </ol>
+                                        </li>
+                                    </ul>
+
+                                    <h3>To Receive a D</h3>
+                                    <ul>
+                                        <li>
+                                            It is possible to build your program from scratch by using makefiles or cmake, without errors
+                                        </li>
+                                        <li>
+                                            The project must be either different from or a significant extension of things we did in class.
+                                        </li>
+                                        <li>
+                                            Your program runs to the specification of what we agreed on during the final project proposals
+                                        </li>
+                                    </ul>
+
+						</div>
+					</div>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "index.html#overview">Overview</a></li>
+												<li><a href = "index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "index.html#grading">Grading</a></li>
+												<li><a href = "index.html#environment">Classroom Environment</a></li>
+												<li><a href = "index.html#participation">Participation</a></li>
+												<li><a href = "index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../Modules/FreeRun">C++ Free Run in The Browser</a></li>
+												<li><a href = "Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "Software/index.html#macos">Mac OS Setup Instructions</a></li>
+											</ul>
+										</li>
+										<li><a href = "index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<li><a href = "Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<li><a href = "Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a>
+												</li>
+												<li><a href = "Assignments/HW2_Steganography">Homework 2: Image Processing And Steganography</a>
+												
+												<ul>
+													<li>
+														<a href = "Assignments/HW2_Steganography/part1.html">Part 1: Drawing Ellipses</a>
+													</li>
+													<li>
+														<a href = "Assignments/HW2_Steganography/part2.html">Part 2: Image Decoding</a>
+													</li>
+													<li>
+														<a href = "Assignments/HW2_Steganography/part3.html">Part 3: Image Encoding</a>
+													</li>
+												</ul>
+												</li>
+												<li><a href = "Assignments/HW3_InvasiveSpecies">Homework 3: Invasive Species Polymorphism</a></li>
+												<li><a href = "Assignments/HW4_LinkedListMaze/index.html">Homework 4: Doubly Linked Lists And Maze Search Strategies</a></li>
+												<li><a href = "Assignments/HW5_BasketballHashing">Homework 5: Basketball Hashing</a></li>
+												<!-- 
+												<li><a href = "Assignments/FinalProject_Shazam">Final Project: The Shazam Algorithm for Audio Fingerprinting</a>
+												<ul>
+													<li>
+														<a href = "Assignments/FinalProject_Shazam/background.html">Shazam background</a>
+													</li>
+												</ul>
+												</li>
+												-->
+											</ul>
+										</li>
+										<li><a href = "final.html">Final Project</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<li><a href = "Labs/Lab1_Holidays">Lab 1: HTML Holidays</a></li>
+												<li><a href = "Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a></li>
+												<li><a href = "Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a></li>
+												<li><a href = "Labs/Lab4_AbstractClassesSorting">Lab 4: Abstract Classes And Sorting</a></li>
+												<li><a href = "Labs/Lab5_MyVector">Lab 5: My Vector (Dynamic Array ADT)</a></li>
+												<li><a href = "Labs/Lab6_RecursiveDrawing">Lab 6: Recursive Drawing</a></li>
+												<li><a href = "Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a></li>
+												<!--
+												<li><a href = "Labs/Lab8_ImageFilters">Lab 8: Bilateral Image Filtering with Threads</a></li>
+												-->
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises / Pre-Class Work</span>
+											<ul>
+												<li><a href = "../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
+												<li><a href = "ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
+												<li><a href = "https://ursinus-cs174-f2022.github.io/Modules/TenHeads">Week 1: Ten Heads in A Row</a></li>
+												<li><a href = "ClassExercises/Week1_AudioFiltering">Week 1: Audio Filtering</a></li>
+												<li><a href = "../Modules/PointerFundamentals/Exercise1">Week 2: Pointer Fundamentals Module</a></li>
+												<li><a href = "ClassExercises/Week2_3_PointerTricks">Week 2/3: C++ Pointers And Pitfalls</a></li>
+												<li><a href = "ClassExercises/Week3_Pointers_Arrays">Week 3: C++ Pointers And Arrays</a></li>
+												<li><a href = "ClassExercises/Week3_DynMem">Week 3: Command Line Arguments and Dynamic 2D Arrays</a></li>
+												<li><a href = "ClassExercises/Week4_BinaryDrills">Week 4: Binary Drills</a></li>
+												<li><a href = "ClassExercises/Week4_Binary_LFSR">Week 4: Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</a></li>
+												<li><a href = "ClassExercises/Week4_Bits">Week 4: Bits And XOR Encryption</a></li>
+												<li><a href = "https://ursinus-cs174-f2022.github.io/Modules/CppClasses/Video1">Week 5: Classes And Inheritance Module</a></li>
+												<li>
+													<a href = "ClassExercises/Week10_Recursion">Week 10: Class Notes on Recursive Functions And Memoization</a>
+												</li>
+												<li>
+													<a href = "ClassExercises/Week10_Hashing">Week 10: Hash Tables</a>
+												</li>
+												<li><a href = "ClassExercises/Week12_Maps_Adventure">Week 12: STL Maps, Choose Your Own Adventure</a></li>
+												<li><a href = "https://ursinus-cs174-f2022.github.io/Modules/Ackermann/Exercise1">Week 12: Ackermann Memoization Exercise</a></li>
+
+												<!--
+												
+												<li><a href = "https://ursinus.instructure.com/courses/13764/quizzes/18074">Week 4: Binary/Hex Module</a></li>
+												
+												<li>
+													<a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics">Week 5: Object Basics Code</a>
+												</li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedList/Video0">Week 8: Linked List Module</a>
+												</li>
+												<li>
+													<a href = "https://github.com/ursinus-cs174-s2022/Week9_PrimMaze/">Week 9: Prim's Algorithm And Mazes</a>
+												</li>
+												
+
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedMap/Video1">Week 10: Linked Map Module</a>
+												</li>
+												
+												
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/Ackermann/Exercise1">Week 11: Ackermann Module</a>
+												</li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/MergeSort/Exercise">Week 12: Merge Sort Exercise</a>
+												</li>
+												<li>
+													<a href = "ClassExercises/Week13_ImageFilters">Week 13: Function Pointers And Image Filters</a>
+												</li>
+												-->
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href = "style.html">Style Guide</a></li>
+										</li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
