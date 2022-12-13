@@ -1,11 +1,11 @@
 import datetime
 
-daysstr = ['Mon (75 mins)', 'Tue', 'Wed (50 mins)', 'Thu', 'Fri (75 mins)', 'Sat', 'Sun']
+daysstr = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 #Last day of class 12/4
 #Final Examples 12/9-14
-FIRSTDAY = datetime.date(2022, 8, 29)
-Ds = [datetime.timedelta(2), datetime.timedelta(2), datetime.timedelta(3)] #Monday To Wednesday, Wednesday To Friday, Friday To Monday
-Holidays = {datetime.date(2022, 10, 17):"Fall Break", datetime.date(2022, 11, 23):"Thanksgiving", datetime.date(2022, 11, 25):"Thanksgiving"}
+FIRSTDAY = datetime.date(2023, 1, 18)
+Ds = [datetime.timedelta(2), datetime.timedelta(3), datetime.timedelta(2)]  #Wednesday To Friday, Friday To Monday, Monday To Wednesday
+Holidays = {datetime.date(2023, 3, 6):"Spring Break", datetime.date(2023, 3, 8):"Spring Break", datetime.date(2023, 3, 10):"Spring Break", datetime.date(2023, 4, 19):"COSA Day"}
 
 schedule_HTML = ""
 

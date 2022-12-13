@@ -91,10 +91,6 @@ Work Session
 
 
 LECTURE
-<a href = "https://ursinus.edu/live/news/6481-introducing-robyn-hannigan-ursinus-colleges-19th">Robyn Hannigan</a> inauguration (NO CLASS)
-
-
-LECTURE
 Linked List Implementations with Nodes/Aggregation
 
 <ul><li><a href = "https://github.com/ursinus-cs174-f2022/Week7_LinkedList_Stack">Code for today</a></li></ul>
