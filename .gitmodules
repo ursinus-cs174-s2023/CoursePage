@@ -1,0 +1,6 @@
+[submodule "Assignments/HW3_InvasiveSpecies/HW3_InvasiveSpecies"]
+	path = Assignments/HW3_InvasiveSpecies/HW3_InvasiveSpecies
+	url = https://github.com/ursinus-cs174-s2023/HW3_InvasiveSpecies.git
+[submodule "Assignments/HW2_Steganography/HW2_Steganography"]
+	path = Assignments/HW2_Steganography/HW2_Steganography
+	url = https://github.com/ursinus-cs174-s2023/HW2_Steganography.git
