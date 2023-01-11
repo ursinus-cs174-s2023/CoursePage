@@ -1,7 +1,7 @@
 <a href = "https://ursinus.instructure.com/courses/15537/quizzes/21218">Syllabus Quiz</a> Due
 
 2023-01-18
-<a href = "https://ursinus.co1.qualtrics.com/jfe/form/SV_1zxfrP1E1DKM8dw">Student Survey</a> Due
+<a href = "Assignments/Survey/index.html">Student Survey</a> Due
 
 2023-01-19
 <a href = "../Modules/CPPBasics/Video1">C++ Fundamentals Module</a> Due before Class
