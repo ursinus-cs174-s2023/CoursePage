@@ -4,3 +4,6 @@
 [submodule "Assignments/HW2_Steganography/HW2_Steganography"]
 	path = Assignments/HW2_Steganography/HW2_Steganography
 	url = https://github.com/ursinus-cs174-s2023/HW2_Steganography.git
+[submodule "Assignments/HW1_VirtualCities/HW1_VirtualCities"]
+	path = Assignments/HW1_VirtualCities/HW1_VirtualCities
+	url = https://github.com/ursinus-cs174-s2023/HW1_VirtualCities.git

@@ -109,23 +109,14 @@
 										
 										<p>
 											<code>
-												git clone https://github.com/ursinus-cs174-f2022/HW3_InvasiveSpecies.git
+												git clone --recursive https://github.com/ursinus-cs174-s2023/HW3_InvasiveSpecies.git
 											</code>
 										</p>
 										
 
+										<h4>Running the code</h4>
 										<p>
-											The build process for this code is slightly more involved because the program uses a real time graphics API known as <a href = "https://www.opengl.org">OpenGL</a>, which runs on your <a href = "https://www.intel.com/content/www/us/en/products/docs/processors/what-is-a-gpu.html">GPU</a>, and whose compilation scheme is platform dependent.  Thankfully, <a href = "https://www.alinenormoyle.com/">Aline Normoyle</a>, my counterpart down the street at <a href = "https://www.brynmawr.edu/cs/">Bryn Mawr College</a>, has created a build script for this using <a href = "https://medium.com/@onur.dundar1/cmake-tutorial-585dd180109b">cmake</a>, which you've already tested on <a href = "../HW0_Warmup/index.html#opengl">homework 0</a>.  In a nutshell, cmake is a language on top of makefiles which creates makefiles for you automatically based on system parameters.  I've extended this build script slightly to include the files for this assignment.  To run it, execute the following commands from within the <code>HW3_InvasiveSpecies</code> folder you downloaded:
-                                        </p>
-
-										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-											mkdir build
-											cd build
-											cmake ..
-										]]></script>
-
-										<p>
-											This will create a <code>makefile</code> in the new <code>build/</code> directory you created.  From now on, you can just type <code>make</code> in that directory to build the executable <code>driver</code>, which is the entry point for running your code.  Unless you add new files (which you don't have to for this assignment), you will not need to touch this makefile.  If you do happen to make new files, you should just add them to line 54 of <code>CMakeLists.txt</code> and repeat the above process to generate a new makefile.
+											Coming soon...
 										</p>
 										
 
@@ -466,10 +457,11 @@
                                         <li>
 											<span class="opener">Class Exercises / Pre-Class Work</span>
 											<ul>
-												<!--
+												
 												<li><a href = "../../../Modules/CPPBasics/Video1">C++ Basics Module</a></li>
 												<li><a href = "../../ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
-												<li><a href = "https://ursinus-cs174-f2022.github.io/Modules/TenHeads">Week 1: Ten Heads in A Row</a></li>
+												<!--
+												<li><a href = "../../../Modules/TenHeads">Week 1: Ten Heads in A Row</a></li>
 												<li><a href = "../../ClassExercises/Week1_AudioFiltering">Week 1: Audio Filtering</a></li>
 												<li><a href = "../../../Modules/PointerFundamentals/Exercise1">Week 2: Pointer Fundamentals Module</a></li>
 												<li><a href = "../../ClassExercises/Week2_3_PointerTricks">Week 2/3: C++ Pointers And Pitfalls</a></li>
@@ -478,7 +470,7 @@
 												<li><a href = "../../ClassExercises/Week4_BinaryDrills">Week 4: Binary Drills</a></li>
 												<li><a href = "../../ClassExercises/Week4_Binary_LFSR">Week 4: Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</a></li>
 												<li><a href = "../../ClassExercises/Week4_Bits">Week 4: Bits And XOR Encryption</a></li>
-												<li><a href = "https://ursinus-cs174-f2022.github.io/Modules/CppClasses/Video1">Week 5: Classes And Inheritance Module</a></li>
+												<li><a href = "../../../Modules/CppClasses/Video1">Week 5: Classes And Inheritance Module</a></li>
 												<li>
 													<a href = "../../ClassExercises/Week10_Recursion">Week 10: Class Notes on Recursive Functions And Memoization</a>
 												</li>
@@ -486,7 +478,7 @@
 													<a href = "../../ClassExercises/Week10_Hashing">Week 10: Hash Tables</a>
 												</li>
 												<li><a href = "../../ClassExercises/Week12_Maps_Adventure">Week 12: STL Maps, Choose Your Own Adventure</a></li>
-												<li><a href = "https://ursinus-cs174-f2022.github.io/Modules/Ackermann/Exercise1">Week 12: Ackermann Memoization Exercise</a></li>
+												<li><a href = "../../../Modules/Ackermann/Exercise1">Week 12: Ackermann Memoization Exercise</a></li>
 
 												
 												
