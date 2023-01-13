@@ -1,0 +1,619 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Ursinus CS 174: Object Oriented Programming, Spring 2023</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../index.html" class="logo"><strong>Ursinus CS 174: Object Oriented Programming, Spring 2023</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Local Computing Instructions</h1>
+									</header>
+									<h4>
+										Below are instructions if you would like to get the software for the class to run on your local machine.
+									</h4>
+									<h3>
+										<ul>
+											<li><a href = "#windows">Windows</a></li>
+											<li><a href = "#macos">Mac OS</a></li>
+										</ul>
+									</h3>
+
+									<p>
+										<h4>Disclaimer: I will not have the time to provide tech support for any of these!  So use at your own risk. </h4>
+									</p>
+
+
+									<HR>
+										<h2><a name = "windows">Windows Software Environment Instructions</a></h2>
+
+										<p>
+											Below are instructions to setup a linux-like development environment on Windows
+										</p>
+
+										<h3><a name = "wslinstall"></a>Step 1: Install The <a href = "https://docs.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux</a></h3>
+
+										<ol>
+											<li>
+												<p>
+												Open PowerShell as Administrator (Start menu > PowerShell > right-click > Run as Administrator)
+												</p>
+												
+												<img src = "powershell.png">
+												
+												<p>
+													and enter this command:
+												</p>
+												<p>
+
+													<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+														dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart]]></script>  
+												</p>
+												<p>
+													Then press <code>ENTER</code>
+												</p>
+											</li>
+											<li>
+												Once the above has finished, restart your machine
+											</li>
+											<li>
+												<p>
+													Open the Microsoft Store and select Ubuntu 20.04 LTS
+												</p>
+												<img src = "MicrosoftStore.png">
+												<p>
+													then select <code>Get</code>
+												</p>
+												<img src = "MicrosoftStoreGet.png">
+											</li>
+											<li>
+												<p>
+													Wait for the installation to complete...
+												</p>
+												<img src = "WSLWait.png">
+											</li>
+										</ol>
+										
+										<h3><a name = "windowsdev">Step 2: Configure Your Development Environment</a></h3>
+										<p>
+											Now that the Windows Subsystem for Linux (WSL) has finished installing, we'll test it out and setup the software needed for this class
+										</p>
+										<ol>
+											<li>
+												<p>
+													Launch WSL from the start menu
+												</p>
+												<img src = "WSLUbuntuRun.png">
+											</li>
+											<li>
+												Set your username and password
+											</li>
+											<li>
+												<p>
+													Before you go too much further, you may want to enable copying and pasting from the clipboard in WSL.  Since <code>CTRL+C</code> means something special (kill a running process), copy actually happens with <code>CTRL+SHIFT+C</code>.  Likewise, paste happens with <code>CTRL+SHIFT+V</code>.  To enable these, right click on the top of the window and select 
+												<p>
+													<code>Use Ctrl+Shift+C/V as Copy/Paste</code>
+												</p>
+												<p>
+													under Options->Edit Options.
+												</p>
+												
+
+												<img src = "WindowsCopyPaste.png">
+											</li>
+											<li>
+												Back in the terminal, type
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													sudo apt-get update && sudo apt-get upgrade]]></script>  
+												and hit <code>ENTER</code>
+											</li>
+											<li>
+												Next type
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													sudo apt install build-essential g++ cmake ffmpeg valgrind lldb  git libboost-all-dev libglew-dev mesa-utils libglfw3-dev openssh-server]]></script>  
+												and hit <code>ENTER</code>.  This may take a moment
+											</li>
+										</ol>
+										<p>
+											Now you should have everything you need to compile C/C++/assembly programs on your computer!  There's just one more step needed to get graphical applications to work, which we will need for our pandemic simulation assignment
+										</p>
+
+										<h3><a name = "windowsgraphical">Step 3: Configure Graphical Applications</a></h3>
+										<p>
+											Here's how you can get graphical applications setup to run
+										</p>
+										<ol>
+											<li>In the terminal, type 
+
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													echo "export DISPLAY=:0" >> ~/.bashrc]]></script> 
+												<p>
+													Then type 
+												</p>
+
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													source ~/.bashrc]]></script> 
+											</li>
+											<li>
+												Download and install <b>vcXsrv</b> at <a href = "https://sourceforge.net/projects/vcxsrv/files/latest/download">this link</a>.  This is a server for the <a href = "https://en.wikipedia.org/wiki/X_Window_System">X Window System</a> that Linux uses.
+											</li>
+											<li>
+												<p>
+													Once you have installed vcXsrv, launch the program <code>XLaunch</code> from the start menu.  Select Multiple windows and click <code>Next &gt;</code>
+												</p>
+												<img src = "vcxsrv1.png">
+											</li>
+											<li>
+												<p>
+													Select "Start no client" and click <code>Next &gt;</code>
+												</p>
+												<img src = "vcxsrv2.png">
+											</li>
+											<li>
+												<p>
+													Disable Native opengl, and disable access control, then click <code>Next &gt;</code>
+												</p>
+												<img src = "vcxsrv3.png">
+											</li>
+											<li>
+												Click <code>Finish</code>, and the server will be running in the background
+											</li>
+										</ol>
+
+										<p>
+											Congratulations, you are now finished! 
+										</p>
+										<p>
+											<a name = "vcxsrvrestart"></a><b>NOTE: </b> You will have to quickly repeat steps 3-6 every time you restart your computer, unless you save your configuration and add vcXsrv to your startup programs.
+										</p>
+
+										<h3><a name = "wslfilepaths">A Note on File Paths under WSL v1</a></h3>
+										<p>
+											It's possible to go through the entire class in just the terminal, but you may want to navigate through and organize your files and folders using the ordinary Windows explorer.  Everything under your regular windows filesystem is linked to from a special place in WSL.  For instance, if my username is <code>ctralie</code> and I have a folder named <code>CS174</code> on my Desktop, then I would change into the <code>CS174</code> directory by typing 
+										</p>
+										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+											cd /mnt/c/Users/ctralie/Desktop/CS174]]></script>
+
+										<HR>
+										<h2><a name = "macos">Mac OS Software Environment Instructions</a></h2>
+
+										<p>
+											Mac OS comes with considerably more support by default for Linux-like apps than Windows does, but there's still some work we'll have to do to get it ready for this class.  Below are the steps:
+										</p>
+										<ol>
+											<li>Open up the terminal, and type 
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													g++]]></script> 
+												<p>
+													and hit <code>ENTER</code>.  If it says <code>no input files found</code>, then that atually means g++ is working!  g++ is  a program that compiles c++ files, so it needs a file as input.  The fact that it tells you that means that it's running properly.  If, on the other hand, you get <code>Command 'g++' not found</code> or you get something about an "inactive developer path," then follow <a href = "https://flaviocopes.com/fix-xcrun-error-invalid-active-developer-path/">these directions</a> before proceeding.  Be patient...they may take a moment.  You should see something like this happening
+												</p>
+
+
+												<img src = "xcode.png">
+											</li>
+											<li>
+												<p>
+													If you do not already have brew, follow the directions to install it at <a href = "https://brew.sh">https://brew.sh</a>.  You should see something like this during the process:
+												</p>
+
+												<img src = "brew.png">
+											</li>
+											<li>
+												<p>
+													Execute the following command in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													sudo chown -R $(whoami) /usr/local/lib/pkgconfig]]></script>
+												<p>
+													This will make sure you have the permissions for brew to update package information
+												</p>
+											</li>
+											<li>
+												<p>
+													git is a "version control system" we will use to manage code in the class.  Try typing the following command in the terminal to see if you have git already
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													git]]></script> 
+												<p>
+													If this command is not found, then install git with brew:
+												</p>
+
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install git]]></script> 
+												<p>
+													and try again
+												</p>
+											</li>
+											<li>
+												<p>
+													Execute the following command in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install ffmpeg]]></script> 
+												(this one may take a while)
+											</li>
+											<li>
+												<p>
+													Execute the following command in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install cmake]]></script> 
+												<p>
+													This is a special script that will help us compile complicated projects across different operating systems.
+												</p>
+											</li>
+											<li>
+												<p>
+													Execute the following command in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install glew]]></script> 
+												<p>
+													This is a graphics library that will help us with real time animations
+												</p>
+											</li>
+											<li>
+												<p>
+													Execute the following command in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install glfw]]></script> 
+												<p>
+													This is another graphics library that will help us with real time animations
+												</p>
+
+												<p>
+													<b>NOTE: </b> If you are on an M1 mac, you will need to follow the directions at <a href = "https://stackoverflow.com/questions/67373307/macos-m1-fatal-error-glfw-glfw3-h-file-not-found">this post</a>
+												</p>
+											</li>
+											<li>
+												After all this, we also have to update our C++ compiler framework to be more recent.  Type
+												
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew install llvm]]></script> 
+												<p>
+													After that's finished, note the type of terminal you're running.  If you're running zsh, then type 
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													echo "alias g++='/usr/local/opt/llvm/bin/clang++'" >> ~/.zshrc
+													echo "alias gcc='/usr/local/opt/llvm/bin/clang'" >> ~/.zshrc]]></script> 
+												<p>
+													Otherwise, if you're using bash, type 
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													echo "alias g++='/usr/local/opt/llvm/bin/clang++'" >> ~/.bash_profile
+													echo "alias gcc='/usr/local/opt/llvm/bin/clang'" >> ~/.bash_profile
+													]]></script> 
+												<p>
+													Then, <b>close and restart</b> your terminal, and type 
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													gcc --version
+													g++ --version]]></script> 
+												
+												If you see <code>Homebrew clang version [...]</code>, then you're good to go.  If you still see <code>Apple clang version</code> or something similar, then the above steps failed, and you should message me or post on Discord.
+											</li>
+											<li>
+												<p>
+													Finally, we'll install a memory leak detector.  Execute the following two commands in the terminal
+												</p>
+												<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+													brew tap LouisBrunner/valgrind
+													brew install --HEAD LouisBrunner/valgrind/valgrind]]></script> 
+
+												<p>
+													<a name = "macmemoryalt">Alternative memory leak option</a>: If this doesn't work (likely on Big Sur), then don't worry...there are alternatives, as long as the last step worked.
+												</p>
+												
+
+											</li>
+										</ol>
+
+										<p>
+											Congratulations, you are now finished!
+										</p>
+
+										
+										<HR>
+											<h2><a name = "virtualbox">VirtualBox</a></h2>
+											<p>
+												<b>NOTE: </b> This will <b>not</b> work on the newer M1 macs
+											</p>
+											<p>
+												If you are having trouble with the above options, there is an alternative option that we can use this semester called VirtualBox.  It will let you run a Linux "container environment" from within whatever operating system you are running.  It is bulky and there's a slight performance hit, but the advantage is all of the software is already setup once you get it running, so students have really liked this option in the past.
+											</p>
+
+											<p>
+												<b>Before you proceed, be sure you have 20GB of free hard drive space and are connected to the Ursinus network</b>.  Then follow the steps below
+											</p>
+
+											<ol>
+												<li>
+													<a href = "https://www.virtualbox.org/wiki/Downloads">Click here</a> to download VirtualBox for your platform.
+												</li>
+												<li>
+													<a href = "http://mathcs.ursinus.edu/virtualbox/CS174.zip">Click here</a> to download the CS 174 image for VirtualBox.  It's a 4.3 GB zip file that holds a <a href = "https://xubuntu.org/release/20-04/">XUbuntu 20.04</a> container (you will have to be on the Ursinus network).
+												</li>
+												<li>
+													Unzip the folder you just downloaded
+												</li>
+												<li>
+													<p>
+														Open up VirtualBox and click "Add," then navigate to the folder you just unzipped and open it
+													</p>
+
+													<img src = "vboxadd.png">
+												</li>
+											</ol>
+
+											<p>
+												And that should be it!!  When you log in, use the following credentials
+												<ul>
+													<li><b>Username: </b> cs174</li>
+													<li><b>Password: </b> mathcs174</li>
+												</ul>
+											</p>
+
+											<p>
+												Once you login, you should see a window like this
+											</p>
+
+											<img src = "vbox.png" width=800>
+
+											<p>
+												This comes with all of the packages that you need to complete <a href = "../Assignments/HW0_Warmup/">homework 0</a>, as well as Microsoft Visual Studio code for editing your files.
+											</p>
+
+											<p>
+												<b>A note for Mac OS:</b> MacOS may complain about some permissions the first time you install VirtualBox.  Follow the directions to open up your security settings, clicking to unlock the settings:
+											</p>
+
+											<img src = "vboxmacpem1.png">
+
+											<p>
+												and then clicking <code>Allow...</code> and checking off <code>Oracle America, Inc.</code>
+											</p>
+
+											<img src = "vboxmacpem2.png">
+
+											<p>
+												You will then have to restart your computer and do the installation over again.
+											</p>
+	
+
+
+
+						</div>
+					</div>
+				<!--Syntax highlighting in Javascript!-->
+				<script type="text/javascript" src="../../../../../syntaxhighlighter/scripts/shCore.js"></script>
+				<script type="text/javascript" src="../../../../syntaxhighlighter/scripts/shBrushJScript.js"></script>
+				<script type="text/javascript" src="../../../../../syntaxhighlighter/scripts/shBrushCpp.js"></script>
+				<script type="text/javascript" src="../../../../../syntaxhighlighter/scripts/shBrushMatlabSimple.js"></script>
+				<script type="text/javascript" src="../../../../../syntaxhighlighter/scripts/shBrushPython.js"></script>
+				<link type="text/css" rel="stylesheet" href="../../../../../syntaxhighlighter/styles/shCoreDefault.css"/>
+				<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+                                        <li>
+											<span class="opener">General</span>
+											<ul> 
+												<li><a href = "../index.html#overview">Overview</a></li>
+												<li><a href = "../index.html#logistics">Technology Logistics</a></li>
+												<li><a href = "../index.html#deliverables">Deliverables</a>
+												<ul>
+													<li><a href = "../index.html#debugging">Debugging Principles</a>
+												</ul>
+												
+												</li>
+												<li><a href = "../index.html#grading">Grading</a></li>
+												<li><a href = "../index.html#environment">Classroom Environment</a></li>
+												<li><a href = "../index.html#participation">Participation</a></li>
+												<li><a href = "../index.html#collaboration">Collaboration Policy</a></li>
+												<li><a href = "../index.html#other">Other Resources / Policies</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Software Environment</span>
+											<ul>
+												<li><a href = "../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
+												<li><a href = "../Software/index.html#vscode">Visual Studio Code</a></li>
+												<li><a href = "../Software/index.html#windows">Windows Setup Instructions</a></li>
+												<li><a href = "../Software/index.html#macos">Mac OS Setup Instructions</a></li>
+											</ul>
+										</li>
+										<li><a href = "../index.html#schedule">Schedule</a></li>
+                                        <li>
+											<span class="opener">Assignments</span>
+											<ul>
+												<!--
+												<li><a href = "../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<li><a href = "../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a>
+												</li>
+												<li><a href = "../Assignments/HW2_Steganography">Homework 2: Image Processing And Steganography</a>
+												
+												<ul>
+													<li>
+														<a href = "../Assignments/HW2_Steganography/part1.html">Part 1: Drawing Ellipses</a>
+													</li>
+													<li>
+														<a href = "../Assignments/HW2_Steganography/part2.html">Part 2: Image Decoding</a>
+													</li>
+													<li>
+														<a href = "../Assignments/HW2_Steganography/part3.html">Part 3: Image Encoding</a>
+													</li>
+												</ul>
+												</li>
+												<li><a href = "../Assignments/HW3_InvasiveSpecies">Homework 3: Invasive Species Polymorphism</a></li>
+												<li><a href = "../Assignments/HW4_LinkedListMaze/index.html">Homework 4: Doubly Linked Lists And Maze Search Strategies</a></li>
+												<li><a href = "../Assignments/HW5_BasketballHashing">Homework 5: Basketball Hashing</a></li>
+												-->
+											</ul>
+										</li>
+										<li><a href = "../final.html">Final Project</a></li>
+										<li>
+											<span class="opener">Labs</span>
+											<ul>
+												<!--
+												<li><a href = "../Labs/Lab1_Holidays">Lab 1: HTML Holidays</a></li>
+												<li><a href = "../Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a></li>
+												<li><a href = "../Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a></li>
+												<li><a href = "../Labs/Lab4_AbstractClassesSorting">Lab 4: Abstract Classes And Sorting</a></li>
+												<li><a href = "../Labs/Lab5_MyVector">Lab 5: My Vector (Dynamic Array ADT)</a></li>
+												<li><a href = "../Labs/Lab6_RecursiveDrawing">Lab 6: Recursive Drawing</a></li>
+												<li><a href = "../Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a></li>
+												<li><a href = "../Labs/Lab8_ImageFilters">Lab 8: Bilateral Image Filtering with Threads</a></li>
+												-->
+											</ul>
+										</li>
+                                        <li>
+											<span class="opener">Class Exercises / Pre-Class Work</span>
+											<ul>
+												<li><a href = "../Assignments/Survey/index.html">Week 1: Survey</a></li>
+												<li><a href = "../../Modules/CPPBasics/Video1">Week 1: C++ Basics Module</a></li>
+												<li><a href = "../ClassExercises/Week1_CMD">Week 1: The Terminal And Files</a></li>
+												<!--
+												<li><a href = "../../Modules/TenHeads">Week 1: Ten Heads in A Row</a></li>
+												<li><a href = "../ClassExercises/Week1_AudioFiltering">Week 1: Audio Filtering</a></li>
+												<li><a href = "../../Modules/PointerFundamentals/Exercise1">Week 2: Pointer Fundamentals Module</a></li>
+												<li><a href = "../ClassExercises/Week2_3_PointerTricks">Week 2/3: C++ Pointers And Pitfalls</a></li>
+												<li><a href = "../ClassExercises/Week3_Pointers_Arrays">Week 3: C++ Pointers And Arrays</a></li>
+												<li><a href = "../ClassExercises/Week3_DynMem">Week 3: Command Line Arguments and Dynamic 2D Arrays</a></li>
+												<li><a href = "../ClassExercises/Week4_BinaryDrills">Week 4: Binary Drills</a></li>
+												<li><a href = "../ClassExercises/Week4_Binary_LFSR">Week 4: Notes on Bitwise Operators, Linear Feedback Shift Registers (LFSRs), and ASCII</a></li>
+												<li><a href = "../ClassExercises/Week4_Bits">Week 4: Bits And XOR Encryption</a></li>
+												<li><a href = "../../Modules/CppClasses/Video1">Week 5: Classes And Inheritance Module</a></li>
+												<li>
+													<a href = "../ClassExercises/Week10_Recursion">Week 10: Class Notes on Recursive Functions And Memoization</a>
+												</li>
+												<li>
+													<a href = "../ClassExercises/Week10_Hashing">Week 10: Hash Tables</a>
+												</li>
+												<li><a href = "../ClassExercises/Week12_Maps_Adventure">Week 12: STL Maps, Choose Your Own Adventure</a></li>
+												<li><a href = "../../Modules/Ackermann/Exercise1">Week 12: Ackermann Memoization Exercise</a></li>
+
+												
+												
+												<li><a href = "https://ursinus.instructure.com/courses/13764/quizzes/18074">Week 4: Binary/Hex Module</a></li>
+												
+												<li>
+													<a href = "https://github.com/ursinus-cs174-s2022/Week5_ObjectBasics">Week 5: Object Basics Code</a>
+												</li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedList/Video0">Week 8: Linked List Module</a>
+												</li>
+												<li>
+													<a href = "https://github.com/ursinus-cs174-s2022/Week9_PrimMaze/">Week 9: Prim's Algorithm And Mazes</a>
+												</li>
+												
+
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedMap/Video1">Week 10: Linked Map Module</a>
+												</li>
+												
+												
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/Ackermann/Exercise1">Week 11: Ackermann Module</a>
+												</li>
+												<li>
+													<a href = "https://ursinus-cs174-s2022.github.io/Modules/MergeSort/Exercise">Week 12: Merge Sort Exercise</a>
+												</li>
+												<li>
+													<a href = "../ClassExercises/Week13_ImageFilters">Week 13: Function Pointers And Image Filters</a>
+												</li>
+												-->
+											</ul>
+										</li>
+										<li>
+											<span class="opener">Optional Fall 2020 Modules</span>
+											<ul>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module1/Video1">Module 1: Classes Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module2/Video1">Module 2: Hash Maps</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module3/Inheritance1">Module 3: Inheritance1</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module4/Video1">Module 4: Linked List Removal And Iterators</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module5/Video1">Module 5: Threads And Synchronization</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module6/Video1">Module 6: C++ Basics</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module7/Video1">Module 7: Addresses And Pointers</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module8/Exercise0">Module 8: Pointers Continued</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module9/Video1">Module 9: C++ Classes</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module10/Video1">Module 10: C++ Object References / Linked Lists</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module11/Video1">Module 11: ADTs / Linked Map</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module12/Video1">Module 12: C++ Inheritance</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module13/Video1">Module 13: Recursion And STL Vectors</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module14/Video1">Module 14: Recursion Part 2</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module15/Video1">Module 15: Binary Trees Intro</a></li>
+												<li><a href = "https://ursinus-cs174-f2020.github.io/Modules/Module16/Video1">Module 16: Binary Trees Level And Depth</a></li>
+											</ul>
+										</li>
+										<li>
+											<a href = "../style.html">Style Guide</a></li>
+										</li>
+									</ul>
+								</nav>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; <a href = "http://www.ctralie.com">Christopher J. Tralie</a>. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+            <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/skel.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>

@@ -7,3 +7,6 @@
 [submodule "Assignments/HW1_VirtualCities/HW1_VirtualCities"]
 	path = Assignments/HW1_VirtualCities/HW1_VirtualCities
 	url = https://github.com/ursinus-cs174-s2023/HW1_VirtualCities.git
+[submodule "Assignments/HW0_Warmup/HW0_Warmup"]
+	path = Assignments/HW0_Warmup/HW0_Warmup
+	url = https://github.com/ursinus-cs174-f2022/HW0_Warmup.git
