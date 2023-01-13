@@ -41,7 +41,7 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Homework 0: Welcome To CS 174 / Software Test (12 Points)</h2>
+                                        <h2>Homework 0: Welcome To CS 174 / Software Test (10 Points)</h2>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
@@ -50,7 +50,7 @@
                                         <p>
                                             <h3><a name = "objectives">Learning Objectives</a></h3>
                                             <ul>
-												<li>Practice basic terminal commands and folder navigation</li>
+												<li>Practice basic terminal commands and folder navigation in <a href = "../../Software">Visual Studio Code</a></li>
 												<li>Practice compiling and running programs in the terminal</li>
                                             </ul>
 										</p>
@@ -58,14 +58,14 @@
 
 										<h3><a name = "overview">Description / Overview</a></h3>
 										<p>
-											We're doing some serious systems programming in the class, and I also want to have fun assignments that deal with multimedia data (images, music, videos, animations).  Because of this, the process to setup a software environment for this class is more involved than usual.  To make sure everyone is setup properly, I have devised a series of tests to verify that everything we need is working.  <b>If you get stuck or something unexpected happens at any point while following the instructions below, you should immediately post on Discord</b>.  We'll work through it there together (I'm giving students Mac and Windows labels on our channel to help us coordinate that)
+											We're doing some serious systems programming in the class, and I also want to have fun assignments that deal with multimedia data (images, music, videos, animations).  Because of the software configuration to enable this variety of tasks is so complicated, students will all be coding in the same environment I've setup ahead of time using <a href = "../../Software/index.html#terminal">Visual Studio and its terminal</a>.  To make sure everyone is setup properly, I have devised a series of tests to verify that everything we need is working.  <b>If you get stuck or something unexpected happens at any point while following the instructions below, you should immediately post on Discord</b>.  We'll work through it there together
 										</p>
 
 										<p>
-											First, follow the software installation instructions for <a href = "../../Software/index.html#windows">Windows</a> or <a href = "../../Software/index.html#macos">Mac OS</a>, depending on your computer.  They may take a while, but you will be rewarded 😅 (with points on this assignment and with the inherent satisfaction of having a slick software setup).  Once you're finished and everything is in place, create a designated directory for everything CS 174 related, open your terminal, and use the <code>cd</code> command to change into this designated directory (alternatively, you can create the directory in the terminal using <code>mkdir</code> command).  Then, to obtain the test software I've created, type
+											First, <a href = "../../Software">click here</a> and follow the instructions to download visual studio code, and setup your account on <code>nimbus.ursinus.edu</code>.  Once you're finished and everything is in place, create a designated directory for everything CS 174 related, open your terminal, and use the <code>cd</code> command to change into this designated directory (alternatively, you can create the directory in the <a href = "../../Software/index.html#terminal">terminal</a> using <code>mkdir</code> command).  Then, to obtain the test software I've created, type
 										</p>
 										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											git clone --recursive https://github.com/ursinus-cs174-f2022/HW0_Warmup.git</script>   
+											git clone --recursive https://github.com/ursinus-cs174-s2023/HW0_Warmup.git</script>   
 										
 										<p>
 											This should create a folder called <code>HW0_Warmup</code> in your current directory.  Change into this folder and type <code>ls</code>
@@ -79,10 +79,10 @@
 											You should see these folders/files 
 										</p>
 										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											canvas  leak.cpp  LICENSE  README.md  sound  tinygl-cpp</script>  
+											canvas  leak.cpp  LICENSE  README.md  sound</script>  
 										
 										<p>
-											If that all worked, proceed to the following tests.  Take note of what you see, and submit the results to <a href = "https://ursinus.instructure.com/courses/14913/assignments/149244">this link</a> on Canvas
+											If that all worked, proceed to the following tests.  <b>Take note of what you see, and submit the results to <a href = "https://ursinus.instructure.com/courses/15537/assignments/165567">this link</a> on Canvas</b>
 										</p>
 										
 										<HR>
@@ -101,7 +101,7 @@
 										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
 											./mysterysound</script> 
 										<p>
-											If everything is working properly, this should generate a file called <code>mysterysound.wav</code>.  Open this file, and <b>take note on canvas of what number is spoken</b>
+											If everything is working properly, this should generate a file called <code>mysterysound.wav</code>.  Open this file in visual studio code (or right click and download it to your computer and listen to it there), and <b>take note on canvas of what number is spoken</b>
 										</p>
 
 										<HR>
@@ -127,85 +127,35 @@
 										</p>
 
 										<HR>
-										<h3><a name = "opengl">CMake / OpenGL / Live Animation Test (3 Points)</a></h3>
-										<p>
-											Now go back up a directory and into the directory <code>tinygl-cpp</code> (this library is courtesy of <a href = "https://www.alinenormoyle.com/">Aline Normoyle</a> right down the street at Bryn Mawr College).  The compilation process for the program here is slightly more involved because we'll be using something called <a href = "https://cmake.org/">cmake</a>.  Once you're in the directory <code>tinygl-cpp</code>, create a new directory called <code>build</code>, change into it, and use the <code>cmake</code> command to generate a makefile for your system (we'll talk more about makefiles in class)
-										</p>
-										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											mkdir build
-											cd build
-											cmake ..</script> 
+										<h3><a name = "animation">Web-Based Live Animation Test (4 Points)</a></h3>
 
 										<p>
-											Now you can build the program by typing the command <code>make</code>
+											Now go back up a directory and into the directory <code>animation</code>
 										</p>
+										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
+											cd ../animation</script>  
+
+										<p>
+											Open up the file <code>mystery.cpp</code> and change the parameter on line 89 to be <b>the port number you were assigned at the beginning of the course</b>.  Then, compile the program by typing
+										</p>
+
 										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
 											make</script> 
 
 										<p>
-											Now run the generated program <code>mysteryletter</code>
+											Run the program by typing
 										</p>
+
 										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											./mysteryletter</script> 
+											./mystery</script>
+										
 										<p>
-											If everything is working properly, this should pop up with a window with a letter bouncing up and down.  Take note of this letter, and write on Canvas what it is.
+											Then open up the <code>index.html</code> file in that folder using the <a href = "../../Software/index.html#liveserver">live server launcher in VSCode</a>.  Once the web page launches, type in your port number and click <code>Connect!</code>.  You should see an animation of a letter bouncing up and down.
 										</p>
 
-										<p>
-											<b>NOTE: </b> Windows users should be sure that they are <a href = "../../Software/index.html#vcxsrvrestart">vcXsrv</a> in the background before executing <code>mysteryletter</code>
-										</p>
+										
 										
 
-										<HR>
-											<h3><a name = "valgrind">Valgrind Test (3 Points)</a></h3>
-										<p>
-											One last test to go!  We're going to test something called a <b>memory leak</b>, which is when we don't take care to cleanup dynamic memory that we request during the run of our program.  This takes place automatically in Java using something called a <a href = "https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html">garbage collector</a>, but we have to handle it manually in C and C++.  It's very common to forget to clean things up, but this can cause us to run out of memory, as well as other strange errors.  Thankfully, there are tools to check for memory leaks, and we'll be using one such powerful tool called <a href = "https://diveintosystems.org/book/C3-C_debug/valgrind.html">valgrind</a> in this course (or, <a href = "../../Software/index.html#macmemoryalt">alternatively</a>, clang's <a href = "https://stackoverflow.com/questions/65931093/valgrind-and-macos-big-sur/69610645#69610645">memory leak sanitizer</a>). 
-										</p>
-
-										<p>
-											Change back to the root of <code>HW0_Warmup</code>.  Then, if valgrind installed properly for you (which it should have on Windows or Mac OS Catalina), do the following:
-										</p>
-
-										<div style="background-color: blanchedalmond; padding:10px;">
-											<h4>Valgrind Directions</h4>
-
-
-											<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-												g++ -o leak leak.cpp</script> 
-											<!--<p>
-												Observant readers will notice that we're using the <code>-g</code> flag for the first time in this command.  This causes the compiler to include something called a <b>symbol table</b> in the executable file, which will help us to understand where we are in the original code when we debug.  We will also use this flag with the <b>lldb</b> debugger program, as well as with valgrind.
-											</p>!-->
-	
-											<p>
-												Now type
-											</p>
-											<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-												valgrind ./leak</script> 
-											
-										</div>
-
-										<p>
-											If you had to do the <a href = "../../Software/index.html#macmemoryalt">alternative installation</a>, then use the following directions
-										</p>
-
-										<div style="background-color: blanchedalmond; padding:10px;">
-											<h4>Clang++ Memory Sanitizer</h4>
-
-
-											<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-												g++ -fsanitize=leak -o leak leak.cpp</script> 
-											<p>
-												Now type
-											</p>
-											<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-												./leak</script> 
-											
-										</div>
-
-										<p>
-											In both cases, take note of how many bytes of memory were "lost" or "leaked," and indicate this number on canvas.  Also, indicate whether you used valgrind or clang++'s memory sanitizer.
-										</p>
-										
 										
                                     
                                 </div>
@@ -254,18 +204,16 @@
 										<li>
 											<span class="opener">Software Environment</span>
 											<ul>
+												<li><a href = "../../Software/index.html">Setup Instructions</a></li>
 												<li><a href = "../../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
-												<li><a href = "../../Software/index.html#vscode">Visual Studio Code</a></li>
-												<li><a href = "../../Software/index.html#windows">Windows Setup Instructions</a></li>
-												<li><a href = "../../Software/index.html#macos">Mac OS Setup Instructions</a></li>
 											</ul>
 										</li>
 										<li><a href = "../../index.html#schedule">Schedule</a></li>
                                         <li>
 											<span class="opener">Assignments</span>
 											<ul>
-												<!--
 												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<!--
 												<li><a href = "../../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a>
 												</li>
 												<li><a href = "../../Assignments/HW2_Steganography">Homework 2: Image Processing And Steganography</a>

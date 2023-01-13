@@ -50,55 +50,8 @@
 										In this class, we will be using <b>Microsoft Visual Studio Code(VSCode)</b>  to write code and to interact with a remote computer to code.  VSCode has nice plugins for syntax highlighting, code completion, and built in documentation for C and C++.  Visit <a href = "https://code.visualstudio.com/Download">this link</a> to download VSCode for your appropriate operating system.  Most Windows and Linux users will want the <b>64-bit</b> download.  Please post on Discord if you are having any issues installing VSCode.
 									</p>
 
-									<h3><a name = "vsplugins">Recommended Plugins</a></h3>
-									<p>
-										You can search for plugins/extensions for VSCode by clicking on the following icon on the left of the VSCode Screen:
-									</p>
-									<img src = "pluginsIcon.png">
-									<p>
-										Below is a list of recommended plugins for this class that you should install
-									</p>
-									<ul>
-										<li>ms-vscode.cpptools</li>
-										<li>ms-vscode.cpptools-extension-pack</li>
-										<li>ms-vscode.cpptools-themes</li>
-										<li>twxs.cmake</li>
-										<li>streetsidesoftware.code-spell-checker</li>
-										<li>ehlkr.x86-64-assembly-pro</li>
-									</ul>
-
-
-									<h3><a name = "vscodefeatures">Quick Features Overview</a></h3>
-
-									<p>
-										Below are a few features I want to highlight that will come in handy as your working.
-									</p>
-
-									<h4><a name = "unused">Unused variable highlighting</a></h4>
-									<p>
-										If you don't use a variable, it will show up in darker text.  This is very useful when debugging.  It means that either you didn't actually need the variable, you forgot to use it (hence you didn't complete your code), or you spelled it wrong somewhere.  This saved many a student last year! (NOTE: The examples below are in Javascript, but the same applies to C/C++/assembly)
-									</p>
-
-									<img src = "HighlightingUnused.gif" width=800>
-
-									<h4><a name = "replace">Replace within Selection</a></h4>
-									<p>
-										If you want to change the name of a variable in one section of your code, you can do a <code>CTRL+F</code>, which will bring up the find/replace menu, then follow these steps:
-									</p>
-									<img src = "ReplaceSelection.gif" width=800>
-
-									<h4><a name = "docsmethod">Method Documentation</a></h4>
-
-									<p>
-										There's a nice feature where if you start typing <code>/**</code> and hit ENTER, it will autocomplete method documentation for you
-									</p>
-
-									<img src = "VSCodeDocs.gif">
-
-									<p></p>
-
 									<HR>
-									<h2><a name = "remote">Remote Computing with VSCode</a></h2>
+									<h2><a name = "remote">Setting Up Remote Computing with VSCode</a></h2>
 
 									
 
@@ -107,7 +60,7 @@
 									</p>
 
 									<p>
-										<b>Disclaimer: </b> <code>nimbus.ursinus.edu</code> is only accessible if you're connected to the campus network.  If you're not on the campus network, you will have to connect to the <a href = "https://www.ursinus.edu/live/files/3555-uc-vpn">Ursinus VPN</a> first.
+										<b>Disclaimer: </b> <code>nimbus.ursinus.edu</code> is <b>only accessible if you're connected to the campus network</b>.  If you're not on the campus network, you will have to connect to the <a href = "https://www.ursinus.edu/live/files/3555-uc-vpn">Ursinus VPN</a> first.
 									</p>
 
 									<h3>Step 1: Install Remote Development Extension Pack</h3>
@@ -172,7 +125,84 @@
 									<img src = "terminal.png">
 
 
+									<h3><a name = "liveserver">Live Server Plugin</a></h3>
+									<p>
+										One more extension you'll need to install will come in handy when we do animations.  <b>Once you've logged into nimbus</b>, go to the plugins search in that window and search for the "live server" extension by Ritwick Dey
+									</p>
+
+									<img src = "LiveServer.png">
+
+									<p>
+										Then, open a top level folder containing the code that you want to run, right click on an HTML file you want to run, and click <BR><code>Open with Live Server</code>
+									</p>
+
+									<img src = "OpenServer.png">
+
+									<p>
+										If you want to change the default browser that opens with the live server, then you have to change the <code>settings.json</code> to have the <code>CustomBrowser</code> field.  For example, my <code>settings.json</code> file has the following code to get it to launch Chrome by default
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: js"><![CDATA[
+									{
+										"window.zoomLevel": 2,
+										"terminal.integrated.inheritEnv": false,
+										"liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+										"liveServer.settings.CustomBrowser":"chrome"
+									}
+									]]></script> 
+
+									<p>
+										The GIF below shows how to access the <code>settings.json</code> file
+									</p>
+
+									<img src = "LiveServer_CustomBrowser.gif">
+
+									<p>
+										<b>NOTE: </b> The assignments have been tested in Firefox and Chrome, so it's best if you stick to one of those browsers.
+									</p>
+
 	
+									<h3><a name = "vsplugins">Other Recommended Plugins</a></h3>
+
+									<p>
+										Below is a list of additional recommended plugins for this class that you should install
+									</p>
+									<ul>
+										<li>ms-vscode.cpptools</li>
+										<li>ms-vscode.cpptools-extension-pack</li>
+										<li>ms-vscode.cpptools-themes</li>
+										<li>twxs.cmake</li>
+										<li>streetsidesoftware.code-spell-checker</li>
+									</ul>
+
+									<HR>
+
+									<h2><a name = "vscodefeatures">Other Features</a></h2>
+
+									<p>
+										Below are a few features I want to highlight that will come in handy as your working.
+									</p>
+
+									<h4><a name = "unused">Unused variable highlighting</a></h4>
+									<p>
+										If you don't use a variable, it will show up in darker text.  This is very useful when debugging.  It means that either you didn't actually need the variable, you forgot to use it (hence you didn't complete your code), or you spelled it wrong somewhere.  This saved many a student last year! (NOTE: The examples below are in Javascript, but the same applies to C/C++/assembly)
+									</p>
+
+									<img src = "HighlightingUnused.gif" width=800>
+
+									<h4><a name = "replace">Replace within Selection</a></h4>
+									<p>
+										If you want to change the name of a variable in one section of your code, you can do a <code>CTRL+F</code>, which will bring up the find/replace menu, then follow these steps:
+									</p>
+									<img src = "ReplaceSelection.gif" width=800>
+
+									<h4><a name = "docsmethod">Method Documentation</a></h4>
+
+									<p>
+										There's a nice feature where if you start typing <code>/**</code> and hit ENTER, it will autocomplete method documentation for you
+									</p>
+
+									<img src = "VSCodeDocs.gif">
 
 
 
@@ -217,18 +247,16 @@
 										<li>
 											<span class="opener">Software Environment</span>
 											<ul>
+												<li><a href = "../Software/index.html">Setup Instructions</a></li>
 												<li><a href = "../../Modules/FreeRun">C++ Free Run in The Browser</a></li>
-												<li><a href = "../Software/index.html#vscode">Visual Studio Code</a></li>
-												<li><a href = "../Software/index.html#windows">Windows Setup Instructions</a></li>
-												<li><a href = "../Software/index.html#macos">Mac OS Setup Instructions</a></li>
 											</ul>
 										</li>
 										<li><a href = "../index.html#schedule">Schedule</a></li>
                                         <li>
 											<span class="opener">Assignments</span>
 											<ul>
-												<!--
 												<li><a href = "../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
+												<!--
 												<li><a href = "../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a>
 												</li>
 												<li><a href = "../Assignments/HW2_Steganography">Homework 2: Image Processing And Steganography</a>
