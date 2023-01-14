@@ -41,7 +41,7 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Homework 0: Welcome To CS 174 / Software Test (10 Points)</h2>
+                                        <h2>Homework 0: Welcome To CS 174 / Software Test (12 Points)</h2>
 										<h3><a href = "https://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
@@ -52,6 +52,7 @@
                                             <ul>
 												<li>Practice basic terminal commands and folder navigation in <a href = "../../Software">Visual Studio Code</a></li>
 												<li>Practice compiling and running programs in the terminal</li>
+												<li>Practice zipping up homework solutions</li>
                                             </ul>
 										</p>
 										
@@ -64,9 +65,10 @@
 										<p>
 											First, <a href = "../../Software">click here</a> and follow the instructions to download visual studio code, and setup your account on <code>nimbus.ursinus.edu</code>.  Once you're finished and everything is in place, create a designated directory for everything CS 174 related, open your terminal, and use the <code>cd</code> command to change into this designated directory (alternatively, you can create the directory in the <a href = "../../Software/index.html#terminal">terminal</a> using <code>mkdir</code> command).  Then, to obtain the test software I've created, type
 										</p>
-										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											git clone --recursive https://github.com/ursinus-cs174-s2023/HW0_Warmup.git											
-										</script>   
+
+										<code>git clone --recursive https://github.com/ursinus-cs174-s2023/HW0_Warmup.git	</code>
+
+										<p></p>
 										
 										<p>
 											This should create a folder called <code>HW0_Warmup</code> in your current directory.  Change into this folder and type <code>ls</code>
@@ -128,7 +130,7 @@
 										</p>
 
 										<HR>
-										<h3><a name = "animation">Web-Based Live Animation Test (4 Points)</a></h3>
+										<h3><a name = "animation">Web-Based Live Animation Test (3 Points)</a></h3>
 
 										<p>
 											Now go back up a directory and into the directory <code>animation</code>
@@ -152,6 +154,22 @@
 										
 										<p>
 											Then open up the <code>index.html</code> file in that folder using the <a href = "../../Software/index.html#liveserver">live server launcher in VSCode</a>.  Once the web page launches, type in your port number and click <code>Connect!</code>.  You should see an animation of a letter bouncing up and down.
+										</p>
+
+										<HR>
+										<h3><a name = "zip">Zipping It Up (3 Points)</a></h3>
+										<p>
+											Now you will practice zipping up all files in a folder and uploading to canvas.  Go one directory above HW0, and then type
+										</p>
+
+										<code>
+											zip -r HW0_Warmup.zip HW0_Warmup
+										</code>
+
+										<p></p>
+
+										<p>
+											This will create a file called <code>HW0_Warmup.zip</code> that contains all of the files in the <code>HW0_Warmup</code> directory.  Download this file to your computer using the VSCode file browser, and submit it on canvas.
 										</p>
 
 										
