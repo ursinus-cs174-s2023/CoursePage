@@ -61,12 +61,14 @@
 													<li><a href = "#cone">Cone</a></li>
 													<li><a href = "#sphere">Sphere</a></li>
 													<li><a href = "#ellipsoid">Ellipsoid</a></li>
-													<li><a href = "#special">Special Mesh</a></li>
+													<li><a href = "#meshes">Meshes</a></li>
+													<li><a href = "#textured">Textured Meshes</a></li>
 												</ul>
 											</li>
 											<li><a href = "#programing">Programming Tasks</a>
 												<ul>
 													<li><a href = "#sign">Example: Sign</a></li>
+													<li><a href = "#running">Running The Engine</a></li>
 													<li><a href = "#makefile">Setup / Makefile (3 Points)</a></li>
 													<li><a href = "#tree">Tree (5 Points)</a></li>
 													<li><a href = "#firehydrant">Fire Hydrant (5 Points)</a></li>
@@ -74,7 +76,7 @@
 													<li><a href = "#sedan">Sedan (5 Points)</a></li>
 													<li><a href = "#block">City Block (5 Points)</a></li>
 													<li><a href = "#style">Style (3 Points)</a></li>
-													<li><a href = "#artcontest">Art Contest (3 Points)</a></li>
+													<li><a href = "#artcontest">Mandatory Art Contest (3 Points)</a></li>
 												</ul>
 											</li>
 										</ul>
@@ -102,7 +104,7 @@
 										
 										<p>
 											<code>
-												git clone https://github.com/ursinus-cs174-f2022/HW1_VirtualCities.git
+												git clone https://github.com/ursinus-cs174-s2023/HW1_VirtualCities.git
 											</code>
 										</p>
 										
@@ -148,6 +150,12 @@
 
 									<img src = "Coords3D.svg">
 
+									<h4>Rotations in 3D</h4>
+									<p>
+										In this assignment, rotations are represented by so-called "Euler Angles."  In our case, rotation first happens about the X-axis, then the Y-axis, then the Z-axis.  There's more information at <a href = "https://ursinus-cs476-f2022.github.io/CoursePage/Assignments/HW3a_EulerAngles/index.html">this link</a> for those who are curious.
+									</p>
+
+
 									<h2><a name = "colors">Background: RGB Colors</a></h2>
 
 									<p>
@@ -163,13 +171,9 @@
 										
 									<h2><a name = "shapes3d">Background: 3D Scenes And Shapes</a></h2>
 
-									<h3><a href = "ggslac/viewers/SceneViewer.html">Click here</a> to launch the scene viewer in your browser</h3>
-
 									<p>
-										In this assignment, you will be creating 3D worlds, also known as "scenes," that can be loaded into an engine I made for my <a href = "https://ursinus-cs476-f2020.github.io/CoursePage/">computer graphics class</a> known as <a href = "https://github.com/ctralie/ggslac">ggslac</a>.  As in the <a href = "../../Labs/Lab1_Holidays/">HTML holidays</a> lab, your C++ program will write code that this engine can interpret (though it is <a href = "https://en.wikipedia.org/wiki/JSON">JSON</a> code instead of HTML).  You don't have to worry writing code strings yourself this time, though.  Instead, I have provided a series of high level functions that you can use to draw shapes, and which will automatically convert to code on the backend that you can open in <a href = "ggslac/viewers/SceneViewer.html">the engine</a>, as shown below.
+										In this assignment, you will be creating 3D worlds, also known as "scenes," that can be loaded into the browser.  As in the <a href = "../../Labs/Lab1_Holidays/">HTML holidays</a> lab, your C++ program will write HTML code that you then launch.  You don't have to worry writing code strings yourself this time, though.  Instead, I have provided a series of high level functions that you can use to draw shapes, and which will automatically convert to code on the backend that uses the <a href = "https://threejs.org/">three.js library</a> (fun fact: this assignment used to use my own engine, <a href = "https://github.com/ctralie/ggslac">ggslac</a>, but I decided to upgrade because students kept making scenes so big they'd slow it to a crawl).
 									</p>
-
-									<img src = "OpenScene.gif">
 
 									<p>
 										The full documentation for drawing shapes can be found <a href = "docs/classScene3D.html">at this link</a>. Below are a few examples with links to the respective documentation.  There are two versions of most methods: one for drawing an "axis-aligned" shape, and one for drawing a rotated version.  You'll mostly be using the axis-aligned versions in the tasks.
@@ -180,18 +184,18 @@
 
 									<ul>
 										<li>
-											<a href = "docs/classScene3D.html#a82e78e2b34caf0d083eb553f7c9819da">Click here</a> to view the documentation for drawing an axis-aligned box.
+											<a href = "docs/classScene3D.html#ae8eac9d945e2774945d5be751bd8095f">Click here</a> to view the documentation for drawing an axis-aligned box.
 										</li>
 										<li>
-											<a href = "docs/classScene3D.html#a13cafea4fd891d188e2ce651acefe228">Click here</a> to view the documentation for drawing a rotated box.
+											<a href = "docs/classScene3D.html#aad31694a1aa102fbdaba7bf882ddaa74">Click here</a> to view the documentation for drawing a rotated box.
 										</li>
 									</ul>
 
 									Example
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										// Draw a green box centered at (0, 2, -6) that is 1 x 4 x 1
-										scene.addBox(0, 2, -6, 1, 4, 1, 0, 255, 0);
+										// Draw a green diffuse and wood-like box centered at (0, 2, -6) that is 1 x 4 x 1
+										scene.addBox(0, 2, -6, 1, 4, 1, 0, 255, 0, 1, 0);
 									]]></script>
 
 									<img src = "Box.png">
@@ -202,10 +206,10 @@
 
 									<ul>
 										<li>
-											<a href = "docs/classScene3D.html#a5f5601d2c2e67e7d176c45e04d6b4182">Click here</a> to view the documentation for drawing an axis-aligned cylinder.
+											<a href = "docs/classScene3D.html#a689f70b88a16abf9779db98bb49e0e4b">Click here</a> to view the documentation for drawing an axis-aligned cylinder.
 										</li>
 										<li>
-											<a href = docs/classScene3D.html#afe9d8a0c28c3d70ec76134f76fa4e6a2">Click here</a> to view the documentation for drawing a rotated cylinder.
+											<a href = "docs/classScene3D.html#a35de8e274def891b4b7f28b67409d039">Click here</a> to view the documentation for drawing a rotated cylinder.
 										</li>
 									</ul>
 
@@ -214,7 +218,7 @@
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 										// Draw a yellow cylinder centered at (0, 1, -2) that has a 
 										// height of 2 and a radius of 0.5
-										scene.addCylinder(0, 1, -2, 0.5, 2, 255, 255, 0);
+										scene.addCylinder(0, 1, -2, 0.5, 2, 255, 255, 0, 1, 0);
 									]]></script>
 
 									<img src = "Cylinder.png">
@@ -225,10 +229,10 @@
 
 									<ul>
 										<li>
-											<a href = "docs/classScene3D.html#ac11fbdbe8ad20d08c51a375efc5dd320">Click here</a> to view the documentation for drawing an axis-aligned cone.
+											<a href = "docs/classScene3D.html#ac818fe40e518b1b97b4ec4650fbe1245">Click here</a> to view the documentation for drawing an axis-aligned cone.
 										</li>
 										<li>
-											<a href = "docs/classScene3D.html#a0387927f8ff6eee6bea2f454d6555f90">Click here</a> to view the documentation for drawing a rotated cone.
+											<a href = "docs/classScene3D.html#afd74c5df64a02fdaffb033aaaa253d2e">Click here</a> to view the documentation for drawing a rotated cone.
 										</li>
 									</ul>
 
@@ -236,7 +240,7 @@
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 										// Draw a blue cone centered at (4, 0, 0) with radius 0.5 and height 6
-										scene.addCone(4, 0, 0, 0.5, 6, 0, 0, 255);
+										scene.addCone(4, 0, 0, 0.5, 6, 0, 0, 255, 1, 0);
 									]]></script> 
 
 									<img src = "Cone.png">
@@ -248,7 +252,7 @@
 
 									<ul>
 										<li>
-											<a href = "docs/classScene3D.html#a5373bd592fb401a9ec0f320991cfd8a9">Click here</a> to view the documentation for drawing a sphere.
+											<a href = "docs/classScene3D.html#a70a0689eb551665a49eefcb0559aeea2">Click here</a> to view the documentation for drawing a sphere.
 										</li>
 									</ul>
 
@@ -256,7 +260,7 @@
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 										// Draw a cyan sphere with radius 1 centered at (-4, 4, 0)
-										scene.addSphere(-4, 4, 0, 1, 0, 255, 255);
+										scene.addSphere(-4, 4, 0, 1, 0, 255, 255, 1, 0);
 									]]></script>
 
 									<img src = "Sphere.png">
@@ -271,10 +275,10 @@
 
 									<ul>
 										<li>
-											<a href = "docs/classScene3D.html#a2a581b701b8287dcf25d991cc6ca4cf6">Click here</a> to view the documentation for drawing an axis-aligned ellipsoid.
+											<a href = "docs/classScene3D.html#a361eb8568a55b6efaa185195efd07910">Click here</a> to view the documentation for drawing an axis-aligned ellipsoid.
 										</li>
 										<li>
-											<a href = "docs/classScene3D.html#adcb525401f94c5c1b24298cc0f4a17de">Click here</a> to view the documentation for drawing a rotated ellipsoid.
+											<a href = "docs/classScene3D.html#aab0d18c5203abee9c2773a6a60d43277">Click here</a> to view the documentation for drawing a rotated ellipsoid.
 										</li>
 									</ul>
 
@@ -282,34 +286,56 @@
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 										// Draw a red ellipsoid with axes 1/2/1 centered at (0, 5, -10)
-										scene.addEllipsoid(0, 5, -10, 1, 2, 1, 255, 0, 0);
+										scene.addEllipsoid(0, 5, -10, 1, 2, 1, 255, 0, 0, 1, 0);
 									]]></script>
 
 									<img src = "Ellipsoid.png">
 
-									<h3><a name = "special">Special Mesh</a></h3>
+									<h3><a name = "meshes">Meshes</a></h3>
 									<p>
-										For the <a href = "#artcontest">art contest</a>, you have a variety of <a href = "https://en.wikipedia.org/wiki/Triangle_mesh">triangle meshes</a> available, including my head ("proftralie") and 400 shapes from the <a href = "https://shape.cs.princeton.edu/benchmark/">Princeton shape benchmark</a>.  <a href = "docs/classScene3D.html#a06e3fe22b83b127be213621500bb2a62">Click here</a> to view the documentation for the <code>addSpecialMesh</code> method.  The available shapes are listed below (they are case sensitive and will not show up if you don't get them exactly right, so be careful with spelling!)
-									</p>
+										For the <a href = "#artcontest">art contest</a>, you have a variety of <a href = "https://en.wikipedia.org/wiki/Triangle_mesh">triangle meshes</a> available, including my head ("proftralie"), 100 shapes from the <a href = "https://shape.cs.princeton.edu/benchmark/">Princeton shape benchmark</a>, and a few others, which can all be found in the <code><a href = "HW1_VirtualCities/meshes">meshes</a></code> folder of your assignment.  <a href = "docs/classScene3D.html#a7a876ee1d95ea42b324b9674558d4415">Click here</a> to view the documentation for the <code>addMesh</code> method.
 
 									<p>
-										Airplane1-Airplane20, Ant1-Ant20, Armadillo1-Armadillo20, Bearing1-Bearing20, Bird1 - Bird20, Bust1-Bust20, Chair1-Chari20, cow, Cup1-Cup20, dinopet, Fish1-Fish20, Fourleg1-Fourleg20, genusthree, genustwo, Glasses1-Glasses20, Hand1-Hand20, hand-simple, homer, Human1-Human20, icosahedron, Mech1-Mech20, Octopus1-Octopus20, Plier1-Plier20, proftralie, StyrofoamHead, Table1-Table20, teapot, Teddy1-Teddy20, triangularPrism, Vase1-Vase20
+										Here's an example with three of the meshes.  You may need to scale them to get them to the size you want, since they have all been "normalized" to the same scale.
 									</p>
-
-									Here's an example with three of the special meshes.  You may need to scale them to get them to the size you want, since they have all been "normalized" to the same scale.
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+				
 										// Add prof tralie centered at (0, 2, -5) with (0, 0, 0) rotation, scale 2x2x2, and 
 										// color (100, 100, 100)
-										scene.addSpecialMesh("proftralie", 0, 2, -5, 0, 0, 0, 2, 2, 2, 100, 100, 100);
+										scene.addMesh("meshes/proftralie.obj", 0, 2, -5, 0, 0, 0, 2, 2, 2, 100, 100, 100, 1, 0);
 										// Add a cyan cow at location (0, 1, 5)
-										scene.addSpecialMesh("cow", 0, 1, 5, 0, 0, 0, 1, 1, 1, 0, 255, 255);
+										scene.addMesh("meshes/cow.obj", 0, 1, 5, 0, 0, 0, 1, 1, 1, 0, 255, 255, 1, 0);
 										// Add a green octopus at location (5, 0, -5)
-										scene.addSpecialMesh("Octopus9", 5, 1, -5, 0, 0, 0, 1, 1, 1, 0, 255, 00);
-									]]></script>
+										scene.addMesh("meshes/Octopus9.obj", 5, 1, -5, 0, 0, 0, 1, 1, 1, 0, 255, 0, 1, 0);]]></script>
 
 									<img src = "SpecialMeshes.png">
 
+									<h3><a name = "textured">Textured Meshes</a></h3>
+									<p>
+										In addition to 3D surfaces with a uniform color, it is also possible to load meshes with a <b>texture</b>, or a picture that gets wrapped around the mesh.  
+									</p>
+
+									<p>
+										<a href = "docs/classScene3D.html#ab36e8895f015238a2d91429a638679fa">Click here</a> to see documentation on this method.
+									</p>
+
+									<p>
+										I've provided one such mesh with the project: the <a href = "https://www.ucsmokestack.com">Ursinus smokestack</a>.  Below is code that shows how to draw it:
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										// Add the smokestack centered at position (0, 18, -20), blown up by
+										// a factor of 10 in all dimensions
+										scene.addTexturedMesh("meshes/smokestack/medres.obj", "meshes/smokestack/medres.mtl",
+										 						0, 18, -20, 0, 180, 0, 10, 10, 10, 0);]]></script>
+									
+										<p>And below is the scene that results</p>
+
+									<img src = "smokestack.png">
+									<p>
+										For the art contest, you can find meshes like this online, as long as you credit them.  If they're not in obj format, let me know and I can help convert them.
+									</p>
 
 
 									<h2><a name = "programming">Programming Tasks</a></h2>
@@ -340,20 +366,20 @@
 										void drawSign(Scene3D& scene, double cx, double cz, 
 																	bool isEastWest, double r, double g, double b) {
 											// Draw the main pole
-											scene.addCylinder(cx, 1, cz, 0.05, 2, 127, 127, 127); 
+											scene.addCylinder(cx, 1, cz, 0.05, 2, 127, 127, 127, 1, 0); 
 											if (isEastWest) {
 												// Draw a 0.5 x 0.5 box in the X/Y plane, with a thin dimension in Z
-												scene.addBox(cx, 2, cz, 0.5, 0.5, 0.1, r, g, b);
+												scene.addBox(cx, 2, cz, 0.5, 0.5, 0.1, r, g, b, 1, 0);
 											}
 											else {
 												// Draw a 0.5 x 0.5 box in the Y/Z plane, with a thin dimension in X
-												scene.addBox(cx, 2, cz, 0.1, 0.5, 0.5, r, g, b);
+												scene.addBox(cx, 2, cz, 0.1, 0.5, 0.5, r, g, b, 1, 0);
 											}
-										}    
+										}  
 									   ]]></script>
 
 									<p>
-										Here's an example code snippet that calls this method to create two signs.  For kicks, I also threw in Homer Simpson
+										Here's an example code snippet that calls this method to create two signs.  For kicks, I also threw in Homer Simpson and the <a href = "http://www.ucsmokestack.com/">Ursinus smokestack</a>!
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
@@ -363,21 +389,42 @@
 										// Draw a green sign 10 units in front of z that's 
 										// oriented from north to south
 										drawSign(scene, 0, -10, false, 0, 255, 0); // Green (0, 255, 0)
-										// Draw a yellow Homer Simpson
-										scene.addSpecialMesh("homer", 0, 1, -7, 0, 1, 0, 1, 1, 1, 255, 255, 0); 
+										// Draw a shiny, stone-like, yellow Homer Simpson
+										scene.addMesh("meshes/homer.obj", 1, 1.4, -7, 0, 0, 0, 1, 1, 1, 255, 255, 0, 1, 1); 
+										scene.addTexturedMesh("meshes/smokestack/medres.obj", "meshes/smokestack/medres.mtl", 
+																0, 18, -20, 0, 180, 0, 10, 10, 10, 0);
 									]]></script>
 
 									<img src = "Signs.png">
 									<p>
 										<b>NOTE:</b> The syntax <code>void drawSign(Scene3D& scene ...)</code> may seem a bit strange at this point in the course.  We will talk about this more later, but <code>scene</code> is an object of type <code>Scene3D</code>, and the <code>Scene3D&</code> prefix is indicating that we want to pass <code>scene</code> <b>by reference</b>.  This means that we're not creating a copy of the scene when we call the method, but we're actually referring to the same scene across methods.  Then, we can call a method within the object with <code>scene.method()</code>.  Don't worry if this doesn't totally make sense yet...just follow <code>drawSign</code> as an example when you're doing other methods, and you'll be fine.
 									</p>
-									
 									<p></p>
+									<h3><a name = "running">Running The Engine</a></h3>
+
+									<p>
+										To run the engine and interactively view your scene, you need to save it to an HTML file.  For example, the following is in <code>simplescene.cpp</code> after all of the drawing commands
+									</p>
+
+									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+										scene.saveScene("simplescene.html", "Simple Sample Scene");
+									]]></script>
+
+									<p>
+										To generate this, you have to build your file and run it.  First, open the folder containing your project in VSCode (it's important that you open the folder specifically for the <a href = "../../Software/index.html#liveserver">live server</a>). Then, compile your c++ program and run it.  In the image below, I'm showing doing this with a <a href = "#makefile">makefile</a>.  Once you run it, it will generate a file with whatever name you chose in <code>saveScene</code>.  Right click on this file in VSCode and click "Open with <a href = "../../Software/index.html#liveserver">Live Server</a>".  This will pop up with a window in your browser where you can interactively view the scene.  If you keep this window open and regenerate the scene, it will automatically refresh!
+									</p>
+
 									
+
+									<img src = "OpenScene.gif" width="80%">
+									
+
+
+									<p></p>
 
 									<h3><a name = "makefile">Setup / Makefile (3 Points)</a></h3>
 									<p>
-										First, to get started, you should setup a file called <code>myscene.cpp</code> that you will compile to generate your scene.  <b>You should keep the main file very small, as per the <a href = "../../style.html#smallmain">style guide</a></b>.  As an example, you can refer to the file <code><a href = "HW1_VirtualCities/simplescene.cpp">simplescene.cpp</a></code>, which sets up the small example scene above with two signs and Homer Simpson.  Finally, to make your job quicker as you go along, you should add an appropriate entry to your makefile.
+										First, to get started, you should setup a file called <code>myscene.cpp</code> that you will compile to generate your scene.  <b>You should keep the main method very small, as per the <a href = "../../style.html#smallmain">style guide</a></b>.  As an example, you can refer to the file <code><a href = "HW1_VirtualCities/simplescene.cpp">simplescene.cpp</a></code>, which sets up the small example scene above with two signs and Homer Simpson.  Finally, to make your job quicker as you go along, you should add an appropriate entry to your makefile.
 									</p>
 
 									<h3><a name = "tree">Tree (5 Points)</a></h3>
@@ -417,7 +464,7 @@
 									</p>
 
 									<p>
-										Below is an example of a red east/west car and a yellow north/south car, with a fire hydrant and stop light for scale (that red car should probably get out of the way...)
+										Below is an example of a red east/west car and a yellow north/south car, with a fire hydrant and stop light for scale (that red car should probably get out of the way!)
 									</p>
 
 									<img src = "Sedan.png">
@@ -445,13 +492,16 @@
 										You will be graded on adherence to the <a href = "../../style.html">style guide</a>.  Pay particular attention to your <a href = "../../style.html#documentationmethods">method documentation</a>.
 									</p>
 
-									<h3><a name = "artcontest">Art Contest (3 Points)</a></h3>
+									<h3><a name = "artcontest">Mandatory Art Contest (3 Points)</a></h3>
 									<p>
-										Create a c++ file <code>artcontest.cpp</code> and a corresponding makefile entry to create an executable called <code>artcontest</code>, which outputs a file <code>artcontest.json</code> with any virtual world you want.  Unleash your creativity!  Your scene does not have to be a city.  Indicate in your submission a title for your scene and what name or pseudonym you would like to use for the contest.  <i>The winner will receive 5 points of extra credit.</i>
+										Create a c++ file <code>artcontest.cpp</code> and a corresponding makefile entry to create an executable called <code>artcontest</code>, which outputs a file <code>artcontest.html</code> with any virtual world you want.  Unleash your creativity!  Your scene does not have to be a city.  Indicate in your submission a title for your scene and what name or pseudonym you would like to use for the contest.  <i>The winner will receive 5 points of extra credit.</i>
 									</p>
 
 									<p>
 										In addition to the scene, you may also want to submit a movie of it.  The GIF below shows how to select two different cameras and automatically fly between them
+									</p>
+									<p>
+										<b>NOTE: </b> It may take a long time to generate this GIF, and you may have to refresh the page when you're finished downloading it.
 									</p>
 
 									<img src = "SelectingCameras.gif">
