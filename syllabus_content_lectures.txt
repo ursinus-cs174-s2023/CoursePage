@@ -11,27 +11,27 @@ C Primitives and printf, Loops, Conditionals, Arrays
 
 <ul><li><a href = "../Modules/FreeRun">C++ Coding in the browser!</a></li></li><li><a href = "http://www.cplusplus.com/reference/cstdio/printf/">printf reference</a></li></ul>
 LECTURE
-More C++ Practice: 10 Heads in A Row and Audio Filtering
+C++ Practice: 10 Heads in A Row, Header Files, Makefiles
 
-<ul><li><a href = "https://ursinus-cs174-f2022.github.io/Modules/TenHeads">Class Exercise: 10 Heads in A Row</a></li><li><a href = "ClassExercises/Week1_AudioFiltering">Audio Filtering</a></li><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown: 10 Heads in A Row</a></li><li><a href = "https://math.temple.edu/~paulos/oldsite/scam.html">Stock market scam</a></li></ul>
+<ul><li><a href = "https://ursinus-cs174-f2022.github.io/Modules/TenHeads">Class Exercise: 10 Heads in A Row</a></li><li><a href = "https://www.youtube.com/watch?v=n1SJ-Tn3bcQ">Derren Brown: 10 Heads in A Row</a></li><li><a href = "https://math.temple.edu/~paulos/oldsite/scam.html">Stock market scam</a></li><li><a href = "ClassExercises/Week1_AudioFiltering">Audio Filtering</a> (Time Permitting)</li></ul>
 LECTURE
 <a href = "Labs/Lab1_Holidays">Lab 1: HTML Holidays</a>
 
 
 LECTURE
-Pointers, Header files, Makefiles
+Pointers
 
 <ul><li><a href = "ClassExercises/Week2_3_PointerTricks">Class notes on pointers and pitfalls</a></li><li><a href = "http://www.cplusplus.com/doc/tutorial/pointers/">CPlusPlus.com Pointers Reference</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.1 - 2.3</li></ul>
-LECTURE
-Workshopping Lab 1, HW1
-
-
 LECTURE
 C Pointers And Arrays, Dynamic Memory, 2048 (time permitting)
 
 <ul><li><a href = "ClassExercises/Week3_Pointers_Arrays">Class notes on pointers and arrays</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/index.html">Dive into Systems</a> Ch. 2.4, 2.5.1</li></ul>
 LECTURE
-Continue Arrays + Pointers, <a href = "Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a>, LLDB
+<a href = "Labs/Lab2_BugHunt">Lab 2: C++ Bug Hunt</a>, LLDB
+
+
+LECTURE
+Workshop Day
 
 
 LECTURE

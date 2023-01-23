@@ -68,7 +68,7 @@
 											<li><a href = "#programing">Programming Tasks</a>
 												<ul>
 													<li><a href = "#sign">Example: Sign</a></li>
-													<li><a href = "#running">Running The Engine</a></li>
+													<li><a href = "#running">Running The Engine And Viewing The Scene</a></li>
 													<li><a href = "#makefile">Setup / Makefile (3 Points)</a></li>
 													<li><a href = "#tree">Tree (5 Points)</a></li>
 													<li><a href = "#firehydrant">Fire Hydrant (5 Points)</a></li>
@@ -400,10 +400,10 @@
 										<b>NOTE:</b> The syntax <code>void drawSign(Scene3D& scene ...)</code> may seem a bit strange at this point in the course.  We will talk about this more later, but <code>scene</code> is an object of type <code>Scene3D</code>, and the <code>Scene3D&</code> prefix is indicating that we want to pass <code>scene</code> <b>by reference</b>.  This means that we're not creating a copy of the scene when we call the method, but we're actually referring to the same scene across methods.  Then, we can call a method within the object with <code>scene.method()</code>.  Don't worry if this doesn't totally make sense yet...just follow <code>drawSign</code> as an example when you're doing other methods, and you'll be fine.
 									</p>
 									<p></p>
-									<h3><a name = "running">Running The Engine</a></h3>
+									<h3><a name = "running">Running The Engine And Viewing The Scene</a></h3>
 
 									<p>
-										To run the engine and interactively view your scene, you need to save it to an HTML file.  For example, the following is in <code>simplescene.cpp</code> after all of the drawing commands
+										To run the 3D engine provided with this assignment and interactively view your scene, you need to save it to an HTML file.  For example, the following is in <code>simplescene.cpp</code> after all of the drawing commands
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
@@ -569,9 +569,9 @@
 											<span class="opener">Assignments</span>
 											<ul>
 												<li><a href = "../../Assignments/HW0_Warmup">Homework 0: Software Test</a></li>
-												<!--
 												<li><a href = "../../Assignments/HW1_VirtualCities">Homework 1: Virtual Cities</a>
 												</li>
+												<!--
 												<li><a href = "../../Assignments/HW2_Steganography">Homework 2: Image Processing And Steganography</a>
 												
 												<ul>

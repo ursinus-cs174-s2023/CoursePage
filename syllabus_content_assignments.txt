@@ -10,7 +10,7 @@
 <a href = "Assignments/HW0_Warmup">Assignment 0: Software Test</a> Due
 
 2023-01-23
-<HR>Assignment 1 (Individual): Design Your Own City Out<!--<a href = "Assignments/HW1_VirtualCities">Assignment 1 (Individual): Design Your Own City</a> Out!-->
+<HR><a href = "Assignments/HW1_VirtualCities">Assignment 1 (Individual): Design Your Own City</a> Out
 
 2023-01-23
 <a href = "../Modules/PointerFundamentals/Exercise1">Pointers Fundamentals Exercises</a> Due
