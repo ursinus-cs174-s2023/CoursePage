@@ -54,15 +54,15 @@
 									<h3>Array Example 1</h3>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										#include <stdio.h>
+										#include <iostream>
+										using namespace std;
 										int main() {
 											int arr[4] = {100, 200, 500, 1000};
 											int* ptr = arr;
-											printf("%i\n", *ptr);
+											cout << *ptr << "\n";
 											return 0;
 										}
-											
-									]]></script>
+										]]></script>
 
 									<p>
 										As we saw in class, this code will print out <b>100</b>.  This is because in C++, <b>arrays are actually pointers!</b> (by contrast, in Java, arrays are objects).  In particular, an array points to the first address of a chunk of memory with all of the elements in the array
@@ -84,19 +84,18 @@
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										#include <stdio.h>
+										#include <iostream>
+										using namespace std;
+										
 										int main() {
 											int arr[5] = {100, 200, 500, 1000, 2000};
 											int x = *(arr+4);
-											printf("%i\n", x);
+											cout << x << "\n";
 											return 0;
-										}
-											
-											
-									]]></script>
+										}]]></script>
 
 									<p>
-										Since an <code>int</code> type is 4 bytes, and since pointers address memory at the byte level, we might be tempted to say that <code>arr+4</code> will jump to the very next element and that <code>x</code> will be 200.  However, <i>pointer arithmetic</i> in C/C++ takes into account the size of the type it's pointing to.  So when we say arr+4, this is actually jumping by 4 integer places in memory, so by a total of <b>4x4 = 16</b> bytes.  This means that we can actually translate array syntax in C/C++ to pointer arithmetic:
+										Since an <code>int</code> type is 4 bytes, and since pointers address memory at the byte level, we might be tempted to say that <code>arr+4</code> will jump to the very next element and that <code>x</code> will be 200.  However, <i>pointer arithmetic</i> in C/C++ <b>takes into account the size of the type it's pointing to</b>.  So when we say arr+4, this is actually jumping by 4 integer places in memory, so by a total of <b>4x4 = 16</b> bytes.  This means that we can actually translate array syntax in C/C++ to pointer arithmetic:
 									</p>
 
 									<table style="width:400px;">
@@ -119,11 +118,13 @@
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										#include <stdio.h>
+										#include <iostream>
+										using namespace std;
+										
 										int main() {
 											int arr[5] = {100, 200, 500, 1000, 2000};
-											printf("%u\n", arr);
-											printf("%u\n", &arr[4]);
+											cout << (uint64_t)arr << "\n";
+											cout << (uint64_t)&arr[4] << "\n";
 											return 0;
 										}
 									]]></script>
@@ -133,11 +134,11 @@
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										3796683952
-										3796683968]]></script>
+										140733557089088
+										140733557089104]]></script>
 
 									<p>
-										Though this may vary on your computer since the stack moves around for security reasons.  But note how 68-52 = 16, so we see that the element at index 4 is indeed 16 bytes ahead of the element at index 0;
+										Though this may vary on your computer since the stack moves around for security reasons.  But note how 104-88 = 16, so we see that the element at index 4 is indeed 16 bytes ahead of the element at index 0;
 									</p>
 
 
@@ -148,16 +149,15 @@
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-										#include <stdio.h>
+										#include <iostream>
+										using namespace std;
+										
 										int main() {
 											int arr[4] = {100, 200, 500, 1000, 2000};
 											int x = *(arr+4);
-											printf("%i\n", x);
+											cout << x << "\n";
 											return 0;
-										}
-											
-											
-									]]></script>
+										}]]></script>
 
 									<p>
 										The issue here is that an array with 4 elements isn't big enough to hold the 5 elements we're trying to assign to it!  So our code will actually just print something random that happens to be left in memory directly after our array.

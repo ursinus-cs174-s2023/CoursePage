@@ -1,5 +1,5 @@
-#include <stdio.h>
-
+#include <iostream>
+using namespace std;
 
 int main() {
     int x = 1;
@@ -9,6 +9,6 @@ int main() {
     p2 = &y;
     *p1 = 170;
     *p2 = 4;
-    printf("%i\n", x+y);
+    cout << x + y << "\n";
     return 0;
 }

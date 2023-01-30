@@ -1,9 +1,8 @@
-#include <stdio.h>
-
-
+#include <iostream>
+using namespace std;
 int main() {
     int arr[4] = {100, 200, 500, 1000};
     int* ptr = arr;
-    printf("%i\n", *ptr);
+    cout << *ptr << "\n";
     return 0;
 }
