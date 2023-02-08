@@ -31,22 +31,22 @@ Assignment 1 Due <!--<a href = "Assignments/HW1_VirtualCities">Assignment 1</a> 
 <a href = "https://ursinus.instructure.com/courses/14913/quizzes/19046">Bitwise Module</a> Due
 
 2023-02-09
-<HR>Assignment 2 (Buddy): Image Processing And Steganography Out <!--<a href = "Assignments/HW2_Steganography">Assignment 2 (Buddy): Image Processing And Steganography</a> Out!-->
+<HR><a href = "Assignments/HW2_Steganography">Assignment 2 (Buddy): Image Processing And Steganography</a>
 
 2023-02-06
-Assignment 2 Part 1 Due <!--<a href = "Assignments/HW2_Steganography/part1.html">Assignment 2 Part 1</a> Due!-->
+<a href = "Assignments/HW2_Steganography/part1.html">Assignment 2 Part 1</a> Due
 
 2023-02-13
 <a href = "https://ursinus-cs174-f2022.github.io/Modules/CppClasses/Video1">Classes And Inheritance Module</a> Due Before Class
 
 2023-02-17
-Assignment 2 Part 2 Due <!--<a href = "Assignments/HW2_Steganography/part2.html">Assignment 2 Part 2</a> Due!-->
+<a href = "Assignments/HW2_Steganography/part2.html">Assignment 2 Part 2</a> Due
 
 2023-02-19
 Lab 3 Due
 
 2023-02-27
-Assignment 2 Part 3 Due <!--<a href = "Assignments/HW2_Steganography/part3.html">Assignment 2 Part 3</a> Due!-->
+<a href = "Assignments/HW2_Steganography/part3.html">Assignment 2 Part 3</a> Due
 
 2023-02-24
 Lab 2 Due <!--<a href = "Labs/Lab2_BugHunt">Lab 2</a> Due!-->

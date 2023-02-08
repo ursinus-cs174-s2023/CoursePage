@@ -37,11 +37,11 @@ Character Arrays, Dynamic Memory, Begin 2D arrays
 LECTURE
 Command Line Arguments, 2D Array Allocation/Cleanup
 
-<ul><li><a href = "ClassExercises/Week3_DynMem">Class notes on command line arguments and 2D array allocation/deallocation</a></li><li><a href = "https://diveintosystems.org/book/C2-C_depth/arrays.html">Dive Into Systems Ch. 2.5.2</li></ul>
+<ul><li><a href = "https://diveintosystems.org/book/C2-C_depth/arrays.html">Dive Into Systems Ch. 2.5.2</li></ul>
 LECTURE
-Audio Filtering
+Command Line Arguments, Images
 
-<ul><li><a href = "ClassExercises/Week1_AudioFiltering">Audio Filtering Class Exercise</a></li></ul>
+<ul><li><a href = "ClassExercises/Week3_DynMem">Class notes on command line arguments and 2D array allocation/deallocation</a></li></ul>
 LECTURE
 Binary, Hex, Bitwise Operators
 
