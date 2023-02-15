@@ -37,7 +37,7 @@ Assignment 1 Due <!--<a href = "Assignments/HW1_VirtualCities">Assignment 1</a> 
 <a href = "Assignments/HW2_Steganography/part1.html">Assignment 2 Part 1</a> Due
 
 2023-02-13
-<a href = "https://ursinus-cs174-f2022.github.io/Modules/CppClasses/Video1">Classes And Inheritance Module</a> Due Before Class
+<a href = "https://ursinus-cs174-s2023.github.io/Modules/ClassesBasics/Video1">Classes Basics Module</a> Due Before Class
 
 2023-02-17
 <a href = "Assignments/HW2_Steganography/part2.html">Assignment 2 Part 2</a> Due
