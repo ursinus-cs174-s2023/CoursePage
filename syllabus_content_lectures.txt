@@ -63,17 +63,17 @@ C++ Classes: Information Hiding/Encapsulation (public and private), Begin Inheri
 
 
 LECTURE
-<a href = "Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a>
+Making Lab 2 Classy, Begin Inheritance/Aggregation
 
 <ul><li><a href = "https://atomicobject.com/resources/oo-programming/object-oriented-aggregation">Notes on aggregation</a></li></ul>
+LECTURE
+<a href = "Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a>
+
+
 LECTURE
 Polymorphism
 
 
-LECTURE
-Finish Polymorphism, HW3 Workshopping
-
-<ul><li><a href = "https://github.com/ursinus-cs174-f2022/Week6_Polymorphism.git">Code from class</a></li></ul>
 LECTURE
 Dynamic Arrays, the STL <code>list</code> type
 
