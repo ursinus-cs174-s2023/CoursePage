@@ -55,7 +55,7 @@ Lab 3 Due
 <a href = "Labs/Lab2_BugHunt">Lab 2</a> Due
 
 2023-02-7
-<HR>Assignment 3 (Buddy): Invasive Species Polymorphism Out <!--  <a href = "Assignments/HW3_InvasiveSpecies">Assignment 3 (Buddy): Invasive Species Polymorphism</a> Out !-->
+<HR><a href = "Assignments/HW3_InvasiveSpecies">Assignment 3 (Buddy): Invasive Species Polymorphism</a> Out
 
 2023-02-24
 Assignment 3 Part 1 Due <!--<a href = "Assignments/HW3_InvasiveSpecies">Assignment 3 Part 1</a> Due!-->
