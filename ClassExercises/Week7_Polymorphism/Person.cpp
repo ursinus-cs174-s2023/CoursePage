@@ -82,6 +82,8 @@ int main(int argc, char** argv) {
     Student elijah("Elijah", 100, 9001, 1);
 
     StudentAthlete eric("Eric", 95, 511, 2, "track");
+
+    StudentAthlete aj("AJ", 19, 10000, 1, "track");
     
     Person* people[3] = {&chris, &elijah, &eric};
     
