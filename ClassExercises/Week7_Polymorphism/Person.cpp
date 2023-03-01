@@ -77,10 +77,7 @@ class StudentAthlete: public Student {
 };
 
 int main(int argc, char** argv) {
-    Person chris("Chris", 33, 6);
-    if (time == 12AM) {
-        chris.celebrateBirthday();
-    }
+    Person chris("Chris", 34, 6);
 
     Student elijah("Elijah", 100, 9001, 1);
 
