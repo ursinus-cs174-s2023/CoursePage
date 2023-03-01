@@ -76,6 +76,19 @@ class StudentAthlete: public Student {
         }
 };
 
+/**
+* @param people: Array of people
+* @param N: Length of the array
+* @param person: Person I want to add
+* @param i: Add at this index
+*
+* @param Reference to a new array that satisfies these properties
+*/
+Person** addPerson(Person** people, int N, Person* person, int i) {
+    // TODO: Fill this in
+    
+}
+
 int main(int argc, char** argv) {
     Person chris("Chris", 34, 6);
 
@@ -85,7 +98,12 @@ int main(int argc, char** argv) {
 
     StudentAthlete aj("AJ", 19, 10000, 1, "track");
     
-    Person* people[3] = {&chris, &elijah, &eric};
+    Person** people = new Person*[3];
+    people[0] = &chris;
+    people[1] = &elijah;
+    people[2] = &eric;
+
+    people = addPerson(people, 3, &aj, 1);
     
     // The bad way of doing it!!!
     /*for (int i = 0; i < 3; i++) {
@@ -109,6 +127,8 @@ int main(int argc, char** argv) {
         people[i]->printInfo();
         cout << "\n";
     }
+
+    delete[] people;
 
     return 0;
 }
