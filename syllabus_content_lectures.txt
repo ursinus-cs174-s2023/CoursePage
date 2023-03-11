@@ -83,9 +83,9 @@ Dynamic Arrays, the STL <code>list</code> type
 
 
 LECTURE
-<p>Abstract Classes</p><a href = "Labs/Lab4_AbstractClassesSorting">Lab 4: Comparators And Insertion Sort</a>
+Work session
 
-<ul><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm">TutorialsPoint: Notes on Interfaces in C++</a></li></ul>
+
 SECTION
 Unit 3: Object-Oriented Data Structures
 
@@ -95,6 +95,10 @@ Linked List Implementations with Nodes/Aggregation
 
 <ul><li><a href = "https://github.com/ursinus-cs174-f2022/Week7_LinkedList_Stack">Code for today</a></li></ul>
 LECTURE
+<p>Abstract Classes</p><a href = "Labs/Lab4_AbstractClassesSorting">Lab 4: Comparators And Insertion Sort</a>
+
+<ul><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm">TutorialsPoint: Notes on Interfaces in C++</a></li></ul>
+LECTURE
 Continue Linked Lists, Stacks
 
 
@@ -103,23 +107,23 @@ Doubly-Linked Lists, Queues
 
 
 LECTURE
-Continue doubly-linked lists
-
-
-LECTURE
 <a href = "Labs/Lab5_MyVector">Lab 5: My Vector (Dynamic Array ADT)</a>
 
 <ul><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li></ul>
+LECTURE
+Continue doubly-linked lists
+
+
 LECTURE
 Recursion And Memoization: Factorial, Fibonacci, Ackermann
 
 <ul><li><a href = "ClassExercises/Week11_Recursion">Class Notes on Recursion/Memoization</a></li></ul>
 LECTURE
-Binary Search Trees
+<a href = "Labs/Lab6_RecursiveDrawing">Lab 6: Recursive Drawing / Fractals</a>
 
 
 LECTURE
-<a href = "Labs/Lab6_RecursiveDrawing">Lab 6: Recursive Drawing / Fractals</a>
+Binary Search Trees
 
 
 LECTURE
@@ -176,9 +180,5 @@ Race Conditions And Mutexes
 
 LECTURE
 <a href = "Labs/Lab8_ImageFilters">Lab 8: Image Filtering with Threads</a>
-
-
-LECTURE
-Embedded Systems Programming
 
 

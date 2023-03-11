@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
+#include <list>
 using namespace std;
 
 
@@ -38,6 +39,10 @@ class Person {
 
         string getClassType() {
             return classType;
+        }
+
+        string getName() {
+            return name;
         }
 };
 
@@ -85,8 +90,17 @@ class StudentAthlete: public Student {
 * @param Reference to a new array that satisfies these properties
 */
 Person** addPerson(Person** people, int N, Person* person, int i) {
-    // TODO: Fill this in
-    
+    Person** newPeople = new Person*[N+1];
+    for (int j = 0; j < N; j++) {
+        if (j < i) {
+            newPeople[j] = people[j];
+        } else if (j >= i) {
+            newPeople[j+1] = people[j];
+        }
+    }
+    newPeople[i] = person;
+    delete[] people;
+    return newPeople;
 }
 
 int main(int argc, char** argv) {
@@ -123,8 +137,29 @@ int main(int argc, char** argv) {
     }*/
 
     // 
-    for (int i = 0; i < 3; i++) {
-        people[i]->printInfo();
+
+
+    list<Person*> peopleList; // 
+    peopleList.push_back(&chris);
+    peopleList.push_back(&elijah);
+    peopleList.push_back(&eric);
+    peopleList.push_front(&aj);
+
+    list<Person*>::iterator it;
+
+    // Find and delete Chris
+    for (it = peopleList.begin(); it != peopleList.end(); it++) {
+        Person* p = (Person*)*it;
+        if (p->getName() == "Chris") {
+            // Delete Chris
+            it = peopleList.erase(it);
+        }
+    }
+    
+    // Print out what's left
+    for (it = peopleList.begin(); it != peopleList.end(); it++) {
+        Person* p = (Person*)*it;
+        p->printInfo();
         cout << "\n";
     }
 

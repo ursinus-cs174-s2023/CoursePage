@@ -60,19 +60,19 @@ Lab 3 Due
 2023-02-24
 Assignment 3 Part 1 Due <!--<a href = "Assignments/HW3_InvasiveSpecies">Assignment 3 Part 1</a> Due!-->
 
-2023-03-03
+2023-03-13
 Lab 4 Due
 
-2023-03-13
+2023-03-20
 Assignment 3 Due <!--<a href = "Assignments/HW3_InvasiveSpecies">Assignment 3</a> Due!-->
 
-2023-03-20
+2023-03-22
 <HR>Assignment 4 (Buddy): Doubly Linked Lists And Mazes Out<!--<a href = "Assignments/HW4_LinkedListMaze">Assignment 4 (Buddy): Doubly Linked Lists And Mazes</a> Out!-->
 
-2023-03-20
-Last day to drop courses with a "W"
+2023-03-22
+<HR>Last day to drop courses with a "W"
 
-2023-03-17
+2023-03-22
 Lab 5 Due
 
 2023-03-27
@@ -85,9 +85,9 @@ Assignment 5 (Buddy): Basketball Hashing Out<!--<a href = "Assignments/HW5_Baske
 Lab 6 Due
 
 2023-04-03
-<HR>Lab 7 Due
+Lab 7 Due
 
-2023-04-07
+2023-04-10
 <a href = "../Modules/Ackermann/Exercise1">Ackermann Memoization Module Due</a>
 
 2023-04-09
