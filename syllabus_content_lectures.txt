@@ -93,17 +93,17 @@ Unit 3: Object-Oriented Data Structures
 LECTURE
 Linked List Implementations with Nodes/Aggregation
 
-<ul><li><a href = "https://github.com/ursinus-cs174-f2022/Week7_LinkedList_Stack">Code for today</a></li></ul>
+<ul><li><a href = "https://github.com/ursinus-cs174-s2023/Week8_LinkedList_Stack">Code for today</a></li></ul>
+LECTURE
+Continue Linked Lists
+
+
 LECTURE
 <p>Abstract Classes</p><a href = "Labs/Lab4_AbstractClassesSorting">Lab 4: Comparators And Insertion Sort</a>
 
 <ul><li><a href = "https://www.tutorialspoint.com/cplusplus/cpp_interfaces.htm">TutorialsPoint: Notes on Interfaces in C++</a></li></ul>
 LECTURE
-Continue Linked Lists, Stacks
-
-
-LECTURE
-Doubly-Linked Lists, Queues
+Stacks, Doubly-Linked Lists, Queues
 
 
 LECTURE

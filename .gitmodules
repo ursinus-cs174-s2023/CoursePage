@@ -10,3 +10,6 @@
 [submodule "Assignments/HW0_Warmup/HW0_Warmup"]
 	path = Assignments/HW0_Warmup/HW0_Warmup
 	url = https://github.com/ursinus-cs174-s2023/HW0_Warmup.git
+[submodule "ClassExercises/Week8_LinkedList_Stack"]
+	path = ClassExercises/Week8_LinkedList_Stack
+	url = https://github.com/ursinus-cs174-s2023/Week8_LinkedList_Stack.git
