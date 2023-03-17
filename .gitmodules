@@ -13,3 +13,6 @@
 [submodule "ClassExercises/Week8_LinkedList_Stack"]
 	path = ClassExercises/Week8_LinkedList_Stack
 	url = https://github.com/ursinus-cs174-s2023/Week8_LinkedList_Stack.git
+[submodule "Labs/Lab4_AbstractClassesSorting/Lab4_AbstractSorting"]
+	path = Labs/Lab4_AbstractClassesSorting/Lab4_AbstractSorting
+	url = https://github.com/ursinus-cs174-s2023/Lab4_AbstractSorting.git
