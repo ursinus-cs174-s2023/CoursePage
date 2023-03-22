@@ -105,15 +105,15 @@ LECTURE
 LECTURE
 Stacks, Doubly-Linked Lists, Queues
 
+<ul><li><a href = "https://github.com/ursinus-cs174-s2023/Week9_Stack_Queue">Code from class</a></li></ul>
+LECTURE
+Continue doubly-linked lists
+
 
 LECTURE
 <a href = "Labs/Lab5_MyVector">Lab 5: My Vector (Dynamic Array ADT)</a>
 
 <ul><li><a href = "https://www.geeksforgeeks.org/vector-in-cpp-stl/">GeeksForGeeks STL Vector</a></li></ul>
-LECTURE
-Continue doubly-linked lists
-
-
 LECTURE
 Recursion And Memoization: Factorial, Fibonacci, Ackermann
 

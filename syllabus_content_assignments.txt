@@ -66,7 +66,7 @@ Assignment 3 Part 1 Due <!--<a href = "Assignments/HW3_InvasiveSpecies">Assignme
 2023-03-19
 Lab 4 Due
 
-2023-03-23
+2023-03-27
 Assignment 3 Due <!--<a href = "Assignments/HW3_InvasiveSpecies">Assignment 3</a> Due!-->
 
 2023-03-22
@@ -76,9 +76,12 @@ Assignment 3 Due <!--<a href = "Assignments/HW3_InvasiveSpecies">Assignment 3</a
 <HR>Last day to drop courses with a "W"
 
 2023-03-22
+<a href = "https://ursinus-cs174-s2023.github.io/Modules/DoublyLinkedList/Video0">Stacks, Queues, And Doubly-Linked List Module</a> due before class
+
+2023-03-24
 Lab 5 Due
 
-2023-03-27
+2023-03-29
 Assignment 4 Due
 
 2023-04-05
