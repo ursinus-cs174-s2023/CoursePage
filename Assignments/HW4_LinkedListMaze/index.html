@@ -41,7 +41,7 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-                                        <h2>Assignment 4 Part 1: Doubly-Linked Lists And Maze Search Strategies (50 Pts)</h2>
+                                        <h2>Assignment 4: Doubly-Linked Lists And Maze Search Strategies (50 Pts)</h2>
                                         <h3><a href = "http://www.ctralie.com">Chris Tralie</a></h3>
 									</header>
 
@@ -57,7 +57,7 @@
 										</p>
 
 										<p>
-											<code>git clone https://github.com/ursinus-cs174-f2022/HW4_DoublyLinkedList.git</code>
+											<code>git clone https://github.com/ursinus-cs174-s2023/HW4_DoublyLinkedList.git</code>
 										</p>
 
 										<p>
@@ -224,15 +224,27 @@
 									</p>
 
 									<p>
-										The entry point for the code is in <code>mazetester.cpp</code>.  It takes a single command line argument which is a path to the maze.  I've provided one maze with this homework
+										The entry point for the code is in <code>mazetester.cpp</code>.  It takes a two command line arguments:
+										<ol>
+											<li>
+												The path path to a file containing the maze
+											</li>
+											<li>
+												Whether to use breadth-first search (1) or depth-first search (0)
+											</li>
+										</ol>
+									</p>
+
+									<p>
+										For instance, the code below would solve <code>maze.txt</code> using depth-first search
 									</p>
 
 									<script type="syntaxhighlighter" class="brush: py"><![CDATA[
-										./mazetester maze.txt
+										./mazetester maze.txt 0
 									]]></script>
 
 									<p>
-										but you may want to try your own!  Below is a working implementation of <b>breadth-first search</b>
+										but you may want to try your own mazes!  Below is a working implementation of <b>breadth-first search</b> on <code>maze.txt</code>
 									</p>
 									<p>
 										<img src = "BFS.gif">
@@ -326,8 +338,8 @@
 												</ul>
 												</li>
 												<li><a href = "../../Assignments/HW3_InvasiveSpecies">Homework 3: Invasive Species Polymorphism</a></li>
-												<!--
 												<li><a href = "../../Assignments/HW4_LinkedListMaze/index.html">Homework 4: Doubly Linked Lists And Maze Search Strategies</a></li>
+												<!--
 												<li><a href = "../../Assignments/HW5_BasketballHashing">Homework 5: Basketball Hashing</a></li>
 												-->
 											</ul>

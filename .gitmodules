@@ -19,3 +19,6 @@
 [submodule "ClassExercises/Week9_Stack_Queue"]
 	path = ClassExercises/Week9_Stack_Queue
 	url = https://github.com/ursinus-cs174-s2023/Week9_Stack_Queue.git
+[submodule "Assignments/HW4_LinkedListMaze/HW4_DoublyLinkedList"]
+	path = Assignments/HW4_LinkedListMaze/HW4_DoublyLinkedList
+	url = https://github.com/ursinus-cs174-s2023/HW4_DoublyLinkedList.git

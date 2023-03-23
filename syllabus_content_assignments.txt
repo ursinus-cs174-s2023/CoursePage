@@ -70,7 +70,7 @@ Lab 4 Due
 Assignment 3 Due <!--<a href = "Assignments/HW3_InvasiveSpecies">Assignment 3</a> Due!-->
 
 2023-03-22
-<HR>Assignment 4 (Buddy): Doubly Linked Lists And Mazes Out<!--<a href = "Assignments/HW4_LinkedListMaze">Assignment 4 (Buddy): Doubly Linked Lists And Mazes</a> Out!-->
+<HR><a href = "Assignments/HW4_LinkedListMaze">Assignment 4 (Buddy): Doubly Linked Lists And Mazes</a> Out
 
 2023-03-22
 <HR>Last day to drop courses with a "W"
