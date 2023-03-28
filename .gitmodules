@@ -22,3 +22,6 @@
 [submodule "Assignments/HW4_LinkedListMaze/HW4_DoublyLinkedList"]
 	path = Assignments/HW4_LinkedListMaze/HW4_DoublyLinkedList
 	url = https://github.com/ursinus-cs174-s2023/HW4_DoublyLinkedList.git
+[submodule "Labs/Lab6_RecursiveDrawing/Lab6_RecursiveDrawing"]
+	path = Labs/Lab6_RecursiveDrawing/Lab6_RecursiveDrawing
+	url = https://github.com/ursinus-cs174-s2023/Lab6_RecursiveDrawing.git

@@ -54,7 +54,7 @@
 										</p>
 
 										<p>
-											<code>git clone --recursive https://github.com/ursinus-cs174-f2022/Lab6_RecursiveDrawing.git</code>
+											<code>git clone --recursive https://github.com/ursinus-cs174-s2023/Lab6_RecursiveDrawing.git</code>
 										</p>
 
 										<p>
@@ -121,18 +121,11 @@
 										<h2>Programming Task: Drawing The Sierpinski Triangle (3 Points)</h2>
 
 											<p>
-												You've started off with a partial solution to <a href = "../Lab3_ShapesInheritance/">lab 3</a> which includes a solution to the triangle task.  I've started you off with a forward declaration for the class <code>SierpinskiTriangle</code> in <code>shape.h</code>.  This class inherits from <code>Triangle</code>.
+												I've started you off with the <code>Point</code> and <code>LineSegment</code> classes from <a href = "../Lab3_ShapesInheritance/">lab 3</a>.  I added an additional method <code>getMidpoint()</code> to the <code>LineSegment</code> class, which should help with this lab.
 											</p>
 
 											<p>
-												<b>Your Task:</b> Complete an implementation of <code>SierpinskiTriangle</code> by filling in the recursive helper method <code>drawRec</code> in <code>fractal.cpp</code>.  I have provided a program <code>sierpinski.cpp</code> which is an entry point to draw.  It takes 3 parameters:
-												<ul>
-													<li>The resolution of the canvas, in pixels</li>
-													<li>The maximum depth of the recursion, where the first triangle drawn is considered depth 0</li>
-													<li>
-														The name of the filename to which to output the file
-													</li>
-												</ul>
+												<b>Your Task:</b> Complete an implementation of the <code>drawSierpinski</code> method in <code>fractal.cpp</code>.  To test this, you can run the program <code>sierpinski</code> defined in <code>sierpinski.cpp</code>
 											</p>
 
 											<p>
@@ -140,6 +133,7 @@
 											</p>
 										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 											./sierpinski 800 3 sierpinski_800_3.png
+
                                         ]]></script>
 
 										<p>
@@ -154,6 +148,7 @@
 
 										<script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
 											./sierpinski 800 8 sierpinski_800_8.png
+
                                         ]]></script>
 
 										<img src = "sierpinski_800_8.png">
@@ -173,8 +168,9 @@
 
 											<img src = "KochGen.gif">
 
+											<h4>Your Task</h4>
 											<p>
-												There is an entry point executable <code>koch</code> which is similar to <code>sierpinski</code>.  To get it to draw the Koch curve, fill in the recursive method <code>drawRec</code> of the <code>KochCurve</code> class.
+												Fill in the <code>drawKoch</code> method in <code>fractal.cpp</code>.  You can test this with the <code>koch</code> program defined in <code>koch.cpp</code>
 											</p>
 
                                     
@@ -268,8 +264,8 @@
 												<li><a href = "../../Labs/Lab3_ShapesInheritance">Lab 3: Drawing Shapes with Aggregation And Inheritance</a></li>
 												<li><a href = "../../Labs/Lab4_AbstractClassesSorting">Lab 4: Abstract Classes And Sorting</a></li>
 												<li><a href = "../../Labs/Lab5_MyVector">Lab 5: My Vector (Dynamic Array ADT)</a></li>
-												<!--
 												<li><a href = "../../Labs/Lab6_RecursiveDrawing">Lab 6: Recursive Drawing</a></li>
+												<!--
 												<li><a href = "../../Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a></li>
 												<li><a href = "../../Labs/Lab8_ImageFilters">Lab 8: Bilateral Image Filtering with Threads</a></li>
 												-->
