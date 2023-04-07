@@ -127,25 +127,29 @@ Binary Search Trees
 
 
 LECTURE
-Binary Search Trees: Traversal with Preorder/Inorder/Postorder, Cleanup, Addition
+Binary Search Trees: contains, addition
 
 
 LECTURE
-Binary Search Trees: Drawing
+Binary Search Trees: Traversal with Preorder/Inorder/Postorder
 
 
+LECTURE
+Binary Search Trees: Drawing, STL Map
+
+<ul><li><a href = "ClassExercises/Week12_Maps_Adventure">Class Exercise: Choose Your Own Adventure</a></li><li><a href = "https://www.geeksforgeeks.org/set-in-cpp-stl/">GeeksForGeeks STL Set</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
+LECTURE
+Friend Classes, LinkedMap Implementation
+
+
+LECTURE
+Hash Tables
+
+<ul><li><a href = "ClassExercises/Week10_Hashing">Hash Tables Class Notes</a></li><li><a href = "ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
 LECTURE
 STL Priority Queue, <a href = "Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a>
 
 <ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
-LECTURE
-Friend Classes, STL Map, LinkedMap Implementation
-
-<ul><li><a href = "ClassExercises/Week12_Maps_Adventure">Class Exercise: Choose Your Own Adventure</a></li><li><a href = "https://www.geeksforgeeks.org/set-in-cpp-stl/">GeeksForGeeks STL Set</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
-LECTURE
-Finish LinkedMap Implementation, Hash Tables
-
-<ul><li><a href = "ClassExercises/Week10_Hashing">Hash Tables Class Notes</a></li><li><a href = "ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
 LECTURE
 Prim's Algorithm, Merge Sort
 
@@ -164,10 +168,6 @@ Function Pointers
 <ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "ClassExercises/Week13_ImageFilters">Class Exercise: Convolutional Image Filters</a></li></ul>
 LECTURE
 Begin Parallel Programming And Threads
-
-
-LECTURE
-Final Project Work Session
 
 
 LECTURE
