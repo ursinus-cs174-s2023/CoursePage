@@ -123,9 +123,9 @@ LECTURE
 
 
 LECTURE
-Binary Search Trees 
+Intro To Binary Search Trees 
 
-
+<ul><li><a href = "https://github.com/ursinus-cs174-s2023/Week10-BinaryTrees">Binary search trees code from class</a> (will be updated as we go)</li></ul>
 LECTURE
 Binary Search Trees: contains, addition
 
@@ -137,11 +137,11 @@ Binary Search Trees: Traversal with Preorder/Inorder/Postorder
 LECTURE
 Binary Search Trees: Drawing, STL Map
 
-<ul><li><a href = "ClassExercises/Week12_Maps_Adventure">Class Exercise: Choose Your Own Adventure</a></li><li><a href = "https://www.geeksforgeeks.org/set-in-cpp-stl/">GeeksForGeeks STL Set</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
+<ul><li><a href = "https://www.geeksforgeeks.org/set-in-cpp-stl/">GeeksForGeeks STL Set</a></li><li><a href = "https://www.geeksforgeeks.org/map-associative-containers-the-c-standard-template-library-stl/">GeeksForGeeks STL Map</a></li></ul>
 LECTURE
-Friend Classes, LinkedMap Implementation
+Choose Your Own Adventure, Friend Classes, LinkedMap Implementation
 
-
+<ul><li><a href = "ClassExercises/Week12_Maps_Adventure">Class Exercise: Choose Your Own Adventure</a></li></ul>
 LECTURE
 Hash Tables
 
