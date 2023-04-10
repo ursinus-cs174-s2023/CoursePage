@@ -85,9 +85,9 @@ Lab 5 Due
 Assignment 4 Due
 
 2023-04-07
-<HR>Assignment 5 (Buddy): Basketball Hashing Out<!--<a href = "Assignments/HW5_BasketballHashing">Assignment 5 (Buddy): Basketball Hashing</a> Out!-->
+<a href = "Assignments/HW5_BasketballHashing">Assignment 5 (Buddy): Basketball Hashing</a> Out
 
-2023-04-07
+2023-04-10
 Lab 6 Due
 
 2023-04-03
@@ -96,10 +96,10 @@ Lab 7 Due
 2023-04-17
 <a href = "../Modules/Ackermann/Exercise1">Ackermann Memoization Module Due</a>
 
-2023-04-09
+2023-04-14
 Assignment 5 Due <!--<a href = "Assignments/HW5_BasketballHashing">Assignment 5 Due</a>!-->
 
-2023-04-21
+2023-04-24
 Lab 8 Due
 
 2023-05-03

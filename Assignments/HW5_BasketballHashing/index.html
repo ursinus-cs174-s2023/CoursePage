@@ -63,7 +63,8 @@
 													<li><a href = "#loading">Player Loading (8 Points)</a></li>
 													<li><a href = "#database">Database Queries (7 Points)</a></li>
 													<li><a href = "#string">String Hashing (5 pts)</a></li>
-													<li><a href = "#HashMap">Hash Map Implementation (30 Pts)</a></li>
+													<li><a href = "#HashMap">Hash Map Implementation (24 Pts)</a></li>
+													<li><a href = "#HashMapTest">Hash Map Testing (6 Pts)</a></li>
 													<li><a href = "#comparison">HashMap / LinkedMap Comparison (10 pts)</a></li>
 												</ul>
 											</li>
@@ -92,7 +93,7 @@
 										</p>
 
 										<p>
-											<code>git clone https://github.com/ursinus-cs174-f2022/HW5_BasketballHashing.git</code>
+											<code>git clone https://github.com/ursinus-cs174-s2023/HW5_BasketballHashing.git</code>
 										</p>
 
 										<p>
@@ -175,9 +176,9 @@
 										</p>
 
 										<ul>
-											<li>By <b>Wednesday 4/6</b>, finish up player loading and database queries</li>
-											<li>By <b>Wednesday 4/13</b>, finish up and debug your hash table implementation</li>
-											<li>By <b>Friday 4/15</b>, complete all tasks (the final deadline)</li>
+											<li>By <b>Friday 4/14</b>, finish up player loading and database queries</li>
+											<li>By <b>Thursday 4/20</b>, finish up and debug your hash table implementation</li>
+											<li>By <b>Monday 4/24</b>, complete all tasks (the final deadline)</li>
 										</ul>
 
                                         <h3><a name = "loading">Player Loading (8 Points)</a></h3>
@@ -258,7 +259,7 @@
 										</p>
 										
 
-										<h3><a name = "HashMap">Hash Map Implementation (30 Pts)</a></h3>
+										<h3><a name = "HashMap">Hash Map Implementation (24 Pts)</a></h3>
 
 										<p>
 											You are now ready to create a hash table implementation of a map.  Create a pair of files <code>hashmap.h</code> and <code>hashmap.cpp</code>, and add entries for them in your makefile.  In these files, create a class <code>HashMap</code> that implements the abstract class <code>Map</code>.  <b>This should have the exact same public methods as <code>LinkedMap</code></b>, but it will have different private variables.  The main private variable should be an array of <code>HashNode*</code> references, each representing the head of a linked list for a different bin.  All references should start off as <code>NULL</code>.  
@@ -287,8 +288,11 @@
 												<li>(4 pts) Create a destructor that properly cleans up dynamic memory.  Be sure you also clean up dynamic memory outside of the destructor when necessary.  <b>You will lose points if there are any memory leaks!</b></li>
 										</ul>
 
+
+										<h3><a name = "HashMapTest">Hash Map Testing (6 Pts)</a></h3>
+
 										<p>
-											(6 pts) To put this all together and test it, change the <code>person.cpp</code> file to use a <code>HashMap</code> instead of a <code>LinkedMap</code> and make sure it still works.  You should only have to change one line of code to make this swap!  Then, do the same thing in <code>playerlookup.cpp</code> and verify that still works as well.  This is probably where you will discover a lot of bugs in your code, so be patient!
+											To put this all together and test it, change the <code>person.cpp</code> file to use a <code>HashMap</code> instead of a <code>LinkedMap</code> and make sure it still works.  Because <code>HashMap</code> and <code>LinkedMap</code> both inherit from the abstract <code>Map</code> class, you should only have to change one line of code to make this swap!  Then, do the same thing in <code>playerlookup.cpp</code> and verify that still works as well.  This is probably where you will discover a lot of bugs in your code, so be patient!
 										</p>
 
 										<h3><a name = "comparison">HashMap / LinkedMap Comparison (10 pts)</a></h3>
@@ -413,9 +417,7 @@
 												</li>
 												<li><a href = "../../Assignments/HW3_InvasiveSpecies">Homework 3: Invasive Species Polymorphism</a></li>
 												<li><a href = "../../Assignments/HW4_LinkedListMaze/index.html">Homework 4: Doubly Linked Lists And Maze Search Strategies</a></li>
-												<!--
 												<li><a href = "../../Assignments/HW5_BasketballHashing">Homework 5: Basketball Hashing</a></li>
-												-->
 											</ul>
 										</li>
 										<li><a href = "../../final.html">Final Project</a></li>
@@ -459,6 +461,10 @@
 												<li>
 													<a href = "../../ClassExercises/Week10_Recursion">Week 10: Class Notes on Recursive Functions And Memoization</a>
 												</li>
+												<li><a href = "../../ClassExercises/Week12_Maps_Adventure">Week 12: STL Maps, Choose Your Own Adventure</a></li>
+
+												<li><a href = "../../../Modules/Ackermann/Exercise1">Week 12: Ackermann Memoization Exercise</a></li>
+												
 												<!--
 
 												<li><a href = "../../ClassExercises/Week1_AudioFiltering">Week 1: Audio Filtering</a></li>
@@ -470,8 +476,8 @@
 												<li>
 													<a href = "../../ClassExercises/Week10_Hashing">Week 10: Hash Tables</a>
 												</li>
-												<li><a href = "../../ClassExercises/Week12_Maps_Adventure">Week 12: STL Maps, Choose Your Own Adventure</a></li>
-												<li><a href = "../../../Modules/Ackermann/Exercise1">Week 12: Ackermann Memoization Exercise</a></li>
+												
+												
 
 												
 												
