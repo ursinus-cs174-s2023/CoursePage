@@ -141,7 +141,7 @@ Binary Search Trees: Drawing, STL Map
 LECTURE
 Choose Your Own Adventure, Friend Classes, LinkedMap Implementation
 
-<ul><li><a href = "ClassExercises/Week12_Maps_Adventure">Class Exercise: Choose Your Own Adventure</a></li></ul>
+<ul><li><a href = "ClassExercises/Week12_Maps_Adventure">Class Exercise: Choose Your Own Adventure</a></li><li><a href = "https://github.com/ursinus-cs174-s2023/Week12_LinkedMap">LinkedMap starter code</a></li></ul>
 LECTURE
 Hash Tables
 
