@@ -47,10 +47,10 @@
 
 									<div id="page-content">
                                         <p>
-                                            In class, we showed how it is possible to implement a <a href = "https://en.wikipedia.org/wiki/Associative_array">map data structure</a> by using a linked list (the so-called <a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedMap/Video1">LinkedMap</a>), but that this leads to slow (linear time) average and worst case times for the <code>get()</code>, <code>containsKey()</code>, and <code>remove()</code> operations.  
+                                            In class, we showed how it is possible to implement a <a href = "https://en.wikipedia.org/wiki/Associative_array">map abstract data type</a> by using a linked list (the so-called <a href = "https://ursinus-cs174-s2022.github.io/Modules/LinkedMap/Video1">LinkedMap</a>), but that this leads to slow (linear time) average and worst case times for the <code>get()</code>, <code>containsKey()</code>, and <code>remove()</code> operations.  
 										</p>
 										<p>
-											Motivated by this, is possible to use something called a <b>hash table</b> to reduce the time of queries in a map data structure, which you will implement in <a href = "../../Assignments/HW5_BasketballHashing/">homework 5</a>.  The idea is to have a deterministic function called a <b>hash function</b> that gives a particular number, or a <b>hash code</b> for each object.  One can then jump right to a <b>bucket</b> corresponding to this hash code, which contains a linked list of all objects in the collection that have this hash code (objects that have the same hash code are said to be in "<b>collision</b>").  For instance, if we do hashing on a select bunch of <a href = "../AlgorithmsDemos/Hashing/Hashing.html">Harry Potter characters</a>, and their hash code is the month during which they were born, then we have the following hash table:
+											Motivated by this, is possible to use something called a <b>hash table</b> to reduce the time of queries in a map, which you will implement in <a href = "../../Assignments/HW5_BasketballHashing/">homework 5</a>.  The idea is to have a deterministic function called a <b>hash function</b> that gives a particular number, or a <b>hash code</b> for each object.  One can then jump right to a <b>bucket</b> corresponding to this hash code, which contains a linked list of all objects in the collection that have this hash code (objects that have the same hash code are said to be in "<b>collision</b>").  For instance, if we do hashing on a select bunch of <a href = "../AlgorithmsDemos/Hashing/Hashing.html">Harry Potter characters</a>, and their hash code is the month during which they were born, then we have the following hash table:
 										</p>
 										
 										<img src = "HarryPotter.svg">
@@ -203,8 +203,11 @@
 												</li>
 												<li><a href = "../../ClassExercises/Week12_Maps_Adventure">Week 12: STL Maps, Choose Your Own Adventure</a></li>
 
+												<li><a href = "../../../Modules/Maps/Video1">Week 12: Maps Module</a></li>
+
 												<li><a href = "../../../Modules/Ackermann/Exercise1">Week 12: Ackermann Memoization Exercise</a></li>
-												
+
+
 												<!--
 
 												<li><a href = "../../ClassExercises/Week1_AudioFiltering">Week 1: Audio Filtering</a></li>
