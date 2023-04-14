@@ -31,3 +31,6 @@
 [submodule "ClassExercises/Week12_LinkedMap/Week12_LinkedMap"]
 	path = ClassExercises/Week12_LinkedMap/Week12_LinkedMap
 	url = https://github.com/ursinus-cs174-s2023/Week12_LinkedMap.git
+[submodule "Labs/Lab7_HuffmanTrees/Lab7_HuffmanTrees"]
+	path = Labs/Lab7_HuffmanTrees/Lab7_HuffmanTrees
+	url = https://github.com/ursinus-cs174-s2023/Lab7_HuffmanTrees.git

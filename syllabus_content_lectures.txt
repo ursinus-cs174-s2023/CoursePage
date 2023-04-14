@@ -147,17 +147,17 @@ Hash Tables
 
 <ul><li><a href = "ClassExercises/Week10_Hashing">Hash Tables Class Notes</a></li><li><a href = "ClassExercises/AlgorithmsDemos/Hashing/Hashing.html">Harry Potter Hashing</li></ul>
 LECTURE
-Maps for Memoization, <a href = "Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a>
+Maps for Memoization, <a href = "Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a>, STL Priority Queues
 
+<ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
+
+LECTURE
+Merge Sort, Prim's Algorithm
 
 LECTURE
 Final Project Proposals
 
 
-LECTURE
-Prim's Algorithm, Merge Sort
-
-<ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
 SECTION
 Unit 4: Advanced Topics in Systems Programming
 
