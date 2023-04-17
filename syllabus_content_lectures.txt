@@ -150,9 +150,9 @@ LECTURE
 Maps for Memoization, <a href = "Labs/Lab7_HuffmanTrees">Lab 7: Huffman Trees</a>, STL Priority Queues
 
 <ul><li><a href = "https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/">GeeksForGeeks STL Priority Queue</li></ul>
-
 LECTURE
-Merge Sort, Prim's Algorithm
+Huffman Tree Work, Merge Sort
+
 
 LECTURE
 Final Project Proposals
