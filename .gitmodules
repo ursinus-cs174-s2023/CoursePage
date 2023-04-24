@@ -34,3 +34,6 @@
 [submodule "Labs/Lab7_HuffmanTrees/Lab7_HuffmanTrees"]
 	path = Labs/Lab7_HuffmanTrees/Lab7_HuffmanTrees
 	url = https://github.com/ursinus-cs174-s2023/Lab7_HuffmanTrees.git
+[submodule "ClassExercises/Week14_ImageFilters/Week14_ImageFilters"]
+	path = ClassExercises/Week14_ImageFilters/Week14_ImageFilters
+	url = https://github.com/ursinus-cs174-s2023/Week14_ImageFilters.git

@@ -103,6 +103,3 @@ Lab 7 Due
 Assignment 5 Due <!--<a href = "Assignments/HW5_BasketballHashing">Assignment 5 Due</a>!-->
 
 2023-04-24
-Lab 8 Due
-
-2023-05-03

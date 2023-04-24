@@ -165,7 +165,11 @@ Unit 4: Advanced Topics in Systems Programming
 LECTURE
 Function Pointers
 
-<ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "ClassExercises/Week13_ImageFilters">Class Exercise: Convolutional Image Filters</a></li></ul>
+<ul><li><a href = "https://www.cprogramming.com/tutorial/function-pointers.html">CProgramming.com function pointers tutorial</a></li><li><a href = "ClassExercises/Week14_ImageFilters">Class Exercise: Convolutional Image Filters</a></li></ul>
+LECTURE
+Intermezzo: OOP And User Input in Javascript
+
+
 LECTURE
 Begin Parallel Programming And Threads
 
@@ -176,9 +180,5 @@ Continue Parallel Programming And Threads
 
 LECTURE
 Race Conditions And Mutexes
-
-
-LECTURE
-<a href = "Labs/Lab8_ImageFilters">Lab 8: Image Filtering with Threads</a>
 
 
