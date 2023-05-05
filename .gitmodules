@@ -37,3 +37,9 @@
 [submodule "ClassExercises/Week14_ImageFilters/Week14_ImageFilters"]
 	path = ClassExercises/Week14_ImageFilters/Week14_ImageFilters
 	url = https://github.com/ursinus-cs174-s2023/Week14_ImageFilters.git
+[submodule "ClassExercises/Week14_Threads"]
+	path = ClassExercises/Week14_Threads
+	url = https://github.com/ursinus-cs174-s2023/Week14_Threads.git
+[submodule "ClassExercises/Week14_Javascript"]
+	path = ClassExercises/Week14_Javascript
+	url = https://github.com/ursinus-cs174-s2023/Week14_Javascript.git

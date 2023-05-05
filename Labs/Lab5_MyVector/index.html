@@ -213,6 +213,10 @@
 												<p>
 													This is an overloaded version of the add method in which an item is added at a specific index in the array.  You should move the item that was at that index before, and everything to the right of it, over by one index to accommodate this new item.  You should double the capacity of the underlying array if necessary.
 												</p>
+
+												<p>
+													<b>NOTE: </b>  Unless you are at capacity, you should <b>not</b> create a new array here.  Instead, move the elements over to the right in the array that's already there to make space for the new one.
+												</p>
                                             </li>
                                             <li>
                                                 <b>(1 Point)</b> <code>Item remove(int index)</code>: Remove an item at a particular index and return it.  You should also move everything to the right of this index over one to the left and update the size N. Also, be mindful of the following things:
