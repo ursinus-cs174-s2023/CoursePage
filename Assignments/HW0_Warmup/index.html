@@ -66,20 +66,16 @@
 											First, <a href = "../../Software">click here</a> and follow the instructions to download visual studio code, and setup your account on <code>nimbus.ursinus.edu</code>.  Once you're finished and everything is in place, create a designated directory for everything CS 174 related, open your terminal, and use the <code>cd</code> command to change into this designated directory (alternatively, you can create the directory in the <a href = "../../Software/index.html#terminal">terminal</a> using <code>mkdir</code> command).  Then, to obtain the test software I've created, type
 										</p>
 
-										<code>git clone --recursive https://github.com/ursinus-cs174-s2023/HW0_Warmup.git	</code>
+<pre><code>git clone https://github.com/ursinus-cs174-s2023/HW0_Warmup.git
+cd HW0_Warmup
+git submodule update --init
+</code>
+</pre>
 
 										<p></p>
 										
 										<p>
-											This should create a folder called <code>HW0_Warmup</code> in your current directory.  Change into this folder and type <code>ls</code>
-										</p>
-
-										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
-											cd HW0_Warmup
-											ls</script>   
-										
-										<p>
-											You should see these folders/files 
+											This should create a folder called <code>HW0_Warmup</code> in your current directory and then change into that folder.  If you then type <code>ls</code>, you should see these folders/files 
 										</p>
 										<script type="syntaxhighlighter" class="brush: python"><![CDATA[
 											canvas  leak.cpp  LICENSE  README.md  sound</script>  
